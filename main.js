@@ -326,7 +326,7 @@ conn.ev.on('creds.update', conn.credsUpdate);
 
 isInit = false;
 return true;
-}
+};
 
 const pluginFolder = global.__dirname(join(__dirname, './plugins/index'))
 const pluginFilter = (filename) => /\.js$/.test(filename)
