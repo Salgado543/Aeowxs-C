@@ -7,6 +7,8 @@ if (!m.isGroup) return !1
 let chat = global.db.data.chats[m.chat]
 let delet = m.key.participant
 let bang = m.key.id
+let taguser = '@' + m.sender.split('@')[0]
+
 let bot = global.db.data.settings[this.user.jid] || {}
 const isGroupLink = linkRegex.exec(m.text)
 const grupo = `https://chat.whatsapp.com`
@@ -16,7 +18,11 @@ if (isBotAdmin) {
 const linkThisGroup = `https://chat.whatsapp.com/${await this.groupInviteCode(m.chat)}`
 if (m.text.includes(linkThisGroup)) return !0
 }
-await conn.reply(m.chat, `*${emojis} ${await this.getName(m.sender)} los enlaces de WhatsApp no están permitidos en este chat, por lo cual seras eliminado*`)
+
+await conn.sendMessage(m.chat, {
+  text: `*${emojis} ${taguser} los enlaces de WhatsApp no están permitidos en este chat, por lo cual serás eliminado*`,
+  mentions: [m.sender]
+})
 
 if (!isBotAdmin) return conn.reply(m.chat, `*${emojis} No soy admin, no puedo eliminar intrusos*`)
 if (isBotAdmin) {
