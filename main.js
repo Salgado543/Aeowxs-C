@@ -1,8 +1,7 @@
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '1'
 import './config.js' 
 import { createRequire } from 'module'
-import { setupMaster, fork } from 'cluster'
-import path, { join, dirname } from 'path'
+import path, { join } from 'path'
 import {fileURLToPath, pathToFileURL} from 'url'
 import { platform } from 'process'
 import * as ws from 'ws'
@@ -44,8 +43,8 @@ global.API = (name, path = '/', query = {}, apikeyqueryname) => (name in global.
 global.timestamp = { start: new Date }
 const __dirname = global.__dirname(import.meta.url);
 global.opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse());
-global.prefix = new RegExp('^[#/.!]')
-global.db = new Low(/https?:\/\//.test(opts['db'] || '') ? new cloudDBAdapter(opts['db']) : new JSONFile('database.json'))
+global.prefix = new RegExp('^[#/.]')
+global.db = new Low(/https?:\/\//.test(opts['db'] || '') ? new cloudDBAdapter(opts['db']) : new JSONFile('./database.json'))
 global.DATABASE = global.db; 
 global.loadDatabase = async function loadDatabase() {
 if (global.db.READ) {
@@ -78,6 +77,7 @@ console.log('Conexiones ya inicializadas...');
 } else {
 global.conns = [];
 }
+
 global.creds = 'creds.json'
 global.authFile = 'JotaSession'
 global.authFileJB  = 'JadiBots'
