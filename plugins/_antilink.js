@@ -12,7 +12,8 @@ let taguser = '@' + m.sender.split('@')[0]
 let bot = global.db.data.settings[this.user.jid] || {}
 const isGroupLink = linkRegex.exec(m.text)
 const grupo = `https://chat.whatsapp.com`
-if (isAdmin && chat.antiLink && m.text.includes(grupo)) return 0!
+/*
+if (isAdmin && chat.antiLink && m.text.includes(grupo)) return 0!*/
 
 if (chat.antiLink && isGroupLink && !isAdmin) {
 if (isBotAdmin) {
