@@ -20,7 +20,7 @@ export async function before(m, { isAdmin, isBotAdmin, conn }) {
       const linkThisGroup = `https://chat.whatsapp.com/${await this.groupInviteCode(m.chat)}`
       if (m.text.includes(linkThisGroup)) return !0
     }
-    await conn.reply(m.chat, `*⚠️ ${await this.getName(m.sender)} Los enlaces de WhatsApp no están permitidos en este chat por lo cual serás eliminado*`, rcanal)
+    await conn.reply(m.chat, `*⚠️ ${await this.getName(m.sender)} Los enlaces de WhatsApp no están permitidos en este chat por lo cual serás eliminado*`)
 
     if (!isBotAdmin)
       return conn.reply(m.chat, `*${emojis} No soy admin, no puedo eliminar intrusos*`, m, rcanal)
