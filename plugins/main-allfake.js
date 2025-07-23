@@ -29,18 +29,12 @@ console.log(`Error : ${e}`)
 
 let pp = ''
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
-//let pp = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://telegra.ph/file/327f6ad853cb4f405aa80.jpg')
 
 //CREADOR Y OTROS
 global.creador = 'Wa.me/51927238856'
 global.botreal = `${(conn.user.jid == global.conn.user.jid ? 'Oficial' : 'Sub-Bot')}`
 global.ofcbot = `${conn.user.jid.split('@')[0]}`
 global.asistencia = 'Wa.me/573155227977'
-global.namech = 'Jota Bot'
-global.namechannel2 = 'ꘓꘓ   ໒☀️ؑ   𝖲ᥙᥒ𝖿͟ᥣ͟ᥲ𝗋ᥱࣲ  𝖳ᥱᥲ𝗆 彡'
-global.namegrupo = 'JotaBot'
-global.nameclub = 'Shadow′s Club'
-global.namecomu = 'Jota'
 
 //REACCIONES 
 global.rwait = '🕒'
@@ -62,24 +56,14 @@ global.info = 'ℹ️'
 
 //MENSAJE DE ESPERA 
 global.wait = '*⏳ Aguarde un momento...*';
+global.hotw = '*🔥 Los comandos nsfw están desactivados para este chat.*';
 
 //ENLACES
-var grupo = 'https://chat.whatsapp.com/FCS6htvAmlT7nq006lxU4I'  
-var github = 'https://github.com/NovaSpark-Community/JotaBot' 
+var grupo = 'https://chat.whatsapp.com/FCS6htvAmlT7nq006lxU4I'
 var web = 'https://jota-bot.vercel.app/' 
 let instagram = 'https://www.instagram.com/dev.criss_vx'
 
-global.redes = [grupo, github, web, instagram].getRandom()
-
-//IMAGEN
-let category = "imagen"
-const db = './media/database/db.json'
-const db_ = JSON.parse(fs.readFileSync(db))
-const random = Math.floor(Math.random() * db_.links[category].length)
-const randomlink = db_.links[category][random]
-const response = await fetch(randomlink)
-const rimg = await response.arrayBuffer()
-global.icons = rimg
+global.redes = [grupo, web, instagram].getRandom()
 
 //TIEMPO
 var ase = moment().tz('America/Lima'); // Cambia 'America/Lima' por la zona horaria deseada
@@ -163,7 +147,6 @@ global.urls = [
 ];
 let gifUrl = urls[Math.floor(Math.random() * urls.length)];
 
-global.rcanal = { contextInfo: { isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: channelRD.id, serverMessageId: 100, newsletterName: channelRD.name, }, externalAdReply: { showAdAttribution: true, title: textbot, body: dev, mediaUrl: null, description: null, previewType: "PHOTO", thumbnailUrl: icono, sourceUrl: redes, mediaType: 1, renderLargerThumbnail: false }, }, }}
 
 export default handler
 
