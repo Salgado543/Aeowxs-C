@@ -22,7 +22,7 @@ if (m.text.includes(linkThisGroup)) return !0
 }
 
 await conn.sendMessage(m.chat, {
-  text: `*${emojis} ${taguser} los enlaces de WhatsApp no están permitidos en este chat, por lo cual serás eliminado*`,
+  text: `*${emojis} ${taguser} los enlaces de WhatsApp no están permitidos en este chat, por lo cual serás eliminado.*`,
   mentions: [m.sender]
 })
 
