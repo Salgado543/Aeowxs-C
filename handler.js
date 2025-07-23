@@ -509,17 +509,17 @@ global.dfail = (type, m, conn) => {
 let user2 = m.pushName || 'Anónimo'
 
 const msg = {
-rowner: '*🐼 Esta función solo puede ser usada por el actual Owner.*', 
-owner: '*🐼 Esta función solo puede ser usada por mi Desarrollador.*', 
-mods: '*🐼 Esta función solo puede ser usada los moderadores del bot.*', 
-premium: '*🐼 Esta función solo es para usuarios Premium.*', 
-group: '*🐼 Esta funcion solo puede ser ejecutada en Grupos.*', 
-private: '*🐼 Esta función solo puede ser ejecutada en chat privado.*', 
-admin: '*🐼 Este comando solo puede ser usado por Admins.*', 
-botAdmin: '*🐼 Para usar esta función debo ser Admin.*',
-unreg: `*🐼 \`Jota\` te avisa que no te encuentras registrado para usar esta función en el bot.*\n\nPara verificar utiliza .reg nombre.edad
+rowner: `*${emoji} Esta función solo puede ser usada por el actual Owner.*`, 
+owner: `*${emoji} Esta función solo puede ser usada por mi Desarrollador.*`, 
+mods: `*${emoji} Esta función solo puede ser usada los moderadores del bot.*`, 
+premium: `*${emoji} Esta función solo es para usuarios Premium.*`, 
+group: `*${emoji} Esta funcion solo puede ser ejecutada en Grupos.*`, 
+private: `*${emoji} Esta función solo puede ser ejecutada en chat privado.*`, 
+admin: `*${emoji} Este comando solo puede ser usado por Admins.*`, 
+botAdmin: `*${emoji} Para usar esta función debo ser Admin.*`,
+unreg: `*${emoji} \`${botname}\` te avisa que no te encuentras registrado para usar esta función en el bot.*\n\nPara verificar utiliza .reg nombre.edad
 > Ejemplo: .reg Jota.21`,
-restrict: '*🐼 Esta característica esta desactivada.*'
+restrict: `*${emoji} Esta característica esta desactivada.*`
 }[type];
 if (msg) return conn.reply(m.chat, msg, m, rcanal).then(_ => m.react('✖️'))}
 
