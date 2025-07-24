@@ -8,15 +8,15 @@ import axios from 'axios'
 import moment from 'moment-timezone' 
 
 global.owner = [
-   ['573155227977', 'Jota', true],
-   ['51927238856', 'Cristian Escobar', true],
-   ['51990841568', 'Moderador', true],
+   ['573155227977', 'Jota 🐼', true],
+   ['51927238856', 'Dev Criss 🇦🇱', true],
+   ['51990841568', 'Soporte', true],
    ['90812788543600', '@Dev.Criss', true],
    ['229356135813175', '@Jxta', true],
 ]
 
-global.creadorbot = [
-   ['51927238856', 'Cristian Escobar', true]
+global.creator = [
+   ['51927238856', 'Dev Criss 🇦🇱', true]
 ]
 
 global.mods = ['51990841568', '51965911060', '51906168999']
@@ -40,7 +40,7 @@ global.catalogo = fs.readFileSync('./media/catalogo.jpg')
 global.grupo = 'https://chat.whatsapp.com/FCS6htvAmlT7nq006lxU4I'
 global.comu = 'https://chat.whatsapp.com/Kn1pPVAO08pFRo7qJnKuh6'
 global.channel = 'https://whatsapp.com/channel/0029VauTE8AHltY1muYir31n'
-global.insta = 'https://www.instagram.com/dev.criss_vx'
+global.ig = 'https://www.instagram.com/dev.criss_vx'
 
 
 global.estilo = { key: {  fromMe: false, participant: `0@s.whatsapp.net`, ...(false ? { remoteJid: "543876577197-120363317332020195@g.us" } : {}) }, message: { orderMessage: { itemCount : -999999, status: 1, surface : 1, message: 'MOONFORCE 乂 TEAM', orderTitle: 'Bang', thumbnail: catalogo, sellerJid: '0@s.whatsapp.net'}}}
