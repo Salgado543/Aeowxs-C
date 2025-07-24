@@ -3,7 +3,7 @@ const { proto, generateWAMessageContent, generateWAMessageFromContent } = (await
 
 const handler = async (m, { conn, text }) => {
   if (!text) {
-    return conn.reply(m.chat, `❗ Ingresa palabras clave para buscar.\nEjemplo: .pinterest anime girl`, m);
+    return conn.reply(m.chat, `*${emojis} Ingresa una búsqueda de Pinterest.\n- *Ejemplo: ${usedPrefix + command} Gatitos*`, m);
   }
 
   await conn.reply(m.chat, '🔎 Buscando imágenes en Pinterest...', m);
