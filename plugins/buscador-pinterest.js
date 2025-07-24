@@ -1,7 +1,7 @@
 import axios from 'axios';
 const { proto, generateWAMessageContent, generateWAMessageFromContent } = (await import('@whiskeysockets/baileys')).default;
 
-const handler = async (m, { conn, text }) => {
+const handler = async (m, { conn, usedPrefix, command, text }) => {
   if (!text) {
     return conn.reply(m.chat, `*${emojis} Ingresa una búsqueda de Pinterest.\n- *Ejemplo: ${usedPrefix + command} Gatitos*`, m);
   }
