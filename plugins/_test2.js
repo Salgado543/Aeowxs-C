@@ -105,7 +105,7 @@ const savetube = {
       return {
         status: false,
         code: 400,
-        error: "¿Dónde está el link? No puedes descargar sin un link 🗿"
+        error: "*🐼 Ingresa un link válido de Youtube.*"
       };
     }
 
@@ -113,7 +113,7 @@ const savetube = {
       return {
         status: false,
         code: 400,
-        error: "¡Pon un link de YouTube válido, por favor! 🗿"
+        error: "*🐼 Ingresa un link válido de Youtube.*"
       };
     }
 
@@ -121,7 +121,7 @@ const savetube = {
       return {
         status: false,
         code: 400,
-        error: "Formato no disponible, elige uno de los que están listados 🗿",
+        error: "*⚠️ Formato no disponible, elige uno de los que están listados.*",
         available_fmt: savetube.formats
       };
     }
@@ -131,7 +131,7 @@ const savetube = {
       return {
         status: false,
         code: 400,
-        error: "No se puede extraer el link de YouTube, verifica el link y prueba de nuevo 😂"
+        error: "*⚠️ No se puede extraer el link de YouTube, verifica el link y prueba de nuevo*"
       };
     }
 
@@ -181,7 +181,7 @@ const savetube = {
 };
 
 const handler = async (m, { conn, args, command }) => {
-  if (args.length < 1) return m.reply(`*[ ℹ️ ] Ingresa una URL de un video o audio de YouTube*`);
+  if (args.length < 1) return m.reply(`*${emojis} Ingresa una URL de un video o audio de YouTube*`);
 
   let url = args[0];
   let format = command === 'ytmp3' ? 'mp3' : args[1] || '720';
