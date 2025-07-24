@@ -181,12 +181,13 @@ const savetube = {
 };
 
 const handler = async (m, { conn, args, command }) => {
-  if (args.length < 1) return m.reply(`*${emojis} Ingresa una URL de un video o audio de YouTube*`);
+
+  if (args.length < 1) return await conn.reply(m.chat, `*${emojis} Ingresa una URL de un video o audio de YouTube*`, m, rcanal);
 
   let url = args[0];
   let format = command === 'ytmp3' ? 'mp3' : args[1] || '720';
 
-  if (!savetube.isUrl(url)) return m.reply("Por favor, ingresa un link válido de YouTube.");
+  if (!savetube.isUrl(url)) return m.reply("*⚠️ Por favor, ingresa un link válido de YouTube.*");
 
   try {
     await m.react('🕒');
@@ -212,11 +213,11 @@ const handler = async (m, { conn, args, command }) => {
     await m.react('✅');
   } catch (e) {
     await m.react('✖️');
-    m.reply(`*¡Fallo en la descarga!*`);
+    m.reply(`*✖️ Falló la api*`);
   }
 };
 
-handler.help = ['ytmp4 *<url>*', 'ytmp3 *<url>*'];
+handler.help = ['ytmp4', 'ytmp3'];
 handler.command = ['ytmp4', 'ytmp3'];
 handler.tags = ['dl']
 
