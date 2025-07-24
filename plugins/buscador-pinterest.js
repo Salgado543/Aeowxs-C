@@ -1,34 +1,26 @@
 import axios from 'axios';
 const { proto, generateWAMessageContent, generateWAMessageFromContent } = (await import('@whiskeysockets/baileys')).default;
 
-const handler = async (m, { conn, text, usedPrefix, command }) => {
+const handler = async (m, { conn, text }) => {
   if (!text) {
-    return conn.reply(m.chat, `❗ Ingresa palabras clave para buscar.\nEjemplo: ${usedPrefix + command} anime girl | 5`, m);
+    return conn.reply(m.chat, `❗ Ingresa palabras clave para buscar.\nEjemplo: .pinterest anime girl`, m);
   }
 
-  await conn.reply(m.chat, '🔎 Buscando imágenes en Pinterest, por favor espera...', m);
-
-  const [query, cantidadStr] = text.split('|').map(v => v.trim());
-  const cantidad = Math.max(1, Math.min(parseInt(cantidadStr) || 5, 10)); // mínimo 1, máximo 10
+  await conn.reply(m.chat, '🔎 Buscando imágenes en Pinterest...', m);
 
   try {
-    const { data } = await axios.get(`https://api.vreden.my.id/api/pinterest?query=${encodeURIComponent(query)}`);
+    const { data } = await axios.get(`https://api.vreden.my.id/api/pinterest?query=${encodeURIComponent(text)}`);
     const resultados = Array.isArray(data?.result) ? data.result : [];
 
-    if (!resultados.length) return conn.reply(m.chat, '❌ No se encontraron imágenes para esa búsqueda.', m);
+    if (!resultados.length) {
+      return conn.reply(m.chat, '❌ No se encontraron imágenes para esa búsqueda.', m);
+    }
 
-    // Mezclar resultados
-    resultados.sort(() => Math.random() - 0.5);
-
-    // Limitar cantidad
-    const seleccionados = resultados.slice(0, cantidad);
-
-    // Crear mensajes de imagen
+    // Mezclar resultados y tomar 5 imágenes
+    const seleccionados = resultados.sort(() => Math.random() - 0.5).slice(0, 10);
     const tarjetas = [];
 
-    for (let i = 0; i < seleccionados.length; i++) {
-      const url = seleccionados[i];
-
+    for (const url of seleccionados) {
       const { imageMessage } = await generateWAMessageContent({ image: { url } }, {
         upload: conn.waUploadToServer
       });
@@ -46,7 +38,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
               name: "cta_url",
               buttonParamsJson: JSON.stringify({
                 display_text: "Ver en Pinterest",
-                url: `https://www.pinterest.com/search/pins/?q=${encodeURIComponent(query)}`
+                url: `https://www.pinterest.com/search/pins/?q=${encodeURIComponent(text)}`
               })
             }
           ]
@@ -62,7 +54,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
             deviceListMetadataVersion: 2
           },
           interactiveMessage: proto.Message.InteractiveMessage.fromObject({
-            body: proto.Message.InteractiveMessage.Body.create({ text: `✨ Resultados de búsqueda para: *${query}*` }),
+            body: proto.Message.InteractiveMessage.Body.create({ text: `✨ Resultados de búsqueda para: *${text}*` }),
             footer: proto.Message.InteractiveMessage.Footer.create({ text: '' }),
             header: proto.Message.InteractiveMessage.Header.create({ hasMediaAttachment: false }),
             carouselMessage: proto.Message.InteractiveMessage.CarouselMessage.fromObject({ cards: tarjetas })
@@ -79,7 +71,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
   }
 };
 
-handler.help = ['pinterest <consulta> | <número>'];
+handler.help = ['pinterest <consulta>'];
 handler.tags = ['internet'];
 handler.command = /^pin|pinterest|pintes$/i;
 handler.premium = false;
