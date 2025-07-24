@@ -23,7 +23,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
             buttons: buttons,
             viewOnce: true
         },
-        { quoted: fkontak }
+        { quoted: rcanal }
     );
 };
 
