@@ -3,7 +3,7 @@ const { proto, generateWAMessageContent, generateWAMessageFromContent } = (await
 
 const handler = async (m, { conn, usedPrefix, command, text }) => {
   if (!text) {
-    return conn.reply(m.chat, `*${emojis} Ingresa una búsqueda de Pinterest.\n- *Ejemplo: ${usedPrefix + command} Gatitos*`, m);
+    return conn.reply(m.chat, `*${emojis} Ingresa una búsqueda de Pinterest.*\n> *Ejemplo:* ${usedPrefix + command} Gatitos*`, m);
   }
 
   await m.react('🔎');
@@ -13,10 +13,10 @@ const handler = async (m, { conn, usedPrefix, command, text }) => {
     const resultados = Array.isArray(data?.result) ? data.result : [];
 
     if (!resultados.length) {
-      return conn.reply(m.chat, '❌ No se encontraron imágenes para esa búsqueda.', m);
+      return conn.reply(m.chat, '*❌ No se encontraron imágenes para esa búsqueda.*', m);
     }
 
-    // Mezclar resultados y tomar 5 imágenes
+    // si te la robas sos re gei
     const seleccionados = resultados.sort(() => Math.random() - 0.5).slice(0, 10);
     const tarjetas = [];
 
@@ -67,14 +67,12 @@ const handler = async (m, { conn, usedPrefix, command, text }) => {
 
   } catch (e) {
     console.error(e);
-    await conn.reply(m.chat, `❌ Ocurrió un error al obtener los datos.\nError: ${e.message}`, m);
+    await conn.reply(m.chat, `*❌ Ocurrió un error al obtener los datos.*\n*Error:* ${e.message}`, m);
   }
 };
 
 handler.help = ['pinterest <consulta>'];
 handler.tags = ['internet'];
 handler.command = /^pin|pinterest|pintes$/i;
-handler.premium = false;
-handler.limit = false;
 
 export default handler;
