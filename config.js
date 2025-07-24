@@ -37,7 +37,7 @@ global.vs = '1.0.0'
 global.catalogo = fs.readFileSync('./media/catalogo.jpg')
 
 
-global.grupo = 'https://chat.whatsapp.com/FCS6htvAmlT7nq006lxU4I'
+global.grupo = 'https://chat.whatsapp.com/Caj518FwPjHLVmGn48GvhW?mode=r_c'
 global.comu = 'https://chat.whatsapp.com/Er5zgBnAW9A8rfGaXGIvhI?mode=r_c'
 global.channel = 'https://whatsapp.com/channel/0029VauTE8AHltY1muYir31n'
 global.ig = 'https://www.instagram.com/dev.criss_vx'
