@@ -8,13 +8,13 @@ let usuario = `@${m.sender.split`@`[0]}`
 let pp = await conn.profilePictureUrl(m.chat, 'image').catch(_ => null) || 'https://files.catbox.moe/uogbz0.jpg'  
 
 let nombre, foto, edit, newlink, status, admingp, noadmingp, aceptar
-nombre = `*💫 ${usuario} HA CAMBIADO EL NOMBRE DEL GRUPO*`
+nombre = `*${emoji} ${usuario} ah cambiado el nombre del grupo.*`
 
-foto = `*💫 ${usuario} HA CAMBIADO LA IMAGEN DEL GRUPO*`
+foto = `*${emoji} ${usuario} ah cambiado la imagen del grupo.*`
 
-edit = `*${usuario}*\n*AH PERMITIDO QUE ${m.messageStubParameters[0] == 'on' ? 'SOLO ADMINS' : 'TODOS'} PUEDAN CONFIGURAR EL GRUPO*`
+edit = `*${emoji} ${usuario} ah permitido que ${m.messageStubParameters[0] == 'on' ? 'solo admins' : 'todos'} configuren el grupo.*`
 
-newlink = `*El enlace del grupo ha sido restablecido*`
+newlink = `*${emoji} El enlace del grupo fue restablecido*`
 
 status = `*🐼 EL GRUPO AH SIDO ${m.messageStubParameters[0] == 'on' ? '`CERRADO` 🔒' : '`ABIERTO` 🔓'}*\n*POR ${usuario}*\n\n*🥱 AHORA ${m.messageStubParameters[0] == 'on' ? 'ESTAN CALLADOS NEGROS' : 'SIGAN EN LO SUYO PENDEJOS'}*`
 
