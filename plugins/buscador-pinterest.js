@@ -6,7 +6,7 @@ const handler = async (m, { conn, usedPrefix, command, text }) => {
     return conn.reply(m.chat, `*${emojis} Ingresa una búsqueda de Pinterest.\n- *Ejemplo: ${usedPrefix + command} Gatitos*`, m);
   }
 
-  await conn.reply(m.chat, '🔎 Buscando imágenes en Pinterest...', m);
+  await m.react('🔎');
 
   try {
     const { data } = await axios.get(`https://api.vreden.my.id/api/pinterest?query=${encodeURIComponent(text)}`);
@@ -27,7 +27,7 @@ const handler = async (m, { conn, usedPrefix, command, text }) => {
 
       tarjetas.push({
         body: proto.Message.InteractiveMessage.Body.fromObject({ text: null }),
-        footer: proto.Message.InteractiveMessage.Footer.fromObject({ text: '🔸 Pinterest Search - Moon Force' }),
+        footer: proto.Message.InteractiveMessage.Footer.fromObject({ text: 'Pinterest - Search' }),
         header: proto.Message.InteractiveMessage.Header.fromObject({
           hasMediaAttachment: true,
           imageMessage
@@ -54,8 +54,8 @@ const handler = async (m, { conn, usedPrefix, command, text }) => {
             deviceListMetadataVersion: 2
           },
           interactiveMessage: proto.Message.InteractiveMessage.fromObject({
-            body: proto.Message.InteractiveMessage.Body.create({ text: `✨ Resultados de búsqueda para: *${text}*` }),
-            footer: proto.Message.InteractiveMessage.Footer.create({ text: '' }),
+            body: proto.Message.InteractiveMessage.Body.create({ text: `\`Resultados:\` ${text}` }),
+            footer: proto.Message.InteractiveMessage.Footer.create({ text: dev }),
             header: proto.Message.InteractiveMessage.Header.create({ hasMediaAttachment: false }),
             carouselMessage: proto.Message.InteractiveMessage.CarouselMessage.fromObject({ cards: tarjetas })
           })
