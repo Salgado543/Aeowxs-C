@@ -3,7 +3,7 @@ const { proto, generateWAMessageContent, generateWAMessageFromContent } = (await
 
 const handler = async (m, { conn, usedPrefix, command, text }) => {
   if (!text) {
-    return conn.reply(m.chat, `*${emojis} Ingresa una búsqueda de Pinterest.*\n> *Ejemplo:* ${usedPrefix + command} Gatitos*`, m);
+    return conn.reply(m.chat, `*${emojis} Ingresa una búsqueda de Pinterest.*\n> *Ejemplo:* ${usedPrefix + command} Gatitos`, m);
   }
 
   await m.react('🔎');
