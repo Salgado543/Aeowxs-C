@@ -1,4 +1,5 @@
-import fetch from 'node-fetch';
+//MEJORA PARA SHADOW ULTRA
+/*import fetch from 'node-fetch';
 import { prepareWAMessageMedia, generateWAMessageFromContent } from '@whiskeysockets/baileys';
 
 const handler = async (m, { conn, text, usedPrefix, command }) => {
@@ -70,4 +71,4 @@ handler.help = ['spotifysearch'];
 handler.tags = ['search'];
 handler.command = /^(shadow)$/i;
 
-export default handler;
+export default handler;*/
