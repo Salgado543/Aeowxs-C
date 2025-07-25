@@ -1,7 +1,7 @@
 import gplay from "google-play-scraper";
 let handler = async (m, { conn, text }) => {
   if (!text) {
-    return conn.reply(m.chat, `*${emojis} Ingresa el nombre de la app que quieras buscar*`, m, rcanal);
+    return conn.reply(m.chat, `*${emojis} Ingresa el nombre de la app que quieras buscar.*\n> *Ejemplo:* WhatsApp`, m, rcanal);
   }
   let res = await gplay.search({ term: text });
   if (!res.length) {
@@ -27,7 +27,7 @@ let handler = async (m, { conn, text }) => {
   ).join("\n\n");
   conn.reply(m.chat, res, m, opt); 
 };
-handler.help = ['playstoresearch *<texto>*']; 
+handler.help = ['playstoresearch']; 
 handler.tags = ['buscador'];
 handler.command = /^(playstoresearch|pssearch)$/i; 
 export default handler;
