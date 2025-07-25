@@ -11,7 +11,7 @@ let handler = async (message, { conn, text, usedPrefix, command }) => {
   }
 
   try {
-    await m.react('🔎');
+    await message.react('🔎');
 
     // Realizar la búsqueda de TikTok
     let { data: response } = await axios.get('https://apis-starlights-team.koyeb.app/starlight/tiktoksearch?text=' + text);
