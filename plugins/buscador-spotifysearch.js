@@ -32,7 +32,7 @@ buttons: [ */
                 text: `◦ *Título:* ${track.title} \n◦ *Artistas:* ${track.artist} \n◦ *Duración:* ${track.duration} \n◦ *Popularidad:* ${track.popularity} \n◦ *Fecha:* ${track.publish}`
             }),
             footer: proto.Message.InteractiveMessage.Footer.fromObject({
-                text: '' 
+                text: botname 
             }),
             header: proto.Message.InteractiveMessage.Header.fromObject({
                 title: '',
