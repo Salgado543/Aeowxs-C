@@ -2,7 +2,7 @@ import { webp2png } from '../lib/webp2mp4.js';
 
 const handler = async (m, { conn, usedPrefix, command }) => {
   try {
-    if (!m.quoted) throw `*${emojis} Responda a un sticker con el comando ${usedPrefix + command} para convertirlo en imagen.*`;
+    if (!m.quoted) return await conn.reply(m.chat, `*${emojis} Responda a un sticker con el comando ${usedPrefix + command} para convertirlo en imagen.*`, m, rcanal);
 
     const q = m.quoted;
     const mime = q.mimetype || '';
