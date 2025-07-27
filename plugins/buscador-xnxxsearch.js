@@ -8,7 +8,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
   if (!text) conn.reply(m.chat, `*${emojis} Ingresa el texto de lo que quieres buscar en Xnxx*`, m, rcanal)
 */
 
-if (!text) return await conn.reply(m.chat, `*${emojis} Ingresa el texto de lo que quieres buscar en Xnxx*`, m, rcanal)
+if (!text) return await conn.reply(m.chat, `*${emojis} Ingresa el texto de lo que quieres buscar en la página de xnxx*`, m, rcanal)
 
   let response = await fetch(`https://api.agatz.xyz/api/xnxx?message=${text}`)
   let res = await response.json()
