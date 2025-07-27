@@ -1,16 +1,13 @@
 import fetch from "node-fetch"
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-    if (!db.data.chats[m.chat].nsfw && m.isGroup) {
-    return m.reply(hotw);
-    }
-/*
-  if (!text) conn.reply(m.chat, `*${emojis} Ingresa el texto de lo que quieres buscar en Xnxx*`, m, rcanal)
-*/
+  if (!db.data.chats[m.chat].nsfw && m.isGroup) {
+    return m.reply(hotw)
+  }
 
-if (!text) await conn.reply(m.chat, `*${emojis} Ingresa el texto de lo que quieres buscar en la página de xnxx*`, m, rcanal)
+  if (!text) return await conn.reply(m.chat, `*${emojis} Ingresa el texto de lo que quieres buscar en la página de xnxx*`, m, rcanal)
 
-  let response = await fetch(`https://api.agatz.xyz/api/xnxx?message=${text}`)
+  let response = await fetch(`https://api.agatz.xyz/api/xnxx?message=${encodeURIComponent(text)}`)
   let res = await response.json()
 
   if (res.status !== 200) throw m.reply(`API Error: ${res.creator}`)
@@ -42,6 +39,5 @@ if (!text) await conn.reply(m.chat, `*${emojis} Ingresa el texto de lo que quier
 handler.command = ['xnxxsearch', 'xnxxs']
 handler.help = ['xnxxsearch']
 handler.tags = ['buscador']
-//handler.register = true
 
 export default handler
