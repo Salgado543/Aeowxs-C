@@ -4,13 +4,13 @@ var handler = async (m, { text, conn, args, command, usedPrefix }) => {
     if (!text) return conn.reply(m.chat, `*${emojis} Por favor, ingresa una búsqueda de YouTube.*`, m, rcanal);
 
     try {
-        conn.reply(m.chat, wait, fkontak, m);
+        await m.react('🔎');
 
         let results = await yts(text);
         let tes = results.all;
 
         if (!tes || tes.length === 0) {
-            return conn.reply(m.chat, `No se encontraron resultados para *${text}*`, m);
+            return conn.reply(m.chat, `✖️ *No se encontraron resultados*`, m);
         }
 
         // Formateamos los resultados obtenidos
@@ -28,7 +28,7 @@ var handler = async (m, { text, conn, args, command, usedPrefix }) => {
 
     } catch (error) {
         console.error(error);
-        conn.reply(m.chat, 'Ocurrió un error al realizar la búsqueda. Intenta de nuevo más tarde.', m);
+        conn.reply(m.chat, '*✖️ Ocurrió un error al realizar la búsqueda. Intenta de nuevo más tarde.*', m);
     }
 }
 
