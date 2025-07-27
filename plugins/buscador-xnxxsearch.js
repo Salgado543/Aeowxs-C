@@ -2,7 +2,7 @@ import fetch from "node-fetch"
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
     if (!db.data.chats[m.chat].nsfw && m.isGroup) {
-    return m.reply('*🐼 El contenido nsfw está desactivado para este chat.*\n> ᥙsᥱ *enable nsfw* ⍴ᥲrᥲ ᥲᥴ𝗍і᥎ᥲrᥣ᥆.');
+    return m.reply(hotw);
     }
 
   if (!text) throw m.reply(`*${emojis} Ingresa el texto de lo que quieres buscar en Xnxx*`)
