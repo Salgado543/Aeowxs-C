@@ -28,6 +28,6 @@ let handler = async (m, { conn, text }) => {
   conn.reply(m.chat, res, m, opt); 
 };
 handler.help = ['playstoresearch']; 
-handler.tags = ['buscador'];
+handler.tags = ['search'];
 handler.command = /^(playstoresearch|pssearch)$/i; 
 export default handler;
