@@ -1,4 +1,4 @@
-const handler = async (m, { conn, args }) => {
+/*const handler = async (m, { conn, args }) => {
   const targetUser = m.sender;
   const creatorNumber = '51927238856'; // sin el '+'
   const creatorMention = '@' + creatorNumber;
@@ -18,4 +18,4 @@ Mi número es +${creatorNumber} si lo necesitas`;
 
 handler.command = /^hola$/i;
 
-export default handler;
+export default handler;*/
