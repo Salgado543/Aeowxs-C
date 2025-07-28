@@ -18,7 +18,6 @@ const handler = async (m, { conn, args, usedPrefix }) => {
         messageText += `${video.titulo}\n\n`;
         messageText += `*⌛ Duración:* ${video.duracion || 'No disponible'}\n`;
         messageText += `*👤 Autor:* ${video.canal || 'Desconocido'}\n`;
-        messageText += `*📆 Publicado:* ${convertTimeToSpanish(video.publicado)}\n`;
         messageText += `*🖇️ Url:* ${video.url}\n`;
 
         await conn.sendMessage(m.chat, {
