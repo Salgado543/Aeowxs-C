@@ -16,15 +16,14 @@ const handler = async (m, { conn, args, text, usedPrefix, command }) => {
         const nn = conn.getName(m.sender);
         await conn.reply(m.chat, `*✅ El usuario ${nametag} ha sido desbaneado.*`, m, { mentionedJid: [user] });
 
-        conn.reply(`51927238856@s.whatsapp.net`, `*${emoji} El usuario *${nametag}* ha sido desbaneado por *${nn}*.`, m);
-
     } else {
-        await conn.reply(m.chat, `${emoji4} El usuario no está registrado.`, m);
+        await conn.reply(m.chat, `*⚠️ El usuario no está registrado.*`, m);
     }
 };
-handler.help = ['unbanuser <@tag>'];
+
+handler.help = ['unbanuser'];
 handler.command = ['unbanuser'];
-//handler.tags = ['mods'];
+handler.tags = ['owner'];
 handler.rowner = true;
 
 export default handler;
