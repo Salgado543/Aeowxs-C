@@ -5,7 +5,7 @@ const handler = async (m, {conn, usedPrefix, command}) => {
   const mime = (q || q.msg).mimetype || q.mediaType || '';
 
   if (!/video|audio/.test(mime)) {
-    return conn.reply(m.chat, `*${emojis} Responda al video o nota de voz con el comando ${usedPrefix + command} para convertirlo en audio.*`, m);
+    return conn.reply(m.chat, `*${emojis} Responda al video o nota de voz con el comando ${usedPrefix + command} para convertirlo en audio.*`, m, rcanal);
   }
 
   const media = await q.download();
@@ -21,9 +21,8 @@ const handler = async (m, {conn, usedPrefix, command}) => {
   conn.sendMessage(m.chat, {audio: audio.data, mimetype: 'audio/mpeg'}, {quoted: m});
 };
 
-handler.help = ['tomp3', 'toaudio'];
+handler.help = ['tomp3'];
 handler.tags = ['converter']
 handler.command = ['tomp3', 'toaudio', 'toaud'];
-//handler.register = true;
 
 export default handler;
