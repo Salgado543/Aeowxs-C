@@ -55,7 +55,7 @@ handler.rowner = true
 
 export default handler*/
 
-const handler = async (m, { conn, text, args, command }) => {
+var handler = async (m, { conn, text, args, command }) => {
     try {
         const cleanNumber = n => n.replace(/\s|@|[+]/g, '');
         const senderNumber = conn.user.jid.split('@')[0];
