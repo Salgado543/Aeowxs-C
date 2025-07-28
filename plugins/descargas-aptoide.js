@@ -8,7 +8,7 @@ const handler = async (m, { conn, usedPrefix: prefix, command, text }) => {
     const data5 = await download(searchA[0].id);  // Descarga la información del APK
 
     // Preparar el mensaje con la información del APK
-    let response = `*DESCARGAS - APTOIDE*\n\n`;
+    let response = `*Download - Aptoide*\n\n`;
     response += `🕵🏻 *Nombre* : ${data5.name}\n`;
     response += `🗃 *Package* : ${data5.package}\n`;
     response += `🪴 *Actualización* : ${data5.lastup}\n`;
@@ -21,7 +21,7 @@ const handler = async (m, { conn, usedPrefix: prefix, command, text }) => {
     }, { quoted: m });
 
     // Verificar si el archivo es muy grande
-    if (data5.size.in@cludes('GB') || parseInt(data5.size.replace(' MB', '')) > 999) {
+    if (data5.size.includes('GB') || parseInt(data5.size.replace(' MB', '')) > 999) {
       return await conn.sendMessage(m.chat, { text: '*⚠️ El archivo es demasiado pesado.*' }, { quoted: m });
     }
 
