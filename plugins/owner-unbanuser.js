@@ -6,7 +6,7 @@ const handler = async (m, { conn, args, text, usedPrefix, command }) => {
     } else if (args.length >= 1) {
         user = args[0].replace('@', '') + '@s.whatsapp.net';
     } else {
-        await conn.reply(m.chat, `*${emojis} Etiqueta o coloca el número del usuario que quieres desbanear del Bot.`, m, fkontak);
+        await conn.reply(m.chat, `*${emojis} Etiqueta o coloca el número del usuario que quieres desbanear del Bot.`, m, rcanal);
         return;
     }
     if (db[user]) {
