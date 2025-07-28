@@ -12,13 +12,6 @@ let handler = async (m, { conn, text }) => {
         let res = await conn.groupAcceptInvite(code)
         m.reply(`*✅ Jota se unió correctamente al grupo.*`)
 
-/*let groupId = await conn.groupAcceptInvite(code)
-
-let groupMetadata = await conn.groupMetadata(groupId).catch(() => null)
-if (groupMetadata) return m.reply(`*[ 🦈 ] Ya estoy en este grupo.*`)
-
-m.reply(`*✅ Shadow se unió correctamente al grupo.*\n*¡Disfruta del Bot en tu grupo!*`)*/
-
 
         if (expired) {
             expired = Math.min(999, Math.max(1, isNumber(expired) ? parseInt(expired) : 0))
@@ -31,7 +24,7 @@ m.reply(`*✅ Shadow se unió correctamente al grupo.*\n*¡Disfruta del Bot en t
     }
 }
 
-handler.help = ['join *<link> <días>*']
+handler.help = ['join']
 handler.tags = ['owner']
 handler.command = ['join', 'entrar']
 handler.rowner = true
