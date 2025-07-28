@@ -1,4 +1,4 @@
- import { igdl } from 'ruhend-scraper';
+import { igdl } from 'ruhend-scraper';
 
 const handler = async (m, { text, conn, args, usedPrefix, command }) => {
   if (!args[0]) {
@@ -41,7 +41,7 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 };
 
 handler.help = ['facebook'];
-handler.tags = ['descargas']
+handler.tags = ['dl']
 handler.command = /^(fb|facebook|fbdl)$/i;
 
 export default handler;                                                                                                                                                                                                                              
