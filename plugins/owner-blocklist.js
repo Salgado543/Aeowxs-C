@@ -1,4 +1,4 @@
-
+/*
 const handler = async (m, {conn}) => {
 await conn.fetchBlocklist().then(async (data) => {
 let txt = `*≡ Lista de bloqueados*\n\n*Total :* ${data.length}\n\n┌─⊷\n`;
@@ -18,3 +18,4 @@ handler.command = ['blocklist', 'listblock'];
 handler.rowner = true;
 export default handler;
 
+*/
