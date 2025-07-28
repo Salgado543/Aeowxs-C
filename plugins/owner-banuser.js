@@ -28,7 +28,7 @@ var handler = async (m, { conn, text, usedPrefix, command }) => {
             ownerNumber = global.owner[i][0]
             if (user.replace(/@s\.whatsapp\.net$/, '') === ownerNumber) {
                 aa = ownerNumber + '@s.whatsapp.net'
-                await conn.reply(m.chat, `⚠️ *No puedo banear al propietario @${ownerNumber}*.`, m, { mentions: [aa] })
+                await conn.reply(m.chat, `⚠️ *No puedo banear al propietario* *@${ownerNumber}*.`, m, { mentions: [aa] })
                 return
             }
         }
