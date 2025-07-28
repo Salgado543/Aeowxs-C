@@ -1,60 +1,54 @@
 var handler = async (m, { conn, text, usedPrefix, command }) => {
-    let user, number, bot, bant, ownerNumber, aa, users, usr
+  try {
+    const formatNumber = (number) => number.replace(/\s/g, '').replace(/([@+-])/g, '');
+    const senderName = await conn.getName(m.sender);
+    const botNumber = conn.user.jid.split('@')[0];
+    const ownJid = `${botNumber}@s.whatsapp.net`;
 
-    try {
-        function no(number) {
-            return number.replace(/\s/g, '').replace(/([@+-])/g, '')
-        }
-        text = no(text)
-        number = isNaN(text) ? text.split`@`[1] : text
-        user = conn.user.jid.split`@`[0] + '@s.whatsapp.net'
-        bot = conn.user.jid.split`@`[0]
-        bant = `*${emojis} Etiqueta o escribe el número del usuario al que deseas banear del Bot.*`
-        const nn = conn.getName(m.sender)
-        if (!text && !m.quoted) return conn.reply(m.chat, bant, m, { mentions: [user] })
-
-        if (text) {
-            user = number + '@s.whatsapp.net'
-        } else if (m.quoted.sender) {
-            user = m.quoted.sender
-        } else if (m.mentionedJid) {
-            user = number + '@s.whatsapp.net'
-        }
-
-        number = user.split('@')[0]
-        if (user === conn.user.jid) return conn.reply(m.chat, `*⚠️ @${bot} No puede ser baneado con este comando.*`, m, { mentions: [user] })
-
-        for (let i = 0; i < global.owner.length; i++) {
-            ownerNumber = global.owner[i][0]
-            if (user.replace(/@s\.whatsapp\.net$/, '') === ownerNumber) {
-                aa = ownerNumber + '@s.whatsapp.net'
-                await conn.reply(m.chat, `*No puedo banear al propietario @${ownerNumber}*`, m, { mentions: [aa] })
-                return
-            }
-        }
-
-        users = global.db.data.users
-        if (!users[user]) {
-            users[user] = { banned: false }
-        }
-        if (users[user].banned === true) return conn.reply(m.chat, `*☁️ El usuario ya está baneado.*`, m, { mentions: [user] })
-
-        users[user].banned = true
-        usr = m.sender.split('@')[0]
-        await conn.reply(m.chat, `*✅ Usuario fue baneado exitosamente.*`, m, { mentions: [user] })
-/*
-        let nametag = conn.getName(user)
-        await conn.reply(`${suittag}@s.whatsapp.net`, `❀ El usuario *${nametag}* ha sido Baneado por *${nn}*.`, m)
-*/
-
-    } catch (e) {
-        await conn.reply(m.chat, `*✖️ Ocurrió un error.*`, m)
+    // Obtener número del texto, mención o cita
+    let target;
+    if (text) {
+      const number = isNaN(text) ? formatNumber(text.split('@')[1]) : formatNumber(text);
+      target = number + '@s.whatsapp.net';
+    } else if (m.quoted?.sender) {
+      target = m.quoted.sender;
+    } else {
+      return conn.reply(m.chat, `*${emojis} Etiqueta o escribe el número del usuario que deseas banear.*`, m, { mentions: [ownJid] });
     }
-}
 
-handler.help = ['banuser']
-handler.command = ['banuser']
-handler.tags = ['owner']
-handler.rowner = true
+    const targetNumber = target.split('@')[0];
 
-export default handler
+    // Prevenir autoban del bot
+    if (target === ownJid)
+      return conn.reply(m.chat, `*⚠️ @${botNumber} no puede ser baneado.*`, m, { mentions: [ownJid] });
+
+    // Prevenir ban de propietarios
+    for (const [ownerNumber] of global.owner) {
+      if (targetNumber === ownerNumber)
+        return conn.reply(m.chat, `*❌ No puedo banear al propietario @${ownerNumber}.*`, m, {
+          mentions: [`${ownerNumber}@s.whatsapp.net`]
+        });
+    }
+
+    // Banear al usuario
+    const users = global.db.data.users;
+    if (!users[target]) users[target] = {};
+    if (users[target].banned) {
+      return conn.reply(m.chat, `*☁️ El usuario ya está baneado.*`, m, { mentions: [target] });
+    }
+
+    users[target].banned = true;
+    await conn.reply(m.chat, `*✅ Usuario baneado exitosamente.*`, m, { mentions: [target] });
+
+  } catch (e) {
+    console.error(e);
+    await conn.reply(m.chat, `*✖️ Ocurrió un error inesperado.*`, m);
+  }
+};
+
+handler.help = ['banuser'];
+handler.command = ['banuser'];
+handler.tags = ['owner'];
+handler.rowner = true;
+
+export default handler;
