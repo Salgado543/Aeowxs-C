@@ -5,7 +5,7 @@ Mejorado por Dev Criss */
 const handler = async (m, { conn }) => {
   try {
     const blocked = await conn.fetchBlocklist();
-    if (!blocked || !blocked.length) throw 'No hay números bloqueados.';
+    if (!blocked || !blocked.length) await conn.reply(m.chat, 'No hay números bloqueados.',m);
 
     let list = blocked.map((jid, index) => `▢ @${jid.split('@')[0]}`).join('\n');
     let txt = `*≡ Lista de bloqueados*\n\n*Total :* ${blocked.length}\n\n┌─⊷\n${list}\n└───────────`;
