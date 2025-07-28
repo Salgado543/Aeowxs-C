@@ -1,5 +1,3 @@
-
-
 var handler = async (m, { conn, text, args, command }) => {
     try {
         const cleanNumber = n => n.replace(/\s|@|[+]/g, '');
