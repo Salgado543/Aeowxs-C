@@ -73,6 +73,6 @@ const handler = async (m, { conn, usedPrefix, command, text }) => {
 
 handler.help = ['pinterest'];
 handler.tags = ['search'];
-handler.command = /^pin|pinterest|pintes$/i;
+handler.command = ['pin', 'pinterest', 'pintes'];
 
 export default handler;
