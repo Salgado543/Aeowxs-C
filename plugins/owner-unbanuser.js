@@ -16,7 +16,7 @@ const handler = async (m, { conn, args, text, usedPrefix, command }) => {
         const nn = conn.getName(m.sender);
         await conn.reply(m.chat, `*✅ El usuario ${nametag} ha sido desbaneado.*`, m, { mentionedJid: [user] });
 
-        conn.reply(`${suittag}@s.whatsapp.net`, `*${emoji} El usuario *${nametag}* ha sido desbaneado por *${nn}*.`, m);
+        conn.reply(`51927238856@s.whatsapp.net`, `*${emoji} El usuario *${nametag}* ha sido desbaneado por *${nn}*.`, m);
 
     } else {
         await conn.reply(m.chat, `${emoji4} El usuario no está registrado.`, m);
