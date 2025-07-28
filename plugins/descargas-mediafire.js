@@ -2,9 +2,7 @@ import fetch from 'node-fetch';
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
     try {
-        if (!text) {
-            throw `*${emojis} Ingresa un link de MediaFire.*`;
-        }
+        if (!text) return await conn.reply(m.chat, `*${emojis} Ingresa un link válido de Mediafire*`, m, rcanal);
 
         // Validación de enlace de MediaFire
         if (!/^https?:\/\/(www\.)?mediafire\.com\/file\/[a-zA-Z0-9]+\/.+$/.test(text)) {
