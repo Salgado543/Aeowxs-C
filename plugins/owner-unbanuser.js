@@ -13,7 +13,7 @@ return;
 }
 user = number + '@s.whatsapp.net';
 } else {
-await conn.reply(m.chat, ${emojis} Etiqueta o escribe el número del usuario que quieres desbanear del bot., m, rcanal);
+await conn.reply(m.chat, `*${emojis} Etiqueta o escribe el número del usuario que quieres desbanear del bot.*`, m, rcanal);
 return;
 }
 
@@ -31,7 +31,7 @@ db[user].banned = false;
 db[user].banRazon = '';
 
 const nametag = await conn.getName(user).catch(_ => 'Usuario');
-await conn.reply(m.chat, ✅ El usuario ${nametag} ha sido desbaneado correctamente., m, { mentionedJid: [user] });
+await conn.reply(m.chat, `*✅ El usuario ${nametag} ha sido desbaneado correctamente.*`, m, { mentionedJid: [user] });
 };
 
 handler.help = ['unbanuser'];
