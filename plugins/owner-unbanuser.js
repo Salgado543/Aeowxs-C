@@ -1,36 +1,34 @@
-const handler = async (m, { conn, args, text, usedPrefix, command }) => {
+const handler = async (m, { conn, args }) => {
   const db = global.db.data.users;
-  let user;
+
+  let userJid;
 
   if (m.quoted) {
-    user = m.quoted.sender;
+    userJid = m.quoted.sender;
   } else if (args.length >= 1) {
-    let number = args[0].replace(/\D+/g, ''); // solo dígitos
+    const number = args[0].replace(/\D+/g, '');
     if (!number) {
-      await conn.reply(m.chat, '*⚠️ Ingresa un número válido.*', m);
-      return;
+      return conn.reply(m.chat, `⚠️ *Ingresa un número válido.*`, m);
     }
-    user = number + '@s.whatsapp.net';
+    userJid = number + '@s.whatsapp.net';
   } else {
-    await conn.reply(m.chat, `${emojis} *Etiqueta o escribe el número del usuario que quieres desbanear del bot.*`, m, rcanal);
-    return;
+    return conn.reply(m.chat, `${emojis} *Etiqueta o escribe el número del usuario que quieres desbanear del bot.*`, m, rcanal);
   }
 
-  if (!db[user]) {
-    await conn.reply(m.chat, '⚠️ *El usuario no está registrado en la base de datos.*', m);
-    return;
+  if (!db[userJid]) {
+    return conn.reply(m.chat, `⚠️ *El usuario no está registrado en la base de datos.*`, m);
   }
 
-  if (!db[user].banned) {
-    await conn.reply(m.chat, '✅ *El usuario ya está desbaneado.*', m);
-    return;
+  if (!db[userJid].banned) {
+    const name = await conn.getName(userJid).catch(() => 'Usuario');
+    return conn.reply(m.chat, `☁️ *El usuario ${name} no está baneado actualmente.*`, m, { mentionedJid: [userJid] });
   }
 
-  db[user].banned = false;
-  db[user].banRazon = '';
+  db[userJid].banned = false;
+  db[userJid].banRazon = '';
 
-  const nametag = await conn.getName(user).catch(_ => 'Usuario');
-  await conn.reply(m.chat, `✅ *El usuario ${nametag} ha sido desbaneado correctamente.*`, m, { mentionedJid: [user] });
+  const name = await conn.getName(userJid).catch(() => 'Usuario');
+  return conn.reply(m.chat, `✅ *El usuario ${name} ha sido desbaneado correctamente.*`, m, { mentionedJid: [userJid] });
 };
 
 handler.help = ['unbanuser'];
