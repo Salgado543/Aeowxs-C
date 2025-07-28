@@ -2,9 +2,8 @@ import { webp2mp4 } from '../lib/webp2mp4.js';
 import { ffmpeg } from '../lib/converter.js';
 
 const handler = async (m, { conn, usedPrefix, command }) => {
-  const wait = '☁️ Procesando...*';
 
-  if (!m.quoted) return conn.reply(m.chat, `*${emojis} Responda a un sticker en movimiento que desee convertir en video con el comando ${usedPrefix + command}*`, m);
+  if (!m.quoted) return conn.reply(m.chat, `*${emojis} Responda a un sticker en movimiento que desee convertir en video con el comando ${usedPrefix + command}*`, m, rcanal);
   const mime = m.quoted.mimetype || '';
   
   if (!/webp/.test(mime)) return conn.reply(m.chat, `*${emojis} Responda a un sticker en movimiento que desee convertir en video con el comando ${usedPrefix + command}*`, m);
@@ -14,7 +13,7 @@ const handler = async (m, { conn, usedPrefix, command }) => {
   
   let out = Buffer.alloc(0);
 
-  conn.reply(m.chat, wait, m);
+  await m.react('⌛');
 
   if (/webp/.test(mime)) {
     out = await webp2mp4(media);
@@ -32,8 +31,7 @@ const handler = async (m, { conn, usedPrefix, command }) => {
 };
 
 handler.help = ['tovideo'];
-handler.tags = ['herramientas'];
-//handler.register = true;
+handler.tags = ['converter'];
 handler.command = ['tovideo', 'tovid', 'tomp4', 'mp4', 'togif'];
 
 export default handler;
