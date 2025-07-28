@@ -27,7 +27,7 @@ const handler = async (m, { conn, usedPrefix, command, text }) => {
 
       tarjetas.push({
         body: proto.Message.InteractiveMessage.Body.fromObject({ text: null }),
-        footer: proto.Message.InteractiveMessage.Footer.fromObject({ text: 'Pinterest - Search' }),
+        footer: proto.Message.InteractiveMessage.Footer.fromObject({ text: '*Search - Pinterest*' }),
         header: proto.Message.InteractiveMessage.Header.fromObject({
           hasMediaAttachment: true,
           imageMessage
