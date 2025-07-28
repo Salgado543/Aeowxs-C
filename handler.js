@@ -316,11 +316,18 @@ if (!['owner-unbanchat.js'].includes(name) && chat && chat.isBanned && !isROwner
 if (name != 'owner-unbanchat.js' && name != 'owner-exec.js' && name != 'owner-exec2.js' && name != 'herramientas-delete.js' && chat?.isBanned && !isROwner) return 
 if (m.text && user.banned && !isROwner) {
 if (user.antispam > 2) return
+/*
 m.reply(`*🚫 Está baneado(a), no puede usar los comandos de este bot!*\n\n${user.bannedReason ? `\n💌 *Motivo:* 
-${user.bannedReason}` : '💌 *Motivo:* Sin Especificar'}\n\n⚠️ *Si cree que es un error contacte con mi creador:*\n - ${asistencia}`)
+${user.bannedReason}` : '💌 *Motivo:* Sin Especificar'}\n\n⚠️ *Si cree que es un error contacte con mi creador:*\n - ${asistencia}`)*/
+let motivo = user.banReason || 'Sin especificar';
+m.reply(`🚫 *Estás baneado(a), no puedes usar los comandos de este bot.*\n\n` +
+`💌 *Motivo:* ${motivo}\n\n` +
+`⚠️ *Si crees que esto es un error, contacta con el creador:*\n` +
+`- ${asistencia}`);
 user.antispam++        
 return
 }
+
 
 //Modoadmin
 let hl = global.prefix 
