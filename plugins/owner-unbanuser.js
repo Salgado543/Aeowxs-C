@@ -1,34 +1,37 @@
-const handler = async (m, { conn, args }) => {
-  const db = global.db.data.users;
 
-  let userJid;
+const handler = async (m, { conn, args, text, usedPrefix, command }) => {
+const db = global.db.data.users;
+let user;
 
-  if (m.quoted) {
-    userJid = m.quoted.sender;
-  } else if (args.length >= 1) {
-    const number = args[0].replace(/\D+/g, '');
-    if (!number) {
-      return conn.reply(m.chat, `⚠️ *Ingresa un número válido.*`, m);
-    }
-    userJid = number + '@s.whatsapp.net';
-  } else {
-    return conn.reply(m.chat, `${emojis} *Etiqueta o escribe el número del usuario que quieres desbanear del bot.*`, m, rcanal);
-  }
+if (m.quoted) {
+user = m.quoted.sender;
+} else if (args.length >= 1) {
+let number = args[0].replace(/\D+/g, ''); // solo dígitos
+if (!number) {
+await conn.reply(m.chat, '⚠️ Ingresa un número válido.', m);
+return;
+}
+user = number + '@s.whatsapp.net';
+} else {
+await conn.reply(m.chat, ${emojis} Etiqueta o escribe el número del usuario que quieres desbanear del bot., m, rcanal);
+return;
+}
 
-  if (!db[userJid]) {
-    return conn.reply(m.chat, `⚠️ *El usuario no está registrado en la base de datos.*`, m);
-  }
+if (!db[user]) {
+await conn.reply(m.chat, '⚠️ El usuario no está registrado en la base de datos.', m);
+return;
+}
 
-  if (!db[userJid].banned) {
-    const name = await conn.getName(userJid).catch(() => 'Usuario');
-    return conn.reply(m.chat, `☁️ *El usuario ${name} no está baneado actualmente.*`, m, { mentionedJid: [userJid] });
-  }
+if (!db[user].banned) {
+await conn.reply(m.chat, '☁️ El usuario no está baneado.', m);
+return;
+}
 
-  db[userJid].banned = false;
-  db[userJid].banRazon = '';
+db[user].banned = false;
+db[user].banRazon = '';
 
-  const name = await conn.getName(userJid).catch(() => 'Usuario');
-  return conn.reply(m.chat, `✅ *El usuario ${name} ha sido desbaneado correctamente.*`, m, { mentionedJid: [userJid] });
+const nametag = await conn.getName(user).catch(_ => 'Usuario');
+await conn.reply(m.chat, ✅ El usuario ${nametag} ha sido desbaneado correctamente., m, { mentionedJid: [user] });
 };
 
 handler.help = ['unbanuser'];
@@ -37,3 +40,4 @@ handler.tags = ['owner'];
 handler.rowner = true;
 
 export default handler;
+
