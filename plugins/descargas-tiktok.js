@@ -24,7 +24,7 @@ var handler = async (m, { conn, usedPrefix, command, args }) => {
 
         const { play, wmplay, title } = tiktokData.data;
         const videoURL = play || wmplay;
-        const info = `Download - Tiktok\n\n*> ${title || 'Sin descripción'}`;
+        const info = `*Download - Tiktok*\n\n> ${title || 'Sin descripción'}`;
 
         if (videoURL) {
             await conn.sendFile(m.chat, videoURL, "tiktok.mp4", info, m);
