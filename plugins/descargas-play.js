@@ -55,7 +55,7 @@ const handler = async (m, { conn, args, usedPrefix }) => {
 
 handler.help = ['play'];
 handler.tags = ['dl'];
-handler.command = ['play'];
+handler.command = ['play', 'play2'];
 export default handler;
 
 async function searchVideos(query) {
