@@ -7,7 +7,7 @@ if (!db.data.chats[m.chat].nsfw && m.isGroup) {
     }
 
   if (!args[0]) {
-    return m.reply(`*${xdownload} Ingresa un enlace válido de xnxx.*`);
+    return await conn.reply(m.chat, `*${xdownload} Ingresa un enlace válido de xnxx.*`, m, rcanal);
 }
   try {
     await m.react('⏳');
