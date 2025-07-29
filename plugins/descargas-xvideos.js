@@ -19,6 +19,8 @@ const handler = async (m, { conn, args, command, usedPrefix, text }) => {
   }
 };
 handler.command = /^(xvideosdl|xvdl)$/i;
+handler.tags = ['nsfw'];
+handler.help = ['xvideosdl'];
 export default handler;
 
 async function xvideosdl(url) {
