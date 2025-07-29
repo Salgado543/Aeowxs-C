@@ -28,6 +28,7 @@ handler.help = ['join']
 handler.tags = ['owner']
 handler.command = ['join', 'entrar']
 handler.rowner = true
+handler.privado = true
 
 export default handler
 
