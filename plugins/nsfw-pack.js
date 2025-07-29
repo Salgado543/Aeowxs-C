@@ -29,5 +29,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 };
 
 handler.command = ['pack'];
+handler.help = ['pack'];
+handler.tags = ['nsfw'];
 
 export default handler;
