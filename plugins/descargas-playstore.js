@@ -27,7 +27,7 @@ let handler = async (m, { conn, args, usedPrefix: prefix, command }) => {
         info = await gplay.app({ appId: packageName });
     } catch (error) {
         console.error(error);
-        return conn.reply(m.chat, `*[ ❌ ] No se pudo encontrar la aplicación. Asegúrate de que el enlace sea correcto.*`, m);
+        return conn.reply(m.chat, `*❌ No se pudo encontrar la aplicación. Asegúrate de que el enlace sea correcto.*`, m);
     }
 
     const h = info.title;
