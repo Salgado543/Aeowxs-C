@@ -8,7 +8,7 @@ if (!db.data.chats[m.chat].nsfw && m.isGroup) {
     }
 
   if (!args[0]) {
-    return conn.reply(m.chat, `*${emojis} Ingresa un enlace válido de xvideos.*`, m);
+    return conn.reply(m.chat, `*${emojis} Ingresa un enlace válido de xvideos.*`, m, rcanal);
   }
 
   try {
