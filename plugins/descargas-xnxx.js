@@ -42,7 +42,7 @@ if (!db.data.chats[m.chat].nsfw && m.isGroup) {
 };
 
 handler.help = ['xnxxdl'];
-handler.tags = ['download'];
+handler.tags = ['dl'];
 handler.command = ['xnxxdl', 'xnxx'];
 
 export default handler;
