@@ -22,7 +22,9 @@ export default handler;
 import fetch from 'node-fetch';*/
 
 let handler = async (m, { conn, usedPrefix, command }) => {
-
+    if (!db.data.chats[m.chat].nsfw && m.isGroup) {
+    return m.reply(hotw);
+    }
     //m.react('🕑');
 
     let txt = 'Pack 🔥';
