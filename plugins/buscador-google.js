@@ -7,8 +7,8 @@ let handler = async (m, { conn }) => {
   if (!quoted && !direct) {
     return await conn.reply(
       m.chat,
-      '⚠️ Envia una imagen con el comando o responde a una imagen con .setppbot para cambiar la foto de perfil del bot.',
-      m
+      `*${emojis} Envia una imagen más el comando para actualizar la foto de perfil del bot.*`,
+      m, rcanal
     )
   }
 
