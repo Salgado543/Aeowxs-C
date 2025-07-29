@@ -1,39 +1,33 @@
 import yts from 'yt-search'
 
-var handler = async (m, { text, conn, args, command, usedPrefix }) => {
-    if (!text) return conn.reply(m.chat, `*${emojis} Por favor, ingresa una búsqueda de YouTube.*`, m, rcanal);
 
-    try {
-        await m.react('🔎');
+let handler = async(m, { conn, text, usedPrefix, command }) => {
 
-        let results = await yts(text);
-        let tes = results.all;
+  if (!text) return conn.reply(m.chat, `*${xsearch} Por favor, ingresa un texto para buscar en Youtube.*\n> *\`Ejemplo:\`* .${command} Amorfoda`, m);
 
-        if (!tes || tes.length === 0) {
-            return conn.reply(m.chat, `✖️ *No se encontraron resultados*`, m);
-        }
+ await m.react('🔎');
+  let results = await yts(text)
+  let tes = results.videos
 
-        // Formateamos los resultados obtenidos
-        let teks = tes.map(v => {
-            switch (v.type) {
-                case 'video':
-                    return `*「🌷」Resultados de la búsqueda para:*\n<${text}>\n\n☁️ *Título:* ${v.title}\n📡 *Canal* ${v.author.name}\n*🕝 Duración:* ${v.timestamp}\n📆 *Subido:* ${v.ago}\n👀 *Vistas:* ${v.views}\n🔗 *Enlace* ${v.url}`;
-            }
-        }).filter(v => v).join('\n\n*┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n\n');
+  if (!tes.length) throw '```⚠️ No se encontraron resultados.```'
 
-        // Si existen resultados, enviamos el primero junto con la información
-        if (tes.length > 0) {
-            conn.sendFile(m.chat, tes[0].thumbnail, 'yts.jpeg', teks, m);
-        }
+  let ms = tes.map(v => `
+° ${v.title}
 
-    } catch (error) {
-        console.error(error);
-        conn.reply(m.chat, '*✖️ Ocurrió un error al realizar la búsqueda. Intenta de nuevo más tarde.*', m);
-    }
+⏰ *Duración:* ${v.timestamp}
+☁️ *\`Publicado:* ${v.ago}
+👀 *Vistas:* ${v.views.toLocaleString()}
+⛓️ *Enlace`* ${v.url}
+`.trim()).join('\n________________________\n\n')
+
+  let teks = `*Search - Youtube*\n\n${ms}`
+  teks += `\n\n> ${club}`
+
+  conn.sendFile(m.chat, tes[0].image, 'yts.jpeg', teks, m)
 }
 
-handler.help = ['ytsearch']
+handler.help = ['yts2'] 
 handler.tags = ['search']
-handler.command = ['youtubesearch', 'ytsearch', 'yts']
+handler.command = ['ytsearch2', 'yts2']
 
 export default handler
