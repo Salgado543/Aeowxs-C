@@ -21,7 +21,7 @@ if (!db.data.chats[m.chat].nsfw && m.isGroup) {
 };
 
 handler.help = ['xvideosdl'];
-handler.tags = ['download'];
+handler.tags = ['dl'];
 handler.command = /^(xvideosdl|xvdl|xvideos)$/i;
 export default handler;
 
