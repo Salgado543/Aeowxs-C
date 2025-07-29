@@ -17,7 +17,7 @@ let handler = async(m, { conn, text, usedPrefix, command }) => {
 ⏰ *Duración:* ${v.timestamp}
 ☁️ *Publicado:* ${v.ago}
 👀 *Vistas:* ${v.views.toLocaleString()}
-⛓️ *Enlace`* ${v.url}
+⛓️ *Enlace* ${v.url}
 `.trim()).join('\n________________________\n\n')
 
   let teks = `*Search - Youtube*\n\n${ms}`
