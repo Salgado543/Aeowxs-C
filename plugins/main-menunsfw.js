@@ -78,7 +78,7 @@ Bɪᴇɴᴠᴇɴɪᴅᴏ ᴀʟ ᴍᴇɴᴜ *ɴsғᴡ* 🔞
 
 > © mᥱᥒᥙ *ᥒs𝖿ᥕ* ᑲᥡ  ᥴrіss.᥎᥊`.trim();
 
-    conn.sendMessage(m.chat, { image: { url: imgUrl }, caption: str, mentions: [m.sender] }, { quoted: fake });
+    conn.sendMessage(m.chat, { image: { url: imgUrl }, caption: str, mentions: [m.sender] }, { quoted: fkontak });
 
 await conn.sendMessage(m.chat, { react: { text: '🔥', key: m.key } });
 
