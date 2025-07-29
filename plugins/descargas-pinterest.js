@@ -32,7 +32,7 @@ async function dl(url) {
 
 let handler = async (m, { conn, text }) => {
   if (!text || !text.includes('https://')) {
-    return m.reply(`*${xdownload} Por favor, proporciona un enlace válido de Pinterest.*`);
+    return m.reply(`*${emojis} Ingresa un enlace válido de Pinterest.*`);
   }
 
   try {
@@ -51,6 +51,6 @@ let handler = async (m, { conn, text }) => {
 
 handler.help = ['pindl'];
 handler.command = ['pinterestdl', 'pindl'];
-handler.tags = ['download'];
+handler.tags = ['dl'];
 
 export default handler;
