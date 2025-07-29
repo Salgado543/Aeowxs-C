@@ -5,7 +5,7 @@ let handler = async (m, { conn }) => {
   const quoted = m.quoted && m.quoted.message && m.quoted.message.imageMessage
   const direct = m.message && m.message.imageMessage
   if (!quoted && !direct) 
-    return await conn.reply(m.chat`${emojis} Envia la imágen junto al comando para actualizar la imagen de perfil del bot.*`, m, rcanal)
+    return await conn.reply(m.chat, `${emojis} Envia la imágen junto al comando para actualizar la imagen de perfil del bot.*`, m, rcanal)
 
   const msg = quoted ? m.quoted : m
   const media = msg.message.imageMessage
@@ -14,7 +14,7 @@ let handler = async (m, { conn }) => {
   await conn.updateProfilePicture(conn.user.jid, { stream })
   await conn.sendMessage(
     m.chat,
-    { text: '✅ La imagen de bot fue actualizada exitosamente.*' },
+    { text: '✅ *La imagen de bot fue actualizada exitosamente.*' },
     { quoted: fkontak }
   )
 }
