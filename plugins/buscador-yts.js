@@ -14,10 +14,10 @@ let handler = async(m, { conn, text, usedPrefix, command }) => {
   let ms = tes.map(v => `
 ° ${v.title}
 
-⏰ *Duración:* ${v.timestamp}
-☁️ *Publicado:* ${v.ago}
-👀 *Vistas:* ${v.views.toLocaleString()}
-⛓️ *Enlace* ${v.url}
+⏰ *\`Duración:\`* ${v.timestamp}
+☁️ *\`Publicado:\`* ${v.ago}
+👀 *\`Vistas:\`* ${v.views.toLocaleString()}
+⛓️ *\`Enlace:\`* ${v.url}
 `.trim()).join('\n________________________\n\n')
 
   let teks = `*Search - Youtube*\n\n${ms}`
