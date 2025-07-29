@@ -9,7 +9,7 @@ const handler = async (m, { conn, usedPrefix, command }) => {
   if (!/webp/.test(mime)) return conn.reply(m.chat, `*${emojis} Responda a un sticker animado para convertir en video.*`, m);
   
   const media = await m.quoted.download();
-  if (!media) return conn.reply(m.chat, '*❌ No se pudo descargar el archivo. Intente de nuevo.*', m);
+  if (!media) return conn.reply(m.chat, '*✖️ No se pudo descargar el archivo. Intente de nuevo.*', m);
   
   let out = Buffer.alloc(0);
 
