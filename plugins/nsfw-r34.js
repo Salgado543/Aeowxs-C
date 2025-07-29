@@ -4,7 +4,7 @@ if (!args[0]) {
 if (!db.data.chats[m.chat].nsfw && m.isGroup) {
     return m.reply(hotw);
     }
-await conn.reply(m.chat, '🚩 Ingresa el nombre de la imágen que estas buscando', m, rcanal);
+await conn.reply(m.chat, `*${emojis} Ingresa el nombre de la imagen que estas buscando`, m, rcanal);
 return;
 }
 const use = args[0];
