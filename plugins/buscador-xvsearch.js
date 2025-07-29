@@ -3,37 +3,44 @@ import axios from 'axios';
 import cheerio from 'cheerio';
 
 const handler = async (m, { conn, args, command, usedPrefix }) => {
-    if (!db.data.chats[m.chat].nsfw && m.isGroup) {
+if (!db.data.chats[m.chat].nsfw && m.isGroup) {
     return m.reply(hotw);
     }
+
     if (!args[0]) {
-        return conn.reply(m.chat, `*${emojis} Ingresa la búsqueda que desea realizar en xvideos.*`, m, rcanal);
+        return conn.reply(m.chat, `*${emojis} Ingresa el texto de lo que deseas buscar en xvideos.*\n> *Ejemplo:* ${usedPrefix + command} con mi prima.`, m, rcanal);
     }
+
+    await m.react('⌛');
 
     try {
         const results = await xvideosSearch(args.join(' '));
-        if (results.length === 0) {
-            return conn.reply(m.chat, `*⚠️ No se encontraron resultados para:*\n${args.join(' ')}`, m);
+        if (!results || results.length === 0) {
+            return conn.reply(m.chat, `*⚠️ No se encontraron resultados para esta búsqueda*`, m);
         }
 
-        let responseMessage = `*🔎 Resultados de la búsqueda para:* *${args.join(' ')}*\n\n`;
-        results.forEach((video, index) => {
-            responseMessage += `☁️ *Título:* ${video.title}\n`;
-            responseMessage += `🕒 *Duración:* ${video.duration}\n`;
-            responseMessage += `🎞️ *Calidad:* ${video.quality || 'No disponible'}\n`;
-            responseMessage += `🔗 *Enlace:* ${video.url}\n---------------------------------\n\n`;
+        let responseMessage = `*Search - Xvideos*\n\n`;
+
+        results.slice(0, 10).forEach((video, index) => {
+            responseMessage += `*\`${index + 1}\`*\n`;
+            responseMessage += `° *${video.title}*\n`;
+            responseMessage += `⏰ *\`Duración:\`* ${video.duration}\n`;
+            responseMessage += `☕ *\`Calidad:\`* ${video.quality || 'No disponible'}\n`;
+            responseMessage += `⛓️ *\`Enlace:\`* ${video.url}\n\n`;
         });
 
-        conn.reply(m.chat, responseMessage, m);
+        await conn.reply(m.chat, responseMessage.trim(), m);
+        await m.react('✅');
     } catch (e) {
         console.error(e);
-        return conn.reply(m.chat, `*[ ❌ ] Ocurrió un error al buscar videos. Por favor, intenta de nuevo más tarde.*`, m);
+        await m.react('❌');
+        return conn.reply(m.chat, `❌ Ocurrió un error al buscar videos. Por favor, intenta de nuevo más tarde.`, m);
     }
 };
 
-handler.command = ['xvideossearch', 'xvsearch'];
-handler.tags = ['search'];
 handler.help = ['xvsearch'];
+handler.tags = ['search'];
+handler.command = ['xvideossearch', 'xvsearch'];
 
 export default handler;
 
@@ -51,7 +58,9 @@ async function xvideosSearch(query) {
                 const duration = $(element).find("span.duration").text().trim();
                 const quality = $(element).find("span.video-hd-mark").text().trim();
 
-                results.push({ title, url: videoUrl, duration, quality });
+                if (title && videoUrl) {
+                    results.push({ title, url: videoUrl, duration, quality });
+                }
             });
 
             resolve(results);
