@@ -1,47 +1,53 @@
+/* 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗦𝗵𝗮𝗱𝗼𝘄'𝘀 𝗖𝗹𝘂𝗯 🌺᭄
+𝖢𝗋𝖾𝖺𝖽𝗈 𝗉𝗈𝗋 𝖣𝖾𝗏.𝖢𝗋𝗂𝗌𝗌 🇦🇱
+https://whatsapp.com/channel/0029VauTE8AHltY1muYir31n*/
+
 import fetch from 'node-fetch'
 
-var handler = async (m, { conn, args, usedPrefix, command }) => {
+var handler = async (m, { conn, usedPrefix, command, args }) => {
     if (!args[0]) {
-        throw m.reply(`*${emojis} Ingrese un link de TikTok*\n*💡 Ejemplo:* ${usedPrefix + command} https://vm.tiktok.com/ZMkcmTCa6/`);
+        return await m.reply(`*${emojis} Ingresa una url válida de TikTok.*\n> *Ejemplo:* ${usedPrefix + command} https://vm.tiktok.com/ZMkcmTCa6`);
     }
 
-if (!args[0].match(/(https?:\/\/)?(www\.)?(vm\.|vt\.)?tiktok\.com\//)) {
-    throw m.reply(`*⚠️ El enlace ingresado no es válido. Asegúrese de que sea un link de TikTok.*`);
-}
+    if (!args[0].match(/(https?:\/\/)?(www\.)?(vm\.|vt\.)?tiktok\.com\//)) {
+        return await m.reply(`*⚠️ El enlace ingresado no es válido. Asegúrate de que sea un link de TikTok.*`);
+    }
 
     try {
-        await conn.reply(m.chat, "*⏳ Aguarde un momento, estoy enviando su video...*", m);
+        await m.react('⏳');
 
         const tiktokData = await tiktokdl(args[0]);
 
-        if (!tiktokData) {
-            throw m.reply("*Error api!*");
+        if (!tiktokData || !tiktokData.data) {
+            return await m.reply("*❌ Error al obtener datos de la API.*");
         }
 
-        const videoURL = tiktokData.data.play;
-        const videoURLWatermark = tiktokData.data.wmplay;
-        const infonya_gan = `*📖 Descripción:*\n> ${tiktokData.data.title}*`;
+        const { play, wmplay, title } = tiktokData.data;
+        const videoURL = play || wmplay;
+        const info = `Download - Tiktok\n\n*> ${title || 'Sin descripción'}`;
 
-        if (videoURL || videoURLWatermark) {
-            await conn.sendFile(m.chat, videoURL, "tiktok.mp4", "*Download - Tiktok*" + `\n\n${infonya_gan}`, m);
-            setTimeout(async () => {
-            }, 1500);
+        if (videoURL) {
+            await conn.sendFile(m.chat, videoURL, "tiktok.mp4", info, m);
+            await m.react('✅');
         } else {
-            throw m.reply("*❌ No se pudo descargar.*");
+            return await m.reply("*✖️ No se pudo descargar el video.*");
         }
-    } catch (error1) {
-        conn.reply(m.chat, `Error: ${error1}`, m);
+
+    } catch (error) {
+        console.error(error);
+        await conn.reply(m.chat, `*✖️ Error:* ${error.message || error}`, m);
+        await m.react('✖️');
     }
 };
 
-handler.help = ['tiktok']
-handler.tags = ['dl']
-handler.command = /^(tt|tiktok)$/i;
+handler.help = ['tiktok'];
+handler.tags = ['dl'];
+handler.command = /^(tt|tiktok|tk|tiktokdl|ttdl|tiktokv|ttv|tkv)$/i;
 
-export default handler
+export default handler;
 
 async function tiktokdl(url) {
-    let tikwm = `https://www.tikwm.com/api/?url=${url}?hd=1`
-    let response = await (await fetch(tikwm)).json()
-    return response
+    const api = `https://www.tikwm.com/api/?url=${encodeURIComponent(url)}&hd=1`;
+    const res = await fetch(api);
+    return await res.json();
 }
