@@ -5,7 +5,7 @@ let handler = async(m, { conn, text, usedPrefix, command }) => {
 
   if (!text) return conn.reply(m.chat, `*${emojis} Ingresa un texto para buscar en Youtube.*\n> *Ejemplo:* .${command} Coqueta - Grupo Frontera`, m, rcanal);
 
- await m.react('🔎');
+// await m.react('🔎');
   let results = await yts(text)
   let tes = results.videos
 
