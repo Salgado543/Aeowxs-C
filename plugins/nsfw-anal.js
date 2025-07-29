@@ -4,7 +4,7 @@ import path from 'path';
 let handler = async (m, { conn, usedPrefix }) => {
     let who;
 if (!db.data.chats[m.chat].nsfw && m.isGroup) {
-    return m.reply('*[ ℹ️ ] Los comandos \`+18\` están desactivados en este chat.*\n*Si usted es administrador active usando:*\n*.enable nsfw*');
+    return m.reply(hotw);
     }
     // Verificamos si se menciona a alguien o se cita un mensaje
     if (m.mentionedJid.length > 0) {
