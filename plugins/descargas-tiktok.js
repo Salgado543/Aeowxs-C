@@ -6,7 +6,7 @@ import fetch from 'node-fetch'
 
 var handler = async (m, { conn, usedPrefix, command, args }) => {
     if (!args[0]) {
-        return await m.reply(`*${emojis} Ingresa una url válida de TikTok.*\n> *Ejemplo:* ${usedPrefix + command} https://vm.tiktok.com/ZMkcmTCa6`);
+        return await conn.reply(m.chat, `*${emojis} Ingresa una url válida de TikTok.*`, m, rcanal);
     }
 
     if (!args[0].match(/(https?:\/\/)?(www\.)?(vm\.|vt\.)?tiktok\.com\//)) {
