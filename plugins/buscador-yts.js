@@ -3,13 +3,13 @@ import yts from 'yt-search'
 
 let handler = async(m, { conn, text, usedPrefix, command }) => {
 
-  if (!text) return conn.reply(m.chat, `*${xsearch} Por favor, ingresa un texto para buscar en Youtube.*\n> *\`Ejemplo:\`* .${command} Shadow's Club`, m, rcanal);
+  if (!text) return conn.reply(m.chat, `*${emojis} Ingresa un texto para buscar en Youtube.*\n> *Ejemplo:* .${command} Shadow's Club`, m, rcanal);
 
  await m.react('🔎');
   let results = await yts(text)
   let tes = results.videos
 
-  if (!tes.length) throw '```⚠️ No se encontraron resultados.```'
+  if (!tes.length) throw '⚠️ No se encontraron resultados.'
 
   let ms = tes.map(v => `
 ° ${v.title}
