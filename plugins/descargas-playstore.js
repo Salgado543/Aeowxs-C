@@ -5,7 +5,7 @@ let handler = async (m, { conn, args, usedPrefix: prefix, command }) => {
 
     if (!args[0]) {
         console.log('Argumento vacío, enviando mensaje de ayuda');
-        return conn.reply(m.chat, `*${emojis} Ingresa el enlace de la aplicación que deseas descargar de la Play Store.*\n*💡 Ejemplo:* ${prefix}playstore https://play.google.com/store/apps/details?id=com.whatsapp`, m);
+        return conn.reply(m.chat, `*${emojis} Ingresa el enlace de la aplicación que deseas descargar de la PlayStore.*\n> *Ejemplo:* ${prefix}playstore https://play.google.com/store/apps/details?id=com.whatsapp`, m, rcanal);
     }
 
     m.react('⌛');
