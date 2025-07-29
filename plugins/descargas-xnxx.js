@@ -1,17 +1,16 @@
 import fetch from 'node-fetch';
 import cheerio from 'cheerio';
 
-
 const handler = async (m, {conn, args, command, usedPrefix}) => {
-  const datas = global
 if (!db.data.chats[m.chat].nsfw && m.isGroup) {
-    return m.reply('🐼 El contenido nsfw está desactivado para este chat.*\n> ᥙsᥱ *enable nsfw* ⍴ᥲrᥲ ᥲᥴ𝗍і᥎ᥲrᥣ᥆.');
+    return m.reply(hotw);
     }
+
   if (!args[0]) {
-    return m.reply(`*${emojis} Ingrese un enlace válido de Xnxx.*\n*💡 Ejemplo:* ${usedPrefix + command} https://www.xnxx.com/video-14lcwbe8/rubia_novia_follada_en_cuarto_de_bano*`);
+    return m.reply(`*${xdownload} Ingresa un enlace válido de xnxx.*`);
 }
   try {
-    await conn.reply(m.chat, '*Se está enviando el vídeo, espere un momento', m, rcanal);
+    await m.react('⏳');
     let xnxxLink = '';
     if (args[0].includes('xnxx')) {
       xnxxLink = args[0];
@@ -24,7 +23,7 @@ if (!db.data.chats[m.chat].nsfw && m.isGroup) {
             if (index < matchingItem.urls.length) {
               xnxxLink = matchingItem.urls[index];
             } else {
-              throw `[❗] 𝙽𝙾 𝚂𝙴 𝙴𝙽𝙲𝙾𝙽𝚃𝚁𝙾 𝚄𝙽 𝙴𝙽𝙻𝙰𝙲𝙴 𝙿𝙰𝚁𝙰 𝙴𝚂𝙴 𝙽𝚄𝙼𝙴𝚁𝙾, 𝙿𝙾𝚁 𝙵𝙰𝚅𝙾𝚁 𝙸𝙽𝙶𝚁𝙴𝚂𝙴 𝚄𝙽 𝙽𝚄𝙼𝙴𝚁𝙾 𝙴𝙽𝚃𝚁𝙴 𝙴𝙻 1 𝚈 𝙴𝙻 ${matchingItem.urls.length}*`;
+              throw `*⚠️ No se encontró un enlace para ese número, por favor ingrese un número entre el 1 y el ${matchingItem.urls.length}*`;
             }
           } else {
             throw `*[❗] 𝙿𝙰𝚁𝙰 𝙿𝙾𝙳𝙴𝚁 𝚄𝚂𝙰𝚁 𝙴𝚂𝚃𝙴 𝙲𝙾𝙼𝙰𝙽𝙳𝙾 𝙳𝙴 𝙴𝚂𝚃𝙰 𝙵𝙾𝚁𝙼𝙰 (${usedPrefix + command} <numero>), 𝙿𝙾𝚁 𝙵𝙰𝚅𝙾𝚁 𝚁𝙴𝙰𝙻𝙸𝚉𝙰 𝙻𝙰 𝙱𝚄𝚂𝚀𝚄𝙴𝙳𝙰 𝙳𝙴 𝚅𝙸𝙳𝙴𝙾𝚂 𝙲𝙾𝙽 𝙴𝙻 𝙲𝙾𝙼𝙰𝙽𝙳𝙾 ${usedPrefix}xnxxsearch <texto>*`;
@@ -42,8 +41,10 @@ if (!db.data.chats[m.chat].nsfw && m.isGroup) {
   }
 };
 
-handler.command = ['xnxxdl'];
-//handler.register = true;
+handler.help = ['xnxxdl'];
+handler.tags = ['download'];
+handler.command = ['xnxxdl', 'xnxx'];
+
 export default handler;
 
 async function xnxxdl(URL) {
