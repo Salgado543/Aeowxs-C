@@ -38,14 +38,14 @@ let handler = async (m, { conn, text }) => {
   try {
     await m.react('⌛');
     const result = await dl(text);
-    if (!result || !result.download) return m.reply('*❌ No se pudo obtener el contenido del enlace.*');
+    if (!result || !result.download) return m.reply('*✖️ No se pudo obtener el contenido del enlace.*');
     const isVideo = result.download.endsWith('.mp4');
-    await conn.sendMessage(m.chat, { [isVideo ? 'video' : 'image']: { url: result.download }, caption: `\`\`\`◜Pinterest - Download◞\`\`\`\n\n*🌴 \`Title:\`* ${result.title || 'Sin Título'}\n\n> ${club}`
+    await conn.sendMessage(m.chat, { [isVideo ? 'video' : 'image']: { url: result.download }, caption: `*Download - Pinterest*\n\n*✒️ Title:* ${result.title || 'Sin Título'}\n\n> ${dev}`
 }, { quoted: m });
     await m.react('✅');
   } catch (error) {
     console.error(error);
-    conn.reply(m.chat, '*❌ Error al procesar el enlace de Pinterest.*', m);
+    conn.reply(m.chat, '*✖️ Error al procesar el enlace de Pinterest.*', m);
   }
 };
 
