@@ -32,7 +32,7 @@ async function dl(url) {
 
 let handler = async (m, { conn, text }) => {
   if (!text || !text.includes('https://')) {
-    return m.reply(`*${emojis} Ingresa un enlace válido de Pinterest.*`);
+    return await conn.reply(m.chat, `*${emojis} Ingresa un enlace válido de Pinterest.*`, m, rcanal);
   }
 
   try {
