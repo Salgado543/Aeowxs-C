@@ -1,5 +1,5 @@
 let handler = async (m, { conn, text }) => {
-  if (!text) return conn.reply(m.chat, `${emoji} Por favor, haz una pregunta.`, m)
+  if (!text) return conn.reply(m.chat, `${emojis} Por favor, haz una pregunta.`, m, rcanal)
 
   const respuestas = [
     'Sí.',
