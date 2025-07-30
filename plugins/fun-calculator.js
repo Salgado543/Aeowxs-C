@@ -1,5 +1,5 @@
 const handler = async (m, { conn, command, text }) => {
-  if (!text) return conn.reply(m.chat, `*${emojis}  Menciona al usuario.*`, m, rcanal);
+  if (!text) return conn.reply(m.chat, `*${emojis} Menciona algún usuario.*`, m, rcanal);
 
   const percentages = Math.floor(Math.random() * 501);
   const emojis = {
@@ -9,8 +9,8 @@ gay: '🏳️‍🌈', lesbiana: '🏳️‍🌈', pajero: '😏💦', pajera: '
   const descriptions = {
     gay: [
 "💙 Parece que solo te gusta un poco la fiesta arcoíris.",
-"🖤 ¡Eres más gay que un desfile del orgullo!",
-"💜 ¡Nivel DIOS!* Ya ni necesitas salir del clóset, lo rompiste."
+"🖤 Tu no eres amigo... ¡Tu eres amige! 💀",
+"💜 ¡Nivel DIOS! Ya ni necesitas salir del clóset, lo rompiste amige."
     ],
     lesbiana: [
 "👻 Tal vez un par de maratones de series lésbicas ayuden.",
@@ -43,7 +43,7 @@ gay: '🏳️‍🌈', lesbiana: '🏳️‍🌈', pajero: '😏💦', pajera: '
 "💀 Récord mundial en fallar tiros... ¡Sin balas!"
     ],
     manca: [
-"🎮 ¿Porque eres así? Puta Mala",
+"🎮 ¿Porque eres así? Re Mala",
 "🥷 Anda a la cocina mejor no servís pa jugar",
 "💀 Récord mundial en fallar tiros... ¡Sin balas!"
     ],
@@ -58,19 +58,19 @@ gay: '🏳️‍🌈', lesbiana: '🏳️‍🌈', pajero: '😏💦', pajera: '
 "💖 Eres tan solicitado que ya tienes tarjeta VIP."
     ],
     prostituta: [
-"🙈 Tranquila que te voy hacer un oral.",
+"🙈 Tranquila que te voy a dar tu pingasaurio.",
 "🥵 ¿Lo haces por gusto verdad?",
-"💖 ¿Cuando hacemos un trío? bebé"
+"💖 ¿Cuando hacemos un trío? Nena"
     ],
     sinpoto: [
 "👀 ¿Seguro que no eres hombre con pelo largo?",
 "😹 Ni con cirugía te levantas ese autoestima",
-"🙉 Hasta un mosquito hace mas bulto que tu."
+"🙉 Hasta un mosquito hace más bulto que tú."
     ],
     sintetas: [
 "📭 Mas vacía que el buzón de alguien sin amigos.",
 "🌚 Da igual si estas defrente o de espalda, esque no hay diferencia.",
-"🫨 Se supone que la pubertad ayuda, ¿Qué pasó con tigo?"
+"🫨 Se supone que la pubertad ayuda, ¿Qué pasó contigo?"
     ],
     chipi: [
 "🤡 Lo tuyo no es mini, es edición limitada.",
@@ -94,11 +94,11 @@ gay: '🏳️‍🌈', lesbiana: '🏳️‍🌈', pajero: '😏💦', pajera: '
   ];
   const response = responses[Math.floor(Math.random() * responses.length)];
 
-  const cal = `*\`🤍 CALCULADORA 🤍\`*
+  const cal = `*🤍 CALCULADORA 🤍*
 
-🐈 *Los cálculos han arrojado que* \`${text.toUpperCase()}\` es \`${percentages}%\` ${command} ${emoji}*
+☁️ *Los cálculos han arrojado que ${text.toUpperCase()} es* ${percentages}% *${command} ${emoji}*
 
-• *${description}*
+*${description}*
 > *${response}*`.trim();
 
   async function loading() {
@@ -110,7 +110,7 @@ gay: '🏳️‍🌈', lesbiana: '🏳️‍🌈', pajero: '😏💦', pajera: '
       "《 ████████████》100%"
     ];
 
-    let { key } = await conn.sendMessage(m.chat, { text: `*🧡 ¡Calculando Porcentaje!*`, mentions: conn.parseMention(cal) });
+    let { key } = await conn.sendMessage(m.chat, { text: `*🤓 ¡Calculando Porcentaje!*`, mentions: conn.parseMention(cal) });
 
     for (let i = 0; i < hawemod.length; i++) {
       await new Promise(resolve => setTimeout(resolve, 1000));
@@ -123,9 +123,9 @@ gay: '🏳️‍🌈', lesbiana: '🏳️‍🌈', pajero: '😏💦', pajera: '
   loading();
 };
 
-handler.help = ['gay', 'lesbiana', 'pajero', 'pajera', 'puto', 'puta', 'manco', 'manca', 'rata', 'prostituto', 'prostituta', 'sinpoto', 'sintetas', 'chipi'];
 handler.tags = ['fun'];
 handler.group = true;
 handler.command = ['gay', 'lesbiana', 'pajero', 'pajera', 'puto', 'puta', 'manco', 'manca', 'rata', 'prostituto', 'prostituta', 'sinpoto', 'sintetas', 'chipi'];
+handler.help = ['gay', 'lesbiana', 'pajero', 'pajera', 'puto', 'puta', 'manco', 'manca', 'rata', 'prostituto', 'prostituta', 'sinpoto', 'sintetas', 'chipi'];
 
 export default handler;
