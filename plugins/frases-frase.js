@@ -7,7 +7,7 @@ const handler = async (m, { conn, command }) => {
     await m.reply(mensaje);
   }
 
-  if (command === 'fraseromantica') {
+  if (command === 'frase') {
     const frase_romantica = frasesromanticas[Math.floor(Math.random() * frasesromanticas.length)];
     const mensaje = `╭─◆────◈⚘◈─────◆─╮\n\n⠀⠀💖 *Frase romántica* 💖\n\n❥ ${frase_romantica}\n\n╰─◆────◈⚘◈─────◆─╯`;
     await m.reply(mensaje);
