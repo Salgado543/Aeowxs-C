@@ -1,5 +1,5 @@
 const handler = async (m, { conn, command, text }) => {
-  if (!text) return conn.reply(m.chat, `*${emojis} Menciona algún usuario.*`, m, rcanal);
+  if (!text) return conn.reply(m.chat, `☁️ Menciona algún usuario.*`, m);
 
   const percentages = Math.floor(Math.random() * 501);
   const emojis = {
@@ -79,7 +79,7 @@ gay: '🏳️‍🌈', lesbiana: '🏳️‍🌈', pajero: '😏💦', pajera: '
     ]
   };
 
-  if (!descriptions[command]) return m.reply(`*[ ⚠️ ] Comando inválido.*`);
+  if (!descriptions[command]) return m.reply(`*⚠️ Comando inválido.*`);
 
   const emoji = emojis[command] || '';
   let description;
