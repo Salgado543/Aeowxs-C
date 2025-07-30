@@ -15,7 +15,7 @@ const handler = async (m, { conn, command }) => {
 };
 
 handler.tags = ['frases'];
-handler.command = handler.help = ['consejo', 'fraseromantica'];
+handler.command = handler.help = ['consejo', 'frase'];
 export default handler;
 
 global.frasesromanticas = [
