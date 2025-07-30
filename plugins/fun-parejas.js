@@ -32,7 +32,7 @@ function handler(m, {groupMetadata}) {
   do j = ps[Fl(R() * ps.length)];
   while (b === a);
   m.reply(
-    `*😍_Las 5 mejores parejas del grupo_😍*
+    `*😍 Las 5 mejores parejas del grupo 😍*
     
 *_1.- ${toM(a)} y ${toM(b)}_*
 - Esta pareja esta destinada a estar junta 💙
@@ -57,7 +57,6 @@ function handler(m, {groupMetadata}) {
 handler.help = ['formarparejas'];
 handler.tags = ['fun'];
 handler.command = ['formarparejas', 'parejas'];
-//handler.register = true;
 handler.group = true;
 
 export default handler;
