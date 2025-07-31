@@ -1,4 +1,12 @@
 import { createHash } from 'crypto'
+import fetch from 'node-fetch'
+
+const fkontak = {
+  key: { participant: '0@s.whatsapp.net' },
+  message: {
+    contactMessage: { displayName: 'Shadow Ultra', vcard: '' }
+  }
+}
 
 let Reg = /\|?(.*)([.|] *?)([0-9]*)$/i
 
@@ -10,7 +18,7 @@ let handler = async function (m, { conn, text, usedPrefix, command }) {
   }
 
   if (!Reg.test(text)) {
-    return m.reply(`⚠️ Formato incorrecto. Usa:\n*${usedPrefix + command} Nombre.edad*\nEjemplo: *${usedPrefix + command} Juan.20*`)
+    return m.reply(`⚠️ Formato incorrecto. Usa:\n*${usedPrefix + command} Nombre.edad*\nEjemplo: *${usedPrefix + command} Jotasa.20*`)
   }
 
   let [_, name, __, age] = text.match(Reg)
@@ -22,36 +30,43 @@ let handler = async function (m, { conn, text, usedPrefix, command }) {
   if (isNaN(age)) return m.reply('⚠️ Edad inválida.')
   if (age < 5 || age > 100) return m.reply('⚠️ Edad fuera de rango (5-100 años).')
 
+  // Registro y datos
   user.name = name.trim()
   user.age = age
   user.regTime = +new Date
   user.registered = true
-
   user.money += 600
   user.diamantes += 15
   user.exp += 245
   user.joincount += 5
 
-  const sn = createHash('md5').update(m.sender).digest('hex')
-  const perfil = await conn.profilePictureUrl(m.sender, 'image')
-    .catch(() => 'https://raw.githubusercontent.com/The-King-Destroy/Adiciones/main/Contenido/1745522645448.jpeg')
+  // Foto de perfil
+  let perfil = await conn.profilePictureUrl(m.sender, 'image')
+    .catch(() => 'https://files.catbox.moe/xr2m6u.jpg')
+  let img = await (await fetch(perfil)).buffer()
 
-  const mensaje = `
-🎉 *Registro completado*
+  // Serie única
+  const sn = createHash('md5').update(m.sender).digest('hex')
+
+  // Textos
+  let shortText = `¡Bienvenido(a)! ${name}`
+  let title = `ゲ◜៹ Registro exitoso ៹◞ゲ`
+  let fullText = `
+☕ *Registro completado*
 
 📌 *Nombre:* ${user.name}
 📆 *Edad:* ${user.age} años
 🆔 *Serie:* ${sn}
 
-🎁 Bonificaciones:
+🎁 Recompensas:
 💎 15 Diamantes
 💰 600 Coins
 ✨ 245 Exp
 
-Escribe *.profile* para ver tu perfil.
+✎ Usa *.profile* para ver tu perfil.
 `.trim()
 
-  await conn.sendLuffy(m.chat, mensaje, null, perfil, 'https://github.com/Cristiantermidor/ShadowBot-MDv3', '✅ Registro exitoso', 'Bienvenido a Shadow Bot', m)
+  await conn.sendLuffy(m.chat, shortText, title, fullText, img, img, 'https://instagram.com/dev.criss_vx', fkontak)
   await m.react('✅')
 }
 
