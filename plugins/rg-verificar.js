@@ -45,8 +45,8 @@ let handler = async function (m, { conn, text, usedPrefix, command }) {
 
   const sn = createHash('md5').update(m.sender).digest('hex')
 
-  let shortText = `¡Bienvenido(a)! ${name}`
-  let title = `ゲ◜៹ Registro exitoso ៹◞ゲ`
+  let shortText = `💚 𝗥𝗲𝗴𝗶𝘀𝘁𝗿𝗼 𝗘𝘅𝗶𝘁𝗼𝘀𝗼 💚`
+  let title = `Commands unlocked for ${name}`
   let fullText = `
 ☕ *Registro completado*
 
