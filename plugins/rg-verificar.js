@@ -4,7 +4,7 @@ import fetch from 'node-fetch'
 const fkontak = {
   key: { participant: '0@s.whatsapp.net' },
   message: {
-    contactMessage: { displayName: 'Shadow Ultra', vcard: '' }
+    locationMessage: { displayName: `${botname}`, vcard: '' }
   }
 }
 
@@ -14,23 +14,22 @@ let handler = async function (m, { conn, text, usedPrefix, command }) {
   const user = global.db.data.users[m.sender]
 
   if (user.registered === true) {
-    return m.reply(`✅ Ya estás registrado.\n\n¿Deseas volver a registrarte?\nUsa: *${usedPrefix}unreg*`)
+    return m.reply(`*✅ Ya estás registrado.*\n*¿Deseas volver a registrarte?*\n> *Usa:* ${usedPrefix}unreg*`)
   }
 
   if (!Reg.test(text)) {
-    return m.reply(`⚠️ Formato incorrecto. Usa:\n*${usedPrefix + command} Nombre.edad*\nEjemplo: *${usedPrefix + command} Jotasa.20*`)
+    return m.reply(`*⚠️ Formato incorrecto. Usa:*\n*${usedPrefix + command} Nombre.edad*\nEjemplo: *${usedPrefix + command} Jotasa.20*`)
   }
 
   let [_, name, __, age] = text.match(Reg)
-  if (!name) return m.reply('⚠️ El nombre no puede estar vacío.')
-  if (!age) return m.reply('⚠️ La edad no puede estar vacía.')
-  if (name.length > 30) return m.reply('⚠️ El nombre es muy largo (máx 30 caracteres).')
+  if (!name) return m.reply('*⚠️ El nombre no puede estar vacío.*')
+  if (!age) return m.reply('*⚠️ La edad no puede estar vacía.*')
+  if (name.length > 30) return m.reply('*⚠️ El nombre es muy largo (máx 30 caracteres).*')
 
   age = parseInt(age)
-  if (isNaN(age)) return m.reply('⚠️ Edad inválida.')
-  if (age < 5 || age > 100) return m.reply('⚠️ Edad fuera de rango (5-100 años).')
+  if (isNaN(age)) return m.reply('*⚠️ Edad inválida.*')
+  if (age < 5 || age > 100) return m.reply('*⚠️ Edad fuera de rango (5-100 años).*')
 
-  // Registro y datos
   user.name = name.trim()
   user.age = age
   user.regTime = +new Date
@@ -40,15 +39,12 @@ let handler = async function (m, { conn, text, usedPrefix, command }) {
   user.exp += 245
   user.joincount += 5
 
-  // Foto de perfil
   let perfil = await conn.profilePictureUrl(m.sender, 'image')
     .catch(() => 'https://files.catbox.moe/xr2m6u.jpg')
   let img = await (await fetch(perfil)).buffer()
 
-  // Serie única
   const sn = createHash('md5').update(m.sender).digest('hex')
 
-  // Textos
   let shortText = `¡Bienvenido(a)! ${name}`
   let title = `ゲ◜៹ Registro exitoso ៹◞ゲ`
   let fullText = `
