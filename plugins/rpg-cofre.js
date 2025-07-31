@@ -13,13 +13,11 @@ m.chat, `*⏰ Ya reclamastes tu cofre, regresa en ${msToTime(time - new Date())}
 
   const texto = `
 ╭━〔 ${global.botname} 〕⬣
-┃🧰 *Obtienes Un Cofre*
-┃ ${saludo}
-╰━━━━━━━━━━━━⬣
-
-╭━〔 ${botname} 〕⬣
-┃ *${dia} ${moneda}
-┃ *${expp} Exp* 💫
+┃ 👋🏻 Hola, obtuviste
+┃    un cofre.
+┃
+┃ - *${dia} ${moneda}*
+┃ - *${expp} Exp* 💫
 ╰━━━━━━━━━━━━⬣`;
 
   await conn.sendFile(m.chat, img, 'yoshiko.jpg', texto, fkontak);
