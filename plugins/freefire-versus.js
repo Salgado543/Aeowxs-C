@@ -60,22 +60,22 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
         case 'vsfem4':
             titulo = '4VS4 FEM';
             players = ['Jᥙgᥲძ᥆rᥲs:'];
-            iconos = ['🌸', '🌸', '🌸', '🌸'];
-            iconos2 = ['🌸', '🌸'];
+            iconos = ['🦋', '🦋', '🦋', '🦋'];
+            iconos2 = ['🦋', '🦋'];
             break;
         case 'v4masc':
         case 'vsmasc4':
             titulo = '4VS4 MASC';
             players = ['Jᥙgᥲძ᥆rᥱs'];
-            iconos = ['🥥', '🥥', '🥥', '🥥'];
-            iconos2 = ['🥥', '🥥'];
+            iconos = ['🥷🏻', '🥷🏻', '🥷🏻', '🥷🏻'];
+            iconos2 = ['🥷🏻', '🥷🏻'];
             break;
         case 'v4mixto':
         case 'vsmixto4':
             titulo = '4VS4 MIXTO';
             players = ['Jᥙgᥲძ᥆r᥊s'];
-            iconos = ['🍁', '🍁', '🍁', '🍁'];
-            iconos2 = ['🍁', '🍁'];
+            iconos = ['🖤', '🖤', '🖤', '🩷'];
+            iconos2 = ['🖤', '🩷'];
             break;
         case 'v6fem':
         case 'vsfem6':
@@ -88,18 +88,18 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
         case 'vsmasc6':
             titulo = '6VS6 MASC';
             players = ['Jᥙgᥲძ᥆rᥱs'];
-            iconos = ['🥞', '🥞', '🥞', '🥞', '🥞', '🥞'];
-            iconos2 = ['🥞', '🥞'];
+            iconos = ['🥷🏻', '🥷🏻', '🥷🏻', '🥷🏻', '🥷🏻', '🥷🏻'];
+            iconos2 = ['🥷🏻', '🥷🏻'];
             break;
         case 'v6mixto':
         case 'vsmixto6':
             titulo = '6VS6 MIXTO';
             players = ['Jᥙgᥲძ᥆r᥊s'];
-            iconos = ['🥯', '🥯', '🥯', '🥯', '🥯', '🥯'];
-            iconos2 = ['🥯', '🥯'];
+            iconos = ['🖤', '🖤', '🖤', '🖤', '🩷', '🩷'];
+            iconos2 = ['🖤', '🖤', '🩷'];
             break;
         default:
-            conn.reply(m.chat, '*[ ❌ ] Comando no válido.*', m);
+            conn.reply(m.chat, '*Comando no válido.*', m);
             return;
     }
 
