@@ -40,7 +40,7 @@ if (safetyCounter >= 100) console.warn("⚠️ Posible bucle infinito al subir d
 
 if (user.level >= MAX_LEVEL) {
   return conn.sendMessage(m.chat, {
-    text: `🎖️ *¡Felicidades, ${name}!* Has alcanzado el *nivel máximo (${MAX_LEVEL})*. No puedes subir más, pero sigue interactuando para disfrutar del bot.`,
+    text: `🎖️ *¡Felicidades!* ${name} *Has alcanzado el nivel máximo.*\n> *No puedes subir más, pero sigue interactuando para disfrutar del bot.*`,
     mentions: [m.sender]
   }, { quoted: m });
 }
