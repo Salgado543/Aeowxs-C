@@ -11,7 +11,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
   }
    let work = works.getRandom()
    user.coins += amount
-   await m.reply(`*${work} *${amount} ${moneda}*`)
+   await m.reply(`*${work} \`${amount}\` ${moneda}*`)
    cooldowns[m.sender] = Date.now()
 }
 
