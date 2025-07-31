@@ -1,51 +1,51 @@
-import PhoneNumber from 'awesome-phonenumber'
 import fetch from 'node-fetch'
-import fs from 'fs';
-var handler = async (m, { conn }) => {
-let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
-let pp = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://files.catbox.moe/uogbz0.jpg')
 
-let { premium, level, description, diamantes, exp, lastclaim, registered, regTime, age, role } = global.db.data.users[m.sender];
+const handler = async (m, { conn, args }) => {
+  const userId = m.quoted?.sender || m.mentionedJid?.[0] || m.sender
+  const user = global.db.data.users[userId] || {}
 
-age = age || 'Sin especificar';
-description = description || 'Sin descripción';
+  const name = await conn.getName(userId)
+  const perfilUrl = await conn.profilePictureUrl(userId, 'image')
+    .catch(() => 'https://files.catbox.moe/xr2m6u.jpg')
+  const img = await (await fetch(perfilUrl)).buffer()
 
-let username = conn.getName(who)
-let noprem = `
-*PERFIL DEL USUARIO*
+  const edad = user.age || 'No registrada'
+  const desc = user.descripcion || 'Sin descripción'
+  const exp = user.exp || 0
+  const level = user.level || 0
+  const role = user.role || 'Novato'
+  const coin = user.coins || 0
+  const bank = user.bank || 0
+  const premium = user.premium ? '✅' : '❌'
+  const registered = user.registered ? '✅' : '❌'
 
-👤 *Nombre:* ${username}
-🏷️ *Tag:* @${who.replace(/@.+/, '')}
-🍒 *Edad:* ${age}
-💌 *Registrado:* ${registered ? '✅': '❌'}
-🪪 *Premium:* ${premium ? '✅': '❌'}
-📝 *Descripción:* ${description}
+  const textoCorto = `Perfil de ${name}`
+  const tituloDecorado = dev
+  const textoLargo = `
+*Perfil - ${botname}*
 
-*_RECURSOS OBTENIDOS_*
+- *Nombre:* ${name}
+- *Edad:* ${edad}
+- *Descripción:* ${desc}
+- *ID:* ${userId.split('@')[0]}
 
-*💎 Diamantes* ${diamantes || 0}
-*🆙 Nivel:* ${level || 0}
-*💫 Exᴘ* ${exp || 0}
-*🐈 Rango:* ${role}
+💫 *Exp:* ${exp.toLocaleString()}
+🆙 *Nivel:* ${level}
+☁️ *Rango:* ${role}
 
-> By ${botname}
+🪙 *ShadowCoins:* ${coin.toLocaleString()}
+🏦 *Banco:* ${bank.toLocaleString()}
+
+🪪 *Premium:* ${premium}
+📝 *Registrado:* ${registered}
 `.trim()
-let prem = `╭─⪩ 𓆩 𝐔𝐒𝐔𝐀𝐑𝐈𝐎 𝐏𝐑𝐄𝐌𝐈𝐔𝐌 𓆪
-│⧼👤⧽ *Usᴜᴀʀɪᴏ:* ${username}
-│⧼💌⧽ *Rᴇɢɪsᴛʀᴀᴅᴏ:* ${registered ? '✅': '❌'}
-│⧼🔱⧽ *Rᴏʟ:* Vip 👑
-╰─────────────⪩
 
-╭─⪩ 𓆩 𝐑𝐄𝐂𝐔𝐑𝐒𝐎𝐒 𓆪
-│⧼💎⧽ *:* ${diamantes}
-│⧼🆙⧽ *Nɪᴠᴇʟ:* ${level}
-│⧼💫⧽ *Exᴘ* ${exp}
-│⧼⚜️⧽ *Rᴀɴɢᴏ:* ${role}
-╰─────────────⪩`.trim()
-conn.sendFile(m.chat, pp, 'perfil.jpg', `${premium ? prem.trim() : noprem.trim()}`, m, rcanal, { mentions: [who] })
+  await conn.sendLuffy(m.chat, textoCorto, tituloDecorado, textoLargo, img, img, 'https://instagram.com/dev.criss_vx', fkontak)
+  await m.react('💥')
 }
+
 handler.help = ['profile']
-handler.register = true
 handler.tags = ['rg']
 handler.command = ['profile', 'perfil']
+
 export default handler
