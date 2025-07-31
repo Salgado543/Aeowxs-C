@@ -5,16 +5,15 @@ let user = global.db.data.users[m.sender]
 let coin = `${pickRandom([20, 5, 7, 8, 30, 35, 40, 45, 50, 55, 60])}` * 1; let emerald = `${pickRandom([1, 5, 7, 8])}` * 1; let iron = `${pickRandom([5, 6, 7, 9, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80])}` * 1; let gold = `${pickRandom([20, 5, 7, 8, 88, 40, 50])}` * 1; let coal = `${pickRandom([20, 5, 7, 8, 88, 40, 50, 80, 70, 60, 100, 120, 600, 700, 64])}` * 1; let stone = `${pickRandom([200, 500, 700, 800, 900, 4000, 300])}` * 1
 
 let time = global.db.data.users[m.sender].lastmiming + 600000
-if (new Date - global.db.data.users[m.sender].lastmiming < 600000) return conn.reply(m.chat, `Debes esperar *${msToTime(time - new Date())}* para volver a minar`, m, )
+if (new Date - global.db.data.users[m.sender].lastmiming < 600000) return conn.reply(m.chat, `*⏰ Debes esperar ${msToTime(time - new Date())} para volver a minar.*`, m, )
 
 let hasil = Math.floor(Math.random() * 1000)
-let info = `${emoji3} *Te has adentrando en lo profundo de las cuevas*
+let info = `${emoji} *Te has adentrando en lo profundo de las cuevas*
 
-> Obtuviste:
+> *Obtuviste:*
 
 💫 *Exp:* ${hasil}
-💎 *Diamantes:* ${coin}
-💚 *Esmeralda*: ${emerald}
+💎 *ShadowCoins:* ${coin}
 🔩 *Hierro:* ${iron}
 🪙 *Oro:* ${gold}
 🕋 *Carbón:* ${coal}
@@ -25,10 +24,9 @@ await m.react('⛏️')
 
 user.health -= 50
 user.pickaxedurability -= 30
-user.diamantes += coin
+user.coins += coin
 user.iron += iron
 user.gold += gold
-user.emerald += emerald
 user.coal += coal
 user.stone += stone
 user.lastmiming = new Date * 1
