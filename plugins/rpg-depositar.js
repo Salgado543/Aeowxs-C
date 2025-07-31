@@ -14,7 +14,7 @@ return !0
 if (!Number(args[0])) return m.reply('*⚠️ La cantidad deve ser un número.*')
 let count = parseInt(args[0])
 if (!user.coins) return m.reply('*✖️ No tienes ${moneda} en tu Cartera.*')
-if (user.coins < count) return m.reply(`*💎 Solo tienes ${user.coins} ${moneda} en tu Cartera.*`)
+if (user.coins < count) return m.reply(`*🪙 Solo tienes ${user.coins} ${moneda} en tu Cartera.*`)
 user.coins -= count * 1
 user.bank += count * 1
 await m.reply(`*🏦 Depositaste \`${count}\` ${moneda} al Banco.*`)}
