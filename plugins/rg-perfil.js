@@ -5,6 +5,7 @@ const handler = async (m, { conn, args }) => {
   const userId = m.quoted?.sender || m.mentionedJid?.[0] || m.sender
   const user = global.db.data.users[userId] || {}
 
+  const nme = await conn.getName(userId)
   const tag = `@${userId.split('@')[0]}`
   const name = user.registered && user.name ? user.name : await conn.getName(userId)
   const perfilUrl = await conn.profilePictureUrl(userId, 'image')
@@ -21,7 +22,7 @@ const handler = async (m, { conn, args }) => {
   const premium = user.premium ? '✅' : '❌'
   const registered = user.registered ? '✅' : '❌'
 
-  const textoCorto = `Perfil de ${name}`
+  const textoCorto = `Perfil de ${nme}`
   const tituloDecorado = dev
   const textoLargo = `
 *Perfil - ${botname}*
