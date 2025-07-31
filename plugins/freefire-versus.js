@@ -2,8 +2,7 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 
     if (args.length < 2) {  
         conn.reply(m.chat, `*${emojis} Proporciona una hora seguido el país y una modalidad.*
-*Usa MX para México y CO para Colombia.*
-> *Ejemplo:* .${command} 20 pe Vv2`, m);
+> *Ejemplo:* .${command} 20 mx clk`, m);
         return;
     }
 
@@ -25,19 +24,19 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
         EC: 2,
         DO: 3,
         VE: 3,
-        CH: 4,
-        AR: 4
+        CL: 4,
+        AR: 4,
     };  
 
     if (!(pais in diferenciasHorarias)) {  
-        conn.reply(m.chat, '*❌ País no válido. Usa AR para Argentina, PE para Perú.*', m);  
+        conn.reply(m.chat, '*✖️ País no válido.*', m);  
         return;  
     }  
 
     const diferenciaHoraria = diferenciasHorarias[pais];  
     const formatTime = (date) => date.toLocaleTimeString('es', { hour12: false, hour: '2-digit', minute: '2-digit' });  
 
-    const horasEnPais = { CO: '', MX: '', PE: '' };  
+    const horasEnPais = { MX: '', PE: '', CO: '', EC: '', DO: '', VE: '', CL: '', AR: '', };  
 
     for (const key in diferenciasHorarias) {  
         const horaActual = new Date();  
