@@ -4,7 +4,8 @@ const img = 'https://files.catbox.moe/zggh6y.jpg'
 
 let handler = async (m, { conn, usedPrefix }) => {
   const who = m.mentionedJid?.[0] || m.quoted?.sender || m.sender
-  if (!who || who === conn.user.jid) return m.react('✖️')
+if (!who || who === conn.user.jid)
+  return m.reply(`*${emojis} Debes mencionar o responder a un usuario válido.*`)
 
   if (!(who in global.db.data.users)) return m.reply(`*⚠️ El usuario no está registrado en la base de datos.*`)
 
@@ -12,8 +13,8 @@ let handler = async (m, { conn, usedPrefix }) => {
   const name = await conn.getName(who)
   const fecha = new Date().toLocaleString('es-PE')
 
-  const txt = `🏦 *Bienvenido al Banco de Coins*  
-> Cuenta vinculada a: {who === m.sender ? name : `@${who.split('@')[0]}`}
+  const txt = `🏦 *Bienvenido al Banco de Coins*
+> Cuenta vinculada a: ${who === m.sender ? name : `@${who.split('@')[0]}`}
 
 *💼 Detalles actuales:*
 🪙 *Cartera:* ${user.coins}
