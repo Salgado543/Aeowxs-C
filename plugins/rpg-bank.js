@@ -65,7 +65,7 @@ if (!who || who === conn.user.jid)
     buttons,
     mentions: [who],
     headerType: 4
-  }, { quoted: m })
+  }, { quoted: fkontak2 })
 }
 
 /*
