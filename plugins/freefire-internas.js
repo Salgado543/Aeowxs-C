@@ -19,23 +19,25 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
     const pais = args[1].toUpperCase();  
 
     const diferenciasHorarias = {  
-        CL: 2,
-        AR: 2,
-        BO: 1,
-        CO: 1,
-        PE: 1,
-        MX: 0,  // uted es gei
+        MX: 1,
+        PE: 2,
+        CO: 2,
+        EC: 2,
+        DO: 3,
+        VE: 3,
+        CL: 4,
+        AR: 4,
     };  
 
     if (!(pais in diferenciasHorarias)) {  
-        conn.reply(m.chat, '*⚠️ El país ingresado no es válido. Usa MX para México y CO para Colombia.*', m);  
+        conn.reply(m.chat, '*⚠️ El país ingresado no es válido.*', m);  
         return;  
     }  
 
     const diferenciaHoraria = diferenciasHorarias[pais];  
     const formatTime = (date) => date.toLocaleTimeString('es', { hour12: false, hour: '2-digit', minute: '2-digit' });  
 
-    const horasEnPais = { CL: '', AR: '', BO: '', CO: '', PE: '', MX: '' };  
+const horasEnPais = { MX: '', PE: '', CO: '', EC: '', DO: '', VE: '', CL: '', AR: '', };
 
     for (const key in diferenciasHorarias) {  
         const horaActual = new Date();  
@@ -57,8 +59,8 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
         case 'inmixto4':
         case 'internamixto4':
             titulo = 'INTERNA MIXTO';
-            iconosA = ['🍁', '🍁', '🍁', '🍁'];
-            iconosB = ['🍃', '🍃', '🍃', '🍃'];
+            iconosA = ['🖤', '🖤', '🖤', '🖤'];
+            iconosB = ['🤍', '🤍', '🤍', '🤍'];
             break;
         case 'inmasc4':
         case 'internamasc4':
@@ -69,7 +71,7 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
         case 'infem4':
         case 'internafem4':
             titulo = 'INTERNA FEM';
-            iconosA = ['🪱', '🪱', '🪱', '🪱'];
+            iconosA = ['🩷', '🩷', '🩷', '🩷'];
             iconosB = ['🦋', '🦋', '🦋', '🦋'];
             break;
         case 'inmixto6':
@@ -99,8 +101,10 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 ╭── ︿︿︿︿︿ *⭒   ⭒   ⭒   ⭒   ⭒*
 » *☕꒱ Mᴏᴅᴀʟɪᴅᴀᴅ:* ${modalidad}
 » *⏰꒱ Hᴏʀᴀʀɪᴏs:*
-│• *\`MEX:\`* ${horasEnPais.MX}
-│• *\`COL:\`* ${horasEnPais.CO}
+│•  ${horasEnPais.MX} 🇲🇽 
+│•  ${horasEnPais.CO} 🇨🇴🇪🇨🇵🇪
+│•  ${horasEnPais.VE} 🇻🇪🇩🇴
+│•  ${horasEnPais.AR} 🇨🇱🇦🇷
 ╰─── ︶︶︶︶ ✰⃕  ⌇ *⭒⭒*   ˚̩̥̩̥*̩̩͙✩
 ㅤ _ʚ Equipo A:_ ᭡
 ${iconosA.map(icono => `${icono} • `).join('\n')}
