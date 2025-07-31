@@ -36,14 +36,14 @@ return list[Math.floor(list.length * Math.random())];
 }
 // Lista de trabajos
 const trabajo = [
-"Tuviste Sexo Con Tu Tu Vecino y ganastes",
-"Cabalgaste Cómo Nunca Arriba De Un Artista y obtienes",
-"Te dedicas a ser un/a seductor/a, Te Prostituyes y ganas",
-"Eres un experto en prostitucion y recibes",
-"Trabajas en la industria del romance y te Prostituyes con los trabajadores y ganas",
+"Tuviste sexo con tu vecino y ganastes",
+"Cabalgaste cómo nunca arriba ae un artista y obtienes",
+"Te dedicas a ser un/a seductor/a, te prostituyes y ganas",
+"Eres un experto en prostitución y recibes",
+"Trabajas en la industria del romance y te prostituyes con los trabajadores y ganas",
 "Eres un/a conquistador/a y obtienes",
 "Te dedicas a hacer felices a los demás y ganas",
 "Eres un/a experto/a moviendo esas nalgas y recibes",
-"Le Distes Unos Sentones a mi creador y ganas",
-"Te Acostastes Con Tu JeFe Y Obtuvistes",
+"Le Distes unos sentones a mi creador y ganas",
+"Te Acostastes con tu Jefe Y obtuvistes",
 ]
