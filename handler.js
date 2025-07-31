@@ -28,7 +28,7 @@ export async function handler(chatUpdate) {
         if (!m)
             return
         m.exp = 0
-        m.diamantes = false
+        m.coins = false
         try {
             let user = global.db.data.users[m.sender]
             if (typeof user !== 'object')
@@ -36,8 +36,8 @@ export async function handler(chatUpdate) {
             if (user) {
                 if (!isNumber(user.exp))
                     user.exp = 0
-                if (!isNumber(user.diamantes))
-                    user.diamantes = 10
+                if (!isNumber(user.coins))
+                    user.coins = 10
                 if (!('premium' in user)) 
                     user.premium = false
                 if (!user.premium) 
@@ -69,7 +69,7 @@ export async function handler(chatUpdate) {
             } else
                 global.db.data.users[m.sender] = {
                     exp: 0,
-                    diamantes: 10,
+                    coins: 10,
                     registered: false,
                     name: m.name,
                     age: -1,
@@ -398,7 +398,7 @@ global.db.data.users[m.sender].spam = new Date * 1
                     m.reply('chirrido -_-')
                 else
                     m.exp += xp
-                if (!isPrems && plugin.diamantes && global.db.data.users[m.sender].diamantes < plugin.diamantes * 1) {
+                if (!isPrems && plugin.coins && global.db.data.users[m.sender].coins < plugin.coins * 1) {
                     conn.reply(m.chat, `*Se agotaron tus ${moneda}*`, m)
                     continue
                 }
@@ -428,7 +428,7 @@ global.db.data.users[m.sender].spam = new Date * 1
                 try {
                     await plugin.call(this, m, extra)
                     if (!isPrems)
-                        m.diamantes = m.diamantes || plugin.diamantes || false
+                        m.coins = m.coins || plugin.coins || false
                 } catch (e) {
                     m.error = e
                     console.error(e)
@@ -446,8 +446,8 @@ global.db.data.users[m.sender].spam = new Date * 1
                             console.error(e)
                         }
                     }
-                    if (m.diamantes)
-                        conn.reply(m.chat, `Utilizaste *${+m.diamantes}* ${moneda}`, m)
+                    if (m.coins)
+                        conn.reply(m.chat, `Utilizaste *${+m.coins}* ${moneda}`, m)
                 }
                 break
             }
@@ -464,7 +464,7 @@ global.db.data.users[m.sender].spam = new Date * 1
         if (m) {
             if (m.sender && (user = global.db.data.users[m.sender])) {
                 user.exp += m.exp
-                user.diamantes -= m.diamantes * 1
+                user.coins -= m.coins * 1
             }
 
             let stat
