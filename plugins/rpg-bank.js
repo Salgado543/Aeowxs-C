@@ -12,7 +12,7 @@ const fkontak2 = {
   message: {
     locationMessage: {
       name: `Banco - ${botname}`,
-      jpegThumbnail: await (await fetch('https://files.catbox.moe/a4a2yz.png')).buffer()
+      jpegThumbnail: await (await fetch('https://files.catbox.moe/3tw7fq.png')).buffer()
     }
   },
   participant: "0@s.whatsapp.net"
