@@ -43,10 +43,10 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
 
     if (win) {
       users.coins += coins
-      conn.reply(m.chat, `*🎉 ¡Ganaste! Obtuviste \`${coins}\` coins.*\n*Total:* ${users.coins} coins*`, m)
+      conn.reply(m.chat, `*🎉 ¡Ganaste! Obtuviste \`${coins}\` coins.*\n*Total:* ${users.coins} ${moneda}*`, m)
     } else {
       users.coins -= coins
-      conn.reply(m.chat, `*😹 Perdiste. Se te restaron \`${coins}\` coins*\n*Total:* \`${users.coins}\` coins.`, m)
+      conn.reply(m.chat, `*😹 Perdiste. Se te restaron \`${coins}\` coins*\n*Total:* \`${users.coins}\` ${moneda}.`, m)
     }
 
 
