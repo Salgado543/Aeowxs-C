@@ -17,8 +17,6 @@ let handler = async function (m, { conn, text, usedPrefix, command }) {
     return m.reply(`*✅ Ya estás registrado.*\n*¿Deseas volver a registrarte?*\n> *Usa:* ${usedPrefix}unreg*`)
   }
 
-await m.react('💌')
-
   if (!Reg.test(text)) {
     return m.reply(`*⚠️ Formato incorrecto. Usa:*\n*${usedPrefix + command} Nombre.edad*\nEjemplo: *${usedPrefix + command} Jotasa.20*`)
   }
@@ -31,6 +29,8 @@ await m.react('💌')
   age = parseInt(age)
   if (isNaN(age)) return m.reply('*⚠️ Edad inválida.*')
   if (age < 5 || age > 100) return m.reply('*⚠️ Edad fuera de rango (5-100 años).*')
+
+await m.react('💌')
 
   user.name = name.trim()
   user.age = age
