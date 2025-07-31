@@ -1,10 +1,12 @@
 import fetch from 'node-fetch'
 
 const handler = async (m, { conn, args }) => {
+
   const userId = m.quoted?.sender || m.mentionedJid?.[0] || m.sender
   const user = global.db.data.users[userId] || {}
 
-  const name = await conn.getName(userId)
+  const name = user.registered && user.name ? user.name : await conn.getName(userId)
+  const tag = `@${userId.split('@')[0]}`
   const perfilUrl = await conn.profilePictureUrl(userId, 'image')
     .catch(() => 'https://files.catbox.moe/xr2m6u.jpg')
   const img = await (await fetch(perfilUrl)).buffer()
@@ -23,6 +25,7 @@ const handler = async (m, { conn, args }) => {
   const tituloDecorado = dev
   const textoLargo = `
 *Perfil - ${botname}*
+  ╰╮ ${tag}
 
 - *Nombre:* ${name}
 - *Edad:* ${edad}
