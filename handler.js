@@ -399,7 +399,7 @@ global.db.data.users[m.sender].spam = new Date * 1
                 else
                     m.exp += xp
                 if (!isPrems && plugin.diamantes && global.db.data.users[m.sender].diamantes < plugin.diamantes * 1) {
-                    conn.reply(m.chat, `*Se agotaron tus Diamantes 💎*`, m)
+                    conn.reply(m.chat, `*Se agotaron tus ${moneda}*`, m)
                     continue
                 }
                 let extra = {
@@ -447,7 +447,7 @@ global.db.data.users[m.sender].spam = new Date * 1
                         }
                     }
                     if (m.diamantes)
-                        conn.reply(m.chat, `Utilizaste *${+m.diamantes}* Diamantes 💎`, m)
+                        conn.reply(m.chat, `Utilizaste *${+m.diamantes}* ${moneda}`, m)
                 }
                 break
             }
@@ -525,7 +525,7 @@ private: `*${emoji} Esta función solo puede ser ejecutada en chat privado.*`,
 admin: `*${emoji} Este comando solo puede ser usado por Admins.*`, 
 botAdmin: `*${emoji} Para usar esta función debo ser Admin.*`,
 unreg: `*${emoji} \`${botname}\` te avisa que no te encuentras registrado para usar esta función en el bot.*\n\nPara verificar utiliza .reg nombre.edad
-> Ejemplo: .reg Jota.21`,
+> Ejemplo: .reg ${namebot}.21`,
 restrict: `*${emoji} Esta característica esta desactivada.*`
 }[type];
 if (msg) return conn.reply(m.chat, msg, m, rcanal).then(_ => m.react('✖️'))}
