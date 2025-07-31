@@ -19,9 +19,14 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
     const pais = args[1].toUpperCase();  
 
     const diferenciasHorarias = {  
-        CO: 2,  // UTC-4  
-        MX: 1,  // UTC-3  
-        PE: 2,  // UTC-5  
+        MX: 1,
+        PE: 2,
+        CO: 2,
+        EC: 2,
+        DO: 3,
+        VE: 3,
+        CH: 4,
+        AR: 4
     };  
 
     if (!(pais in diferenciasHorarias)) {  
