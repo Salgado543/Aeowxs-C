@@ -13,9 +13,8 @@ let info = `${emoji} *Te has adentrando en lo profundo de las cuevas*
 > *Obtuviste:*
 
 💫 *Exp:* ${hasil}
-💎 *ShadowCoins:* ${coin}
+🪙 *ShadowCoins:* ${coin}
 🔩 *Hierro:* ${iron}
-🪙 *Oro:* ${gold}
 🕋 *Carbón:* ${coal}
 🪨 *Piedra:* ${stone}`
 
@@ -26,7 +25,6 @@ user.health -= 50
 user.pickaxedurability -= 30
 user.coins += coin
 user.iron += iron
-user.gold += gold
 user.coal += coal
 user.stone += stone
 user.lastmiming = new Date * 1
