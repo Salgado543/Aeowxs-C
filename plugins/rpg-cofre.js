@@ -27,8 +27,6 @@ m.chat, `*⏰ Ya reclamastes tu cofre, regresa en ${msToTime(time - new Date())}
 handler.help = ['cofre'];
 handler.tags = ['rpg'];
 handler.command = ['coffer', 'cofre', 'abrircofre', 'cofreabrir'];
-handler.level = 5;
-handler.register = true
 export default handler;
 
 function pickRandom(list) {
