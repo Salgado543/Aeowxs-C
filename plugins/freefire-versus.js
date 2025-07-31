@@ -106,7 +106,11 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
     const message = `ㅤㅤㅤ *\`${titulo}\`*
 
 🕹꒱ *ʀᴇɢʟᴀs:* ${modalidad}
-⏰꒱ *ʜᴏʀᴀ:* ${horasEnPais.MX} 🇲🇽 ${horasEnPais.CO} 🇨🇴
+⏰꒱ *ʜᴏʀᴀ:* 
+${horasEnPais.MX} 🇲🇽 
+${horasEnPais.CO} 🇨🇴🇪🇨🇵🇪
+${horasEnPais.VE} 🇻🇪🇩🇴
+${horasEnPais.AR} 🇨🇱🇦🇷
 
 ㅤ \`${players}\`
 
