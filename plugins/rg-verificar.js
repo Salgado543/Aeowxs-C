@@ -1,12 +1,5 @@
 import { createHash } from 'crypto'
 
-const fkontak = {
-  key: { participant: '0@s.whatsapp.net' },
-  message: {
-    contactMessage: { displayName: 'Shadow Ultra', vcard: '' }
-  }
-}
-
 let Reg = /\|?(.*)([.|] *?)([0-9]*)$/i
 
 let handler = async function (m, { conn, text, usedPrefix, command }) {
