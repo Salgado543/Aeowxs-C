@@ -1,5 +1,8 @@
-import db from '../lib/database.js'
+/* 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗦𝗵𝗮𝗱𝗼𝘄'𝘀 𝗖𝗹𝘂𝗯 🌺᭄
+𝖢𝗋𝖾𝖺𝖽𝗈 𝗉𝗈𝗋 𝖣𝖾𝗏.𝖢𝗋𝗂𝗌𝗌 🇦🇱
+https://whatsapp.com/channel/0029VauTE8AHltY1muYir31n*/
 
+import db from '../lib/database.js'
 const img = 'https://files.catbox.moe/zggh6y.jpg'
 
 const fkontak2 = {
@@ -39,11 +42,11 @@ if (!who || who === conn.user.jid)
 🆙 *Nivel:* ${user.level}
 ⚜️ *Role:* ${user.role}
 
-> Consulta tus finanzas, sube de nivel y gana recompensas.`.trim()
+Consulta tus finanzas, sube de nivel y gana recompensas.\n`.trim()
 
   const buttons = [
-    { buttonId: `${usedPrefix}retirar all`, buttonText: { displayText: '💰 Retirar Todo' }, type: 1 },
-    { buttonId: `${usedPrefix}d all`, buttonText: { displayText: '🏦 Depositar Todo' }, type: 1 }
+    { buttonId: `${usedPrefix}retirar all`, buttonText: { displayText: '🪙 Retirar Todo' }, type: 1 },
+    { buttonId: `${usedPrefix}d all`, buttonText: { displayText: 'Depositar Todo 🏦' }, type: 1 }
   ]
 
   await conn.sendMessage(m.chat, {
