@@ -30,7 +30,8 @@ global.author = '𝖲𝗁⍺𝖽ᦅ𝗐′𝗌 𝖢𝗅𝗎𝖻'
 global.dev = '𝖯𑄜𝗐𝖾𝗋𝖾𝖽 𝖻𝗒 𝖲𝗁⍺𝖽ᦅ𝗐′𝗌 𝖢𝗅𝗎𝖻'
 global.errorm = 'Error: ${error.message}'
 global.namebot = 'Jota'
-global.textbot = `JOTA BOT MD`
+global.textbot = 'JOTA BOT MD'
+global.textmain = 'JOTABOT'
 global.vs = '1.0.0'
 global.moneda = 'ShadowCoins 🪙'
 
