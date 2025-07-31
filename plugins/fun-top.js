@@ -2,7 +2,7 @@ import util from 'util'
 import path from 'path'
 let user = a => '@' + a.split('@')[0]
 function handler(m, { groupMetadata, command, conn, text, usedPrefix}) {
-if (!text) return conn.reply(m.chat, 'Ejemplo de uso: #top *texto*', m, rcanal)
+if (!text) return conn.reply(m.chat, `*${emojis} Ingresa algún texto.*\n> *Ejemplo:* ${usedPrefix + command} gays`, m, rcanal)
 let ps = groupMetadata.participants.map(v => v.id)
 let a = ps.getRandom()
 let b = ps.getRandom()
@@ -32,11 +32,10 @@ let top = `*${x} Top 10 ${text} ${x}*
 *10. ${user(j)}*`
 m.reply(top, null, { mentions: [a, b, c, d, e, f, g, h, i, j]})
 }
-handler.help = ['top *<texto>*']
+handler.help = ['top']
 handler.command = ['top']
 handler.tags = ['fun']
 handler.group = true
-//handler.register = true
 export default handler
 function pickRandom(list) {
 return list[Math.floor(Math.random() * list.length)]}
