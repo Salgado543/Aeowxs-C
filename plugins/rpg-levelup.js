@@ -18,10 +18,6 @@ const handler = async (m, { conn }) => {
 > Para ascender de nivel nesesitas obtener *${max - user.exp}* puntos de exp más.`.trim();
     return conn.sendMessage(m.chat, {text: message, mentions: [m.sender]}, {quoted: m});
   }
-/*
-  const before = user.level * 1;
-  while (canLevelUp(user.level, user.exp, global.multiplier)) user.level++;
-*/
 
 const before = user.level * 1;
 let safetyCounter = 0;
@@ -30,11 +26,7 @@ while (canLevelUp(user.level, user.exp, global.multiplier) && safetyCounter < 10
   user.level++;
   safetyCounter++;
 }
-/*
-while (canLevelUp(user.level, user.exp, global.multiplier) && safetyCounter < 100) {
-  user.level++;
-  safetyCounter++;
-}*/
+
 
 if (safetyCounter >= 100) console.warn("⚠️ Posible bucle infinito al subir de nivel.");
 
