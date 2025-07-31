@@ -6,12 +6,12 @@ let handler = async (m, { conn, usedPrefix, command }) => {
    const tiempoEspera = 5 * 60 // 5 minutos
   if (cooldowns[m.sender] && Date.now() - cooldowns[m.sender] < tiempoEspera * 1000) {
     const tiempoRestante = segundosAHMS(Math.ceil((cooldowns[m.sender] + tiempoEspera * 1000 - Date.now()) / 1000))
-    m.reply(`🕜 Espera *${tiempoRestante}* para volver a Trabajar.`)
+    m.reply(`*🕜 Espera ${tiempoRestante} para volver a Trabajar.*`)
     return
   }
    let work = works.getRandom()
    user.limit += amount
-   await m.reply(`${work} *${amount} 💎 Diamantes.*`)
+   await m.reply(`*${work} *${amount} ${moneda}*`)
    cooldowns[m.sender] = Date.now()
 }
 
