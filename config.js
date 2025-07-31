@@ -32,7 +32,7 @@ global.errorm = 'Error: ${error.message}'
 global.namebot = 'Jota'
 global.textbot = `JOTA BOT MD`
 global.vs = '1.0.0'
-global.moneda = 'Diamantes 💎'
+global.moneda = 'ShadowCoins 🪙'
 
 
 global.catalogo = fs.readFileSync('./media/catalogo.jpg')
