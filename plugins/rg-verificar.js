@@ -18,7 +18,7 @@ let handler = async function (m, { conn, text, usedPrefix, command }) {
   }
 
   if (!Reg.test(text)) {
-    return m.reply(`*⚠️ Formato incorrecto. Usa:*\n*${usedPrefix + command} Nombre.edad*\nEjemplo: *${usedPrefix + command} Jotasa.20*`)
+    return m.reply(`*⚠️ Formato incorrecto. Usa:*\n*${usedPrefix + command} Nombre.edad*\nEjemplo: *${usedPrefix + command} ${namebot}.20*`)
   }
 
   let [_, name, __, age] = text.match(Reg)
@@ -56,7 +56,7 @@ await m.react('💌')
 
 *Recompensas:*
 
-🪙 15 ${moneda}
+🪙 15 ShadowCoins
 💫 245 Exp
 
 > ✎ Usa *.profile* para ver tu perfil.`.trim()
