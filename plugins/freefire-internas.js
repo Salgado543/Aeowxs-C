@@ -10,7 +10,15 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
     // Nueva validación para formato de 24 horas
     const horaRegex = /^([01]?[0-9]|2[0-3])(:[0-5][0-9])?$/;  
     if (!horaRegex.test(args[0])) {  
-        conn.reply(m.chat, '*⏰ El formato horario es incorrecto.*', m);  
+        conn.reply(m.chat, '*⏰ El formato horario es incorrecto.*\n*Usos horarios:*
+- MX
+- CO
+- EC
+- PE
+- VE
+- DO
+- CL
+- AR', m);  
         return;  
     }  
 
