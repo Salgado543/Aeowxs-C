@@ -1,4 +1,4 @@
-import axios from 'axios'
+/*import axios from 'axios'
 import { createHash } from 'crypto'
 import PhoneNumber from 'awesome-phonenumber'
 import moment from 'moment-timezone'
@@ -90,6 +90,68 @@ let chtxt = `👤 *𝚄𝚂𝙴𝚁:* ${m.pushName || 'Anónimo'}
         }
     }, { quoted: null });
 };
+
+handler.help = ['reg']
+handler.tags = ['rg']
+handler.command = ['verify', 'verificar', 'reg', 'register', 'registrar']
+
+export default handler*/
+
+
+import { createHash } from 'crypto'
+
+let Reg = /\|?(.*)([.|] *?)([0-9]*)$/i
+
+let handler = async function (m, { conn, text, usedPrefix, command }) {
+  let user = global.db.data.users[m.sender]
+
+  if (user.registered === true) {
+    return m.reply(`✅ Ya estás registrado.\n\n¿Deseas volver a registrarte?\nUsa: *${usedPrefix}unreg*`)
+  }
+
+  if (!Reg.test(text)) {
+    return m.reply(`⚠️ Formato incorrecto. Usa:\n*${usedPrefix + command} Nombre.edad*\nEjemplo: *${usedPrefix + command} Juan.20*`)
+  }
+
+  let [_, name, __, age] = text.match(Reg)
+  if (!name) return m.reply('⚠️ El nombre no puede estar vacío.')
+  if (!age) return m.reply('⚠️ La edad no puede estar vacía.')
+  if (name.length > 30) return m.reply('⚠️ El nombre es muy largo (máx 30 caracteres).')
+
+  age = parseInt(age)
+  if (isNaN(age)) return m.reply('⚠️ Edad inválida.')
+  if (age < 5 || age > 100) return m.reply('⚠️ Edad fuera de rango (5-100 años).')
+
+  user.name = name.trim()
+  user.age = age
+  user.regTime = +new Date
+  user.registered = true
+
+  // Bonus por registro
+  user.money += 600
+  user.diamantes += 15
+  user.exp += 245
+  user.joincount += 5
+
+  let sn = createHash('md5').update(m.sender).digest('hex')
+  let info = `
+🎉 *Registro completado*
+
+📌 *Nombre:* ${user.name}
+📆 *Edad:* ${user.age} años
+🆔 *Serie:* ${sn}
+
+🎁 Bonificaciones:
+💎 15 Diamantes
+💰 600 Coins
+✨ 245 Exp
+
+Escribe *.profile* para ver tu perfil.
+`.trim()
+
+  await m.react('✅')
+  await m.reply(info)
+}
 
 handler.help = ['reg']
 handler.tags = ['rg']
