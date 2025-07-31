@@ -17,6 +17,8 @@ let handler = async function (m, { conn, text, usedPrefix, command }) {
     return m.reply(`*✅ Ya estás registrado.*\n*¿Deseas volver a registrarte?*\n> *Usa:* ${usedPrefix}unreg*`)
   }
 
+await m.react('💌')
+
   if (!Reg.test(text)) {
     return m.reply(`*⚠️ Formato incorrecto. Usa:*\n*${usedPrefix + command} Nombre.edad*\nEjemplo: *${usedPrefix + command} Jotasa.20*`)
   }
@@ -45,7 +47,7 @@ let handler = async function (m, { conn, text, usedPrefix, command }) {
 
   const sn = createHash('md5').update(m.sender).digest('hex')
 
-  let shortText = `💚 𝗥𝗲𝗴𝗶𝘀𝘁𝗿𝗼 𝗘𝘅𝗶𝘁𝗼𝘀𝗼 💚`
+  let shortText = `⊱『💚𝆺𝅥 𝗥𝗘𝗚𝗜𝗦𝗧𝗥𝗔𝗗𝗢(𝗔) 𝆹𝅥💚』⊰'`
   let title = dev
   let fullText = `*Registro - ${botname}*
 
