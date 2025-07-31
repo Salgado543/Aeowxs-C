@@ -6,13 +6,9 @@ m.chat, `*⏰ Ya reclamastes tu cofre, regresa en ${msToTime(time - new Date())}
 }
   const img = 'https://files.catbox.moe/qd5v12.jpg';
   const dia = Math.floor(Math.random() * 30);
-  const tok = Math.floor(Math.random() * 10);
-  const ai = Math.floor(Math.random() * 4000);
   const expp = Math.floor(Math.random() * 5000);
 
   global.db.data.users[m.sender].coins += dia;
-  global.db.data.users[m.sender].money += ai;
-  global.db.data.users[m.sender].joincount += tok;
   global.db.data.users[m.sender].exp += expp;
 
   const texto = `
@@ -22,26 +18,9 @@ m.chat, `*⏰ Ya reclamastes tu cofre, regresa en ${msToTime(time - new Date())}
 ╰━━━━━━━━━━━━⬣
 
 ╭━〔 ${botname} 〕⬣
-┃ *${dia} Diamantes* 💎
-┃ *${tok} Tokens* 💰
-┃ *${ai} Coins* 🪙
-┃ *${expp} Exp* ⚡
+┃ *${dia} ${moneda}
+┃ *${expp} Exp* 💫
 ╰━━━━━━━━━━━━⬣`;
-
-  const fkontak = {
-    'key': {
-      'participants': '0@s.whatsapp.net',
-      'remoteJid': 'status@broadcast',
-      'fromMe': false,
-      'id': 'Halo',
-    },
-    'message': {
-      'contactMessage': {
-        'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`,
-      },
-    },
-    'participant': '0@s.whatsapp.net',
-  };
 
   await conn.sendFile(m.chat, img, 'yoshiko.jpg', texto, fkontak);
   // await conn.sendButton(m.chat, texto, wm, img, [['🔰 𝙼𝙴𝙽𝚄', '/menu'] ], fkontak, m)
