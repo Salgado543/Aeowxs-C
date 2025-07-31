@@ -9,7 +9,7 @@ return
 }
 let rsl = Math.floor(Math.random() * 5000)
 cooldowns[m.sender] = Date.now()
-await conn.reply(m.chat, `*${emojis} ${pickRandom(trabajo)}* *${toNum(rsl)} ${rsl} Xp 💫.`, m)
+await conn.reply(m.chat, `*${emojis} ${pickRandom(trabajo)} ${rsl} Xp 💫.*`, m)
 user.exp += rsl
 }
 handler.help = ['prostituirse']
