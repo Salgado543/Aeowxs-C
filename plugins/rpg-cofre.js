@@ -2,7 +2,7 @@ const handler = async (m, {isPrems, conn}) => {
   const time = global.db.data.users[m.sender].lastcofre + 86400000; // 36000000 10 Horas //86400000 24 Horas
   if (new Date - global.db.data.users[m.sender].lastcofre < 86400000) {
 return conn.reply(
-m.chat, `*🐈 Ya Reclamastes Tu Cofre*\nRegresa en *${msToTime(time - new Date())}* para volver a reclamar`, m);
+m.chat, `*⏰ Ya reclamastes tu cofre, regresa en ${msToTime(time - new Date())} para volver a reclamar*`, m);
 }
   const img = 'https://files.catbox.moe/qd5v12.jpg';
   const dia = Math.floor(Math.random() * 30);
@@ -10,7 +10,7 @@ m.chat, `*🐈 Ya Reclamastes Tu Cofre*\nRegresa en *${msToTime(time - new Date(
   const ai = Math.floor(Math.random() * 4000);
   const expp = Math.floor(Math.random() * 5000);
 
-  global.db.data.users[m.sender].diamantes += dia;
+  global.db.data.users[m.sender].coins += dia;
   global.db.data.users[m.sender].money += ai;
   global.db.data.users[m.sender].joincount += tok;
   global.db.data.users[m.sender].exp += expp;
