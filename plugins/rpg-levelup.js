@@ -55,7 +55,7 @@ if (user.level >= MAX_LEVEL) {
   }
 };
 handler.help = ['levelup'];
-handler.tags = ['xp'];
+handler.tags = ['rpg'];
 handler.command = ['nivel', 'lvl', 'levelup', 'level'];
 handler.register = true;
 export default handler;
