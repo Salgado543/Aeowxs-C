@@ -14,7 +14,7 @@ let handler = async function (m, { conn, text, usedPrefix, command }) {
   const user = global.db.data.users[m.sender]
 
   if (user.registered === true) {
-    return m.reply(`*✅ Ya estás registrado.*\n*¿Deseas volver a registrarte?*\n> *Usa:* ${usedPrefix}unreg*`)
+    return m.reply(`*✅ Ya estás registrado.*\n*¿Deseas volver a registrarte?*\n> *Usa:* ${usedPrefix}unreg`)
   }
 
   if (!Reg.test(text)) {
