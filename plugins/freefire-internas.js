@@ -30,7 +30,7 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
     };  
 
     if (!(pais in diferenciasHorarias)) {  
-        conn.reply(m.chat, '*⚠️ El país ingresado no es válido.*', m);  
+        conn.reply(m.chat, '*✖️ El país ingresado no es válido.*\n*Lista de paises:*\n- MX\n- CO\n- EC\n- PE\n- VE\n- DO\n- CL\n- AR', m);  
         return;  
     }  
 
