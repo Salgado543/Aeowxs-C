@@ -24,7 +24,7 @@ let handler = async (m, { conn, usedPrefix }) => {
 
 > ${fecha}
 >Consulta tus finanzas, sube de nivel y gana recompensas.`.trim()
-
+/*
   const buttons = [
     { buttonId: `${usedPrefix}retirar all`, buttonText: { displayText: '💰 Retirar Todo' }, type: 1 },
     { buttonId: `${usedPrefix}d all`, buttonText: { displayText: '🏦 Depositar Todo' }, type: 1 }
@@ -38,6 +38,12 @@ let handler = async (m, { conn, usedPrefix }) => {
     mentions: [who],
     headerType: 4
   }, { quoted: m })
+}
+*/
+
+  await conn.sendFile(m.chat, img, 'perfil.jpg', txt, m, null, {
+    mentions: [who]
+  })
 }
 
 handler.help = ['bank']
