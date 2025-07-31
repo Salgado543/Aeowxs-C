@@ -10,7 +10,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
     return
   }
    let work = works.getRandom()
-   user.limit += amount
+   user.coins += amount
    await m.reply(`*${work} *${amount} ${moneda}*`)
    cooldowns[m.sender] = Date.now()
 }
@@ -27,7 +27,6 @@ function segundosAHMS(segundos) {
   return `${minutos} minutos y ${segundosRestantes} segundos`
 }
 
-// Thanks to FG98
 const works = [
    "Ayudaste a violar al que dijo que los bots se crean por termux ganaste",
    "Trabaja para una empresa militar privada, ganando",
