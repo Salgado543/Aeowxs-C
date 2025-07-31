@@ -51,7 +51,7 @@ let handler = async function (m, { conn, text, usedPrefix, command }) {
 Escribe *.profile* para ver tu perfil.
 `.trim()
 
-  await sendLuffy(conn, m.chat, mensaje, null, perfil, 'https://github.com/Cristiantermidor/ShadowBot-MDv3', '✅ Registro exitoso', 'Bienvenido a Shadow Bot', m)
+  await conn.sendLuffy(m.chat, mensaje, null, perfil, 'https://github.com/Cristiantermidor/ShadowBot-MDv3', '✅ Registro exitoso', 'Bienvenido a Shadow Bot', m)
   await m.react('✅')
 }
 
