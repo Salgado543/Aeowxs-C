@@ -3,7 +3,7 @@ import { sticker } from '../lib/sticker.js'
 let handler = async (m, { conn, text, usedPrefix, command }) => {
   try {
     if (!text) {
-      return conn.reply(m.chat, `*${emojis} Por favor, ingresa un texto para realizar tu sticker.*`, m, rcanal)
+      return conn.reply(m.chat, `*${emojis} Ingresa un texto para realizar tu sticker.*`, m, rcanal)
     }
 
 await m.react('⌛')
