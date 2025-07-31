@@ -46,21 +46,18 @@ let handler = async function (m, { conn, text, usedPrefix, command }) {
   const sn = createHash('md5').update(m.sender).digest('hex')
 
   let shortText = `💚 𝗥𝗲𝗴𝗶𝘀𝘁𝗿𝗼 𝗘𝘅𝗶𝘁𝗼𝘀𝗼 💚`
-  let title = `Commands unlocked for ${name}`
-  let fullText = `
-☕ *Registro completado*
+  let title = dev
+  let fullText = `*Registro - ${botname}*
 
-📌 *Nombre:* ${user.name}
-📆 *Edad:* ${user.age} años
-🆔 *Serie:* ${sn}
+- *Nombre:* ${user.name}
+- *Edad:* ${user.age} años
 
-🎁 Recompensas:
-💎 15 Diamantes
-💰 600 Coins
-✨ 245 Exp
+*Recompensas:*
 
-✎ Usa *.profile* para ver tu perfil.
-`.trim()
+🪙 15 ${moneda}
+💫 245 Exp
+
+> ✎ Usa *.profile* para ver tu perfil.`.trim()
 
   await conn.sendLuffy(m.chat, shortText, title, fullText, img, img, 'https://instagram.com/dev.criss_vx', fkontak)
   await m.react('✅')
