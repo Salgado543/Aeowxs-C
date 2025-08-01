@@ -99,7 +99,7 @@ export default handler;
 let handler = async (m, { conn, usedPrefix: _p }) => {
 
   let usertag = '@' + m.sender.split('@')[0]
-  const vid = 'https://files.catbox.moe/39rx3n.mp4'
+  const img = ' 'https://files.catbox.moe/dmazrr.jpg'
 
   let tags = {
     "xsearch": "𓂂𓏸  𐅹੭੭   *\`Search\`* 🔎 ᦡᦡ",
@@ -157,10 +157,10 @@ Bienvenido al Menú Nsfw* 🔥
 
   await m.react('🔥')
   await conn.sendMessage(m.chat, {
-    video: { url: vid },
+    image: { url: img },
     caption: text,
     mentions: [m.sender],
-    gifPlayback: true
+    gifPlayback: false
   }, { quoted: fkontak })
 }
 
