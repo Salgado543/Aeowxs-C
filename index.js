@@ -1,4 +1,4 @@
-/*import { join, dirname } from 'path';
+import { join, dirname } from 'path';
 import { createRequire } from 'module';
 import { fileURLToPath } from 'url';
 import { setupMaster, fork } from 'cluster';
@@ -83,8 +83,8 @@ process.on('warning', (warning) => {
   }
 });
 
-start('main.js');*/
-
+start('main.js');
+/*
 import { say } from 'cfonts';
 import { fork } from 'child_process';
 import { watchFile } from 'fs';
@@ -176,4 +176,4 @@ watchFile(args[0], { persistent: false }, () => {
   start(args[0]);
 });
 
-start(args[0]);
+start(args[0]);*/
