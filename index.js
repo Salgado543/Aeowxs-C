@@ -1,4 +1,4 @@
-import { join, dirname } from 'path';
+/*import { join, dirname } from 'path';
 import { createRequire } from 'module';
 import { fileURLToPath } from 'url';
 import { setupMaster, fork } from 'cluster';
@@ -83,4 +83,80 @@ process.on('warning', (warning) => {
   }
 });
 
-start('main.js');
+start('main.js');*/
+import { say } from 'cfonts';
+import { spawn, fork } from 'child_process';
+import { watchFile } from 'fs';
+import { createInterface } from 'readline';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+let isRunning = false;
+const args = [join(__dirname, 'main.js'), ...process.argv.slice(2)];
+
+function start(file) {
+  if (isRunning) return;
+  isRunning = true;
+
+  let child = fork(file, process.argv.slice(2));
+
+  child.on('message', data => {
+    console.log('[RECEIVED]', data);
+    switch (data) {
+      case 'reset':
+        console.log('🔴 Reiniciando...');
+        isRunning = false;
+        start(file);
+        break;
+      case 'uptime':
+        child.send(process.uptime());
+        break;
+    }
+  });
+
+  child.on('exit', (code) => {
+    isRunning = false;
+    console.error('🟢 El proceso finalizó con código:', code);
+    start(file);
+  });
+
+  // Asegura que no se acumulen múltiples listeners
+  if (rl.listenerCount('line') === 0) {
+    rl.on('line', line => {
+      child.emit('message', line.trim());
+    });
+  }
+}
+
+const rl = createInterface(process.stdin, process.stdout);
+
+// Leer datos del package.json de forma segura
+let pkg = {};
+try {
+  pkg = await import(join(__dirname, './package.json'), { assert: { type: 'json' } }).then(m => m.default);
+} catch (err) {
+  console.warn('[WARN] No se pudo leer package.json:', err.message);
+}
+
+say({
+  text: [process.argv[0], ...process.argv.slice(2)].join(' '),
+  font: 'console',
+  align: 'center',
+  gradient: ['red', 'magenta']
+});
+
+say({
+  text: pkg.name || 'JOTA BOT',
+  font: 'block',
+  align: 'center',
+  colors: ['red', 'magenta']
+});
+
+watchFile(args[0], { persistent: false }, () => {
+  console.log('\n📦 Archivo actualizado, reiniciando...\n');
+  start(args[0]);
+});
+
+start(args[0]);
