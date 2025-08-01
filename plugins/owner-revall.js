@@ -102,20 +102,20 @@ const handler = async (m, { conn }) => {
   }
 
   try {
-    await m.react('🕒')
+    await m.react('🇦🇱')
     conn.sendPresenceUpdate('composing', m.chat)
 
     const baseDir = path.resolve('./')
     const jsFiles = await getAllJSFiles(baseDir)
 
-    let response = `📦 *Revisión de Syntax Errors en ${jsFiles.length} archivos:*\n\n`
+    let response = `🖤 *Revisión de Syntax Errors en ${jsFiles.length} archivos:*\n\n`
     let hasErrors = false
 
     for (const file of jsFiles) {
       const error = await checkSyntaxOnly(file)
       if (error) {
         hasErrors = true
-        response += `🚩 *Error en:* ${file.replace(baseDir + '/', '')}\n📌 *Tipo:* ${error.name}\n📄 *Mensaje:* ${error.message}\n\n`
+        response += `🗣️ *Error en:* ${file.replace(baseDir + '/', '')}\n📌 *Tipo:* ${error.name}\n📄 *Mensaje:* ${error.message}\n\n`
       }
     }
 
