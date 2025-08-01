@@ -56,7 +56,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     video: { url: vid },
     caption: text,
     mentions: [m.sender],
-    gifPlayback: false
+    gifPlayback: true
   }, { quoted: fkontak })
 }
 
