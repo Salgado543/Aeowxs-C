@@ -25,7 +25,7 @@ function handler(m, { groupMetadata, args }) {
     `*${toM(a)} ¡Enhorabuena! Has sido seleccionado como el ganador del sorteo y ganaste \`${premio}.\` ¡Bien hecho! 🎉*`,
     `*${toM(a)} ¡La suerte te sonríe! Has sido seleccionado como el ganador del sorteo y ganaste \`${premio}.\`*\n*¡Aprovecha al máximo tu premio! 🍨*`,
     `*${toM(a)} ¡No te lo vas a creer! Ganaste \`${premio}\` en el sorteo. ¡Parece que la suerte te ha sonreído!* 😯`,
-    `*${toM(a)} ¡Lo lograste! Ganaste`\${premio}\` en el sorteo. ¡No te rindas, sigue participando y quién sabe, tal vez ganes de nuevo!* 😊`,
+    `*${toM(a)} ¡Lo lograste! Ganaste \`${premio}\` en el sorteo. ¡No te rindas, sigue participando y quién sabe, tal vez ganes de nuevo!* 😊`,
     `*${toM(a)} ¡Ganaste! Eres el afortunado ganador de \`${premio}.\` 🏆*`,
     `*${toM(a)} ¡Enhorabuena! Has sido seleccionado como el ganador del sorteo y te llevas \`${premio}.\` ¡No te preocupes, no te vamos a pedir que lo devuelvas! 🎊*`
   ]
