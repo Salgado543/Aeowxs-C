@@ -37,7 +37,7 @@ await m.react('💌')
   user.regTime = +new Date
   user.registered = true
   user.money += 600
-  user.diamantes += 15
+  user.coins += 15
   user.exp += 245
   user.joincount += 5
 
