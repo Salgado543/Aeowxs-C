@@ -84,17 +84,19 @@ process.on('warning', (warning) => {
 });
 
 start('main.js');*/
+
 import { say } from 'cfonts';
-import { spawn, fork } from 'child_process';
+import { fork } from 'child_process';
 import { watchFile } from 'fs';
 import { createInterface } from 'readline';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+const rl = createInterface(process.stdin, process.stdout);
+const args = [join(__dirname, 'main.js'), ...process.argv.slice(2)];
 
 let isRunning = false;
-const args = [join(__dirname, 'main.js'), ...process.argv.slice(2)];
 
 function start(file) {
   if (isRunning) return;
@@ -103,26 +105,29 @@ function start(file) {
   let child = fork(file, process.argv.slice(2));
 
   child.on('message', data => {
-    console.log('[RECEIVED]', data);
     switch (data) {
       case 'reset':
-        console.log('🔴 Reiniciando...');
+        console.log('🔄 Reiniciando por mensaje...');
         isRunning = false;
         start(file);
         break;
       case 'uptime':
         child.send(process.uptime());
         break;
+      default:
+        console.log('[📩 Mensaje recibido]', data);
     }
   });
 
   child.on('exit', (code) => {
     isRunning = false;
-    console.error('🟢 El proceso finalizó con código:', code);
-    start(file);
+    console.error('🔴 Proceso finalizó con código:', code);
+    if (code !== 0) {
+      console.log('⏳ Reiniciando proceso por error...');
+      start(file);
+    }
   });
 
-  // Asegura que no se acumulen múltiples listeners
   if (rl.listenerCount('line') === 0) {
     rl.on('line', line => {
       child.emit('message', line.trim());
@@ -130,9 +135,7 @@ function start(file) {
   }
 }
 
-const rl = createInterface(process.stdin, process.stdout);
-
-// Leer datos del package.json de forma segura
+// Leer datos de package.json
 let pkg = {};
 try {
   pkg = await import(join(__dirname, './package.json'), { assert: { type: 'json' } }).then(m => m.default);
@@ -140,8 +143,14 @@ try {
   console.warn('[WARN] No se pudo leer package.json:', err.message);
 }
 
-say({
-  text: [process.argv[0], ...process.argv.slice(2)].join(' '),
+// Diseño visual
+say('Jota - MD', {
+  font: 'chrome',
+  align: 'center',
+  gradient: ['red', 'magenta']
+});
+
+say(`Developed By Shadow's Club 🌹\n&&\nDev Criss 🇦🇱`, {
   font: 'console',
   align: 'center',
   gradient: ['red', 'magenta']
@@ -154,6 +163,14 @@ say({
   colors: ['red', 'magenta']
 });
 
+say({
+  text: [process.argv[0], ...process.argv.slice(2)].join(' '),
+  font: 'console',
+  align: 'center',
+  gradient: ['red', 'magenta']
+});
+
+// Reinicio por cambios en el archivo
 watchFile(args[0], { persistent: false }, () => {
   console.log('\n📦 Archivo actualizado, reiniciando...\n');
   start(args[0]);
