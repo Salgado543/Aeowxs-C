@@ -1,17 +1,8 @@
 
-handler.help = ['menunsfw']
-handler.command = /^(menunsfw|comandosnsfw|menuhorny|hornymenu|labiblia|menu18|menu+18|menucaliente|menuporno|pornomenu|menuxxx)$/i;
-handler.fail = null;
-
-export default handler;
-
-*/
-
-
 let handler = async (m, { conn, usedPrefix: _p }) => {
 
   let usertag = '@' + m.sender.split('@')[0]
-  const img = 'https://files.catbox.moe/dmazrr.jpg'
+  const img = 'https://files.catbox.moe/povyqs.jpg'
 
   let tags = {
     "xsearch": "「 *Search* 」🔎",
