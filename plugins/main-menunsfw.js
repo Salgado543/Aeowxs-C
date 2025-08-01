@@ -99,7 +99,7 @@ export default handler;
 let handler = async (m, { conn, usedPrefix: _p }) => {
 
   let usertag = '@' + m.sender.split('@')[0]
-  const img = ' 'https://files.catbox.moe/dmazrr.jpg'
+  const img = 'https://files.catbox.moe/dmazrr.jpg'
 
   let tags = {
     "xsearch": "𓂂𓏸  𐅹੭੭   *\`Search\`* 🔎 ᦡᦡ",
@@ -120,13 +120,13 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     before: `*👋🏻 ¡Hola! ${usertag}
 Bienvenido al Menú Nsfw* 🔥
 
-> \`\`\`${date} || ${hora}\`\`\`
+> \`\`\`${fechaHora}\`\`\`
 `,
 
     header: category => `╭──• ${category}`,
     body: (cmd, emoji) => `│ ${emoji} ${cmd}`,
     footer: '╰──•',
-    after: `> ${club}`
+    after: `> ${dev}`
   }
 
 // ---[ AGRUPACIÓN CMDS X TAGS ]---
