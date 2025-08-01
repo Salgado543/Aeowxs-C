@@ -5,30 +5,30 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
   const img = 'https://files.catbox.moe/povyqs.jpg'
 
   let tags = {
-    "xsearch": "「 *Search* 」🔎",
-    "xdl": "「 *Download* 」♨️",
+    "xsearch": "「 *Search* 」🍄",
+    "xdl": "「 *Download* 」💥",
     "emox": "「 *Gifs* 」🪼",
     "nsfw": "「 *Contenido* 」🍒"
 
   }
 
   let emojis = {
-    "xsearch": "🔎",
-    "xdl": "♨️",
+    "xsearch": "🍄",
+    "xdl": "💥",
     "emox": "🪼",
     "nsfw": "🍒"
   }
 
   let defaultMenu = {
     before: `*👋🏻 ¡Hola!* *${usertag}*
-*Bienvenido al Menú Nsfw* 🔥
+*Bienvenido al Menú Nsfw* 🔞
 
 > \`\`\`${fechaHora}\`\`\`
 `,
 
     header: category => `╭──• ${category}`,
-    body: (cmd, emoji) => `│${emoji}°╎ ${cmd}`,
-    footer: '╰──────────•',
+    body: (cmd, emoji) => `│${emoji}° ${cmd}`,
+    footer: '╰──•',
     after: `> ${dev}`
   }
 
