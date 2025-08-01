@@ -39,7 +39,7 @@ if (!db.data.chats[m.chat].nsfw && m.isGroup) {
 };
 
 handler.help = ['xvsearch'];
-handler.tags = ['search'];
+handler.tags = ['search', 'xsearch'];
 handler.command = ['xvideossearch', 'xvsearch'];
 
 export default handler;
