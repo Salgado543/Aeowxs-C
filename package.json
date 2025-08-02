@@ -1,20 +1,20 @@
 {
 "name": "JotaBot",
-"version": "2.2.5",
+"version": "1.0.0",
 "description": "WhatsApp Bot Multi Device",
 "main": "main.js",
 "type": "module",
 "directories": {
 "lib": "lib",
-"media": "media",
+"src": "src",
 "plugins": "plugins"
 },
 "scripts": {
-"start": "node index.js",
-"qr": "node index.js qr",
-"code": "node index.js code",
+"start": "node main.js",
+"qr": "main.js qr",
+"code": "main.js code",
 "test": "node test.js",
-"test2": "nodemon index.js", 
+"test2": "nodemon main.js",
 "eslint": "eslint .",
 "eslintfix": "eslint --fix ."
 },
@@ -29,7 +29,6 @@
 "bugs": {
 "url": "https://github.com/Shadows-Club/JotaBot/issues"
 },
-
 "license": "GPL-3.0-or-later",
 "dependencies": {
 "@vitalets/google-translate-api": "^8.0.0",
@@ -39,9 +38,11 @@
 "@bochilteam/scraper": "^4.2.4",
 "@bochilteam/scraper-sosmed": "^1.0.5",
 "@xct007/frieren-scraper": "^0.0.2",
+"@ibaraki-douji/pixivts": "^2.4.1",
 "awesome-phonenumber": "^3.4.0",
 "ruhend-scraper": "^7.0.4",
 "gradient-string": "^2.0.2",
+"fluid-spotify.js": "latest",
 "axios": "^1.1.2",
 "acrcloud": "latest",
 "google-play-scraper": "latest",
@@ -50,8 +51,9 @@
 "boxen": "^7.1.1",
 "groq-sdk": "latest",
 "chalk": "^5.1.0",
-"sanzy-spotifydl": "*",
+"sanzy-spotifydl": "",
 "url-file-size": "^1.0.5-1",
+"fluid-spotify.js": "",
 "cheerio": "npm:cheerio@1.0.0-rc.12",
 "express": "^4.18.1",
 "file-type": "^18.0.0",
@@ -74,11 +76,13 @@
 "perf_hooks": "^0.0.1",
 "pino": "^8.6.1",
 "performance-now": "^2.1.0",
+"instagram-url-direct": "^1.0.13",
 "pino-pretty": "^9.1.1",
 "pdfkit": "^0.13.0",
 "qrcode": "^1.5.1",
 "qrcode-terminal": "^0.12.0",
 "readline": "^1.3.0",
+"savetubedl": "^4.0.0",
 "similarity": "^1.2.1",
 "g-i-s": "^2.1.6",
 "socket.io": "^4.5.2",
@@ -89,12 +93,15 @@
 "translate-google-api": "^1.0.4",
 "google-it": "^1.6.4",
 "yt-search": "^2.10.3",
+"hispamemes": "^1.0.7",
+"openai": "^3.3.0",
 "imagemaker.js": "^2.0.4",
 "aptoide-scraper": "github:DIEGO-OFC/dv-aptoide-scraper",
 "megajs": "^1.1.3",
 "mime-types": "^2.1.35",
 "api-dylux": "^1.7.2",
 "yargs": "^17.3.1"
+"xmldom": "^0.8.10"
 },
 "optionalDependencies": {
 "wa-sticker-formatter": "^4.3.2",
