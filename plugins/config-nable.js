@@ -220,8 +220,8 @@ break
    m.reply(`*🫧 La opción* \`\`\`${type}\`\`\` *fue* \`\`\`${isEnable ? 'activada' : 'desactivada'}\`\`\` *exitosamente para* ${isAll ? '*este* \`\`\`Bot\`\`\`' : isUser ? '' : '*este* \`\`\`chat\`\`\`'}`)
 }
 
-handler.help = ['enable', 'disable']
-handler.tags = ['nable']
+handler.help = ['enable', 'disable', 'on', 'off']
+handler.tags = ['config']
 handler.command = /^(enable|disable|on|off|1|0)$/i
 
 export default handler
