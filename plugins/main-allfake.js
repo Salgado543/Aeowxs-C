@@ -31,7 +31,8 @@ let pp = ''
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
 
 //CREADOR Y OTROS
-global.creador = 'Wa.me/51927238856'
+global.creadorN = '51927238856';
+global.creadorM = global.creadorN + '@s.whatsapp.net';
 global.botreal = `${(conn.user.jid == global.conn.user.jid ? 'Oficial' : 'Sub-Bot')}`
 global.ofcbot = `${conn.user.jid.split('@')[0]}`
 global.asistencia = 'Wa.me/573155227977'
