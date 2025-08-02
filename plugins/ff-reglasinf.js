@@ -12,7 +12,7 @@ await conn.sendMessage(m.chat, { image: { url: imageUrl }, caption: message }, {
 }
 }
 handler.help = ['reglasinf'];
-handler.tags = ['ff'];
+handler.tags = ['ff', 'reglas'];
 handler.command = ['infinito', 'reglasinf', 'infreglas'];
 handler.admin = true;
 handler.botAdmin = false;
