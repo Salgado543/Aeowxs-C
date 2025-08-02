@@ -2,7 +2,7 @@
 "name": "JotaBot",
 "version": "2.2.5",
 "description": "WhatsApp Bot Multi Device",
-"main": "index.js",
+"main": "main.js",
 "type": "module",
 "directories": {
 "lib": "lib",
