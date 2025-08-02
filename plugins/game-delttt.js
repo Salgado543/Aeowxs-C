@@ -6,5 +6,7 @@ const handler = async (m, {conn, usedPrefix, command}) => {
   await m.reply('*✔ Se eliminó la sala del juego de tres en raya.*');
 };
 handler.command = /^(delttt|deltt|delxo|deltictactoe)$/i;
+handler.tags = ['game'];
+handler.help = ['delttt'];
 handler.fail = null;
 export default handler;
