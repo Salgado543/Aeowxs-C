@@ -26,7 +26,7 @@ let emojis = {
   main: "🤍",
   info: "☁️",
   config: "⚙️",
-  download: "🫧",
+  dl: "🫧",
   search: "🧋",
   ia: "🤖",
   ff: "👾",
