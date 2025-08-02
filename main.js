@@ -222,7 +222,7 @@ if (opcion == '1' || methodCodeQR) {
 console.log(chalk.bold.green(`\n🌿 ESCANEA EL CÓDIGO QR EXPIRA EN 45 SEGUNDOS`))}
 }
 if (connection == 'open') {
-console.log(chalk.bold.greenBright(`\n❒⸺⸺⸺⸺【• CONECTADO •】⸺⸺⸺⸺❒\n│\n│ ✅ Se ha conectado exitosamente.\n│\n❒⸺⸺⸺⸺【• JOTA-BOT •】⸺⸺⸺⸺❒`))}
+console.log(chalk.bold.greenBright(`\n❒⸺⸺⸺⸺【• CONECTADO •】⸺⸺⸺⸺❒\n│\n│ ✅ Se ha conectado exitosamente.\n│\n❒⸺⸺⸺⸺【•${global.textmain} •】⸺⸺⸺⸺❒`))}
 let reason = new Boom(lastDisconnect?.error)?.output?.statusCode
 if (connection === 'close') {
 if (reason === DisconnectReason.badSession) {
@@ -253,7 +253,7 @@ process.on('uncaughtException', console.error);
 async function connectSubBots() {
 const subBotDirectory = `./${authFileJB}`;
 if (!existsSync(subBotDirectory)) {
-console.log('☁️ Jota Bot MD no tiene Sub-Bots vinculados.');
+console.log(`☕ ${global.textmain2} no tiene Sub-Bots vinculados.`);
 return;
 }
 
@@ -280,7 +280,7 @@ const mainBotAuthFile = global.authFile;
 try {
 const mainBot = await connectionUpdate(mainBotAuthFile);
 global.conns.push(mainBot);
-console.log(chalk.bold.greenBright(`🐼 Jota Bot MD conectado correctamente.`))
+console.log(chalk.bold.greenBright(`🟢 ${global.textmain2} conectado correctamente.`))
 
 await connectSubBots();
 } catch (error) {
