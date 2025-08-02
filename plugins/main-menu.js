@@ -84,8 +84,7 @@ for (let key in emojis) {
     let defaultMenu = {
 
 
-    before: `
-const str = `ㅤㅤ   ꒰꛱ ͜ ꛱|꛱ ꛱͜ |꛱ ꛱͜ |꛱ ͜ ꛱|꛱ ͜ |୨🫧୧꛱|꛱ ꛱͜ |꛱ ꛱͜ |꛱ ͜ ꛱|꛱ ꛱͜ |꛱ ͜ ꒱
+    before: `ㅤㅤ   ꒰꛱ ͜ ꛱|꛱ ꛱͜ |꛱ ꛱͜ |꛱ ͜ ꛱|꛱ ͜ |୨🫧୧꛱|꛱ ꛱͜ |꛱ ꛱͜ |꛱ ͜ ꛱|꛱ ꛱͜ |꛱ ͜ ꒱
 Ꮺ *H𐐫l⍺᳟ ࣪ ᦷᩘ${taguser}*
 *Bienvenido/a*  ࣪  ⿻   al   ࣭  ෨
 ࣭   ✿  *Menú  de  JotaBot*  𓈒𓏸      ☁︎    
