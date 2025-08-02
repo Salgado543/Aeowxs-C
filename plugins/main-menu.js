@@ -17,7 +17,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
     let rtotalreg = Object.values(global.db.data.users).filter(user => user.registered).length
     const readMore = '\u200b'.repeat(850)
 
-    await m.react(emojis)
+    await m.react('🐼')
 
     const vid = 'https://files.catbox.moe/39rx3n.mp4'
 
