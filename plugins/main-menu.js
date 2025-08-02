@@ -1,9 +1,7 @@
 import fs from 'fs'
-import fetch from 'node-fetch'
 import { xpRange } from '../lib/levelling.js'
-import { join } from 'path'
 
-let handler = async (m, { conn, usedPrefix, __dirname, command }) => {
+let handler = async (m, { conn, usedPrefix, command }) => {
   try {
     let { exp, coins, level, role } = global.db.data.users[m.sender]
     let { min, xp, max } = xpRange(level, global.multiplier)
