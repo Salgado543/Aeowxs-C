@@ -88,82 +88,87 @@ start('main.js');*/
 import { join, dirname } from 'path';
 import { createRequire } from 'module';
 import { fileURLToPath } from 'url';
-import { fork } from 'child_process';
-import { cpus } from 'os';
+import { fork } from 'child_process'; // ✅ Usamos child_process en lugar de cluster
+import { watchFile, unwatchFile } from 'fs';
 import cfonts from 'cfonts';
 import { createInterface } from 'readline';
 import yargs from 'yargs';
 import chalk from 'chalk';
 
-console.log(`\n💻 Iniciando Sistema`);
+console.log(\n💻 Iniciando Sistema);
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const require = createRequire(__dirname);
 const { name, description, author, version } = require(join(__dirname, './package.json'));
 const { say } = cfonts;
 const rl = createInterface(process.stdin, process.stdout);
-const cpuCount = cpus().length; // puedes cambiarlo a un número fijo si prefieres
 
 say('Jota - MD', {
-  font: 'chrome',
-  align: 'center',
-  gradient: ['red', 'magenta']
+font: 'chrome',
+align: 'center',
+gradient: ['red', 'magenta']
 });
-say(`Developed By Shadow's Club 🌹\n&&\nDev Criss 🇦🇱`, {
-  font: 'console',
-  align: 'center',
-  gradient: ['red', 'magenta']
+say(Developed By Shadow's Club 🌹\n&&\nDev Criss 🇦🇱, {
+font: 'console',
+align: 'center',
+gradient: ['red', 'magenta']
 });
 
-const workers = [];
+let isRunning = false;
 
-function startWorker(id, file) {
-  const args = [join(__dirname, file), ...process.argv.slice(2)];
+function start(file) {
+if (isRunning) return;
+isRunning = true;
 
-  let p = fork(args[0], args.slice(1), {
-    stdio: ['inherit', 'inherit', 'inherit', 'ipc']
-  });
+let args = [join(__dirname, file), ...process.argv.slice(2)];
+say([process.argv[0], ...args].join(' '), {
+font: 'console',
+align: 'center',
+gradient: ['red', 'magenta']
+});
 
-  console.log(`🚀 Worker ${id} iniciado con PID ${p.pid}`);
-  workers[id] = p;
+let p = fork(args[0], args.slice(1), {
+stdio: ['inherit', 'inherit', 'inherit', 'ipc'] // Para que funcione p.send()
+});
 
-  p.on('message', data => {
-    switch (data) {
-      case 'reset':
-        console.log(`♻️ Reiniciando Worker ${id}`);
-        p.kill();
-        startWorker(id, file);
-        break;
-      case 'uptime':
-        p.send(process.uptime());
-        break;
-    }
-  });
-
-  p.on('exit', (code) => {
-    console.warn(`⚠️ Worker ${id} salió con código ${code}`);
-    setTimeout(() => startWorker(id, file), 1000); // reinicio automático
-  });
-
-  if (!rl.listenerCount('line')) {
-    rl.on('line', line => {
-      p.emit('message', line.trim());
-    });
-  }
+p.on('message', data => {
+switch (data) {
+case 'reset':
+p.kill();
+isRunning = false;
+start(file);
+break;
+case 'uptime':
+p.send(process.uptime());
+break;
 }
+});
 
-function startAllWorkers(file) {
-  for (let i = 0; i < cpuCount; i++) {
-    startWorker(i, file);
-  }
-}
-
-process.on('warning', (warning) => {
-  if (warning.name === 'MaxListenersExceededWarning') {
-    console.warn('🔴 Se excedió el límite de Listeners en:');
-    console.warn(warning.stack);
-  }
+p.on('exit', (code) => {
+isRunning = false;
+if (code === 0) return;
+console.error('❌ Error:\n', code);
+watchFile(args[0], () => {
+unwatchFile(args[0]);
+start(file);
+});
 });
 
 const opts = yargs(process.argv.slice(2)).exitProcess(false).parse();
-startAllWorkers('main.js');
+if (!opts['test']) {
+if (!rl.listenerCount('line')) {
+rl.on('line', line => {
+p.emit('message', line.trim());
+});
+}
+}
+}
+
+process.on('warning', (warning) => {
+if (warning.name === 'MaxListenersExceededWarning') {
+console.warn('🔴 Se excedió el límite de Listeners en:');
+console.warn(warning.stack);
+}
+});
+
+start('main.js');
