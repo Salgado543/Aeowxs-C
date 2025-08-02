@@ -111,14 +111,37 @@ mes = mes.charAt(0).toUpperCase() + mes.slice(1);
 global.fechaHora = `${diaSemana}, ${dia} de ${mes} del ${año} │ Hora: ${hora}`;
 
 //TAGS & STICKERS
+
+ global.usnamebot = await conn.getName(conn.user.id)
+
+  // Nombre personalizado si está registrado, si no, nombre por defecto
+  const gname = await conn.getName(m.sender)
+  const user = global.db.data?.users?.[m.sender] || {}
+  global.usname = user.registered && user.name ? user.name : gname
+
+  // Separador invisible
+  const more = String.fromCharCode(8206)
+  global.readMore = more.repeat(850)
+
+  // Paquete y autor estilizado
+  global.packN = `協会  Sʜʌᴅᴏᴡ′s Cʟᴜʙ  🍁 ࣪ ˖ ∿
+
+🐼 Bot::
+↳ @${global.usnamebot}
+☕ User::`
+
+  global.authN = `\n↳ @${global.usname}`
+}
+
+/*
 global.nombre = conn.getName(m.sender)
 global.taguser = '@' + m.sender.split("@s.whatsapp.net")
 var more = String.fromCharCode(8206)
 global.readMore = more.repeat(850)
 
-global.authsticker = `ꘓꘓ Jota Bot`;
+global.authN = `ꘓꘓ Jota Bot`;
 
-global.packsticker = `ꘓꘓ  𝖲ᥙᥒ𝖿͟ᥣ͟ᥲ𝗋ᥱࣲ 𝖳ᥱᥲ𝗆  彡`
+global.packN= `ꘓꘓ  𝖲ᥙᥒ𝖿͟ᥣ͟ᥲ𝗋ᥱࣲ 𝖳ᥱᥲ𝗆  彡`*/
 
 //FAKES
 global.fkontak = { key: { participants:"0@s.whatsapp.net", "remoteJid": "status@broadcast", "fromMe": false, "id": "Halo" }, "message": { "contactMessage": { "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD` }}, "participant": "0@s.whatsapp.net" }
