@@ -1,51 +1,70 @@
-import fetch from 'node-fetch';
+let handler = async (m, { conn, usedPrefix: _p }) => {
 
-const handler = async (m, {conn, usedPrefix, text}) => {
+  let usertag = '@' + m.sender.split('@')[0]
+  const vid = 'https://files.catbox.moe/6ftr4u.mp4'
 
-  try {
-    await m.react ('🎮');
-    const videoUrl = 'https://files.catbox.moe/6ftr4u.mp4'
-    const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
+  let tags = {
+    "list": "「 *Listas* 」📑",
+    "ff": "「 *Administración* 」🎮"
 
-    const str = `*Hola ${taguser} este es el menú Free Fire*
-
-╭──•「 *Listas* 」📑
-│📑 ${usedPrefix}v4fem
-│📑 ${usedPrefix}v6fem
-│📑 ${usedPrefix}v4masc
-│📑 ${usedPrefix}v6masc
-│📑 ${usedPrefix}v4mixto
-│📑 ${usedPrefix}v6mixto
-│📑 ${usedPrefix}inmasc4
-│📑 ${usedPrefix}infem4
-│📑 ${usedPrefix}inmixto4
-│📑 ${usedPrefix}inmasc6
-│📑 ${usedPrefix}infem6
-│📑 ${usedPrefix}inmixto6
-│📑 ${usedPrefix}gdc
-╰──•
-`.trim();
-
-      await conn.sendMessage(m.chat, {
-            video: { url: videoUrl },
-            caption: str,
-            mentions: [m.sender],
-            gifPlayback: true
-        }, { quoted: fkontak })
-
-  } catch (e) {
-    conn.reply(m.chat,`*❌ Error al enviar el menú.*\n${e}`, m);
   }
-};
 
+  let emojis = {
+    "list": "📑",
+    "ff" : "🎮"
+  }
+
+  let defaultMenu = {
+    before: `*👋🏻 ¡Hola!* *${usertag}*
+*Bienvenido al Menú Free Fire 🔥*
+
+> \`\`\`${fechaHora}\`\`\`
+`,
+
+    header: category => `╭──• ${category}`,
+    body: (cmd, emoji) => `│${emoji}° ${cmd}`,
+    footer: '╰──•',
+    after: `> ${dev}`
+  }
+
+// ---[ AGRUPACIÓN CMDS X TAGS ]---
+  let help = Object.values(global.plugins)
+    .filter(plugin => !plugin.disabled)
+    .map(plugin => ({
+      help: Array.isArray(plugin.help) ? plugin.help : [plugin.help],
+      tags: Array.isArray(plugin.tags) ? plugin.tags : [plugin.tags]
+    }))
+
+  let groups = {}
+  for (let tag in emojis) {
+    groups[tag] = help.filter(plugin => plugin.tags.includes(tag))
+  }
+
+// ---[ CONTRUCCIÓN DEL TXT ]---
+  let text = [
+    defaultMenu.before,
+    ...Object.keys(tags).map(tag =>
+      [
+        defaultMenu.header(tags[tag]),
+        groups[tag].flatMap(plugin => plugin.help.map(cmd => defaultMenu.body(_p + cmd, emojis[tag]))).join('\n'),
+        defaultMenu.footer
+      ].join('\n')
+    ),
+    defaultMenu.after
+  ].join('\n')
+
+  await m.react('🎮')
+  await conn.sendMessage(m.chat, {
+    video: { url: vid },
+    caption: text,
+    mentions: [m.sender],
+    gifPlayback: true
+  }, { quoted: fkontak })
+}
+
+handler.tags = ['main']
+handler.help = ['menulogos']
 handler.command = /^(menuff|comandosff|ffmenu)$/i;
 handler.fail = null;
 
-export default handler;
-
-function clockString(ms) {
-  const h = isNaN(ms) ? '--' : Math.floor(ms / 3600000);
-  const m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60;
-  const s = isNaN(ms) ? '--' : Math.floor(ms / 1000) % 60;
-  return [h, m, s].map((v) => v.toString().padStart(2, 0)).join(':');
-}
+export default handler
