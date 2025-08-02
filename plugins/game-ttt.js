@@ -8,13 +8,13 @@ const handler = async (m, {conn, usedPrefix, command, text}) => {
   }
 
   if (!text) {
-    return m.reply(`*😸 Se requiere poner el nombre de la sala de juego*\n\n*💡 Ejemplo:*\n${usedPrefix + command} nueva sala`, m.chat);
+    return m.reply(`*${emojis} Coloca el nombre de la sala del juego para continuar.*\n> *Ejemplo:* ${usedPrefix + command} new sala`, m, rcanal);
   }
 
   let room = Object.values(conn.game).find((room) => room.state === 'WAITING' && (text ? room.name === text : true));
 
   if (room) {
-    await m.reply('*🧡 Iniciando el juego, un jugador se unió a la partida..*');
+    await m.reply('*🕹️ Un usuario se unió a la partida, iniciando el juego...*');
     room.o = m.chat;
     room.game.playerO = m.sender;
     room.state = 'PLAYING';
@@ -61,7 +61,8 @@ Turno de @${room.game.currentTurn.split('@')[0]}
     };
 
     const imgplay = `https://cope-cdnmed.agilecontent.com/resources/jpg/8/9/1590140413198.jpg`;
-    conn.reply(m.chat, `*🕹 TRES EN RAYA 🎮*\n\n• Esperando al segundo jugador\n• Para borrar o salirse de la partida use el comando *${usedPrefix}delttt*\n\n- Para unirse a la partida escriba: (${usedPrefix + command} ${text})`, m);
+    conn.reply(m.chat, `*🎮 TRES EN RAYA 🎮*\n\n🧋 Esperando al segundo jugador...\n\n
+*Unirse a la sala:*\n> *Usa:* ${usedPrefix + command} ${text}\n*Salir o eliminar sala*\n> *Usa:* ${usedPrefix}delttt`, m);
     conn.game[room.id] = room;
   }
 };
