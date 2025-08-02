@@ -181,7 +181,7 @@ start(args[0]);*/
 import { join, dirname } from 'path';
 import { createRequire } from 'module';
 import { fileURLToPath } from 'url';
-import cluster from 'cluster'; // ✅ Cambio aquí
+import cluster from 'cluster';
 import { watchFile, unwatchFile } from 'fs';
 import cfonts from 'cfonts';
 import { createInterface } from 'readline';
@@ -220,8 +220,8 @@ function start(file) {
     gradient: ['red', 'magenta']
   });
 
-  cluster.setupMaster({ exec: args[0], args: args.slice(1) }); // ✅ Cambio aquí
-  let p = cluster.fork(); // ✅ Cambio aquí
+  cluster.setupMaster({ exec: args[0], args: args.slice(1) }); // no tocar hijito. 🗣️
+  let p = cluster.fork();
 
   p.on('message', data => {
     switch (data) {
