@@ -5,13 +5,15 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
 
   let tags = {
     "list": "「 *Listas* 」📑",
-    "ff": "「 *Administración* 」🎮"
+    "reglas": "「 *Reglas* 」📜",
+    "select": "「 *Select* 」🎮"
 
   }
 
   let emojis = {
     "list": "📑",
-    "ff" : "🎮"
+    "reglas" : "📜",
+    "select": "🎮"
   }
 
   let defaultMenu = {
