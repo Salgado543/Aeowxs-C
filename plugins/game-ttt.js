@@ -61,8 +61,7 @@ Turno de @${room.game.currentTurn.split('@')[0]}
     };
 
     const imgplay = `https://cope-cdnmed.agilecontent.com/resources/jpg/8/9/1590140413198.jpg`;
-    conn.reply(m.chat, `*🎮 TRES EN RAYA 🎮*\n\n🧋 Esperando al segundo jugador...\n\n
-*Unirse a la sala:*\n> *Usa:* ${usedPrefix + command} ${text}\n*Salir o eliminar sala*\n> *Usa:* ${usedPrefix}delttt`, m);
+    conn.reply(m.chat, `*🎮 TRES EN RAYA 🎮*\n\n🧋 Esperando al segundo jugador...\n\n*Unirse a la sala:*\n> *Usa:* ${usedPrefix + command} ${text}\n*Salir o eliminar sala*\n> *Usa:* ${usedPrefix}delttt`, m);
     conn.game[room.id] = room;
   }
 };
