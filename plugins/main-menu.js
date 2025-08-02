@@ -135,7 +135,13 @@ ${readMore}
     mentions: [m.sender, creadorM],
     gifPlayback: true
   }, { quoted: fkontak })
+
+  } catch (e) {
+    console.error(e)
+    await m.reply('*❌ Hubo un error al generar el menú.*')
+  }
 }
+
 
 handler.command = /^(menu|menú|memu|memú|help|info|comandos|2help|menu1.2|ayuda|commands|commandos|cmd)$/i;
 export default handler
