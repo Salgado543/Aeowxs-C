@@ -16,7 +16,7 @@ let handler = async (m, { conn, args }) => {
       if (!media) return conn.reply(m.chat, mensajeError, m, rcanal)
 
       try {
-        stiker = await sticker(media, false, global.packname, global.author)
+        stiker = await sticker(media, false, global.packN, global.authorN)
       } catch (e) {
         console.error('❌ Error al generar sticker directo:', e)
         let url
@@ -29,12 +29,12 @@ let handler = async (m, { conn, args }) => {
           return conn.reply(m.chat, '❌ No se pudo obtener una URL válida del archivo.', m)
         }
 
-        stiker = await sticker(false, url, global.packname, global.author)
+        stiker = await sticker(false, url, global.packN, global.authorN)
       }
 
     } else if (args[0]) {
       if (!isValidUrl(args[0])) return conn.reply(m.chat, '❌ La *URL* es inválida.', m)
-      stiker = await sticker(false, args[0], global.packname, global.author)
+      stiker = await sticker(false, args[0], global.packN, global.authorN)
     } else {
       return conn.reply(m.chat, mensajeError, m, rcanal)
     }
