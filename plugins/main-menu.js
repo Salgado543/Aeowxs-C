@@ -51,7 +51,7 @@ const tagTitles = {
   main: "Menus",
   info: "Info",
   config: "Ajustes",
-  download: "Download",
+  dl: "Download",
   search: "Search",
   ia: "Inteligencias",
   ff: "Free Fire",
