@@ -1,7 +1,7 @@
 import { join, dirname } from 'path';
 import { createRequire } from 'module';
 import { fileURLToPath } from 'url';
-import * as cluster from 'cluster';
+import { fork } from 'child_process';
 import { watchFile, unwatchFile } from 'fs';
 import cfonts from 'cfonts';
 import { createInterface } from 'readline';
@@ -40,8 +40,9 @@ function start(file) {
     gradient: ['red', 'magenta']
   });
 
-  cluster.setupMaster({ exec: args[0], args: args.slice(1) });
-  let p = cluster.fork();
+  let p = fork(args[0], args.slice(1), {
+    stdio: ['inherit', 'inherit', 'inherit', 'ipc']
+  });
 
   p.on('message', data => {
     switch (data) {
@@ -70,7 +71,7 @@ function start(file) {
   if (!opts['test']) {
     if (!rl.listenerCount('line')) {
       rl.on('line', line => {
-        p.emit('message', line.trim());
+        p.send(line.trim());
       });
     }
   }
