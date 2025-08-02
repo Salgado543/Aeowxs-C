@@ -181,7 +181,7 @@ start(args[0]);*/
 import { join, dirname } from 'path';
 import { createRequire } from 'module';
 import { fileURLToPath } from 'url';
-import cluster from 'cluster';
+import { fork } from 'child_process';
 import { watchFile, unwatchFile } from 'fs';
 import cfonts from 'cfonts';
 import { createInterface } from 'readline';
@@ -220,8 +220,9 @@ function start(file) {
     gradient: ['red', 'magenta']
   });
 
-  cluster.setupMaster({ exec: args[0], args: args.slice(1) }); // no tocar hijito. 🗣️
-  let p = cluster.fork();
+  let p = fork(args[0], args.slice(1), {
+    stdio: ['inherit', 'inherit', 'inherit', 'ipc'] // Para que funcione p.send()
+  });
 
   p.on('message', data => {
     switch (data) {
