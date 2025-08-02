@@ -7,7 +7,6 @@ let handler = async (m, { conn, usedPrefix, __dirname, command }) => {
   try {
     let { exp, coins, level, role } = global.db.data.users[m.sender]
     let { min, xp, max } = xpRange(level, global.multiplier)
-    let name = await conn.getName(m.sender)
 
     exp = exp || '0'
     role = role || 'Novato'
@@ -21,8 +20,6 @@ let handler = async (m, { conn, usedPrefix, __dirname, command }) => {
     const readMore = '\u200b'.repeat(850)
 
     await m.react(emojis)
-
-    let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
 
     const vid = 'https://files.catbox.moe/39rx3n.mp4'
 
