@@ -11,7 +11,7 @@ await conn.sendMessage(m.chat, { image: { url: imageUrl }, caption: message }, {
 }
 }
 handler.help = ['reglasclk'];
-handler.tags = ['ff'];
+handler.tags = ['ff', 'reglas'];
 handler.command = ['clk', 'reglasclk', 'clkreglas'];
 handler.admin = true;
 handler.botAdmin = false;
