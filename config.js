@@ -33,6 +33,7 @@ global.errorm = 'Error: ${error.message}'
 global.namebot = 'Jota'
 global.textbot = 'JOTA BOT MD'
 global.textmain = 'JOTABOT'
+global.textmain2 = 'Jota Bot MD'
 global.vs = '1.0.0'
 global.moneda = 'ShadowCoins 🪙'
 
