@@ -1,7 +1,7 @@
 import { join, dirname } from 'path';
 import { createRequire } from 'module';
 import { fileURLToPath } from 'url';
-import { setupMaster, fork } from 'cluster';
+import * as cluster from 'cluster';
 import { watchFile, unwatchFile } from 'fs';
 import cfonts from 'cfonts';
 import { createInterface } from 'readline';
@@ -40,8 +40,8 @@ function start(file) {
     gradient: ['red', 'magenta']
   });
 
-  setupMaster({ exec: args[0], args: args.slice(1) });
-  let p = fork();
+  cluster.setupMaster({ exec: args[0], args: args.slice(1) });
+  let p = cluster.fork();
 
   p.on('message', data => {
     switch (data) {
