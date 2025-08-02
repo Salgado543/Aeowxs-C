@@ -53,34 +53,32 @@ let emojis = {
 };
 
 const tagTitles = {
-  main: "Mᧉ𝗇𝗎𝗌",
-  info: "𝖨𝗇ẜᨣ",
-  jadibot: "𝖩⍺𝖽ı-ᗷᨣƚ𝗌",
-  config: "𝖮𝗇-𝖮ẜẜ",
-  download: "𝖣ᨣ𝗐𝗇𝗅ᨣ⍺𝖽",
-  search: "𝖲ᧉ⍺ꭇ𝖼𝗁",
-  ia: "𝖨𝗇ƚᧉ𝖨ı𝗀ᧉ𝗇𝖼ı𝖺𝗌",
-  ff: "𝖥𝗋ᧉᧉ 𝖥ı𝗋ᧉ",
-  frases: "𝖥𝗋⍺𝗌ᧉ𝗌",
-  converter: "𝖢ᨣ𝗇𝗏ᧉ𝗋ƚᧉ𝗋𝗌",
-  tools: "𝖳ᨣᨣ𝗅𝗌",
-  gc: "𝖦ꭇ𝗎𝗉ᨣ𝗌",
-  efectos: "𝖤ẜᧉ𝖼ƚ𝗌",
-  fun: "𝖥𝗎𝗇",
-  game: "𝖩𝗎ᧉ𝗀ᨣ𝗌",
-  anime: "𝖠𝗇ı𝗆ᧉ",
-  logos: "𝖫ᨣ𝗀𑄙𝗌",
-  maker: "𝖬⍺𝗄ᧉ𝗋",
-  emox: "𝖦ıẜ𝗌-𝖭𝗌ẜɯ",
-  nsfw: "𝖭𝗌ẜɯ",
-  sticker: "𝖲ƚ𝗂𝖼𝗄ᧉꭇ",
-  rpg: "𝖱𝗉𝗀",
-  rg: "𝖱ᧉ𝗀ı𝗌𝗍𝗋ᨣ",
-  owner: "𝖮ɯ𝗇ᧉꭇ"
+  main: "Menus",
+  info: "Info",
+  config: "Ajustes",
+  download: "Download",
+  search: "Search",
+  ia: "Inteligencias",
+  ff: "Free Fire",
+  frases: "Frases",
+  converter: "Converters",
+  tools: "Herramientas",
+  gc: "Grupos",
+  efectos: "Efectos",
+  fun: "Diversión",
+  game: "Juegos",
+  anime: "Random",
+  logos: "Logos",
+  emox: "Gifs-Nsfw",
+  nsfw: "Nsfw",
+  sticker: "Sticker",
+  rpg: "Rpg",
+  rg: "Registro",
+  owner: "Owner"
 };
 
 for (let key in emojis) {
-  tags[key] = `𓂂𓏸  𐅹੭੭   *\`${tagTitles[key]}\`*  ${emojis[key]}ᩚ꤬ᰨᰍ`;
+  tags[key] = `「 *${tagTitles[key]}* 」 ${emojis[key]}`;
 }
 
     let defaultMenu = {
@@ -104,10 +102,10 @@ for (let key in emojis) {
 ㅤ ㅤ   乂 *ʟɪsᴛᴀ ᴅᴇ ᴄᴏᴍᴀɴᴅᴏs* 乂
 `,
 
-      header: category => ` ${category}`,
-      body: (cmd, emoji) => `ര ׄ ${emoji}˚ ${cmd}`,
-      footer: '',
-      after: `> ${club}`
+      header: category => `╭──•${category}`,
+      body: (cmd, emoji) => `│${emoji} ${cmd}`,
+      footer: '╰──•',
+      after: `> ${dev}`
   }
 
     let help = Object.values(global.plugins)
@@ -135,26 +133,12 @@ for (let key in emojis) {
     ].join('\n')
 
 
-        await conn.sendMessage(m.chat, {
-            video: { url: vid.getRandom() }, // Vid
-            caption: menuText,
-            contextInfo: {
-                mentionedJid: [m.sender, creadorM],
-                isForwarded: true,
-                forwardingScore: 999,
-                externalAdReply: {
-                    title: '⏤͟͞ू⃪ ፝͜⁞Sʜᴀᴅᴏᴡ✰⃔࿐\nNᴜᴇᴠᴀ Vᴇʀsɪᴏɴ Uʟᴛʀᴀ 🌤️',
-                    thumbnailUrl: perfil,
-                    mediaType: 1,
-                    renderLargerThumbnail: false,
-                },
-            },
-            gifPlayback: true,
-            gifAttribution: 0
-        }, { quoted: null })
-    } catch (e) {
-        await m.reply(`*✖️ Ocurrió un error al enviar el menú.*\n\n${e}`)
-    }
+   await conn.sendMessage(m.chat, {
+    video: { url: vid },
+    caption: text,
+    mentions: [m.sender, creadorM],
+    gifPlayback: true
+  }, { quoted: fkontak })
 }
 
 handler.command = /^(menu|menú|memu|memú|help|info|comandos|2help|menu1.2|ayuda|commands|commandos|cmd)$/i;
