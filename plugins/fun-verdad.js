@@ -19,7 +19,7 @@ const caption = `*⚄︎.- ${pickRandom(global.verdad)}*`;
 
 handler.help = ['verdad'];
 handler.tags = ['fun'];
-handler.command = /^verdad2$/i;
+handler.command = ['verdad'];
 
 export default handler;
 
