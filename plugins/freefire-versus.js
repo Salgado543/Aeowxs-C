@@ -126,7 +126,7 @@ ${iconos2.map(icono => `${icono}˚ `).join('\n')}
 };
 
 handler.help = ['v4fem', 'v4masc', 'v4mixto', 'v6fem', 'v6masc', 'v6mixto'];
-handler.tags = ['ff'];
+handler.tags = ['ff', 'list'];
 handler.command = /^(v4fem|vsfem4|v4masc|vsmasc4|v4mixto|vsmixto4|v6fem|vsfem6|v6masc|vsmasc6|v6mixto|vsmixto6)$/i;
 
 export default handler;
