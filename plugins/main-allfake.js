@@ -128,7 +128,7 @@ global.fechaHora = `${diaSemana}, ${dia} de ${mes} del ${año} │ Hora: ${hora}
 🐼 Bot::
 ↳ @${global.usnamebot}
 ☕ User::`
-  global.authN = `\n↳ @${global.usname}`
+  global.authorN = `\n↳ @${global.usname}`
 
 /*
 global.nombre = conn.getName(m.sender)
