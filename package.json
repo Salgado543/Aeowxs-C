@@ -46,7 +46,7 @@
 "acrcloud": "latest",
 "google-play-scraper": "latest",
 "form-data": "^4.0.0",
-"cfonts": "latest",
+"cfonts": "^3.3.0",
 "boxen": "^7.1.1",
 "groq-sdk": "latest",
 "chalk": "^5.1.0",
