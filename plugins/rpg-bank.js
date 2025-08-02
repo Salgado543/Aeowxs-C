@@ -15,7 +15,7 @@ const fkontak2 = {
   message: {
     locationMessage: {
       name: `Banco - ${botname}`,
-      jpegThumbnail: await (await fetch('https://files.catbox.moe/3tw7fq.png')).buffer()
+      jpegThumbnail: await (await fetch('https://cdn-sunflareteam.vercel.app/images/72184a0f56.png')).buffer()
     }
   },
   participant: "0@s.whatsapp.net"
@@ -67,7 +67,7 @@ Consulta tus finanzas, sube de nivel y gana recompensas.\n`.trim()
 
 handler.help = ['bank']
 handler.tags = ['rpg']
-handler.command = ['bank', 'banco']
+handler.command = ['bank', 'banco', 'banko']
 handler.register = true
 handler.group = true
 
