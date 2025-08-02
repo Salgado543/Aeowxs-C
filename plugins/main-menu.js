@@ -136,7 +136,7 @@ ${readMore}
 
    await conn.sendMessage(m.chat, {
     video: { url: vid },
-    caption: text,
+    caption: menuText,
     mentions: [m.sender, creadorM],
     gifPlayback: true
   }, { quoted: fkontak })
