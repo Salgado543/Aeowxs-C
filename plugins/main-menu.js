@@ -47,7 +47,7 @@ let emojis = {
   owner: "☕"
 };
 
-const tagTitles = {
+let tags = {
   main: "Menus",
   info: "Info",
   config: "Ajustes",
