@@ -78,7 +78,7 @@ let handler = async (m, { conn }) => {
 };
 
 handler.help = ['gdc'];
-handler.tags = ['ff'];
+handler.tags = ['ff', 'list'];
 handler.command = ['gdc', 'guerradeclanes'];
 handler.admin = true;
 handler.botAdmin = false;
