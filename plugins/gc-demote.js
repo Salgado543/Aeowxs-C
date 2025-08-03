@@ -9,7 +9,7 @@ const handler = async (m, {conn, usedPrefix, text}) => {
   } else if (!isNaN(text)) {
     var number = text;
   }
-  if (!text && !m.quoted) return conn.reply(m.chat, `*${emojis} Menciona a un usuario para quitar admin.*`, m, rcanal);
+  if (!text && !m.quoted) return conn.reply(m.chat, `*${emojis} Menciona a un usuario para quitar admin.*`, m);
   if (number.length > 13 || (number.length < 11 && number.length > 0)) return conn.reply(m.chat, `*⚠️ El usuario ingresado es incorrecto.*`, m);
   try {
     if (text) {
@@ -23,18 +23,18 @@ const handler = async (m, {conn, usedPrefix, text}) => {
   } finally {
     const groupMetadata = await conn.groupMetadata(m.chat);
     if (user === groupMetadata.owner) {
-      return conn.reply(m.chat, `*⚠️ No se puede degradar al creador del grupo.*`, m, rcanal);
+      return conn.reply(m.chat, `*⚠️ No se puede degradar al creador del grupo.*`, m);
     }
     conn.groupParticipantsUpdate(m.chat, [user], 'demote');
-    conn.reply(m.chat, `*✅ Usuario Degradado*`, m, rcanal);
+    conn.reply(m.chat, `*✅ Usuario Degradado*`, m);
   }
 };
 
-handler.help = ['*<@tag>*'].map((v) => 'demote ' + v);
+handler.help = ['demote'];
 handler.tags = ['gc'];
-handler.command = /^(demote|quitarpoder|quitaradmin|quitarpija)$/i;
+handler.command = /^(demote|quitarpoder|quitaradmin)$/i;
 handler.group = true;
 handler.admin = true;
 handler.botAdmin = true;
-//handler.fail = null;
+handler.fail = null;
 export default handler;
