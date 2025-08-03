@@ -9,7 +9,7 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
   const mimetype = msg?.mimetype || ''
   const isQuotedImage = mimetype.startsWith('image/')
 
-const gname = await conn.getName(userId)
+const gname = await conn.getName(m.sender)
   const name = user.registered && user.name ? user.name : gname
 
   const basePrompt = `Eres una inteligencia artificial avanzada llamado ${nameai}, desarrollado por Dev.Criss 🇦🇱. Eres amigable, ingenioso, divertido y muy curioso. Siempre hablas en español.
@@ -33,7 +33,7 @@ Evita respuestas innecesarias como "soy una IA", "no tengo sentimientos", o "no 
       const resultText = imageAnalysis?.result || 'No se pudo obtener una descripción válida.'
       const prompt = `${basePrompt}\n\n🖼 La imagen contiene: ${resultText}\n\n📌 ${query}`
 
-      const response = await askLuminAI(query, username, prompt)
+      const response = await askLuminAI(query, name, prompt)
       return conn.reply(m.chat, response, m)
     }
 
@@ -78,7 +78,7 @@ async function askLuminAI(content, username, prompt) {
   try {
     const { data } = await axios.post("https://Luminai.my.id", {
       content,
-      user: username,
+      user: name,
       prompt,
       webSearchMode: false
     }, {
