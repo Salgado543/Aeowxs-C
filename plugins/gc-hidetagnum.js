@@ -13,7 +13,7 @@ const handler = async (m, { conn, args, participants, usedPrefix, command }) => 
   if (usuariosConPrefijo.length === 0) 
     return m.reply(`*${emojis} No hay ningún número con el prefijo \`+${prefijo}\` en este grupo.*`);
 
-  const listaUsuarios = usuariosConPrefijo.map((v) => '${emotg} @' + v.replace(/@.+/, '')).join('\n');
+  const listaUsuarios = usuariosConPrefijo.map((v) => `${emotg} @` + v.replace(/@.+/, '')).join('\n');
 
   conn.reply(
     m.chat, 
