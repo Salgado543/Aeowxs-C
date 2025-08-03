@@ -35,6 +35,8 @@ const handler = async (m, { conn, text, command, usedPrefix }) => {
   }
 };
 
+handler.help = ['unwarn'];
+handler.tags = ['gc'];
 handler.command = ['delwarn', 'unwarn'];
 handler.group = true;
 handler.admin = true;
