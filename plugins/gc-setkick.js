@@ -8,8 +8,8 @@ conn.reply(m.chat, '*✅ La eliminación del grupo ha sido configurada*', m)
     conn.reply(m.chat, `*${emojis} ¡Escribe el mensaje de eliminación!*\n✎ *Puedes usar:*\n\n- *\`@user\`* (Mención al Usuario)\n- *\`@group\`* (Nombre del Grupo)\n- *\`@desc\`* (Descripción del Grupo)\n\n> ${emojis} Los @ son opcionales`, m)
 }
 }
-handler.help = ['setkick @user + texto']
-handler.tags = ['group']
+handler.help = ['setkick']
+handler.tags = ['gc']
 handler.command = ['setkick', 'setremove'] 
 handler.botAdmin = true
 handler.admin = true
