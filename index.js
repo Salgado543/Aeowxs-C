@@ -89,11 +89,10 @@ start('main.js');*/
 import { join, dirname } from 'path';
 import { createRequire } from 'module';
 import { fileURLToPath } from 'url';
-import { setupMaster, fork } from 'cluster';
-import { watchFile, unwatchFile } from 'fs';
-import cfonts from 'cfonts';
+import { fork } from 'child_process';
 import { createInterface } from 'readline';
 import yargs from 'yargs';
+import cfonts from 'cfonts';
 import chalk from 'chalk';
 
 console.log(`\n💻 Iniciando Sistema`);
@@ -128,8 +127,9 @@ function start(file) {
     gradient: ['red', 'magenta']
   });
 
-  setupMaster({ exec: args[0], args: args.slice(1) });
-  let p = fork();
+  let p = fork(args[0], args.slice(1), {
+    stdio: ['inherit', 'inherit', 'inherit', 'ipc']
+  });
 
   p.on('message', data => {
     switch (data) {
@@ -147,18 +147,17 @@ function start(file) {
   p.on('exit', (code) => {
     isRunning = false;
     if (code === 0) return;
-    console.error('❌ Error:\n', code);
-    watchFile(args[0], () => {
-      unwatchFile(args[0]);
-      start(file);
-    });
+
+    console.error(chalk.redBright('\n❌ El bot se ha detenido por un error inesperado.'));
+    console.error(chalk.yellow(`📄 Código de salida: ${code}`));
+    console.error(chalk.blueBright('💡 Revisa el archivo main.js para solucionar el problema.\n'));
   });
 
   const opts = yargs(process.argv.slice(2)).exitProcess(false).parse();
   if (!opts['test']) {
     if (!rl.listenerCount('line')) {
       rl.on('line', line => {
-        p.emit('message', line.trim());
+        p.send(line.trim());
       });
     }
   }
