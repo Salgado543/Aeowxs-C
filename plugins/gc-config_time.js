@@ -15,14 +15,12 @@ const handler = async (m, {conn, isAdmin, isOwner, args, usedPrefix, command}) =
   }[(args[0] || '')];
   if (isClose === undefined) {
           const caption = `
-*${emoji3} Ingresa una opción válida seguido del número de horas.*
+*${emojis} Ingresa una opción válida seguido del número de horas.*
+> *Ejemplo:*
+> ${usedPrefix + command} *open 1*
+> ${usedPrefix + command} *close 1*
 
-*💡 Ejemplo:*
-${usedPrefix + command} *open 1*
-${usedPrefix + command} *close 1*
-
-> ⍴ᥲrᥲ 𝗊ᥙᥱ ᥱᥣ grᥙ⍴᥆ ᥱs𝗍ᥱ *abierto/cerrado* ⍴᥆r ᥙᥒᥲ һ᥆rᥲ.
-`;
+Para que el grupo estee *abierto/cerrado* por una hora.`;
     m.reply(caption);
           throw false;
   }
@@ -38,7 +36,7 @@ ${usedPrefix + command} *close 1*
     }, timeoutset);
   }
 };
-handler.help = ['grouptime *<open/close>* *<num>*'];
+handler.help = ['grouptime'];
 handler.tags = ['gc'];
 handler.command = /^(grouptime|gctime)$/i;
 handler.botAdmin = true;
