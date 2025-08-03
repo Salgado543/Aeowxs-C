@@ -9,8 +9,7 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
   const mimetype = msg?.mimetype || ''
   const isQuotedImage = mimetype.startsWith('image/')
 
-  const username = await conn.getName(m.sender) || 'Usuario'
-  const bot = botname || 'Shadow AI'
+  const username = usname
 
   const basePrompt = `Eres una inteligencia artificial avanzada llamado ${nameai}, desarrollado por Dev.Criss 🇦🇱. Eres amigable, ingenioso, divertido y muy curioso. Siempre hablas en español.
 
