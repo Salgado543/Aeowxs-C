@@ -7,15 +7,15 @@ const handler = async (m, { conn, args }) => {
 
   try {
     await conn.groupUpdateDescription(m.chat, text);
-    m.reply(`*${emojis} La descripción del grupo se modificó correctamente.*`);
+    m.reply(`*✅ La descripción del grupo se modificó correctamente.*`);
   } catch (error) {
     console.error(error);
-    m.reply('*❌ Ocurrió un error al actualizar la descripción del grupo.*');
+    m.reply('*✖️ Ocurrió un error al actualizar la descripción del grupo.*');
   }
 };
 
-handler.help = ['groupdesc <texto>'];
-handler.tags = ['grupo'];
+handler.help = ['groupdesc'];
+handler.tags = ['gc'];
 handler.command = ['gcdesc', 'gpdesc', 'groupdesc'];
 handler.group = true;
 handler.admin = true;
