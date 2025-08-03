@@ -13,11 +13,9 @@ const handler = async (m, { conn, text, command, usedPrefix }) => {
     return m.reply(warntext, m.chat, { mentions: conn.parseMention(warntext) });
   }
 
-  // Asegurarse de que la estructura exista
   const groupData = global.db.data.chats[m.chat] = global.db.data.chats[m.chat] || {};
   groupData.warn = groupData.warn || {};
 
-  // Verificar si el usuario tiene advertencias en este grupo
   const warns = groupData.warn[who] || 0;
 
   if (warns === 0) {
@@ -32,7 +30,6 @@ const handler = async (m, { conn, text, command, usedPrefix }) => {
     { mentions: [who] }
   );
 
-  // (Opcional) Limpia advertencia global antigua si aún existe
   if (global.db.data.users[who]?.warn !== undefined) {
     delete global.db.data.users[who].warn;
   }
