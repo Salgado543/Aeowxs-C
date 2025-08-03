@@ -43,7 +43,7 @@ const logos = {
 
 const handler = async (m, { conn, args, command }) => {
   const texto = args.join(' ').trim();
-  if (!texto) throw `*${xlogos} Por favor, igresa un texto para elaborar su logo.*`;
+  if (!texto) throw `*${emojis} Ingresa un texto para elaborar su logo.*`;
   if (texto.length > 50) throw '*⚠️ El texto es muy largo, máximo 50 carácteres*';
 
   const url = logos[command.toLowerCase()];
