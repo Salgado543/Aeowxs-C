@@ -142,7 +142,7 @@ Evita respuestas innecesarias como "soy una IA", "no tengo sentimientos", o "no 
 
     // ✅ Procesar texto
     if (!text) {
-      return conn.reply(m.chat, `*${emoji} Escribe una pregunta para que la IA pueda ayudarte.*`, m, rcanal)
+      return conn.reply(m.chat, `*${emojis} Escribe una pregunta para que la inteligencia artificial pueda ayudarte.*`, m, rcanal)
     }
 
     const prompt = `${basePrompt}\n\n📌 Pregunta: ${text}`
