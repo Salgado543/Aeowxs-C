@@ -35,7 +35,8 @@ global.textbot = 'JOTA BOT MD'
 global.textmain = 'JOTABOT'
 global.textmain2 = 'Jota Bot MD'
 global.vs = '2.1.0'
-global.emotg = '🤍🐼'
+global.emotg = '🐼🤍'
+global.mgtagall = '𝗝𝗢𝗧𝗔 𝗕𝗢𝗧 𝗟𝗢𝗦 𝗜𝗡𝗩𝗢𝗖𝗔 👹'
 global.moneda = 'ShadowCoins 🪙'
 
 
