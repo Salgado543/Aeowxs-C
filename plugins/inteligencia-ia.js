@@ -164,7 +164,7 @@ async function askLuminAI(content, username, prompt) {
       prompt,
       webSearchMode: false
     }, {
-      timeout: 15000
+      timeout: 30000
     })
     return data.result
   } catch (err) {
