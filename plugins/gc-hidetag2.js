@@ -33,7 +33,7 @@ const handler = async (m, {conn, text, participants, isOwner, isAdmin}) => {
     }
   }
 };
-handler.help = ['Aviso *<txt>*'];
+handler.help = ['Aviso'];
 handler.tags = ['gc'];
 handler.command = /^(viso)$/i;
 handler.customPrefix = /a|A/i;
