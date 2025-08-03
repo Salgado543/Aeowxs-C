@@ -44,7 +44,7 @@ global.error = '✖️'
 
 //EMOJIS PREDETERMINADOS
 global.emoji = '🐼'
-global.emoji2 = '👺'
+global.emoji2 = '👹'
 global.emoji3 = '💫'
 global.emoji4 = '🫧'
 global.emoji5 = '☁️'
