@@ -53,10 +53,10 @@ let handler = async (m, { conn, text, args, groupMetadata }) => {
             }
         }
 
-        return conn.reply(m.chat, `*☁️ Eliminado con éxito ${total} miembros inactivos del grupo.*`, m)
+        return conn.reply(m.chat, `*${emoji} Eliminado con éxito ${total} miembros inactivos del grupo.*`, m)
     }
 
-    return conn.reply(m.chat, `*${emojis} Opción no válida*.\n*💡 Utilice:*\n\`list\` para ver miembros inactivos\n\`kick\` para eliminarlos.`, m)
+    return conn.reply(m.chat, `*${emojis} La opción no es válida*.\n> *Utilice:*\n\`list\` para ver miembros inactivos\n\`kick\` para eliminarlos.`, m)
 }
 
 handler.help = ['inactivos']
