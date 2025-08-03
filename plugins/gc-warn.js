@@ -52,7 +52,7 @@ const handler = async (m, { conn, text, command, usedPrefix }) => {
   if (chat.warns[who] >= 3) {
     chat.warns[who] = 0;
     await m.reply(
-      `❗ *Advertencia final* ❗.\n\n*@${who.split`@`[0]}* superó las 3 advertencias y será eliminado.`,
+      `❗ *Advertencia final* ❗.\n\n*🥥 @${who.split`@`[0]}* superó las 3 advertencias y será eliminado.`,
       null,
       { mentions: [who] }
     );
