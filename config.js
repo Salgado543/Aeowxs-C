@@ -41,8 +41,8 @@ global.moneda = 'ShadowCoins 🪙'
 global.catalogo = fs.readFileSync('./media/catalogo.jpg')
 
 
-global.grupo = 'https://chat.whatsapp.com/Caj518FwPjHLVmGn48GvhW?mode=r_c'
-global.comu = 'https://chat.whatsapp.com/Er5zgBnAW9A8rfGaXGIvhI?mode=r_c'
+global.grupo = 'https://chat.whatsapp.com/IJyN3cklID5HVKU3nAi0XL?mode=ac_t'
+global.comu = 'https://chat.whatsapp.com/Er5zgBnAW9A8rfGaXGIvhI?mode=ac_t'
 global.channel = 'https://whatsapp.com/channel/0029VauTE8AHltY1muYir31n'
 global.ig = 'https://www.instagram.com/dev.criss_vx'
 
