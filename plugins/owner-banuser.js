@@ -49,7 +49,7 @@ var handler = async (m, { conn, text, args, command }) => {
     }
 };
 
-handler.help = ['banuser @usuario'];
+handler.help = ['banuser'];
 handler.command = ['banuser'];
 handler.tags = ['owner'];
 handler.rowner = true;
