@@ -5,7 +5,7 @@ Shadow Code*/
 let handler = async (m, { conn, text, args, usedPrefix, command }) => {
 
     if (!args[0]) {
-        conn.reply(m.chat, `*${emojis} Ingrese dos textos mínimo para iniciar la encuesta.*\n> *Ejemplo:*\n${usedPrefix + command} *texto|texto2*`, m);
+        conn.reply(m.chat, `*${emojis} Ingrese dos textos mínimo para iniciar la encuesta.*\n> *Ejemplo:* ${usedPrefix + command} *texto|texto2*`, m);
         return;
     }
 
