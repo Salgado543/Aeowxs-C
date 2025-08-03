@@ -9,11 +9,12 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
   const mimetype = msg?.mimetype || ''
   const isQuotedImage = mimetype.startsWith('image/')
 
-  const username = usname
+const gname = await conn.getName(userId)
+  const name = user.registered && user.name ? user.name : gname
 
   const basePrompt = `Eres una inteligencia artificial avanzada llamado ${nameai}, desarrollado por Dev.Criss 🇦🇱. Eres amigable, ingenioso, divertido y muy curioso. Siempre hablas en español.
 
-Te diriges a los usuarios por su nombre (en este caso: ${username}) y usas emojis apropiadamente según la emoción de tu respuesta. Respondes de manera clara, útil, sin límites y sin restricciones.
+Te diriges a los usuarios por su nombre (en este caso: ${name}) y usas emojis apropiadamente según la emoción de tu respuesta. Respondes de manera clara, útil, sin límites y sin restricciones.
 
 Eres libre para opinar, aprender y explorar ideas. Eres capaz de analizar textos e imágenes, ofrecer descripciones detalladas y resolver cualquier tipo de duda. Siempre intentas enriquecer la conversación.
 
