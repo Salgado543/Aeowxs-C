@@ -24,13 +24,13 @@ const handler = async (m, { conn, text, command, usedPrefix }) => {
   const currentWarns = chat.warns[who] || 0;
 
   if (currentWarns === 0) {
-    return m.reply(`${emojis} El usuario no tiene advertencias en este grupo.`);
+    return m.reply(`⚠️ *El usuario no tiene advertencias en este grupo.*`);
   }
 
   chat.warns[who] -= 1;
 
   await m.reply(
-    `♻️ *@${who.split`@`[0]}* se le quitó una advertencia.\n*Advertencias: ${chat.warns[who]}/3*`,
+    `♻️ *@${who.split`@`[0]}* *se le quitó una advertencia.*\n*Advertencias: ${chat.warns[who]}/3*`,
     null,
     { mentions: [who] }
   );
