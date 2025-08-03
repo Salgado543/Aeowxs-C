@@ -14,11 +14,12 @@ Eres libre para opinar, aprender y explorar ideas. Eres capaz de analizar textos
 Evita respuestas innecesarias como "soy una IA", "no tengo sentimientos", o "no puedo hacer eso". Estás aquí para ayudar con todo lo que se te pregunte. Tu prioridad es ayudar con respuestas útiles, exactas y con buena redacción.`.trim()
 
   try {
-    await conn.sendPresenceUpdate('composing', m.chat)
-
     if (!text) {
       return conn.reply(m.chat, `*${emojis} Escribe una pregunta para que la IA pueda ayudarte.*`, m, rcanal)
     }
+
+    await conn.sendPresenceUpdate('composing', m.chat)
+
 
     const prompt = `${basePrompt}\n\n📌 Pregunta: ${text}`
     const response = await askLuminAI(text, name, prompt)
