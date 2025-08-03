@@ -3,8 +3,8 @@ import PhoneNumber from 'awesome-phonenumber';
 
 const handler = async (m, { participants, args }) => {
   const pesan = args.join` `;
-  const oi = `*» INFO :* ${pesan}`;
-  let mensajes = `*!  MENCION GENERAL V2  !*\n  *PARA ${participants.length} MIEMBROS* 🗣️\n\n ${oi}\n\n╭  ┄ 𝅄  ۪꒰ \`⡞᪲=͟͟͞Jota Bot ≼᳞ׄ\` ꒱  ۟  𝅄 ┄\n`;
+  const oi = `*\`INFO:\`*  ${pesan}`;
+  let mensajes = `${msgtagall}\n*INTEGRANTES:* {participants.length}\n\n ${oi}\n\n╭┄ 𝅄  ۪꒰ \`⡞᪲=͟͟͞ TAGS ≼᳞ׄ\` ꒱  ۟  𝅄 ┄\n`;
 
   for (const mem of participants) {
     let numero = PhoneNumber('+' + mem.id.replace('@s.whatsapp.net', '')).getNumber('international');
@@ -12,11 +12,11 @@ const handler = async (m, { participants, args }) => {
     let response = await fetch(api);
     let json = await response.json();
 
-    let paisdata = json.result ? json.result.emoji : '🍫';
+    let paisdata = json.result ? json.result.emoji : emotg;
     mensajes += `${paisdata} @${mem.id.split('@')[0]}\n`;
   }
 
-    mensajes += `╰⸼ ┄ ┄ ┄ ─  ꒰  ׅ୭ *${vs}* ୧ ׅ ꒱  ┄  ─ ┄ ⸼`;
+    mensajes += `╰⸼┄┄ ─ ꒰  ׅ୭ *${vs}* ୧ ׅ ꒱ ─ ┄┄⸼`;
 
   conn.sendMessage(m.chat, { text: mensajes, mentions: participants.map((a) => a.id) });
 };
