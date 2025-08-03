@@ -9,7 +9,7 @@ const handler = async (m, {conn, participants, groupMetadata, args}) => {
   
 ${listAdmin}
 
-𖡻፞ 🍄 Mensaje: ${oi}
+🍄 Mensaje: ${oi}
 
 > ✿ Este comando solo puede ser ejecutado si hay algún problema en el grupo o con el bot.`.trim();
   conn.sendFile(m.chat, pp, 'error.jpg', text, m, false, {mentions: [...groupAdmins.map((v) => v.id), owner]});
