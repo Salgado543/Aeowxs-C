@@ -46,7 +46,7 @@ export default handler;*/
 
 const handler = async (m, { conn, text, command, usedPrefix }) => {
 
-  const warntext = `${emojis} Etiqueta a un usuario o responde a un mensaje para quitarle una advertencia.*`;
+  const warntext = `*⚠️ Etiqueta a un usuario o responde a un mensaje para quitarle una advertencia.*`;
   
   let who;
   if (m.isGroup) {
