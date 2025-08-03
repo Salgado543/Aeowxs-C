@@ -9,7 +9,8 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
   const mimetype = msg?.mimetype || ''
   const isQuotedImage = mimetype.startsWith('image/')
 
-const gname = await conn.getName(m.sender)
+  const user = global.db.data.users[m.sender] || {}
+  const gname = await conn.getName(m.sender)
   const name = user.registered && user.name ? user.name : gname
 
   const basePrompt = `Eres una inteligencia artificial avanzada llamado ${nameai}, desarrollado por Dev.Criss 🇦🇱. Eres amigable, ingenioso, divertido y muy curioso. Siempre hablas en español.
@@ -38,11 +39,11 @@ Evita respuestas innecesarias como "soy una IA", "no tengo sentimientos", o "no 
     }
 
     if (!text) {
-      return conn.reply(m.chat, `*${emoji} Escribe una pregunta para que la IA pueda ayudarte.*`, m, rcanal)
+      return conn.reply(m.chat, `*${emojis} Escribe una pregunta para que la IA pueda ayudarte.*`, m, rcanal)
     }
 
     const prompt = `${basePrompt}\n\n📌 Pregunta: ${text}`
-    const response = await askLuminAI(text, username, prompt)
+    const response = await askLuminAI(text, name, prompt)
     return conn.reply(m.chat, response, m)
 
   } catch (error) {
@@ -61,7 +62,7 @@ async function fetchImageBuffer(content, imageBuffer) {
   try {
     const { data } = await axios.post('https://Luminai.my.id', {
       content,
-      imageBuffer
+      image: imageBuffer.toString('base64')
     }, {
       headers: { 'Content-Type': 'application/json' },
       timeout: 15000
@@ -78,7 +79,7 @@ async function askLuminAI(content, username, prompt) {
   try {
     const { data } = await axios.post("https://Luminai.my.id", {
       content,
-      user: name,
+      user: username,
       prompt,
       webSearchMode: false
     }, {
