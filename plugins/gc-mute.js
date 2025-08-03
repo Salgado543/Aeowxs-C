@@ -53,7 +53,7 @@ console.error('Error eliminando mensaje de usuario muteado:', e);
 };
 
 handler.help = ['mute', 'unmute'];
-handler.tags = ['grupo'];
+handler.tags = ['gc'];
 handler.command = /^(mute|unmute)$/i;
 handler.group = true;
 handler.admin = true;
