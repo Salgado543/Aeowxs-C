@@ -11,32 +11,19 @@ mutedUsers = new Set();
 
 let handler = async (m, { conn, usedPrefix, command, isAdmin, isBotAdmin }) => {
 
-if (!isBotAdmin) return conn.reply(m.chat, `${emojis} El bot necesita ser administrador.`, m);
-if (!isAdmin) return conn.reply(m.chat, `${emojis} Solo los administradores pueden usar este comando.`, m);
-/*
-let user;
-if (m.quoted) {
-  user = m.quoted.sender;
-} else if (m.mentionedJid && m.mentionedJid.length) {
-  user = m.mentionedJid[0];
-} else {
-  return conn.reply(m.chat, `${emojis} Responde al mensaje *o menciona* al usuario que quieres mutear.`, m);
-}*/
+if (!isBotAdmin) return conn.reply(m.chat, `*${emoji} El bot necesita ser administrador.*`, m);
+
 let user;
 if (m.mentionedJid && m.mentionedJid.length) {
   user = m.mentionedJid[0];
 } else {
-  return conn.reply(m.chat, `${emojis} Menciona al usuario que quieres mutear.`, m);
+  return conn.reply(m.chat, `*${emojis} Menciona al usuario que quieres mutear.*`, m);
 }
-/*
-const ownerBot = global.owner[0][0] + '@s.whatsapp.net';
-if (user === ownerBot) {
-return conn.reply(m.chat, `${emojis} No puedo mutear al propietario del bot.`, m);
-}*/
+
 const ownerBot = global.owner.map(owner => owner[0] + '@s.whatsapp.net');
 
 if (ownerBot.includes(user)) {
-  return conn.reply(m.chat, `${emojis} No puedo mutear al propietario del bot.`, m);
+  return conn.reply(m.chat, `*⚠️ No puedo mutear al propietario del bot.*`, m);
 }
 
 if (command === "mute") {
