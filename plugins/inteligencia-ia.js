@@ -19,7 +19,7 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
     try {
       await conn.sendPresenceUpdate('composing', m.chat) // Indica que está escribiendo
       const imageAnalysis = await fetchImageBuffer(content, img)
-      const query = '*🤖 Descríbeme la imagen y detalla por qué actúan así. También dime quién eres*'
+      const query = 'describe la imagen'
       const prompt = `${basePrompt}. La imagen que se analiza es: ${imageAnalysis.result}`
       const description = await luminsesi(query, username, prompt)
       await conn.reply(m.chat, description, m)
@@ -29,7 +29,7 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
     }
   } else {
     if (!text) { 
-      return conn.reply(m.chat, `*🫧 Ingrese la pregunta que desea consultar con la IA.*`, m)
+      return conn.reply(m.chat, `*${emojis} Ingrese la pregunta que desea consultar con la IA.*`, m)
     }
     
     await conn.sendPresenceUpdate('composing', m.chat) // Indica que está escribiendo
