@@ -85,7 +85,7 @@ process.on('warning', (warning) => {
 });
 
 start('main.js');*/
-
+/*
 import { join, dirname } from 'path';
 import { createRequire } from 'module';
 import { fileURLToPath } from 'url';
@@ -170,4 +170,4 @@ process.on('warning', (warning) => {
   }
 });
 
-start('main.js');
+start('main.js');*/
