@@ -1,10 +1,10 @@
 const handler = async (m, { conn, args, participants, usedPrefix, command }) => {
   if (!args[0] || isNaN(args[0])) 
-    return m.reply(`*${emojis} Ingrese algún prefijo de un país.*\n*💡 Ejemplo:* ${usedPrefix + command} 54`);
+    return m.reply(`*${emojis} Ingrese algún prefijo de un país.*\n> *Ejemplo:* ${usedPrefix + command} 54`);
 
   const prefijo = args[0].replace(/[+]/g, '');
   const mensaje = args.slice(1).join(' ');
-  const textoMensaje = `${emoji3} *Mensaje:* ${mensaje}`;
+  const textoMensaje = `${emoji} *Mensaje:* ${mensaje}`;
 
   const usuariosConPrefijo = participants
     .map((u) => u.id)
