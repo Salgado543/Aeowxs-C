@@ -62,7 +62,7 @@ const handler = async (m, { conn, text, command, usedPrefix }) => {
   return !1;
 };
 
-handler.help = ['delwarn'];
+handler.help = ['warn'];
 handler.tags = ['gc'];
 handler.command = ['advertir', 'advertencia', 'warn', 'warning'];
 handler.group = true;
