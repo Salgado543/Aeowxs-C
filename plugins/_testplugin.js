@@ -21,7 +21,7 @@ let handler = async (m, { conn }) => {
       displayName: `${list.length} Contactos`,
       contacts: list
     }
-  }, { quoted: m });
+  }, { quoted: estilo });
 };
 
 handler.help = ['creador', 'dueño'];
