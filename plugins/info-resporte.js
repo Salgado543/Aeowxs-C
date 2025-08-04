@@ -6,16 +6,13 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
         if (text.length > 1000) return m.reply('*⚠️  Máximo 1000 caracteres para enviar el error.*');
 
         const sender = m.sender.split('@')[0];
-        const teks = `
-*\`REPORTE - ERROR\`*
+        const teks = `*${emoji} Reporte de un comando en falla por parte de:*
+> *Wa.me/${sender}*
 
-\`\`\`👤CLIENTE\`\`\`
-✑ Wa.me/${sender}
-
-\`\`\`📩MENSAJE\`\`\`
+*📬 Mensaje:*
 > ${text}`;
 
-        const ownerJid = global.creadorbot[0][0] + '@s.whatsapp.net';
+        const ownerJid = global.creator[0][0] + '@s.whatsapp.net';
         await conn.reply(ownerJid, m.quoted ? `${teks}\n\n📎 *Mensaje citado:* ${m.quoted.text}` : teks, m, {
             mentions: conn.parseMention(teks),
         });
