@@ -28,6 +28,8 @@ m.react('✖️');
   }
 };
 
+handler.tags = ['tools'];
+handler.help = ['flag'];
 handler.command = ['paisinfo', 'flag'];
 
 export default handler;
