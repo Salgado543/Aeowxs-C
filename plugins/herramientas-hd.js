@@ -14,7 +14,7 @@ const handler = async (m, { conn }) => {
     const mime = (q.msg || q).mimetype || q.mediaType || ""
 
     if (!/^image\/(jpe?g|png)$/.test(mime)) {
-      return m.reply(`*${xtools} Por favor, responde a una imagen para mejorar la calidad.*`)
+      return conn.reply(m.chat, `*${emojis} Responda a una imagen para mejorar la calidad con remini.*`, m, rcanal)
     }
 
     await m.react('⌛')
