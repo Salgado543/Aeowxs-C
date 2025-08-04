@@ -200,15 +200,59 @@ export async function handler(chatUpdate) {
         if (typeof m.text !== 'string')
             m.text = ''
 
+let _user = global.db.data?.users?.[m.sender]  // ✅ Solo una vez
 
-        let _user = global.db.data && global.db.data.users && global.db.data.users[m.sender]
-/*
 // Detectar si el bot está usando lid o no
 const detectwhat = m.sender.includes('@lid') ? '@lid' : '@s.whatsapp.net'
-const settings = global.db.data.settings[conn.user.jid] || {}
-// Detectar si el mensaje proviene de un owner
-const isROwner = (settings.owner_numero || []).map(n => n + detectwhat).includes(m.sender)
-*/
+const isROwner = (global.owner || []).map(n => n + detectwhat).includes(m.sender)
+const isOwner = isROwner || m.fromMe
+const isPrems = isROwner || _user?.premiumTime > 0
+
+if (!isOwner && opts['self']) return
+
+if (opts['queque'] && m.text && !(isMods || isPrems)) {
+    let queque = this.msgqueque, time = 1000 * 5
+    const previousID = queque[queque.length - 1]
+    queque.push(m.id || m.key.id)
+    setInterval(async function () {
+        if (queque.indexOf(previousID) === -1) clearInterval(this)
+        await delay(time)
+    }, time)
+}
+
+if (m.isBaileys) return
+m.exp += Math.ceil(Math.random() * 10)
+
+let usedPrefix // Puedes definirlo luego
+
+// Obtener datos del grupo
+const groupMetadata = m.isGroup
+  ? await conn.groupMetadata(m.chat).catch(_ => null)
+  : {}
+
+const participants = m.isGroup ? groupMetadata.participants || [] : []
+
+const senderJid = m.sender
+const senderLid = (participants.find(p => p.jid === senderJid) || {}).lid
+
+const botJid = conn.user?.jid
+const botLid = (participants.find(p => p.jid === botJid) || {}).lid
+
+const user = participants.find(p => p.jid === senderJid || p.lid === senderLid) || {}
+const bot = participants.find(p => p.jid === botJid || p.lid === botLid) || {}
+
+const isRAdmin = user.admin === 'superadmin'
+const isAdmin = isRAdmin || user.admin === 'admin'
+const isBotAdmin = bot.admin === 'admin' || bot.admin === 'superadmin'
+
+// Detecta si es Business o Canal
+m.isWABusiness = ['smba', 'smbi'].includes(global.conn.authState?.creds?.platform)
+m.isChannel = m.chat.includes('@newsletter') || m.sender.includes('@newsletter')
+
+
+
+/*
+        let _user = global.db.data && global.db.data.users && global.db.data.users[m.sender]
 
 const detectwhat = m.sender.includes('@lid') ? '@lid' : '@s.whatsapp.net'
 const isROwner = (global.owner || []).map(n => n + detectwhat).includes(m.sender)
@@ -258,7 +302,7 @@ const isBotAdmin = bot.admin === 'admin' || bot.admin === 'superadmin'
 
 // 📢 Detecta si es una cuenta Business o Canal
 m.isWABusiness = ['smba', 'smbi'].includes(global.conn.authState?.creds?.platform)
-m.isChannel = m.chat.includes('@newsletter') || m.sender.includes('@newsletter')
+m.isChannel = m.chat.includes('@newsletter') || m.sender.includes('@newsletter')*/
 	
 
         const ___dirname = path.join(path.dirname(fileURLToPath(import.meta.url)), './plugins')
