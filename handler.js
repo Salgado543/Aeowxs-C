@@ -202,12 +202,16 @@ export async function handler(chatUpdate) {
 
 
         let _user = global.db.data && global.db.data.users && global.db.data.users[m.sender]
-
+/*
 // Detectar si el bot está usando lid o no
 const detectwhat = m.sender.includes('@lid') ? '@lid' : '@s.whatsapp.net'
 const settings = global.db.data.settings[conn.user.jid] || {}
 // Detectar si el mensaje proviene de un owner
 const isROwner = (settings.owner_numero || []).map(n => n + detectwhat).includes(m.sender)
+*/
+
+const detectwhat = m.sender.includes('@lid') ? '@lid' : '@s.whatsapp.net'
+const isROwner = (global.owner || []).map(n => n + detectwhat).includes(m.sender)
 const isOwner = isROwner || m.fromMe
 const isPrems = isROwner || global.db.data.users[m.sender].premiumTime > 0
 
