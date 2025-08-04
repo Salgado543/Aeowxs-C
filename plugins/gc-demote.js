@@ -59,8 +59,18 @@ const handler = async (m, { conn, text }) => {
   }
 
   const groupMetadata = await conn.groupMetadata(m.chat);
+  const participant = groupMetadata.participants.find(p => p.id === user);
+
+  if (!participant) {
+    return conn.reply(m.chat, `*⚠️ El usuario no se encuentra en el grupo.*`, m);
+  }
+
   if (user === groupMetadata.owner) {
     return conn.reply(m.chat, `*⚠️ No se puede degradar al creador del grupo.*`, m);
+  }
+
+  if (participant.admin !== 'admin' && participant.admin !== 'superadmin') {
+    return conn.reply(m.chat, `*⚠️ El usuario mencionado ya no es administrador.*`, m);
   }
 
   await conn.groupParticipantsUpdate(m.chat, [user], 'demote');
