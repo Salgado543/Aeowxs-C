@@ -1,5 +1,5 @@
 let handler = async (m, { conn }) => {
-  await m.react(emoji2);
+  await m.react(emoji);
 
   // Crear contacto VCARD
   let list = [{
@@ -16,7 +16,7 @@ let handler = async (m, { conn }) => {
   }, { quoted: m });
 };
 
-handler.help = ['owner', 'creador'];
+handler.help = ['dueño'];
 handler.tags = ['info'];
 handler.command = /^(owner|dueño)$/i;
 
