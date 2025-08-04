@@ -2,9 +2,9 @@ import translate from '@vitalets/google-translate-api';
 import fetch from 'node-fetch';
 
 const handler = async (m, { args, usedPrefix, command }) => {
-  const msg = `*${emojis} Proporciona el idioma seguido el texto para traducirlo.*\n*💡 Ejemplo:* ${usedPrefix + command} es Hello`;
+  const msg = `*${emojis} Proporciona el idioma seguido el texto para traducirlo.*\n> *Ejemplo:* ${usedPrefix + command} es Hello world`;
 
-  if (!args || !args[0]) return m.reply(msg);
+  if (!args || !args[0]) return conn.reply(m.chat, msg, m, rcanal);
 
   let lang = args[0];
   let text = args.slice(1).join(' ');
@@ -48,8 +48,8 @@ const handler = async (m, { args, usedPrefix, command }) => {
   }
 };
 
-handler.help = ['traductor'];
+handler.help = ['traducir'];
 handler.tag = ['tools'];
-handler.command = /^(traductor|traducir|googletrad)$/i;
+handler.command = /^(traductor|traducir|googletrad|trad|tr)$/i;
 
 export default handler;
