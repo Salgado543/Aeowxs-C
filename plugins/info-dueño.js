@@ -1,5 +1,5 @@
 let handler = async (m, { conn }) => {
-  await m.react('🐼');
+  await m.react('emoji2');
 
   // Crear contacto VCARD
   let list = [{
