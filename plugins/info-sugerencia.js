@@ -26,8 +26,8 @@ let handler = async (m, { conn, text }) => {
     m.reply('*✅ ¡Tu sugerencia ha sido enviada al propietario!* Gracias por tu aporte.');
 };
 
-handler.help = ['newcommand <texto>'];
+handler.help = ['suggest'];
 handler.tags = ['info'];
-handler.command = ['newcommand', 'sug', 'sugerir', 'sugerencia'];
+handler.command = ['newcommand', 'sug', 'sugerir', 'sugerencia', 'suggest'];
 
 export default handler;
