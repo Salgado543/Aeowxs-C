@@ -42,32 +42,27 @@ export default handler;*/
 
 const handler = async (m, { conn }) => {
   if (!m.mentionedJid[0] && !m.quoted) {
-    return conn.reply(m.chat, `*${emojis} Menciona o responde a un usuario para quitar admin.*`, m);
+    let texto = `*${emojis} Menciona o responde al mensaje del usuario que deseas quitarle el admin.*`
+    return m.reply(texto, m.chat, { mentions: conn.parseMention(texto) })
   }
 
-  // Detectar usuario: por mención o mensaje citado
-  const user = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted.sender;
-
-  const groupMetadata = await conn.groupMetadata(m.chat);
-  const participant = groupMetadata.participants.find(p => p.id === user);
+  let user = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted.sender
+  let groupMetadata = await conn.groupMetadata(m.chat)
 
   if (user === groupMetadata.owner) {
-    return conn.reply(m.chat, `*⚠️ No se puede degradar al creador del grupo.*`, m);
+    return m.reply(`*⚠️ No puedes degradar al creador del grupo.*`)
   }
 
-  if (!participant?.admin) {
-    return conn.reply(m.chat, `*⚠️ ese gei mencionado ya no es administrador.*`, m);
-  }
+  await conn.groupParticipantsUpdate(m.chat, [user], 'demote')
+  m.reply(`*✅ El usuario fue degradado de la administración.*`)
+}
 
-  await conn.groupParticipantsUpdate(m.chat, [user], 'demote');
-  return conn.reply(m.chat, `*✅ El usuario fue degradado de la administración.*`, m);
-};
+handler.help = ['demote']
+handler.tags = ['gc']
+handler.command = /^(demote|quitarpoder|quitaradmin)$/i
+handler.group = true
+handler.admin = true
+handler.botAdmin = true
+handler.fail = null
 
-handler.help = ['demote'];
-handler.tags = ['gc'];
-handler.command = /^(demote|quitarpoder|quitaradmin)$/i;
-handler.group = true;
-handler.admin = true;
-handler.botAdmin = true;
-
-export default handler;
+export default handler
