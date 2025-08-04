@@ -1,6 +1,6 @@
 let handler = async (m, { conn, text, usedPrefix, command }) => {
 let txt = `*${emojis} Ejemplo de uso:*\n\n> ${usedPrefix + command} ¿Quién soy? *@user* Eres mi perrita 🫦`
-if (!text) return m.reply(txt)
+if (!text) return conn.reply(m.chat, txt, m, rcanal)
 let cm = copy(m)
 let who
 if (text.includes('@0')) who = '0@s.whatsapp.net'
@@ -16,7 +16,7 @@ contextInfo: {
 mentionedJid: conn.parseMention(real.join(sp).trim())
 }})}
 handler.help = ['fake']
-handler.tags = ['herramientas']
+handler.tags = ['tools']
 handler.command = /^(fake)$/
 
 export default handler
