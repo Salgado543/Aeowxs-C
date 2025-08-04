@@ -18,5 +18,8 @@ text: `*${emoji} ¡El poder está en tus manos!*\n*Bienvenido ${taguser}*\n\n*Es
 mentions: [m.sender]
 }, { quoted: fkontak });
 };
+
+handler.help = ['totalf'];
+handler.tags = ['info'];
 handler.command = ['totalcomandos', 'comandostotales', 'totalf', 'totalfunciones'];
 export default handler;
