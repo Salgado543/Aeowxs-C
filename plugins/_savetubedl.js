@@ -105,7 +105,7 @@ const savetube = {
       return {
         status: false,
         code: 400,
-        error: "*🐼 Ingresa un link válido de Youtube.*"
+        error: `*${emojis} Ingresa un link válido de Youtube.*`
       };
     }
 
@@ -113,7 +113,7 @@ const savetube = {
       return {
         status: false,
         code: 400,
-        error: "*🐼 Ingresa un link válido de Youtube.*"
+        error: `*${emojis} Ingresa un link válido de Youtube.*`
       };
     }
 
