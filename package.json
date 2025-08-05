@@ -18,16 +18,16 @@
 "eslint": "eslint .",
 "eslintfix": "eslint --fix ."
 },
-"homepage": "https://github.com/Shadows-Club/Kaiser",
+"homepage": "https://github.com/Shadows-Club/Morchi",
 "author": {
 "name": "Criss.xyz"
 },
 "repository": {
 "type": "git",
-"url": "git+https://github.com/Shadows-Club/Kaiser.git"
+"url": "git+https://github.com/Shadows-Club/Morchi.git"
 },
 "bugs": {
-"url": "https://github.com/Shadows-Club/Kaiser/issues"
+"url": "https://github.com/Shadows-Club/Morchi/issues"
 },
 "license": "GPL-3.0-or-later",
 "dependencies": {
