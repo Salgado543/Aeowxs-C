@@ -1,4 +1,4 @@
-import { WAMessageStubType } from '@whiskeysockets/baileys'
+/*import { WAMessageStubType } from '@whiskeysockets/baileys'
 import fetch from 'node-fetch'
 
 export async function before(m, { conn, participants, groupMetadata }) {
@@ -106,4 +106,4 @@ if (chat.welcome && m.messageStubType == 32) {
     : msgsBye[Math.floor(Math.random() * msgsBye.length)]
 
     await conn.sendLuffy(m.chat, txt1, sunflare2, bye, img, img, grupo, estilo)
-  }}
+  }}*/
