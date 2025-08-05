@@ -8,10 +8,9 @@ import axios from 'axios'
 import moment from 'moment-timezone' 
 
 global.owner = [
-   ['573155227977', 'Kaiser', true],
+   ['906488039', 'Kaiser7vip', true],
    ['51927238856', 'Dev Criss 🇦🇱', true],
    ['51990841568', 'Soporte', true],
-   ['5216641784469', '《BrayanOFC》', true],
 ]
 
 global.creator = [
@@ -22,8 +21,8 @@ global.mods = ['51990841568', '51965911060', '51906168999']
 global.prems = ['51965911060', '51906168999']
 
 
-global.packname = 'Jota Bot MD'
-global.botname = 'Jota Bot - MD'
+global.packname = 'Kaiser7 Bot MD'
+global.botname = 'Kaiser Bot - MD'
 global.wm = 'Jota Bot - MD'
 global.author = '𝖲𝗁⍺𝖽ᦅ𝗐′𝗌 𝖢𝗅𝗎𝖻'
 global.dev = '𝖯𑄜𝗐𝖾𝗋𝖾𝖽 𝖻𝗒 𝖲𝗁⍺𝖽ᦅ𝗐′𝗌 𝖢𝗅𝗎𝖻'
