@@ -33,7 +33,7 @@ global.textbot = 'KAISER BOT MD'
 global.textmain = 'KAISERBOT'
 global.textmain2 = 'Kaiser Bot MD'
 global.vs = '1.5.0'
-global.emotg = '🕷️🕸️'
+global.emotg = '🫵'
 global.msgtagall = '𝙺𝙰𝙸𝚂𝙴𝚁.𝚅𝙸𝙿7 𝚃𝙴 𝙸𝙽𝚅𝙾𝙲𝙰 👽'
 global.moneda = 'ShadowCoins 🪙'
 
