@@ -130,14 +130,16 @@ handler.help = ['gay', 'lesbiana', 'pajero', 'pajera', 'puto', 'puta', 'manco', 
 
 export default handler;*/
 
-const handler = async (m, { conn, command, text }) => {
-  // Obtener número de usuario si se menciona o se responde a alguien
-  let user = text ? text.replace(/[@+\s]/g, '') : m.quoted?.sender;
+const handler = async (m, { conn, command, args }) => {
+  // Obtener el ID del usuario (responder o mencionar)
+  let user = m.mentionedJid && m.mentionedJid[0]
+           ? m.mentionedJid[0]
+           : m.quoted?.sender;
 
   if (!user) return conn.reply(m.chat, `*🤓 Menciona o responde a un usuario.*`, m);
 
   const taguser = '@' + user.split('@')[0];
-  const percentages = Math.floor(Math.random() * 501);
+  const percentage = Math.floor(Math.random() * 501);
 
   const emojis = {
     gay: '🏳️‍🌈', lesbiana: '🏳️‍🌈', pajero: '😏💦', pajera: '😏💦', puto: '🔥🥵',
@@ -148,7 +150,7 @@ const handler = async (m, { conn, command, text }) => {
   const descriptions = {
     gay: [
       "💙 Parece que solo te gusta un poco la fiesta arcoíris.",
-      "🖤 Tu no eres amigo... ¡Tu eres amige! 💀",
+      "🖤 Tú no eres amigo... ¡Tú eres amigue! 💀",
       "💜 ¡Nivel DIOS! Ya ni necesitas salir del clóset, lo rompiste amige."
     ],
     lesbiana: [
@@ -182,13 +184,13 @@ const handler = async (m, { conn, command, text }) => {
       "💀 Récord mundial en fallar tiros... ¡Sin balas!"
     ],
     manca: [
-      "🎮 ¿Porque eres así? Re Mala",
-      "🥷 Anda a la cocina mejor no servís pa jugar",
+      "🎮 ¿Por qué eres así? Re mala.",
+      "🥷 Anda a la cocina mejor, no servís pa' jugar.",
       "💀 Récord mundial en fallar tiros... ¡Sin balas!"
     ],
     rata: [
       "🐁 Te falta robar un poco más, sigue practicando.",
-      "😂 Roba peor que el Real Madrid el puto este",
+      "😂 Roba peor que el Real Madrid el puto este.",
       "💖 ¡Eres más rata que Remy de Ratatouille!"
     ],
     prostituto: [
@@ -198,18 +200,18 @@ const handler = async (m, { conn, command, text }) => {
     ],
     prostituta: [
       "🙈 Tranquila que te voy a dar tu pingasaurio.",
-      "🥵 ¿Lo haces por gusto verdad?",
-      "💖 ¿Cuando hacemos un trío? Nena"
+      "🥵 ¿Lo haces por gusto, verdad?",
+      "💖 ¿Cuándo hacemos un trío? Nena"
     ],
     sinpoto: [
       "👀 ¿Seguro que no eres hombre con pelo largo?",
-      "😹 Ni con cirugía te levantas ese autoestima",
+      "😹 Ni con cirugía te levantas ese autoestima.",
       "🙉 Hasta un mosquito hace más bulto que tú."
     ],
     sintetas: [
-      "📭 Mas vacía que el buzón de alguien sin amigos.",
-      "🌚 Da igual si estas de frente o de espalda, es que no hay diferencia.",
-      "🫨 Se supone que la pubertad ayuda, ¿Qué pasó contigo?"
+      "📭 Más vacía que el buzón de alguien sin amigos.",
+      "🌚 Da igual si estás de frente o de espalda, no hay diferencia.",
+      "🫨 Se supone que la pubertad ayuda, ¿qué pasó contigo?"
     ],
     chipi: [
       "🤡 Lo tuyo no es mini, es edición limitada.",
@@ -218,12 +220,12 @@ const handler = async (m, { conn, command, text }) => {
     ]
   };
 
-  if (!descriptions[command]) return m.reply(`*⚠️ Comando inválido.*`);
+  if (!descriptions[command]) return conn.reply(m.chat, '*⚠️ Comando inválido.*', m);
 
   const emoji = emojis[command] || '';
   let description;
-  if (percentages < 150) description = descriptions[command][0];
-  else if (percentages > 400) description = descriptions[command][2];
+  if (percentage < 150) description = descriptions[command][0];
+  else if (percentage > 400) description = descriptions[command][2];
   else description = descriptions[command][1];
 
   const responses = [
@@ -231,17 +233,17 @@ const handler = async (m, { conn, command, text }) => {
     "Los datos no mienten.",
     "¡Aquí tienes tu certificado oficial!"
   ];
-  const response = responses[Math.floor(Math.random() * responses.length)];
+  const finalResponse = responses[Math.floor(Math.random() * responses.length)];
 
   const cal = `*🤍 CALCULADORA 🤍*
 
-☁️ *Los cálculos han arrojado que ${taguser} es* ${percentages}% *${command} ${emoji}*
+☁️ *Los cálculos han arrojado que ${taguser} es* ${percentage}% *${command} ${emoji}*
 
 *${description}*
-> *${response}*`.trim();
+> *${finalResponse}*`.trim();
 
   async function loading() {
-    const hawemod = [
+    const bars = [
       "《 █▒▒▒▒▒▒▒▒▒▒▒》10%",
       "《 ████▒▒▒▒▒▒▒▒》30%",
       "《 ███████▒▒▒▒▒》50%",
@@ -249,14 +251,21 @@ const handler = async (m, { conn, command, text }) => {
       "《 ████████████》100%"
     ];
 
-    let { key } = await conn.sendMessage(m.chat, { text: `*🤓 ¡Calculando Porcentaje!*`, mentions: [user + '@s.whatsapp.net'] });
+    let { key } = await conn.sendMessage(m.chat, {
+      text: '*🤓 ¡Calculando Porcentaje!*',
+      mentions: [user]
+    });
 
-    for (let i = 0; i < hawemod.length; i++) {
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      await conn.sendMessage(m.chat, { text: hawemod[i], edit: key });
+    for (let i = 0; i < bars.length; i++) {
+      await new Promise(res => setTimeout(res, 1000));
+      await conn.sendMessage(m.chat, { text: bars[i], edit: key });
     }
 
-    await conn.sendMessage(m.chat, { text: cal, edit: key, mentions: [user + '@s.whatsapp.net'] });
+    await conn.sendMessage(m.chat, {
+      text: cal,
+      edit: key,
+      mentions: [user]
+    });
   }
 
   loading();
@@ -265,4 +274,6 @@ const handler = async (m, { conn, command, text }) => {
 handler.tags = ['fun'];
 handler.group = true;
 handler.command = ['gay', 'lesbiana', 'pajero', 'pajera', 'puto', 'puta', 'manco', 'manca', 'rata', 'prostituto', 'prostituta', 'sinpoto', 'sintetas', 'chipi'];
-handler.help = ['gay', 'lesbiana', 'pajero', 'pajera', 'puto', 'puta', 'manco', 'manca', 'rata', 'prostituto', 'prostituta', 'sinpoto', 'sintetas', 'chipi'];
+handler.help = handler.command;
+
+export default handler;
