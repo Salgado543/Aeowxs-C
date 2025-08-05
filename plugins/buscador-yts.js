@@ -26,7 +26,7 @@ let handler = async(m, { conn, text, usedPrefix, command }) => {
   conn.sendFile(m.chat, tes[0].image, 'yts.jpeg', teks, m)
 }
 
-handler.help = ['yts2'] 
+handler.help = ['yts'] 
 handler.tags = ['search']
 handler.command = ['ytsearch', 'yts']
 
