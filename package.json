@@ -1,6 +1,6 @@
 {
 "name": "JotaBot",
-"version": "1.0.0",
+"version": "2.1.0",
 "description": "WhatsApp Bot Multi Device",
 "main": "main.js",
 "type": "module",
@@ -20,7 +20,7 @@
 },
 "homepage": "https://github.com/Shadows-Club/JotaBot",
 "author": {
-"name": "Cristian Escobar"
+"name": "Criss.xyz"
 },
 "repository": {
 "type": "git",
@@ -73,7 +73,6 @@
 "perf_hooks": "^0.0.1",
 "pino": "^8.6.1",
 "performance-now": "^2.1.0",
-"instagram-url-direct": "^1.0.13",
 "pino-pretty": "^9.1.1",
 "pdfkit": "^0.13.0",
 "qrcode": "^1.5.1",
@@ -87,9 +86,7 @@
 "url-regex-safe": "^3.0.0",
 "uuid": "^10.0.0",
 "translate-google-api": "^1.0.4",
-"google-it": "^1.6.4",
 "yt-search": "^2.10.3",
-"hispamemes": "^1.0.7",
 "imagemaker.js": "^2.0.4",
 "aptoide-scraper": "github:DIEGO-OFC/dv-aptoide-scraper",
 "mime-types": "^2.1.35",
