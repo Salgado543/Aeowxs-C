@@ -1,6 +1,6 @@
 {
-"name": "JotaBot",
-"version": "2.1.0",
+"name": "KaiserBot",
+"version": "1.5.0",
 "description": "WhatsApp Bot Multi Device",
 "main": "main.js",
 "type": "module",
