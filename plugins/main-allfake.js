@@ -72,25 +72,25 @@ var hour = ase.hour(); // Obtiene la hora en la zona horaria elegida
 
 switch(hour) { 
     case 0: case 1: case 2:
-        hour = 'Lɪɴᴅᴀ Nᴏᴄʜᴇ 🌃'; 
+        hour = '𝖫𝗂𝗇𝖽𝖺 𝖬𝖺𝖽𝗋𝗎𝗀𝖺𝖽𝖺 🌃'; 
         break;
     case 3: case 4: case 5: case 6:
-        hour = 'Lɪɴᴅᴀ Mᴀɴ̃ᴀɴᴀ 🌄'; 
+        hour = '𝖫𝗂𝗇𝖽𝖺 𝖬𝖺𝗇̃𝖺𝗇𝖺 🌄'; 
         break;
     case 7:
-        hour = 'Lɪɴᴅᴀ Mᴀɴ̃ᴀɴᴀ 🌅'; 
+        hour = '𝖡𝗎𝖾𝗇𝗈𝗌 𝖣𝗂́𝖺𝗌 🌅'; 
         break;
     case 8: case 9:
-        hour = 'Lɪɴᴅᴀ Mᴀɴ̃ᴀɴᴀ 🌄'; 
+        hour = '𝖫𝗂𝗇𝖽𝗈 𝖣𝗂́𝖺 🌄'; 
         break;
     case 10: case 11: case 12: case 13:
-        hour = 'Lɪɴᴅᴏ Dɪᴀ 🌤'; 
+        hour = '𝖧𝖾𝗋𝗆𝗈𝗌𝗈 𝖣𝗂́𝖺 🌤'; 
         break;
     case 14: case 15: case 16: case 17:
-        hour = 'Lɪɴᴅᴀ Tᴀʀᴅᴇ 🌇'; 
+        hour = '𝖡𝗎𝖾𝗇𝖺𝗌 𝖳𝖺𝗋𝖽𝖾𝗌 🌇'; 
         break;
     case 18: case 19: case 20: case 21: case 22: case 23:
-        hour = 'Lɪɴᴅᴀ Nᴏᴄʜᴇ 🌃'; 
+        hour = '𝖡𝗎𝖾𝗇𝖺𝗌 𝖭𝗈𝖼𝗁𝖾𝗌 🌃'; 
         break;
 }
 
