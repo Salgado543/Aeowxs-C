@@ -55,7 +55,7 @@ var handler = async (m, { conn }) => {
 };
 
 handler.command = ['revsall'];
-handler.help = ['revsall', 'revall', 'allrev'];
+handler.help = ['revsall'];
 handler.tags = ['owner'];
 handler.owner = true;
 
