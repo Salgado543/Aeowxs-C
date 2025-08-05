@@ -1,6 +1,6 @@
 let handler = async (m, { conn, command, text }) => {
 
-    if (!text) return conn.reply(m.chat, `*${emojis} Ingrese el nombre de alguna persona.*\n> *Ejemplo:* .personalidad ${botname}`, m, rcanal)
+    if (!text) return conn.reply(m.chat, `*${emojis} Ingrese el nombre de alguna persona.*\n> *Ejemplo:* .personalidad ${namebot}`, m, rcanal)
 
   let personalidad = `
 ┏━━[ *PERSONALIDAD* ]━━┓
