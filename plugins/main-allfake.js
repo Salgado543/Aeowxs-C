@@ -43,11 +43,11 @@ global.done = '✅'
 global.error = '✖️'
 
 //EMOJIS PREDETERMINADOS
-global.emoji = '🐼'
-global.emoji2 = '👹'
-global.emoji3 = '💫'
-global.emoji4 = '🫧'
-global.emoji5 = '☁️'
+global.emoji = '⚡'
+global.emoji2 = '👑'
+global.emoji3 = '📯'
+global.emoji4 = '🕑'
+global.emoji5 = '⚡'
 global.emojis = [emoji, emoji2, emoji3, emoji4, emoji5].getRandom()
 
 //EMOJIS INFORMATIVOS
@@ -60,8 +60,8 @@ global.wait = '*⏳ Aguarde un momento...*';
 global.hotw = '*🔥 Los comandos nsfw están desactivados para este chat.*';
 
 //ENLACES
-var grupo = 'https://chat.whatsapp.com/FCS6htvAmlT7nq006lxU4I'
-var web = 'https://jota-bot.vercel.app/' 
+var grupo = 'https://chat.whatsapp.com/IJyN3cklID5HVKU3nAi0XL?mode=ac_t'
+var web = 'https://kaiser-bot.vercel.app/' 
 let instagram = 'https://www.instagram.com/dev.criss_vx'
 
 global.redes = [grupo, web, instagram].getRandom()
@@ -125,18 +125,8 @@ global.fechaHora = `${diaSemana}, ${dia} de ${mes} del ${año} │ Hora: ${hora}
 
   // Paquete y autor estilizado
   global.packN = `
-∿ 協会  Sʜʌᴅᴏᴡ′s Cʟᴜʙ  閲覧 ࣪ ˖ \n↳ @shadows.xyz\n\n🐼 𝐏𝐨𝐰𝐞𝐫𝐞𝐝 𝐁𝐲:\n↳ @${global.usnamebot}\n👤 𝐔𝐬𝐮𝐚𝐫𝐢𝐨:\n↳ @${global.usname}\n\n`
+∿ 協会  Sʜʌᴅᴏᴡ′s Cʟᴜʙ  閲覧 ࣪ ˖ \n↳ @shadows.xyz\n\n👑 𝐏𝐨𝐰𝐞𝐫𝐞𝐝 𝐁𝐲:\n↳ @${global.usnamebot}\n👤 𝐔𝐬𝐮𝐚𝐫𝐢𝐨:\n↳ @${global.usname}\n\n`
   global.authorN = dev
-
-/*
-global.nombre = conn.getName(m.sender)
-global.taguser = '@' + m.sender.split("@s.whatsapp.net")
-var more = String.fromCharCode(8206)
-global.readMore = more.repeat(850)
-
-global.authN = `ꘓꘓ Jota Bot`;
-
-global.packN= `ꘓꘓ  𝖲ᥙᥒ𝖿͟ᥣ͟ᥲ𝗋ᥱࣲ 𝖳ᥱᥲ𝗆  彡`*/
 
 //FAKES
 global.fkontak = { key: { participants:"0@s.whatsapp.net", "remoteJid": "status@broadcast", "fromMe": false, "id": "Halo" }, "message": { "contactMessage": { "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD` }}, "participant": "0@s.whatsapp.net" }
@@ -147,17 +137,13 @@ global.fake = { contextInfo: { isForwarded: true, forwardedNewsletterMessageInfo
 //ID CANALES
 global.idchannel = '120363357231409846@newsletter'
 global.canalIdM = ["120363357231409846@newsletter", "120363377595441592@newsletter", "120363318267632676@newsletter"]
-global.canalNombreM = ["𝑺𝒊𝒈𝒖𝒆 𝒆𝒍 𝑪𝒂𝒏𝒂𝒍 𝒃𝒚 𝑱𝒐𝒕𝒂 🐼", "𝑱𝒐𝒕𝒂 𝑩𝒐𝒕 𝒃𝒚 𝑺𝒉𝒂𝒅𝒐𝒘′𝒔 𝑪𝒍𝒖𝒃 🌹", "⏤͟͟͞͞🌤️ 𝑺𝒖𝒏𝒇𝒍𝒂𝒓𝒆 𝑻𝒆𝒂𝒎 𝑶𝒇𝒊𝒄𝒊𝒂𝒍"]
+global.canalNombreM = ["𝑺𝒊𝒈𝒖𝒆 𝒆𝒍 𝑪𝒂𝒏𝒂𝒍 𝒃𝒚 𝑲𝒂𝒊𝒔𝒆𝒓 ☁", "𝑲𝒂𝒊𝒔𝒆𝒓 𝑩𝒐𝒕 𝒃𝒚 𝑺𝒉𝒂𝒅𝒐𝒘′𝒔 𝑪𝒍𝒖𝒃 🌹", "⏤͟͟͞͞🌤️ 𝑺𝒖𝒏𝒇𝒍𝒂𝒓𝒆 𝑻𝒆𝒂𝒎 𝑶𝒇𝒊𝒄𝒊𝒂𝒍"]
 global.channelRD = await getRandomChannel()
 // global.estilo = { key: {  fromMe: false, participant: `0@s.whatsapp.net`, ...(false ? { remoteJid: "3876577197-120363302285079181@g.us" } : {}) }, message: { orderMessage: { itemCount : -999999, status: 1, surface : 1, message: `${packname}`, orderTitle: 'Bang', thumbnail: icons, sellerJid: '0@s.whatsapp.net'}}}
 
 global.icono = [
 'https://files.catbox.moe/w3zmi3.jpg',
-'https://files.catbox.moe/2i4z53.jpg',
-'https://files.catbox.moe/853hf2.jpg',
-'https://files.catbox.moe/1cdqt2.jpg',
-'https://files.catbox.moe/uogbz0.jpg',
-'https://files.catbox.moe/szj9o8.jpg',
+'https://files.catbox.moe/w3zmi3.jpg',
 ].getRandom()
 
 global.urls = [
