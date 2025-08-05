@@ -21,20 +21,20 @@ global.mods = ['51990841568', '51965911060', '51906168999']
 global.prems = ['51965911060', '51906168999']
 
 
-global.packname = 'Kaiser7 Bot MD'
-global.botname = 'Kaiser Bot - MD'
-global.wm = 'Kaiser Bot - MD'
+global.packname = 'Morchi Bot MD'
+global.botname = 'Morchi Bot - MD'
+global.wm = 'Morchi Bot - MD'
 global.author = '𝖲𝗁⍺𝖽ᦅ𝗐′𝗌 𝖢𝗅𝗎𝖻'
 global.dev = '𝖯𑄜𝗐𝖾𝗋𝖾𝖽 𝖻𝗒 𝖲𝗁⍺𝖽ᦅ𝗐′𝗌 𝖢𝗅𝗎𝖻'
 global.errorm = 'Error: ${error.message}'
-global.namebot = 'Kaiser'
-global.nameai = 'Kaiser Ai'
-global.textbot = 'KAISER BOT MD'
-global.textmain = 'KAISERBOT'
-global.textmain2 = 'Kaiser Bot MD'
-global.vs = '1.5.0'
-global.emotg = '🫵'
-global.msgtagall = '𝙺𝙰𝙸𝚂𝙴𝚁.𝚅𝙸𝙿7 𝚃𝙴 𝙸𝙽𝚅𝙾𝙲𝙰 👽'
+global.namebot = 'Morchi'
+global.nameai = 'Morchi Ai'
+global.textbot = 'MORCHI BOT MD'
+global.textmain = 'MORCHIBOT'
+global.textmain2 = 'Morchi Bot MD'
+global.vs = '2.5.0'
+global.emotg = '🧡🐈'
+global.msgtagall = '𝗠𝗢𝗥𝗖𝗛𝗜 𝗕𝗢𝗧 𝗧𝗘̂ 𝗜𝗡𝗩𝗢𝗖𝗔 😼🫵🏻'
 global.moneda = 'ShadowCoins 🪙'
 
 
