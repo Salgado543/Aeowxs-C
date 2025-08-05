@@ -17,16 +17,16 @@ let handler = async (m, { conn, usedPrefix, command }) => {
     let rtotalreg = Object.values(global.db.data.users).filter(user => user.registered).length
     const readMore = '\u200b'.repeat(850)
 
-    await m.react('🐼')
+    await m.react('👑')
 
     const vid = 'https://files.catbox.moe/js58k4.mp4'
 
 let tags = {};
 let emojis = {
-  main: "🤍",
-  info: "☁️",
+  main: "🌴",
+  info: "🍮",
   config: "⚙️",
-  dl: "🫧",
+  dl: "📯📯",
   search: "🧋",
   ia: "🤖",
   ff: "👾",
@@ -44,7 +44,7 @@ let emojis = {
   sticker: "⚡",
   rpg: "💸",
   rg: "🪴",
-  owner: "☕"
+  owner: "👑"
 };
 
 const tagTitles = {
