@@ -16,8 +16,6 @@ let handler = async (m, { conn, usedPrefix, command }) => {
     let totalreg = Object.keys(global.db.data.users).length
     let rtotalreg = Object.values(global.db.data.users).filter(user => user.registered).length
     const readMore = '\u200b'.repeat(850)
-    const shadow = `${usname}, Thank for using Morchi Bot, Follow the Shadow's Club community`
-    const dv = 'Developed by `Dev Criss 🇦🇱'
 
     await m.react('🐾')
 
@@ -127,8 +125,25 @@ ${readMore}
       defaultMenu.after
     ].join('\n')
 
+ await conn.sendMessage(m.chat, {
+    image: { url: img },
+    caption: menuText,
+    gifPlayback: false,
+    contextInfo: {
+      mentionedJid: [m.sender, creadorM],
+      isForwarded: true,
+      forwardingScore: 999,
+      externalAdReply: {
+        title: `${usname}, Thank you for using Morchiyara, you can follow me on Instagram by clicking here`,
+        body: 'Developed by `Dev Criss 🇦🇱`',
+        thumbnailUrl: img,
+        sourceUrl: ig,
+        mediaType: 1,
+        renderLargerThumbnail: true
+      }
+    }
+  }, { quoted: fkontak });
 
-  await conn.sendLuffy(m.chat, shadow, dv, menuText, img, img, ig, fkontak)
 /*
    await conn.sendMessage(m.chat, {
     image: { url: img },
