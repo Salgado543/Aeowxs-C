@@ -73,7 +73,7 @@ const tagTitles = {
 };
 
 for (let key in emojis) {
-  tags[key] = `「 *${tagTitles[key]}* 」 ${emojis[key]}`;
+  tags[key] = `⾕  ୭ ˚. ᵎᵎ  *${tagTitles[key]}* ˚ ༘♡ ${emojis[key]}ꪆৎ`;
 }
 
     let defaultMenu = {
@@ -95,8 +95,8 @@ ${readMore}
 ㅤㅤ *乂 ʟɪsᴛᴀ ᴅᴇ ᴄᴏᴍᴀɴᴅᴏs 乂*
 `,
 
-      header: category => `╭──•${category}`,
-      body: (cmd, emoji) => `│${emoji} ${cmd}`,
+      header: category => `${category}`,
+      body: (cmd, emoji) => ` ࣪ 🌷${emoji}୭˚ ${cmd}`,
       footer: '╰──•',
       after: `> ${dev}`
   }
