@@ -37,7 +37,7 @@ export async function handler(chatUpdate) {
                 if (!isNumber(user.exp))
                     user.exp = 0
                 if (!isNumber(user.coins))
-                    user.coins = 10
+                    user.coins = 15
                 if (!('premium' in user)) 
                     user.premium = false
                 if (!user.premium) 
@@ -47,6 +47,8 @@ export async function handler(chatUpdate) {
                 if (!user.registered) {
                     if (!('name' in user))
                         user.name = m.name
+                    if (!('description' in user))
+                        user.description = ''
                     if (!isNumber(user.age))
                         user.age = -1
                     if (!isNumber(user.regTime))
@@ -56,8 +58,12 @@ export async function handler(chatUpdate) {
                     user.afk = -1
                 if (!('afkReason' in user))
                     user.afkReason = ''
+                if (!('role' in user))
+                    user.role = 'Novato'
                 if (!('banned' in user))
                     user.banned = false
+                if (!('muto' in user))
+                    user.muto = false
                 if (!('useDocument' in user))
                     user.useDocument = false
                 if (!isNumber(user.level))
@@ -69,17 +75,22 @@ export async function handler(chatUpdate) {
             } else
                 global.db.data.users[m.sender] = {
                     exp: 0,
-                    coins: 10,
+                    coins: 15,
                     registered: false,
                     name: m.name,
+                    description: '',
                     age: -1,
                     regTime: -1,
                     afk: -1,
                     afkReason: '',
                     banned: false,
+                    muto: false,
                     useDocument: false,
                     bank: 0,
                     level: 0,
+                    role: 'Novato',
+                    premium: false,
+                    premiumTime: 0,
                 }
             let chat = global.db.data.chats[m.chat]
             if (typeof chat !== 'object')
@@ -89,6 +100,14 @@ export async function handler(chatUpdate) {
                     chat.isBanned = false
                 if (!('welcome' in chat))
                     chat.welcome = false
+                if (!('sAutoresponder' in chat))
+                    chat.sAutoresponder = ''
+                if (!('sWelcome' in chat))
+                    chat.sWelcome = ''
+                if (!('sBye' in chat))
+                    chat.sBye = ''
+                if (!('sKick' in chat))
+                    chat.sKick = ''
                 if (!('audios' in chat))
                     chat.audios = false
                 if (!('detect' in chat))
@@ -100,45 +119,57 @@ export async function handler(chatUpdate) {
                 if (!('onlyLatinos' in chat))
                     chat.onlyLatinos = false
                 if (!('nsfw' in chat))
-                    chat.nsfw = false
-                if (!('autoAceptar' in chat)) chat.autoAceptar = false                   
+                    chat.nsfw = false           
                 if (!('reaction' in chat))
                     chat.reaction = false
                 if (!('simi' in chat))
                     chat.simi = false
-                if (!('autolevelup' in chat))  chat.autolevelup = false
+                if (!('autolevelup' in chat))  
+                    chat.autolevelup = false
+                if (!('autoresponder' in chat)) 
+                    chat.autoresponder = false
+                if (!('autoaceptar' in chat)) 
+                    chat.autoAceptar = false
+                if (!('autorechazar' in chat)) 
+                    chat.autoRechazar = false
                 if (!('antiBot' in chat))
                      chat.antiBot = false
                 if (!('antiBot2' in chat))
                      chat.antiBot2 = false
                 if (!('antiver' in chat))
                     chat.antiver = false
+                if (!('antifake' in chat))
+                    chat.antifake = false
                 if (!('delete' in chat))
                     chat.delete = false
                 if (!isNumber(chat.expired))
                     chat.expired = 0
-                if (!isNumber(chat.warn))
-                    chat.warn = 0
             } else
                 global.db.data.chats[m.chat] = {
                     isBanned: false,
                     welcome: false,
+                    sAutoresponder: '',
+                    sWelcome: '',
+                    sBye: '',
+                    sKick: '',
                     delete: false,
                     audios: false,
                     detect: true,
-                    antiLink: false,
-                    antiLink2: false,
                     onlyLatinos: false,
                     simi: false,
                     autolevelup: false,
+                    autoresponder: false,
+                    autoaceptar: false,
+                    autorechazar: false,
+                    antiLink: false,
+                    antiLink2: false,
                     antiBot: false,
                     antiBot2: false,
+                    antifake: false,
                     antiver: false,
-                    nsfw: false, 
-                    autoAceptar: false,
+                    nsfw: false,
                     reaction: false,
-                    expired: 0,
-                    warn: 0, 
+                    expired: 0, 
                 }
             var settings = global.db.data.settings[this.user.jid]
             if (typeof settings !== 'object') global.db.data.settings[this.user.jid] = {}
@@ -146,8 +177,7 @@ export async function handler(chatUpdate) {
                if (!('self' in settings)) settings.self = false
                if (!('restrict' in settings)) settings.restrict = true
                 if (!('jadibotmd' in settings)) settings.jadibotmd = false
-               if (!('autobio' in settings)) settings.autobio = false
-                if (!('antiPrivate' in settings)) settings.antiPrivate = false
+                if (!('antiPrivate' in settings)) settings.antiPrivate = true
                 if (!('autoread' in settings)) settings.autoread = false
                 if (!('autoread2' in settings)) settings.autoread2 = false
                 if (!('antiSpam' in settings)) settings.antiSpam = false
@@ -155,8 +185,7 @@ export async function handler(chatUpdate) {
                 self: false,
                 restrict: true,
                 jadibotmd: false,
-                autobio: false,
-                antiPrivate: false,
+                antiPrivate: true,
                 autoread: false,
                 autoread2: false,
                 antiSpam: false,
@@ -171,19 +200,67 @@ export async function handler(chatUpdate) {
         if (typeof m.text !== 'string')
             m.text = ''
 
+let _user = global.db.data?.users?.[m.sender]  // ✅ Solo una vez
 
-        let _user = global.db.data && global.db.data.users && global.db.data.users[m.sender]
+// Detectar si el bot está usando lid o no
+const detectwhat = m.sender.includes('@lid') ? '@lid' : '@s.whatsapp.net'
 
-        const sendNum = m?.sender?.replace(/[^0-9]/g, '')
-        const isROwner = [conn.decodeJid(global.conn?.user?.id), ...global.owner?.map(([number]) => number)].map(v => (v || '').replace(/[^0-9]/g, '')).includes(sendNum)
+const isROwner = [...global.owner.map(([number]) => number)].map(v => v.replace(/[^0-9]/g, '') + detectwhat).includes(m.sender)
+const isOwner = isROwner || m.fromMe
+const isPrems = isROwner || _user?.premiumTime > 0
+
+if (!isOwner && opts['self']) return
+
+if (opts['queque'] && m.text && !(isMods || isPrems)) {
+    let queque = this.msgqueque, time = 1000 * 5
+    const previousID = queque[queque.length - 1]
+    queque.push(m.id || m.key.id)
+    setInterval(async function () {
+        if (queque.indexOf(previousID) === -1) clearInterval(this)
+        await delay(time)
+    }, time)
+}
+
+if (m.isBaileys) return
+m.exp += Math.ceil(Math.random() * 10)
+
+let usedPrefix // Puedes definirlo luego
+
+// Obtener datos del grupo
+const groupMetadata = m.isGroup
+  ? await conn.groupMetadata(m.chat).catch(_ => null)
+  : {}
+
+const participants = m.isGroup ? groupMetadata.participants || [] : []
+
+const senderJid = m.sender
+const senderLid = (participants.find(p => p.jid === senderJid) || {}).lid
+
+const botJid = conn.user?.jid
+const botLid = (participants.find(p => p.jid === botJid) || {}).lid
+
+const user = participants.find(p => p.jid === senderJid || p.lid === senderLid) || {}
+const bot = participants.find(p => p.jid === botJid || p.lid === botLid) || {}
+
+const isRAdmin = user.admin === 'superadmin'
+const isAdmin = isRAdmin || user.admin === 'admin'
+const isBotAdmin = bot.admin === 'admin' || bot.admin === 'superadmin'
+
+// Detecta si es Business o Canal
+m.isWABusiness = ['smba', 'smbi'].includes(global.conn.authState?.creds?.platform)
+m.isChannel = m.chat.includes('@newsletter') || m.sender.includes('@newsletter')
+
+
 
 /*
-        const isROwner = [conn.decodeJid(global.conn.user.id), ...global.owner.map(([number]) => number)].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)*/
-        const isOwner = isROwner || m.fromMe
-        const isMods = isOwner || global.mods.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
-        // const isMods = [conn.decodeJid(global.conn.user.id), ...global.mods.map(([number]) => number)].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
-        const isPrems = isOwner || global.prems.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) || _user.prem == true || isMods;
+        let _user = global.db.data && global.db.data.users && global.db.data.users[m.sender]
 
+const detectwhat = m.sender.includes('@lid') ? '@lid' : '@s.whatsapp.net'
+const isROwner = (global.owner || []).map(n => n + detectwhat).includes(m.sender)
+const isOwner = isROwner || m.fromMe
+const isPrems = isROwner || global.db.data.users[m.sender].premiumTime > 0
+
+        if (!isOwner && opts['self']) return;
         if (opts['queque'] && m.text && !(isMods || isPrems)) {
             let queque = this.msgqueque, time = 1000 * 5
             const previousID = queque[queque.length - 1]
@@ -197,35 +274,38 @@ export async function handler(chatUpdate) {
         if (m.isBaileys)
             return
         m.exp += Math.ceil(Math.random() * 10)
-
+        
         let usedPrefix
-
-const groupMetadata = (m.isGroup ? ((conn.chats[m.chat] || {}).metadata || await this.groupMetadata(m.chat).catch(_ => null)) : {}) || {}
-const participants = (m.isGroup ? groupMetadata.participants : []) || []    
-const normalizeJid = jid => jid?.replace(/[^0-9]/g, '')
-const cleanJid = jid => jid?.split(':')[0] || ''
-const senderNum = normalizeJid(m.sender)
-const botNums = [this.user?.jid, this.user?.lid].map(j => normalizeJid(cleanJid(j)))
-const user = m.isGroup 
-  ? participants.find(u => normalizeJid(u.id) === senderNum) 
-  : {}
-const bot = m.isGroup 
-  ? participants.find(u => botNums.includes(normalizeJid(u.id))) 
+        let _user = global.db.data && global.db.data.users && global.db.data.users[m.sender]
+// Obtener datos del grupo
+const groupMetadata = m.isGroup
+  ? await conn.groupMetadata(m.chat).catch(_ => null)
   : {}
 
-const isRAdmin = user?.admin === 'superadmin'
-const isAdmin = isRAdmin || user?.admin === 'admin'
-const isBotAdmin = !!bot?.admin || bot?.admin === 'admin'
+const participants = m.isGroup ? groupMetadata.participants || [] : []
 
-/*
-        const groupMetadata = (m.isGroup ? ((conn.chats[m.chat] || {}).metadata || await this.groupMetadata(m.chat).catch(_ => null)) : {}) || {}
-        const participants = (m.isGroup ? groupMetadata.participants : []) || []
-        const user = (m.isGroup ? participants.find(u => conn.decodeJid(u.id) === m.sender) : {}) || {}
-        const bot = (m.isGroup ? participants.find(u => conn.decodeJid(u.id) == this.user.jid) : {}) || {}
-        const isRAdmin = user?.admin == 'superadmin' || false
-        const isAdmin = isRAdmin || user?.admin == 'admin' || false
-        const isBotAdmin = bot?.admin || false
-*/
+// Este es tu ID real
+const senderJid = m.sender // Ej: '5493865642938@s.whatsapp.net'
+const senderLid = (participants.find(p => p.jid === senderJid) || {}).lid
+
+// Este es el ID del bot
+const botJid = conn.user?.jid // Ej: '5493865208712@s.whatsapp.net'
+const botLid = (participants.find(p => p.jid === botJid) || {}).lid
+
+// Usuario en el grupo
+const user = participants.find(p => p.jid === senderJid || p.lid === senderLid) || {}
+const bot = participants.find(p => p.jid === botJid || p.lid === botLid) || {}
+
+const isRAdmin = user.admin === 'superadmin'
+const isAdmin = isRAdmin || user.admin === 'admin'
+
+const isBotAdmin = bot.admin === 'admin' || bot.admin === 'superadmin'
+
+// 📢 Detecta si es una cuenta Business o Canal
+m.isWABusiness = ['smba', 'smbi'].includes(global.conn.authState?.creds?.platform)
+m.isChannel = m.chat.includes('@newsletter') || m.sender.includes('@newsletter')*/
+
+
         const ___dirname = path.join(path.dirname(fileURLToPath(import.meta.url)), './plugins')
         for (let name in global.plugins) {
             let plugin = global.plugins[name]
@@ -313,11 +393,11 @@ if (m.chat in global.db.data.chats || m.sender in global.db.data.users) {
 let chat = global.db.data.chats[m.chat]
 let user = global.db.data.users[m.sender]
 if (!['owner-unbanchat.js'].includes(name) && chat && chat.isBanned && !isROwner) return // Except this
-if (name != 'owner-unbanchat.js' && name != 'owner-exec.js' && name != 'owner-exec2.js' && name != 'herramientas-delete.js' && chat?.isBanned && !isROwner) return 
+if (name != 'owner-unbanchat.js' && name != 'owner-exec.js' && name != 'owner-exec2.js' && name != 'tool-delete.js' && chat?.isBanned && !isROwner) return 
 if (m.text && user.banned && !isROwner) {
 if (user.antispam > 2) return
 m.reply(`*🚫 Está baneado(a), no puede usar los comandos de este bot!*\n\n${user.bannedReason ? `\n💌 *Motivo:* 
-${user.bannedReason}` : '💌 *Motivo:* Sin Especificar'}\n\n⚠️ *Si cree que es un error contacte con mi creador:*\n - ${asistencia}`)
+${user.bannedReason}` : '💌 *Motivo:* Sin Especificar'}\n\n⚠️ *Si cree que es un error contacte con mi creador:*\n- Wa.me/51927238856`)
 user.antispam++        
 return
 }
@@ -427,8 +507,8 @@ global.db.data.users[m.sender].spam = new Date * 1
                     console.error(e)
                     if (e) {
                         let text = format(e)
-                        for (let key of Object.values(global.APIKeys))
-                            text = text.replace(new RegExp(key, 'g'), '#HIDDEN#')
+                        /*for (let key of Object.values(global.APIKeys))
+                            text = text.replace(new RegExp(key, 'g'), '#HIDDEN#')*/
                         m.reply(text)
                     }
                 } finally {
@@ -507,7 +587,6 @@ global.db.data.users[m.sender].spam = new Date * 1
 global.dfail = (type, m, conn) => {
 
 let user2 = m.pushName || 'Anónimo'
-
 const msg = {
 rowner: `*${emoji} Esta función solo puede ser usada por el actual Owner.*`, 
 owner: `*${emoji} Esta función solo puede ser usada por mi Desarrollador.*`, 
