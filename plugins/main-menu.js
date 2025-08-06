@@ -153,7 +153,7 @@ await conn.sendMessage(m.chat, {
     forwardingScore: 999,
     externalAdReply: {
       title: `${usname}, Thank you for using Morchi Bot, you can follow me on Instagram by clicking here`,
-      body: 'Developed by `Dev Criss 🇦🇱`',
+      body: 'Developed by `Dev Criss 🇦🇱',
       thumbnail: await (await fetch(img)).buffer(),
       sourceUrl: ig,
       mediaType: 1,
