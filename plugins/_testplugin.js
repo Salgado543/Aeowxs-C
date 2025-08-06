@@ -52,6 +52,6 @@ handler.help = ['grouplist'];
 handler.tags = ['owner'];
 handler.command = /^(groups|grouplist|listadegrupo|gruposlista|listagrupos|listgroup)$/i;
 handler.rowner = true;
-handler.private = true;
+handler.private = false;
 
 export default handler;
