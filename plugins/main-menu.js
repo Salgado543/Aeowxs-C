@@ -83,7 +83,7 @@ for (let key in emojis) {
 ✿ *Hᴏʟᴀ ${taguser}*\n*${saludo}*
 
 > ꒰꛱ ͜Desarrollado por *Dev Criss 🇦🇱*
-${creadorN}
+@${creadorN}
 
 *𓈒𓏸🌴 \`𝖡𝗈𝗍𝖭𝖺𝗆𝖾:\`* ${botname}
 *𓈒𓏸🌵 \`𝖴𝗉𝗍𝗂𝗆𝖾:\`* ${uptime}
