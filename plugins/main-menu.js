@@ -126,12 +126,18 @@ ${readMore}
     ].join('\n')
 
 
+const shadow = `${usname}, Thank for using Morchi Bot, Follow the Shadow's Club community`
+const dv = 'Developed by `Dev Criss 🇦🇱'
+
+
+  await conn.sendLuffy(m.chat, shadow, dv, menuText, img, img, ig, fkontak)
+/*
    await conn.sendMessage(m.chat, {
     image: { url: img },
     caption: menuText,
     mentions: [m.sender, creadorM],
     gifPlayback: false
-  }, { quoted: fkontak })
+  }, { quoted: fkontak })*/
 
   } catch (e) {
     console.error(e)
