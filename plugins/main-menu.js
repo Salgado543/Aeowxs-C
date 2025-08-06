@@ -19,32 +19,32 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 
     await m.react('👑')
 
-    const img = ''
+    const img = 'https://files.catbox.moe/quasji.jpg'
 
 let tags = {};
 let emojis = {
-  main: "🌴",
-  info: "🍮",
+  main: "🌷",
+  info: "☁️",
   config: "⚙️",
-  dl: "🥡",
-  search: "🧋",
-  ia: "🤖",
-  ff: "🍡",
+  dl: "🥥",
+  search: "🔎",
+  ia: "💭",
+  ff: "🪐",
   frases: "💞",
-  converter: "🪾",
+  converter: "🐈‍⬛",
   tools: "🛠️",
-  gc: "☕",
+  gc: "🐱",
   efectos: "🪻",
-  fun: "🪸",
-  game: "🍭",
-  anime: "🍬",
+  fun: "🐒",
+  game: "🪶",
+  anime: "🍃",
   logos: "🏝️",
   emox: "🪼",
   nsfw: "🍒",
   sticker: "⚡",
   rpg: "💸",
   rg: "🪴",
-  owner: "👑"
+  owner: "☕"
 };
 
 const tagTitles = {
