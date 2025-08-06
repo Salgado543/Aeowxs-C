@@ -124,7 +124,7 @@ ${readMore}
       ),
       defaultMenu.after
     ].join('\n')
-
+/*
  await conn.sendMessage(m.chat, {
     image: { url: img },
     caption: menuText,
@@ -142,15 +142,26 @@ ${readMore}
         renderLargerThumbnail: true
       }
     }
-  }, { quoted: fkontak });
+  }, { quoted: fkontak });*/
 
-/*
-   await conn.sendMessage(m.chat, {
-    image: { url: img },
-    caption: menuText,
-    mentions: [m.sender, creadorM],
-    gifPlayback: false
-  }, { quoted: fkontak })*/
+
+await conn.sendMessage(m.chat, {
+  text: menuText,
+  contextInfo: {
+    mentionedJid: [m.sender, creadorM],
+    isForwarded: true,
+    forwardingScore: 999,
+    externalAdReply: {
+      title: `${usname}, Thank you for using Morchi Bot, you can follow me on Instagram by clicking here`,
+      body: 'Developed by `Dev Criss 🇦🇱`',
+      thumbnail: await (await fetch(img)).buffer(),
+      sourceUrl: ig,
+      mediaType: 1,
+      renderLargerThumbnail: true
+    }
+  }
+}, { quoted: fkontak });
+
 
   } catch (e) {
     console.error(e)
