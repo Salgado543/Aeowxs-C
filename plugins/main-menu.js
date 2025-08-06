@@ -97,7 +97,7 @@ ${readMore}
 
       header: category => `${category}`,
       body: (cmd, emoji) => ` ࣪ 🌷${emoji}୭˚ ${cmd}`,
-      footer: '╰──•',
+      footer: '',
       after: `> ${dev}`
   }
 
