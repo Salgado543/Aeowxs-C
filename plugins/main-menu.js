@@ -16,6 +16,8 @@ let handler = async (m, { conn, usedPrefix, command }) => {
     let totalreg = Object.keys(global.db.data.users).length
     let rtotalreg = Object.values(global.db.data.users).filter(user => user.registered).length
     const readMore = '\u200b'.repeat(850)
+    const shadow = `${usname}, Thank for using Morchi Bot, Follow the Shadow's Club community`
+    const dv = 'Developed by `Dev Criss 🇦🇱'
 
     await m.react('🐾')
 
@@ -124,10 +126,6 @@ ${readMore}
       ),
       defaultMenu.after
     ].join('\n')
-
-
-const shadow = `${usname}, Thank for using Morchi Bot, Follow the Shadow's Club community`
-const dv = 'Developed by `Dev Criss 🇦🇱'
 
 
   await conn.sendLuffy(m.chat, shadow, dv, menuText, img, img, ig, fkontak)
