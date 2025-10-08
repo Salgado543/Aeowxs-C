@@ -1,29 +1,24 @@
-import { sticker } from '../lib/sticker.js'
-
-let handler = async (m, { conn, text, usedPrefix, command }) => {
+const handler = async (m, { conn, text, usedPrefix, command }) => {
   try {
-    if (!text) {
-      return conn.reply(m.chat, `*${emojis} Ingresa un texto para realizar tu sticker.*`, m, rcanal)
-    }
+    let input = text || (m.quoted && m.quoted.text);
 
-await m.react('⌛')
+    if (!input) {
+ return m.reply(`*${emojis} Ingresa un texto para crear tu sticker.*\nEjemplo: ${usedPrefix + command} Hello world`);
+ }
 
-    const url = `https://api.nekorinn.my.id/maker/brat-v2?text=${encodeURIComponent(text)}`
-    const stiker = await sticker(null, url, packname, author)
+await m.react('☁️')
+ const apiUrl = `https://api.siputzx.my.id/api/m/brat?text=${encodeURIComponent(input)}`;
 
-    if (!stiker) throw 'Error al generar el sticker.'
+    await conn.sendMessage(m.chat, {
+      sticker: { url: apiUrl }
+    }, { quoted: fkontak });
 
-    await conn.sendFile(m.chat, stiker, 'sticker.webp', '', fkontak)
-    await m.react('✅')
   } catch (err) {
-    console.error(err)
+    console.error(err);
     await m.react('✖️')
-    m.reply(typeof err === 'string' ? err : 'Ocurrió un error al generar el sticker.')
+    m.reply(`*✖️ Ocurrió un error al generar el sticker\n> Api caída*`);
   }
-}
+};
 
-handler.help = ['brat']
-handler.tags = ['sticker']
-handler.command = /^brat$/i
-
-export default handler
+handler.command = /^brat$/i;
+export default handler;
