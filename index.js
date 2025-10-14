@@ -246,7 +246,7 @@ return true
 process.on('unhandledRejection', (reason, promise) => {
 console.error("Rechazo no manejado detectado:", reason);
 });
-
+/*
 global.rutaJadiBot = join(__dirname, `./${jadi}`)
 if (global.yukiJadibts) {
 if (!existsSync(global.rutaJadiBot)) {
@@ -263,7 +263,7 @@ const botPath = join(rutaJadiBot, gjbts)
 const readBotPath = readdirSync(botPath)
 if (readBotPath.includes(creds)) {
 yukiJadiBot({pathYukiJadiBot: botPath, m: null, conn, args: '', usedPrefix: '/', command: 'serbot'})
-}}}}
+}}}}*/
 
 const pluginFolder = global.__dirname(join(__dirname, './plugins/index'))
 const pluginFilter = (filename) => /\.js$/.test(filename)
