@@ -32,7 +32,7 @@ const { chain } = lodash
 const PORT = process.env.PORT || process.env.SERVER_PORT || 3000
 
 let { say } = cfonts
-console.log(chalk.magentaBright('\n❀ Iniciando...'))
+console.log(chalk.magentaBright('\nOjala vayas con suertes 😆'))
 say('Morchi', {
 font: 'simple',
 align: 'left',
