@@ -35,6 +35,8 @@ global.textmain2 = 'Morchi Bot MD'
 global.vs = '2.5.0'
 global.emotg = '🧡🐈'
 global.msgtagall = '𝗠𝗢𝗥𝗖𝗛𝗜 𝗕𝗢𝗧 𝗧𝗘̂ 𝗜𝗡𝗩𝗢𝗖𝗔 😼🫵🏻'
+global.sessions = 'MorchiSession'
+global.jadi = 'JadiBots'
 global.moneda = 'ShadowCoins 🪙'
 
 
