@@ -10,7 +10,7 @@ import moment from 'moment-timezone'
 global.botNumber = '' //Ejemplo: 51927238856
 
 global.owner = [
-   ['906168999', 'Cielo', true],
+   ['5492984129198', 'Floree', true],
    ['51927238856', 'Dev Criss 🇦🇱', true],
    ['51990841568', 'Soporte', true],
 ]
@@ -23,20 +23,20 @@ global.mods = ['51990841568', '51965911060', '51906168999']
 global.prems = ['51965911060', '51906168999']
 
 
-global.packname = 'Morchi Bot MD'
-global.botname = 'Morchi Bot - MD'
-global.wm = 'Morchi Bot - MD'
+global.packname = 'Floree Bot MD'
+global.botname = 'Floree Bot - MD'
+global.wm = 'Floree Bot - MD'
 global.author = '𝖲𝗁⍺𝖽ᦅ𝗐′𝗌 𝖢𝗅𝗎𝖻'
 global.dev = '𝖯𑄜𝗐𝖾𝗋𝖾𝖽 𝖻𝗒 𝖲𝗁⍺𝖽ᦅ𝗐′𝗌 𝖢𝗅𝗎𝖻'
 global.errorm = 'Error: ${error.message}'
-global.namebot = 'Morchi'
-global.nameai = 'Morchi Ai'
-global.textbot = 'MORCHI BOT MD'
-global.textmain = 'MORCHIBOT'
-global.textmain2 = 'Morchi Bot MD'
-global.vs = '2.5.0'
-global.emotg = '🧡🐈'
-global.msgtagall = '𝗠𝗢𝗥𝗖𝗛𝗜 𝗕𝗢𝗧 𝗧𝗘̂ 𝗜𝗡𝗩𝗢𝗖𝗔 😼🫵🏻'
+global.namebot = 'Floree'
+global.nameai = 'Floree Ai'
+global.textbot = 'FLOREE BOT MD'
+global.textmain = 'FLOREEBOT'
+global.textmain2 = 'Floree Bot MD'
+global.vs = '1.1.0'
+global.emotg = '🕸️🕷️'
+global.msgtagall = '𝐅𝐋𝐎𝐑𝐄𝐄 𝐁𝐎𝐓 𝐓𝐄 𝐈𝐍𝐕𝐎𝐂𝐀 🕸️'
 global.sessions = 'MorchiSession'
 global.jadi = 'JadiBots'
 global.moneda = 'ShadowCoins 🪙'
