@@ -41,12 +41,12 @@ let { say } = cfonts
 
 console.log(chalk.bold.redBright(`\n💻 Iniciando Sistema...\n`))
 
-say('Morchi\nUltra\nMD', {
+say('Floree\nUltra\nMD', {
   font: 'chrome',
   align: 'center',
   gradient: ['red', 'magenta']
 });
-say(`Developed By ShadowzClub`, {
+say(`Developed By ShadowzClub\nTest the index`, {
   font: 'console',
   align: 'center',
   gradient: ['red', 'magenta']
