@@ -11,7 +11,6 @@ import fs, {readdirSync, statSync, unlinkSync, existsSync, mkdirSync, readFileSy
 import yargs from 'yargs';
 import {spawn} from 'child_process'
 import lodash from 'lodash'
-//import { shadowJadiBot } from './plugins/jadibot-serbot.js'
 import chalk from 'chalk'
 import syntaxerror from 'syntax-error'
 import {tmpdir} from 'os'
@@ -39,14 +38,14 @@ const PORT = process.env.PORT || process.env.SERVER_PORT || 3000
 
 let { say } = cfonts
 
-console.log(chalk.bold.redBright(`\n💻 Iniciando Sistema...\n`))
+console.log(chalk.bold.redBright(`\n☁️ Iniciando sistema..\n`))
 
 say('Floree\nUltra\nMD', {
   font: 'chrome',
   align: 'center',
   gradient: ['red', 'magenta']
 });
-say(`Developed By ShadowzClub\nTest the index`, {
+say(`Developed By @ShadowzClub`, {
   font: 'console',
   align: 'center',
   gradient: ['red', 'magenta']
@@ -280,32 +279,7 @@ conn.ev.on('creds.update', conn.credsUpdate)
 isInit = false
 return true
 };
-/*
-//Arranque nativo para subbots
 
-global.rutaJadiBot = join(__dirname, './JadiBots')
-
-if (global.shadowJadibts) {
-if (!existsSync(global.rutaJadiBot)) {
-mkdirSync(global.rutaJadiBot, { recursive: true }) 
-console.log(chalk.bold.cyan(`La carpeta: ${jadi} se creó correctamente.`))
-} else {
-console.log(chalk.bold.cyan(`La carpeta: ${jadi} ya está creada.`)) 
-}
-
-const readRutaJadiBot = readdirSync(rutaJadiBot)
-if (readRutaJadiBot.length > 0) {
-const creds = 'creds.json'
-for (const gjbts of readRutaJadiBot) {
-const botPath = join(rutaJadiBot, gjbts)
-const readBotPath = readdirSync(botPath)
-if (readBotPath.includes(creds)) {
-shadowJadiBot({pathShadowJadiBot: botPath, m: null, conn, args: '', usedPrefix: '/', command: 'serbot'})
-}
-}
-}
-}
-*/
 const pluginFolder = global.__dirname(join(__dirname, './plugins/index'))
 const pluginFilter = (filename) => /\.js$/.test(filename)
 global.plugins = {}
