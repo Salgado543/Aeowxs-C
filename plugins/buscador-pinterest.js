@@ -118,7 +118,7 @@ const pins = async (judul) => {
 };
 
 let handler = async (m, { conn, text }) => {
-  if (!text) return m.reply(`*${xsearch} Por favor, ingresa un texto para buscar en Pinterest.*\n> *\`Ejemplo:\`* .pinterest Gatos Hermosos`);
+  if (!text) return m.reply(`*${emojis} Por favor, ingresa un texto para buscar en Pinterest.*\n> *Ejemplo:* .pinterest Gatos Hermosos`);
 
   try {
     await m.react(rwait);
@@ -140,7 +140,7 @@ let handler = async (m, { conn, text }) => {
       quoted: m
     });
 
-    await m.react(rdone)
+    await m.react(done)
 
   } catch (error) {
     conn.reply(m.chat, '*⚠️ Error al obtener imágenes de Pinterest.*', m);
