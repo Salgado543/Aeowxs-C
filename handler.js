@@ -565,7 +565,7 @@ unreg: `*${emoji} \`${botname}\` te avisa que no te encuentras registrado para u
 > Ejemplo: .reg ${namebot}.21`,
 restrict: `*${emoji} Esta característica esta desactivada.*`
 }[type];
-if (msg) return conn.reply(m.chat, msg, m, rcanal).then(_ => m.react('✖️'))}
+if (msg) return conn.reply(m.chat, msg, m, rcanal)}
 
 let file = global.__filename(import.meta.url, true)
 watchFile(file, async () => {
