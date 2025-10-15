@@ -2,7 +2,7 @@ import fetch from 'node-fetch'
 const { generateWAMessageContent, generateWAMessageFromContent, proto } = (await import('@whiskeysockets/baileys')).default
 
 let handler = async (m, { conn, usedPrefix, command, text }) => {
-    if (!text) return m.reply(`*${emojis} Ingresa un texto para buscar en Pinterest.*\n> Ejemplo: ${usedPrefix + command} Gatitos')
+    if (!text) return m.reply(`*${emojis} Ingresa un texto para buscar en Pinterest.*\n> Ejemplo: ${usedPrefix + command} Gatitos`)
     await m.react('🕓')
 
     try {
