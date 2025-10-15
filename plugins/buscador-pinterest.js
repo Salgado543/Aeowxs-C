@@ -1,78 +1,70 @@
-import axios from 'axios';
-const { proto, generateWAMessageContent, generateWAMessageFromContent } = (await import('@whiskeysockets/baileys')).default;
+import fetch from 'node-fetch'
+const { generateWAMessageContent, generateWAMessageFromContent, proto } = (await import('@whiskeysockets/baileys')).default
 
-const handler = async (m, { conn, usedPrefix, command, text }) => {
-  if (!text) {
-    return conn.reply(m.chat, `*${emojis} Ingresa una búsqueda de Pinterest.*\n> *Ejemplo:* ${usedPrefix + command} Gatitos`, m);
-  }
+let handler = async (m, { conn, text }) => {
+    if (!text) return m.reply('Ingresa el texto de lo que quieres buscar en imágenes 🔍');
+    await m.react('🕓');
 
-  await m.react('🔎');
-
-  try {
-    const { data } = await axios.get(`https://api.vreden.my.id/api/pinterest?query=${encodeURIComponent(text)}`);
-    const resultados = Array.isArray(data?.result) ? data.result : [];
-
-    if (!resultados.length) {
-      return conn.reply(m.chat, '*✖️ No se encontraron imágenes para esa búsqueda.*', m);
-    }
-
-    // si te la robas sos re gei
-    const seleccionados = resultados.sort(() => Math.random() - 0.5).slice(0, 10);
-    const tarjetas = [];
-
-    for (const url of seleccionados) {
-      const { imageMessage } = await generateWAMessageContent({ image: { url } }, {
-        upload: conn.waUploadToServer
-      });
-
-      tarjetas.push({
-        body: proto.Message.InteractiveMessage.Body.fromObject({ text: null }),
-        footer: proto.Message.InteractiveMessage.Footer.fromObject({ text: '*Search - Pinterest*' }),
-        header: proto.Message.InteractiveMessage.Header.fromObject({
-          hasMediaAttachment: true,
-          imageMessage
-        }),
-        nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.fromObject({
-          buttons: [
-            {
-              name: "cta_url",
-              buttonParamsJson: JSON.stringify({
-                display_text: "Ver en Pinterest",
-                url: `https://www.pinterest.com/search/pins/?q=${encodeURIComponent(text)}`
-              })
-            }
-          ]
-        })
-      });
-    }
-
-    const carrusel = generateWAMessageFromContent(m.chat, {
-      viewOnceMessage: {
-        message: {
-          messageContextInfo: {
-            deviceListMetadata: {},
-            deviceListMetadataVersion: 2
-          },
-          interactiveMessage: proto.Message.InteractiveMessage.fromObject({
-            body: proto.Message.InteractiveMessage.Body.create({ text: `\`Resultados:\` ${text}` }),
-            footer: proto.Message.InteractiveMessage.Footer.create({ text: dev }),
-            header: proto.Message.InteractiveMessage.Header.create({ hasMediaAttachment: false }),
-            carouselMessage: proto.Message.InteractiveMessage.CarouselMessage.fromObject({ cards: tarjetas })
-          })
+    try {
+        async function createImage(url) {
+            const { imageMessage } = await generateWAMessageContent({ image: { url } }, { upload: conn.waUploadToServer });
+            return imageMessage;
         }
-      }
-    }, { quoted: m });
 
-    await conn.relayMessage(m.chat, carrusel.message, { messageId: carrusel.key.id });
+        let push = [];
+        let api = await fetch(`https://api.diioffc.web.id/api/search/gimage?query=${encodeURIComponent(text)}`);
+        let json = await api.json();
 
-  } catch (e) {
-    console.error(e);
-    await conn.reply(m.chat, `*✖️😉 Ocurrió un error al obtener los datos.*\n*Error:* ${e.message}`, m);
-  }
-};
+        for (let result of json.result) {
+            let image = await createImage(result.link);
 
-handler.help = ['pinterest'];
-handler.tags = ['search'];
-handler.command = ['pin', 'pinterest', 'pintes'];
+            push.push({
+                body: proto.Message.InteractiveMessage.Body.fromObject({
+                    text: `◦ *Título:* ${result.title} \n◦ *Descripción:* ${result.snippet}`
+                }),
+                footer: proto.Message.InteractiveMessage.Footer.fromObject({ text: '' }),
+                header: proto.Message.InteractiveMessage.Header.fromObject({
+                    title: '',
+                    hasMediaAttachment: true,
+                    imageMessage: image
+                }),
+                nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.fromObject({
+                    buttons: [
+                        {
+                            "name": "cta_url",
+                            "buttonParamsJson": `{"display_text":"🌐 Ver Imagen","url":"${result.image.contextLink}"}`
+                        }
+                    ]
+                })
+            });
+        }
+
+        const msg = generateWAMessageFromContent(m.chat, {
+            viewOnceMessage: {
+                message: {
+                    messageContextInfo: {
+                        deviceListMetadata: {},
+                        deviceListMetadataVersion: 2
+                    },
+                    interactiveMessage: proto.Message.InteractiveMessage.fromObject({
+                        body: proto.Message.InteractiveMessage.Body.create({ text: '*`\Resultados de:\`* ' + `${text}` }),
+                        footer: proto.Message.InteractiveMessage.Footer.create({ text: '_\`Imagenes encontradas\`_' }),
+                        header: proto.Message.InteractiveMessage.Header.create({ hasMediaAttachment: false }),
+                        carouselMessage: proto.Message.InteractiveMessage.CarouselMessage.fromObject({ cards: [...push] })
+                    })
+                }
+            }
+        }, { 'quoted': m });
+
+        await m.react('✅');
+        await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id });
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+handler.help = ['pinterest']
+handler.tags = ['dl']
+handler.command = /^(pinterest|pin)$/i
 
 export default handler;
