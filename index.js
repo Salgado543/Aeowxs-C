@@ -40,12 +40,12 @@ let { say } = cfonts
 
 console.log(chalk.bold.redBright(`\n☁️ Iniciando sistema..\n`))
 
-say('Floree\nUltra\nMD', {
+say('Floree\nBot\nMD', {
   font: 'chrome',
   align: 'center',
   gradient: ['red', 'magenta']
 });
-say(`Nueva versión actualizada\nDeveloped By @ShadowzClub`, {
+say(`Nueva versión actualizada\nVersion Ultra\nDeveloped By @ShadowzClub`, {
   font: 'console',
   align: 'center',
   gradient: ['red', 'magenta']
