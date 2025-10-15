@@ -45,7 +45,7 @@ say('Floree\nUltra\nMD', {
   align: 'center',
   gradient: ['red', 'magenta']
 });
-say(`Developed By @ShadowzClub`, {
+say(`Nueva versión actualizada\nDeveloped By @ShadowzClub`, {
   font: 'console',
   align: 'center',
   gradient: ['red', 'magenta']
