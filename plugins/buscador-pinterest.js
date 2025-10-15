@@ -136,7 +136,7 @@ let handler = async (m, { conn, text }) => {
     }
 
     await sendAlbumMessage(m.chat, medias, {
-      caption: `Search - Pinterest\n\n${emoji2} Búsqueda: ${text}`,
+      caption: `Search - Pinterest\n\n${emoji2} Búsqueda: ${text}\n\n${dev}`,
       quoted: m
     });
 
