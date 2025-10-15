@@ -30,7 +30,7 @@ global.textbot = 'FLOREE BOT MD'
 global.vs = '1.0.0'
 global.emotg = '🕸️🕷️'
 global.msgtagall = '𝐅𝐋𝐎𝐑𝐄𝐄 𝐁𝐎𝐓 𝐓𝐄 𝐈𝐍𝐕𝐎𝐂𝐀 🕸️'
-global.sessions = 'MorchiSession'
+global.sessions = 'Session'
 global.jadi = 'JadiBots'
 global.moneda = 'ShadowCoins 🪙'
 
