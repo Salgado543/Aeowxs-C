@@ -119,7 +119,7 @@ global.fechaHora = `${diaSemana}, ${dia} de ${mes} del ${año} │ Hora: ${hora}
   global.readMore = more.repeat(850)
 
   global.packN = `ᗝ̵    ִ   𝖲𝗁⍺𝖽𝗈𝗐𝗓𝖢𝗅𝗎𝖻    🥢    𐙚 `
-  global.authorN = wm2
+  global.authN = wm2
 
 //FAKES
 global.fkontak = { key: { participants:"0@s.whatsapp.net", "remoteJid": "status@broadcast", "fromMe": false, "id": "Halo" }, "message": { "contactMessage": { "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD` }}, "participant": "0@s.whatsapp.net" }
