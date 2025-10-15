@@ -15,7 +15,7 @@ Evita respuestas innecesarias como "soy una IA", "no tengo sentimientos", o "no 
 
   try {
     if (!text) {
-      return conn.reply(m.chat, `*${emojis} Escribe una pregunta para que la IA pueda ayudarte.*`, m, rcanal)
+      return conn.reply(m.chat, `*${emojis} Escribe una pregunta para que la IA pueda ayudarte.*`, m)
     }
 
     await conn.sendPresenceUpdate('composing', m.chat)
