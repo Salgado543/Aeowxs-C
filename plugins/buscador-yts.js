@@ -3,7 +3,7 @@ import yts from 'yt-search'
 
 let handler = async(m, { conn, text, usedPrefix, command }) => {
 
-  if (!text) return conn.reply(m.chat, `*${emojis} Ingresa un texto para buscar en Youtube.*\n> *Ejemplo:* ${usedPrefix + command} Jota detona`, m, rcanal);
+  if (!text) return conn.reply(m.chat, `*${emojis} Ingresa un texto para buscar en Youtube.*\n> *Ejemplo:* ${usedPrefix + command} Shadow Bot by Dev Criss`, m);
 
  await m.react('🔎');
   let results = await yts(text)
