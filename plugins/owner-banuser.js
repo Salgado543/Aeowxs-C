@@ -11,7 +11,7 @@ var handler = async (m, { conn, text, args, command }) => {
         } else if (m.mentionedJid && m.mentionedJid.length) {
             user = m.mentionedJid[0];
         } else {
-            return conn.reply(m.chat, bantMsg, m, rcanal, { mentions: [senderJid] });
+            return conn.reply(m.chat, bantMsg, m, { mentions: [senderJid] });
         }
 
         const number = user.split('@')[0];
