@@ -10,7 +10,7 @@ let handler = async (m, { conn, text }) => {
         if (!code) return m.reply('*⚠️ enlace inválido.*')
 
         let res = await conn.groupAcceptInvite(code)
-        m.reply(`*✅ Jota se unió correctamente al grupo.*`)
+        m.reply(`*✅ ${botname} se unió correctamente al grupo.*`)
 
 
         if (expired) {
