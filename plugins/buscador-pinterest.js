@@ -86,7 +86,7 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
     }
 }
 
-handler.help = ['pinterest *<texto>*']
+handler.help = ['pinterest']
 handler.tags = ['search']
 handler.command = /^pinterest|pin$/i
 
