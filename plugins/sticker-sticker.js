@@ -13,12 +13,12 @@ let handler = async (m, { conn, args }) => {
   try {
     if (mime.startsWith('image/') || mime.startsWith('video/') || mime === 'image/webp') {
       let media = await q.download?.()
-      if (!media) return conn.reply(m.chat, mensajeError, m, rcanal)
+      if (!media) return conn.reply(m.chat, mensajeError, m)
 
       try {
         stiker = await sticker(media, false, global.packN, global.authorN)
       } catch (e) {
-        console.error('❌ Error al generar sticker directo:', e)
+        console.error('*✖️ Error al generar sticker directo:*', e)
         let url
 
         if (mime === 'image/webp') url = await webp2png(media)
@@ -26,28 +26,28 @@ let handler = async (m, { conn, args }) => {
         else if (mime.startsWith('video/')) url = await uploadFile(media)
 
         if (!url || typeof url !== 'string' || !isValidUrl(url)) {
-          return conn.reply(m.chat, '❌ No se pudo obtener una URL válida del archivo.', m)
+          return conn.reply(m.chat, '*✖️ No se pudo obtener una URL válida del archivo.*', m)
         }
 
         stiker = await sticker(false, url, global.packN, global.authorN)
       }
 
     } else if (args[0]) {
-      if (!isValidUrl(args[0])) return conn.reply(m.chat, '❌ La *URL* es inválida.', m)
+      if (!isValidUrl(args[0])) return conn.reply(m.chat, '✖️ La *URL* es inválida.', m)
       stiker = await sticker(false, args[0], global.packN, global.authorN)
     } else {
-      return conn.reply(m.chat, mensajeError, m, rcanal)
+      return conn.reply(m.chat, mensajeError, m)
     }
 
   } catch (e) {
-    console.error('❌ Error general:', e)
+    console.error('✖️ Error general:', e)
     stiker = false
   }
 
   if (stiker && Buffer.isBuffer(stiker)) {
     await conn.sendFile(m.chat, stiker, 'sticker.webp', '', m)
   } else {
-    conn.reply(m.chat, '❌ No se pudo generar el sticker. Asegúrate de que el archivo sea válido.', m)
+    conn.reply(m.chat, '✖️ No se pudo generar el sticker. Asegúrate de que el archivo sea válido.', m)
   }
 }
 
