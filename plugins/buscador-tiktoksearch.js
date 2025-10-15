@@ -2,7 +2,7 @@ import axios from 'axios';
 const { proto, generateWAMessageFromContent, generateWAMessageContent } = (await import("@whiskeysockets/baileys")).default;
 
 let handler = async (message, { conn, text, usedPrefix, command }) => {
-  if (!text) return conn.reply(message.chat, `*${emojis} Ingrese el texto que desee buscar en TikTok*`, message, rcanal);
+  if (!text) return conn.reply(message.chat, `*${emojis} Ingrese el texto que desee buscar en TikTok*`, message);
 
   // Función para crear el mensaje de video
   async function createVideoMessage(url) {
