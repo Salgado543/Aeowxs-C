@@ -15,26 +15,19 @@ global.owner = [
    ['51990841568', 'Soporte', true],
 ]
 
-global.creator = [
-   ['51927238856', 'Dev Criss 🇦🇱', true]
-]
-
-global.mods = ['51990841568', '51965911060', '51906168999']
-global.prems = ['51965911060', '51906168999']
-
+global.mods = ['']
+global.prems = ['']
 
 global.packname = 'Floree Bot MD'
 global.botname = 'Floree Bot - MD'
 global.wm = 'Floree Bot - MD'
+global.wm2 = '@Floree ステカー'
 global.author = '𝖲𝗁⍺𝖽ᦅ𝗐′𝗌 𝖢𝗅𝗎𝖻'
 global.dev = '𝖯𑄜𝗐𝖾𝗋𝖾𝖽 𝖻𝗒 𝖲𝗁⍺𝖽ᦅ𝗐′𝗌 𝖢𝗅𝗎𝖻'
-global.errorm = 'Error: ${error.message}'
 global.namebot = 'Floree'
 global.nameai = 'Floree Ai'
 global.textbot = 'FLOREE BOT MD'
-global.textmain = 'FLOREEBOT'
-global.textmain2 = 'Floree Bot MD'
-global.vs = '1.1.0'
+global.vs = '1.0.0'
 global.emotg = '🕸️🕷️'
 global.msgtagall = '𝐅𝐋𝐎𝐑𝐄𝐄 𝐁𝐎𝐓 𝐓𝐄 𝐈𝐍𝐕𝐎𝐂𝐀 🕸️'
 global.sessions = 'MorchiSession'
