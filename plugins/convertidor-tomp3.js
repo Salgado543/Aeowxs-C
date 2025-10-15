@@ -5,7 +5,7 @@ const handler = async (m, {conn, usedPrefix, command}) => {
   const mime = (q || q.msg).mimetype || q.mediaType || '';
 
   if (!/video|audio/.test(mime)) {
-    return conn.reply(m.chat, `*${emojis} Responda al video o nota de voz con el comando para convertir en audio.*`, m, rcanal);
+    return conn.reply(m.chat, `*${emojis} Responda al video o nota de voz con el comando para convertir en audio.*`, m);
   }
 
   const media = await q.download();
