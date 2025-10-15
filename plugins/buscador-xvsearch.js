@@ -8,7 +8,7 @@ if (!db.data.chats[m.chat].nsfw && m.isGroup) {
     }
 
     if (!args[0]) {
-        return conn.reply(m.chat, `*${emojis} Ingresa el texto de lo que deseas buscar en xvideos.*\n> *Ejemplo:* ${usedPrefix + command} con mi prima.`, m, rcanal);
+        return conn.reply(m.chat, `*${emojis} Ingresa el texto de lo que deseas buscar en xvideos.*\n> *Ejemplo:* ${usedPrefix + command} con mi prima.`, m);
     }
 
     await m.react('⌛');
