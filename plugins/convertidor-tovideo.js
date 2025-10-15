@@ -3,7 +3,7 @@ import { ffmpeg } from '../lib/converter.js';
 
 const handler = async (m, { conn, usedPrefix, command }) => {
 
-  if (!m.quoted) return conn.reply(m.chat, `*${emojis} Responda a un sticker animado para convertir en video.*`, m, rcanal);
+  if (!m.quoted) return conn.reply(m.chat, `*${emojis} Responda a un sticker animado para convertir en video.*`, m);
   const mime = m.quoted.mimetype || '';
   
   if (!/webp/.test(mime)) return conn.reply(m.chat, `*${emojis} Responda a un sticker animado para convertir en video.*`, m);
