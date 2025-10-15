@@ -3,7 +3,7 @@ const { proto, generateWAMessageContent, generateWAMessageFromContent } = (await
 
 const handler = async (m, { conn, usedPrefix, command, text }) => {
   if (!text) {
-    return conn.reply(m.chat, `*${emojis} Ingresa una búsqueda de Pinterest.*\n> *Ejemplo:* ${usedPrefix + command} Gatitos`, m, rcanal);
+    return conn.reply(m.chat, `*${emojis} Ingresa una búsqueda de Pinterest.*\n> *Ejemplo:* ${usedPrefix + command} Gatitos`, m);
   }
 
   await m.react('🔎');
@@ -13,7 +13,7 @@ const handler = async (m, { conn, usedPrefix, command, text }) => {
     const resultados = Array.isArray(data?.result) ? data.result : [];
 
     if (!resultados.length) {
-      return conn.reply(m.chat, '*❌ No se encontraron imágenes para esa búsqueda.*', m);
+      return conn.reply(m.chat, '*✖️ No se encontraron imágenes para esa búsqueda.*', m);
     }
 
     // si te la robas sos re gei
@@ -67,7 +67,7 @@ const handler = async (m, { conn, usedPrefix, command, text }) => {
 
   } catch (e) {
     console.error(e);
-    await conn.reply(m.chat, `*❌ Ocurrió un error al obtener los datos.*\n*Error:* ${e.message}`, m);
+    await conn.reply(m.chat, `*✖️😉 Ocurrió un error al obtener los datos.*\n*Error:* ${e.message}`, m);
   }
 };
 
