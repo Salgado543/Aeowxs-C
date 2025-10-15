@@ -6,11 +6,7 @@ let handler = async (m, { conn }) => {
 
   if (!quoted && !direct) {
     return await conn.reply(
-      m.chat,
-      `*${emojis} Envia una imagen más el comando para actualizar la foto de perfil del bot.*`,
-      m, rcanal
-    )
-  }
+      m.chat, `*${emojis} Envia una imagen más el comando para actualizar la foto de perfil del bot.*`, m)}
 
   const msg = quoted ? m.quoted : m
   const media = msg.message.imageMessage
