@@ -4,7 +4,7 @@ import axios from 'axios'
 
 let handler = async (m, { conn, usedPrefix, command, text }) => {
   if (!text) {
-    return conn.reply(m.chat, `*${emojis} Ingresa un texto para realizar tu sticker animado de Brat.*\n> *Ejemplo:* ${usedPrefix + command} Hello World`, m, rcanal)
+    return conn.reply(m.chat, `*${emojis} Ingresa un texto para realizar tu sticker animado de Brat.*\n> *Ejemplo:* ${usedPrefix + command} Hello World`, m)
   }
 
   m.react('⏳')
@@ -19,7 +19,7 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
       throw new Error(`Contenido inesperado: ${contentType}`)
     }
 
-    let bratSticker = await sticker(res.data, null, global.packname, global.author)
+    let bratSticker = await sticker(res.data, null, global.packN, global.authN)
 
     await conn.sendMessage(m.chat, { sticker: bratSticker }, { quoted: m })
     m.react('✅')
