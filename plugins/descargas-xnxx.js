@@ -7,7 +7,7 @@ if (!db.data.chats[m.chat].nsfw && m.isGroup) {
     }
 
   if (!args[0]) {
-    return await conn.reply(m.chat, `*${emojis} Ingresa un enlace válido de xnxx.*`, m, rcanal);
+    return await conn.reply(m.chat, `*${emojis} Ingresa un enlace válido de xnxx.*`, m);
 }
   try {
     await m.react('⏳');
