@@ -60,7 +60,7 @@ global.hotw = '*🔥 Los comandos nsfw están desactivados para este chat.*';
 
 //ENLACES
 var grupo = 'https://chat.whatsapp.com/IJyN3cklID5HVKU3nAi0XL?mode=ac_t'
-tiktok = 'https://www.tiktok.com/shxdow.xz'
+var tiktok = 'https://www.tiktok.com/shxdow.xz'
 let instagram = 'https://www.instagram.com/shadowz.club'
 
 global.redes = [grupo, tiktok, instagram].getRandom()
