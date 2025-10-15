@@ -1,6 +1,6 @@
 {
-"name": "MorchiBot",
-"version": "2.5.0",
+"name": "Floree",
+"version": "1.0.0",
 "description": "WhatsApp Bot Multi Device",
 "index": "index.js",
 "type": "module",
@@ -18,16 +18,16 @@
 "eslint": "eslint .",
 "eslintfix": "eslint --fix ."
 },
-"homepage": "https://github.com/Shadows-Club/Morchi",
+"homepage": "https://github.com/ShadowzClub",
 "author": {
-"name": "Criss.xyz"
+"name": "Dev Criss Xz"
 },
 "repository": {
 "type": "git",
-"url": "git+https://github.com/Shadows-Club/Morchi.git"
+"url": "git+https://github.com/ShadowzClub.git"
 },
 "bugs": {
-"url": "https://github.com/Shadows-Club/Morchi/issues"
+"url": "https://github.com/ShadowzClub/issues"
 },
 "license": "GPL-3.0-or-later",
 "dependencies": {
