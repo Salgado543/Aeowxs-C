@@ -15,7 +15,7 @@
 </p>
 <div align="center">
 
-[![GataBot_Accounts](https://img.shields.io/badge/GataBot_Accounts-af57f1?style=for-the-badge&logo=biolink&logoColor=white)](https://www.atom.bio/gatabot)
+[![ShadowzClub_Accounts](https://img.shields.io/badge/GataBot_Accounts-af57f1?style=for-the-badge&logo=biolink&logoColor=white)](https://www.atom.bio/gatabot)
 [![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:evogb.help@gmail.com)
 [![Support](https://img.shields.io/badge/Support-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/SoporteGataBot)
 [![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/gatadios)
