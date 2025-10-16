@@ -12,5 +12,5 @@
 <hr>
 
 <p align="center">
-  <i>"Donde la oscuridad se convierte en poder: bienvenido a SHADOWZCLUB."</i>
+  <i>"Donde la oscuridad se convierte en poder: Welcome to repository."</i>
 </p>
