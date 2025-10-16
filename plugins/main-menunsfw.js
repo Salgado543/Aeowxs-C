@@ -1,5 +1,7 @@
 let handler = async (m, { conn, usedPrefix: _p }) => {
 
+  const txt = 'Tes'
+  const sun = 'Tes2'
   let usertag = '@' + m.sender.split('@')[0]
   const img = 'https://files.catbox.moe/xzy0tf.jpg'
 
@@ -55,12 +57,25 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
   ].join('\n')
 
   await m.react('🔥')
-  await conn.sendShadow(m.chat, {
+ /* await conn.sendMessage(m.chat, {
     image: { url: img },
     caption: text,
     mentions: [m.sender],
     gifPlayback: false
-  }, { quoted: fkontak })
+  }, { quoted: fkontak })*/
+ await conn.sendShadow(
+m.chat,
+txt,
+sun,
+text,
+img,
+img,
+ig,
+fkontak,
+true,
+[m.sender]
+)}
+
 }
 
 handler.tags = ['main']
