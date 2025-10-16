@@ -1,5 +1,11 @@
 <h1 align="center">ShadowzClub</h1>
 
+![line](https://github.com/AnderMendoza/AnderMendoza/raw/main/assets/line-neon.gif)
+
+<p align="center">
+  <img src="https://github.com/AnderMendoza/AnderMendoza/raw/main/assets/line-neon.gif" alt="line">
+</p>
+
 <p align="center">
   <b>Shadow's Club</b> presenta un potente <b>bot personalizado para WhatsApp</b>, diseñado con múltiples funciones avanzadas, alto rendimiento y estilo.  
   Creado y optimizado por <b>Dev Criss 🇦🇱</b> para ofrecer una experiencia única de automatización y gestión.
