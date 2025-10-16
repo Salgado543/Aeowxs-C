@@ -182,7 +182,7 @@ const savetube = {
 
 const handler = async (m, { conn, args, command }) => {
 
-  if (args.length < 1) return await conn.reply(m.chat, `*${emojis} Ingresa una URL de un video o audio de YouTube*`, m, rcanal);
+  if (args.length < 1) return await conn.reply(m.chat, `*${emojis} Ingresa una URL de un video o audio de YouTube*`, m);
 
   let url = args[0];
   let format = command === 'ytmp3' ? 'mp3' : args[1] || '720';
