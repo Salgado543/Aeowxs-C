@@ -4,7 +4,7 @@ import fetch from 'node-fetch';
 const handler = async (m, { args, usedPrefix, command }) => {
   const msg = `*${emojis} Proporciona el idioma seguido el texto para traducirlo.*\n> *Ejemplo:* ${usedPrefix + command} es Hello world`;
 
-  if (!args || !args[0]) return conn.reply(m.chat, msg, m, rcanal);
+  if (!args || !args[0]) return conn.reply(m.chat, msg, m);
 
   let lang = args[0];
   let text = args.slice(1).join(' ');
