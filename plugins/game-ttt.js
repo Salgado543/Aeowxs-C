@@ -8,7 +8,7 @@ const handler = async (m, {conn, usedPrefix, command, text}) => {
   }
 
   if (!text) {
-    return await conn.reply(m.chat, `*${emojis} Coloca el nombre de la sala del juego para continuar.*\n> *Ejemplo:* ${usedPrefix + command} new sala`, m, rcanal);
+    return await conn.reply(m.chat, `*${emojis} Coloca el nombre de la sala del juego para continuar.*\n> *Ejemplo:* ${usedPrefix + command} new sala`, m);
   }
 
   let room = Object.values(conn.game).find((room) => room.state === 'WAITING' && (text ? room.name === text : true));
