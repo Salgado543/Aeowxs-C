@@ -1,4 +1,4 @@
-/*import fs from 'fs'
+import fs from 'fs'
 import { xpRange } from '../lib/levelling.js'
 
 let handler = async (m, { conn, usedPrefix, command }) => {
@@ -124,26 +124,6 @@ ${readMore}
       ),
       defaultMenu.after
     ].join('\n')
-/*
- await conn.sendMessage(m.chat, {
-    image: { url: img },
-    caption: menuText,
-    gifPlayback: false,
-    contextInfo: {
-      mentionedJid: [m.sender, creadorM],
-      isForwarded: true,
-      forwardingScore: 999,
-      externalAdReply: {
-        title: `${usname}, Thank you for using Morchiyara, you can follow me on Instagram by clicking here`,
-        body: 'Developed by `Dev Criss 🇦🇱`',
-        thumbnailUrl: img,
-        sourceUrl: ig,
-        mediaType: 1,
-        renderLargerThumbnail: true
-      }
-    }
-  }, { quoted: fkontak });*/ /*
-
 
 await conn.sendMessage(m.chat, {
   text: menuText,
@@ -152,8 +132,8 @@ await conn.sendMessage(m.chat, {
     isForwarded: true,
     forwardingScore: 999,
     externalAdReply: {
-      title: `${usname}, Thank you for using Morchi Bot, you can follow me on Instagram by clicking here`,
-      body: 'Developed by `Dev Criss 🇦🇱',
+      title: `${usname}, Thank you for using Floree Bot, you can follow me on Instagram by clicking here`,
+      body: '𝖣𝖾𝗏𝖾𝗅𝗈𝗉𝖾𝖽 𝖻𝗒 𝖲𝗁⍺𝖽𝗈𝗐𝗓𝖢𝗅𝗎𝖻 ☕',
       thumbnail: await (await fetch(img)).buffer(),
       sourceUrl: ig,
       mediaType: 1,
