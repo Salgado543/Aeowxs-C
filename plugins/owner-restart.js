@@ -12,7 +12,7 @@ handler.rowner = true;
 export default handler;
 */
 const handler = async (m, { conn }) => {
-  await m.reply('*☕ Reiniciando el bot.\n\n> Espere unos segundos...');
+  await m.reply('*☕ Reiniciando el bot.*\n\n> Espere unos segundos...');
   
   if (process.send) {
     process.send('reset');
