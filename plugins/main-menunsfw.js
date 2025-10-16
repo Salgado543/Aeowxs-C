@@ -70,7 +70,7 @@ sun,
 text,
 img,
 img,
-ig,
+redes,
 fkontak,
 true,
 [m.sender]
