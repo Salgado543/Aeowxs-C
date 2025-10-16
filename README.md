@@ -2,6 +2,9 @@
   <img src="https://camo.githubusercontent.com/d121d853663745d137a1938b6e6407081dedd7ac4c640e7b637e04da0694555c/68747470733a2f2f63617073756c652d72656e6465722e76657263656c2e6170702f6170693f747970653d776176696e6726636f6c6f723d383834386666266865696768743d3132302673656374696f6e3d686561646572" alt="linea neon">
 </p>
 
+<h1 style="text-align:center; color:#00ffff; font-family:'Poppins', sans-serif;">
+  ShadowzClub
+</h1>
 
 <h1 align="center">ShadowzClub</h1>
 
