@@ -39,7 +39,7 @@ export default handler
 // Consulta a LuminAI
 async function askLuminAI(content, name, prompt) {
   try {
-    const { data } = await axios.post("https://Luminai.my.id", {
+    const { data } = await axios.post("https://ai.siputzx.my.id", {
       content,
       user: name,
       prompt,
