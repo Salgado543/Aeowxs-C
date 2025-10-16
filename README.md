@@ -16,6 +16,6 @@
 <div align="center">
 
 [![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:evogb.shadowzclub@gmail.com)
-[![Support](https://img.shields.io/badge/Support-2CA5E0?style=for-the-badge&logo=whatsapp&logoColor=white)](wa.me/51927238856)
+[![Support](https://img.shields.io/badge/Support-2CA5E0?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/message/TMAZJ2WSOVOWP1)
 [![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/Melxxzpay)
 </div>
