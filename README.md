@@ -3,10 +3,8 @@
 </p>
 
 <h1 align="center" style="
-  background: linear-gradient(90deg, #8848ff, #00ffff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: bold;
+  color: #8848ff;
+  text-shadow: 0 0 5px #8848ff, 0 0 10px #8848ff, 0 0 20px #8848ff, 0 0 40px #00ffff;
 ">
   ShadowzClub
 </h1>
