@@ -2,7 +2,7 @@
 let handler = async (m, { conn, usedPrefix: _p }) => {
 
   let usertag = '@' + m.sender.split('@')[0]
-  const img = 'https://files.catbox.moe/vjyp4o.jpg'
+  const img = ''
 
   let tags = {
     "xsearch": "「 *Search* 」🔎",
