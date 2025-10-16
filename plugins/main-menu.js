@@ -23,27 +23,27 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 
 let tags = {};
 let emojis = {
-  main: "🌷",
+  main: "🖤",
   info: "☁️",
   config: "⚙️",
-  dl: "🥥",
-  search: "🔎",
+  dl: "🦇",
+  search: "🕷️",
   ia: "💭",
-  ff: "🪐",
+  ff: "🕸️",
   frases: "💞",
   converter: "🐈‍⬛",
   tools: "🛠️",
-  gc: "🐱",
+  gc: "🍁",
   efectos: "🪻",
-  fun: "🐒",
+  fun: "🦦",
   game: "🪶",
-  anime: "🍃",
-  logos: "🏝️",
+  anime: "🦥",
+  logos: "🦅",
   emox: "🪼",
   nsfw: "🍒",
-  sticker: "⚡",
+  sticker: "🐜",
   rpg: "💸",
-  rg: "🪴",
+  rg: "🌒",
   owner: "☕"
 };
 
@@ -73,7 +73,7 @@ const tagTitles = {
 };
 
 for (let key in emojis) {
-  tags[key] = `⾕  ୭ ˚. ᵎᵎ  *${tagTitles[key]}* ˚ ༘♡ ${emojis[key]}ꪆৎ`;
+  tags[key] = `ᡴꪫ ° ‎◠ *${tagTitles[key]}*  ׄ   ${emojis[key]}ㅤ ‎ ‎⊹`;
 }
 
     let defaultMenu = {
