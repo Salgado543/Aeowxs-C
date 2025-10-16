@@ -5,16 +5,16 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
   const img = 'https://files.catbox.moe/vjyp4o.jpg'
 
   let tags = {
-    "xsearch": "「 *Search* 」🍄",
-    "xdl": "「 *Download* 」💥",
+    "xsearch": "「 *Search* 」🔎",
+    "xdl": "「 *Download* 」🥟",
     "emox": "「 *Gifs* 」🪼",
     "nsfw": "「 *Contenido* 」🍒"
 
   }
 
   let emojis = {
-    "xsearch": "🍄",
-    "xdl": "💥",
+    "xsearch": "🔎",
+    "xdl": "🥟",
     "emox": "🪼",
     "nsfw": "🍒"
   }
@@ -29,10 +29,9 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     header: category => `╭──• ${category}`,
     body: (cmd, emoji) => `│${emoji}° ${cmd}`,
     footer: '╰──•',
-    after: `> ${dev}`
+    after: `> ${wm}`
   }
 
-// ---[ AGRUPACIÓN CMDS X TAGS ]---
   let help = Object.values(global.plugins)
     .filter(plugin => !plugin.disabled)
     .map(plugin => ({
@@ -45,7 +44,6 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     groups[tag] = help.filter(plugin => plugin.tags.includes(tag))
   }
 
-// ---[ CONTRUCCIÓN DEL TXT ]---
   let text = [
     defaultMenu.before,
     ...Object.keys(tags).map(tag =>
