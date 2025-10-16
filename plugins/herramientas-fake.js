@@ -1,6 +1,6 @@
 let handler = async (m, { conn, text, usedPrefix, command }) => {
 let txt = `*${emojis} Ingresa el texto para crear el mensaje falso*\n> *Ejemplo:* ${usedPrefix + command} ¿Quién soy? *@user* Eres mi perrita 🫦`
-if (!text) return conn.reply(m.chat, txt, m, rcanal)
+if (!text) return conn.reply(m.chat, txt, m)
 let cm = copy(m)
 let who
 if (text.includes('@0')) who = '0@s.whatsapp.net'
