@@ -1,7 +1,5 @@
 <h1 align="center">ShadowzClub</h1>
 
-![line](https://github.com/AnderMendoza/AnderMendoza/raw/main/assets/line-neon.gif)
-
 <p align="center">
   <img src="https://github.com/AnderMendoza/AnderMendoza/raw/main/assets/line-neon.gif" alt="line">
 </p>
