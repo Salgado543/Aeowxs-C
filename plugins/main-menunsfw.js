@@ -74,13 +74,13 @@ redes,
 fkontak,
 true,
 [m.sender]
-)}
+)
 
 }
 
 handler.tags = ['main']
 handler.help = ['menu18']
-handler.command = /^(menunsfw|comandosnsfw|menuhorny|hornymenu|labiblia|menu18|menu\+18|menucaliente|menuporno|pornomenu|menuxxx)$/i;
+handler.command = /^(menunsfw|comandosnsfw|menuhorny|hornymenu|labiblia|menu18|menu\+18|menucaliente|menuporno|pornomenu|menuxxx|xtes)$/i;
 handler.fail = null;
 
 export default handler
