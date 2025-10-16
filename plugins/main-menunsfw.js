@@ -55,7 +55,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
   ].join('\n')
 
   await m.react('🔥')
-  await conn.sendMessage(m.chat, {
+  await conn.sendShadow(m.chat, {
     image: { url: img },
     caption: text,
     mentions: [m.sender],
