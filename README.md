@@ -1,49 +1,167 @@
-<div align="center" style="background:#000;color:#fff;font-family:'Poppins',sans-serif;border-radius:15px;padding:25px;box-shadow:0 0 25px rgba(255,0,150,0.3);overflow:hidden;">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHADOWZCLUB | Comunidad Oficial</title>
+<style>
+  body {
+    background: #0a0a0f;
+    color: #f5f5f5;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  header {
+    background: linear-gradient(90deg, #6f00ff, #00e0ff);
+    padding: 2px;
+  }
+  h1 {
+    background: #0a0a0f;
+    color: #ffffff;
+    font-size: 2.5em;
+    letter-spacing: 2px;
+    margin: 0;
+    padding: 20px 0;
+    text-shadow: 0 0 10px #6f00ff;
+  }
+  .intro {
+    max-width: 800px;
+    margin: 30px auto;
+    background: #12121a;
+    border-left: 4px solid #6f00ff;
+    border-right: 4px solid #00e0ff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(111, 0, 255, 0.4);
+  }
+  .intro p {
+    color: #cfcfcf;
+    line-height: 1.7em;
+  }
+  .quote {
+    font-style: italic;
+    color: #a5a5ff;
+  }
+  .divider {
+    height: 3px;
+    margin: 40px auto;
+    width: 80%;
+    background: linear-gradient(90deg, #6f00ff, #00e0ff, #6f00ff);
+    border-radius: 5px;
+  }
+  .section-title {
+    font-size: 1.8em;
+    color: #ffffff;
+    text-shadow: 0 0 10px #6f00ff;
+  }
+  .cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 20px 0;
+  }
+  .card {
+    background: #151520;
+    border: 1px solid #6f00ff;
+    border-radius: 12px;
+    padding: 15px 25px;
+    width: 220px;
+    box-shadow: 0 0 15px rgba(111,0,255,0.3);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 25px rgba(0,224,255,0.5);
+  }
+  .card img {
+    width: 40px;
+    margin-bottom: 10px;
+  }
+  .card h3 {
+    color: #fff;
+    font-size: 1.1em;
+    margin-bottom: 5px;
+  }
+  .card p {
+    font-size: 0.9em;
+    color: #b8b8b8;
+  }
+  footer {
+    margin-top: 50px;
+    padding: 25px;
+    background: #0f0f16;
+    color: #bbb;
+    font-size: 0.9em;
+  }
+  a {
+    color: #00e0ff;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
 
-  <!-- Línea superior animada -->
-  <div style="width:100%;height:4px;background:linear-gradient(90deg,#ff0077,#9400ff,#00ffee,#ff0077);background-size:300% 100%;animation:move 6s linear infinite;border-radius:5px;margin-bottom:25px;"></div>
+<header></header>
 
-  <h1 style="font-size:2.8em;letter-spacing:2px;background:linear-gradient(90deg,#ff0077,#00ffee);-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:glow 2.5s ease-in-out infinite alternate;margin:0;">💀 SHADOWZCLUB 💀</h1>
+<h1>💀 SHADOWZCLUB 💀</h1>
 
-  <p style="max-width:700px;margin:20px auto;font-size:1.1em;line-height:1.6;">
-    <b>SHADOWZCLUB</b> presenta un <b>bot personalizado para WhatsApp</b> con múltiples funciones, rendimiento extremo y estilo oscuro neón.  
-    Creado por <b>Dev Criss 🇦🇱</b>, fusionando tecnología, velocidad y elegancia digital.
-  </p>
-
-  <p style="color:#ff66cc;font-weight:bold;margin:10px 0;">
-    ⚡ Automatización • 💬 IA Inteligente • 🎵 Multimedia • 🛠️ Personalización Total
-  </p>
-
-  <!-- Línea separadora -->
-  <div style="width:80%;height:3px;background:linear-gradient(90deg,#ff0077,#00ffee,#9400ff);border-radius:5px;margin:25px auto;"></div>
-
-  <h2 style="color:#ff66cc;">💰 Métodos de Pago</h2>
-
-  <!-- Botones tipo GataBot -->
-  <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:15px;margin:15px 0;">
-    <a href="https://paypal.me/devcriss" target="_blank" style="background:#0070ba;padding:12px 30px;border-radius:10px;color:#fff;font-weight:bold;text-decoration:none;box-shadow:0 0 15px #0070ba;transition:transform 0.3s ease,box-shadow 0.3s ease;">💸 PAYPAL</a>
-    <a href="#" style="background:#8a2be2;padding:12px 30px;border-radius:10px;color:#fff;font-weight:bold;text-decoration:none;box-shadow:0 0 15px #8a2be2;transition:transform 0.3s ease,box-shadow 0.3s ease;">📱 YAPE</a>
-    <a href="https://wa.me/51900000000" target="_blank" style="background:#25D366;padding:12px 30px;border-radius:10px;color:#000;font-weight:bold;text-decoration:none;box-shadow:0 0 15px #25D366;transition:transform 0.3s ease,box-shadow 0.3s ease;">💬 WHATSAPP</a>
-  </div>
-
-  <!-- Línea separadora -->
-  <div style="width:80%;height:3px;background:linear-gradient(90deg,#00ffee,#9400ff,#ff0077);border-radius:5px;margin:25px auto;"></div>
-
-  <h2 style="color:#00ffee;">🌐 Redes Sociales</h2>
-  <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:10px 0;">
-    <a href="https://instagram.com/devcriss" target="_blank" style="background:#E4405F;padding:10px 25px;border-radius:10px;color:#fff;font-weight:bold;text-decoration:none;box-shadow:0 0 15px #E4405F;">📸 Instagram</a>
-    <a href="https://t.me/devcriss" target="_blank" style="background:#0088cc;padding:10px 25px;border-radius:10px;color:#fff;font-weight:bold;text-decoration:none;box-shadow:0 0 15px #0088cc;">💬 Telegram</a>
-    <a href="https://paypal.me/devcriss" target="_blank" style="background:#0070ba;padding:10px 25px;border-radius:10px;color:#fff;font-weight:bold;text-decoration:none;box-shadow:0 0 15px #0070ba;">💰 PayPal</a>
-  </div>
-
-  <!-- Línea inferior animada -->
-  <div style="width:100%;height:4px;background:linear-gradient(90deg,#00ffee,#9400ff,#ff0077,#00ffee);background-size:300% 100%;animation:move 6s linear infinite;border-radius:5px;margin-top:25px;"></div>
-
-  <p style="font-style:italic;color:#bbb;margin-top:25px;">“Donde la oscuridad se convierte en poder... Bienvenido a <b>SHADOWZCLUB</b>.”</p>
-
-  <style>
-    @keyframes move {0%{background-position:0% 50%;}100%{background-position:300% 50%;}}
-    @keyframes glow {from{text-shadow:0 0 10px #ff0077;}to{text-shadow:0 0 25px #00ffee;}}
-    a:hover {transform:scale(1.08);box-shadow:0 0 25px #fff;}
-  </style>
+<div class="intro">
+  <p><b>SHADOWZCLUB</b> es una comunidad enfocada en la innovación, el desarrollo y la personalización de herramientas para WhatsApp y más allá.  
+  Nuestro propósito es ofrecer soluciones potentes y un espacio donde el código, la creatividad y la colaboración se unen.</p>
+  <p class="quote">“En la oscuridad nacen las verdaderas ideas.”</p>
+  <p>Creado y dirigido por <b>Dev Criss 🇦🇱</b> — también conocido como <b>Melxxpay</b>.</p>
 </div>
+
+<div class="divider"></div>
+
+<h2 class="section-title">💳 Métodos de Pago</h2>
+<div class="cards">
+  <div class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
+    <h3>PayPal</h3>
+    <p><b>Usuario:</b> ShadowzClub</p>
+  </div>
+  <div class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Yape_Logo.svg" alt="Yape">
+    <h3>Yape</h3>
+    <p><b>Número:</b> 927238856</p>
+    <p><b>Nombre:</b> Cristian Escobar</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<h2 class="section-title">📞 Contacto & Redes</h2>
+<div class="cards">
+  <div class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    <h3>WhatsApp</h3>
+    <p><a href="https://wa.me/51927238856" target="_blank">+51 927 238 856</a></p>
+  </div>
+  <div class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+    <h3>Instagram</h3>
+    <p><a href="#">@shadowzclub</a></p>
+  </div>
+  <div class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub">
+    <h3>GitHub</h3>
+    <p><a href="#">github.com/ShadowzClub</a></p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<footer>
+  <p>© 2025 SHADOWZCLUB — Comunidad creada por <b>Dev Criss 🇦🇱 (Melxxpay)</b></p>
+  <p>Inspirado en la pasión por el código, la estética y la innovación digital.</p>
+</footer>
+
+</body>
+</html>
