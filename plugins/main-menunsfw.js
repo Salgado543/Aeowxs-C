@@ -1,4 +1,3 @@
-
 let handler = async (m, { conn, usedPrefix: _p }) => {
 
   let usertag = '@' + m.sender.split('@')[0]
@@ -9,7 +8,6 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     "xdl": "「 *Download* 」🥟",
     "emox": "「 *Gifs* 」🪼",
     "nsfw": "「 *Contenido* 」🍒"
-
   }
 
   let emojis = {
