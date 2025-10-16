@@ -160,21 +160,21 @@ migajera: [
 
   const finalResponse = responses[Math.floor(Math.random() * responses.length)];
 
-  const cal = `*🤍 \`PORCENTAJE CALCULADO\` 🤍*
+  const cal = `*☁️ PORCENTAJE CALCULADO ☁️*
 
-🌿 *Los cálculos han arrojado que* *${taguser}* *es* \`${percentage}%\` *${command} ${emoji}*
+🪻 *Los cálculos han arrojado que* *${taguser}* *es* *${percentage}%* *${command} ${emoji}*
 
 *${description}*
 > *${finalResponse}*`.trim();
 
   async function loading() {
     const bars = [
-      "☁ 𝐎𝐛𝐭𝐚𝐢𝐧𝐢𝐧𝐠 𝐝𝐚𝐭𝐚 . . .",
-      "☁ 𝐃𝐚𝐭𝐚 𝐎𝐛𝐭𝐚𝐢𝐧𝐞𝐝 . . ."
+      "💥 𝐎𝐛𝐭𝐚𝐢𝐧𝐢𝐧𝐠 𝐝𝐚𝐭𝐚 . . .",
+      "💥 𝐃𝐚𝐭𝐚 𝐎𝐛𝐭𝐚𝐢𝐧𝐞𝐝 . . ."
     ];
 
     let { key } = await conn.sendMessage(m.chat, {
-      text: '☁️ 𝐍𝐨𝐰 𝐥𝐨𝐚𝐝𝐢𝐧𝐠 . . .',
+      text: '💥 𝐍𝐨𝐰 𝐥𝐨𝐚𝐝𝐢𝐧𝐠 . . .',
       mentions: [user]
     });
 
