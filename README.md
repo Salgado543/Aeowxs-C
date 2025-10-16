@@ -5,12 +5,7 @@
   Creado y optimizado por <b>Dev Criss 🇦🇱</b> para ofrecer una experiencia única de automatización y gestión.
 </p>
 
-<p align="center">
-  ⚡ Automatización — 💬 Respuestas Inteligentes — 🎵 Multimedia — 🛠️ Personalización Total
-</p>
+> [!IMPORTANT]
+> **Este proyecto está en constante evolución. Estamos comprometidos en ofrecer a nuestra comunidad un Bot increíble. Te invitamos a instalarlo y para estar al tanto de todas las novedades. [¡Únete a nuestro nuevo canal!](https://whatsapp.com/channel/0029VauTE8AHltY1muYir31n)**
 
 <hr>
-
-<p align="center">
-  <i>"Donde la oscuridad se convierte en poder: Welcome to repository."</i>
-</p>
