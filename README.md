@@ -1,4 +1,4 @@
-<h1 align="center"> *`ShadowzClub`* </h1>
+<h1 align="center">ShadowzClub</h1>
 
 <p align="center">
   <b>Shadow's Club</b> presenta un potente <b>bot personalizado para WhatsApp</b>, diseñado con múltiples funciones avanzadas, alto rendimiento y estilo.  
