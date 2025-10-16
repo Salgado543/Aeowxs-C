@@ -11,7 +11,7 @@
 <hr>
 
 <p align="center"> 
-<a href="#"><img title="GataBot-MD" src="https://img.shields.io/badge/¡Disfruta de un Bot totalmente gratuito, con múltiples funciones y de código abierto! -purple?colorA=%239b33b0&colorB=%231c007b&style=for-the-badge"></a> 
+<a href="#"><img title="ShadowzClub" src="https://img.shields.io/badge/¡Disfruta de un Bot totalmente funcinal, con múltiples funciones! -purple?colorA=%239b33b0&colorB=%231c007b&style=for-the-badge"></a> 
 </p>
 <div align="center">
 
