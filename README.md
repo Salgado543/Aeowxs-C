@@ -6,6 +6,6 @@
 </p>
 
 > [!IMPORTANT]
-> **Este proyecto está en constante evolución. Estamos comprometidos en ofrecer a nuestra comunidad un Bot increíble. Te invitamos a instalarlo y para estar al tanto de todas las novedades. [¡Únete a nuestro nuevo canal!](https://whatsapp.com/channel/0029VauTE8AHltY1muYir31n)**
+> **Este proyecto está en constante actualización. Estamos comprometidos en ofrecer a nuestra comunidad un Bot increíble y para estar al tanto de todas las novedades. [¡Únete a nuestro nuevo canal!](https://whatsapp.com/channel/0029VauTE8AHltY1muYir31n)**
 
 <hr>
