@@ -8,7 +8,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
   const img = await (await fetch('https://files.catbox.moe/4853na.jpg')).buffer()
 
   let tags = {
-    "logos": "「 *Logos* 」⛺"
+    "logos": "「 *Logos* 」🏕️"
   }
 
   let emojis = {
