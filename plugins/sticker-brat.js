@@ -3,7 +3,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     let input = text || (m.quoted && m.quoted.text);
 
     if (!input) {
- return m.reply(`*${emojis} Ingresa un texto para crear tu sticker.*\nEjemplo: ${usedPrefix + command} Hello world`);
+ return m.reply(`*${emojis} Ingresa un texto para crear tu sticker.*\n> *Ejemplo:* ${usedPrefix + command} Hello world`);
  }
 
 await m.react('☁️')
