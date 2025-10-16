@@ -27,7 +27,7 @@ const tekateki = JSON.parse(fileContent);
 `.trim();
 
   conn.tekateki[id] = [
-    await conn.reply(m.chat, caption, m, rcanal), json,
+    await conn.reply(m.chat, caption, m), json,
     poin,
     setTimeout(async () => {
       if (conn.tekateki[id]) await conn.reply(m.chat, `Se acabó el tiempo! La respuesta era: ${json.response}`, conn.tekateki[id][0]);
