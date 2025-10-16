@@ -8,7 +8,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
   const img = await (await fetch('https://files.catbox.moe/4853na.jpg')).buffer()
 
   let tags = {
-    "logos": "「 *Logos* 」🏝️"
+    "logos": "「 *Logos* 」⛺"
   }
 
   let emojis = {
@@ -17,7 +17,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
 
   let defaultMenu = {
     before: `*👋🏻 ¡Hola!* *${usertag}*
-*Bienvenido al Menú Logos 🏝️*
+*Bienvenido al Menú Logos 🫟*
 
 > \`\`\`${fechaHora}\`\`\`
 `,
@@ -51,7 +51,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     defaultMenu.after
   ].join('\n')
 
-await m.react('🏝️')
+await m.react('🫟')
 await conn.sendShadow(m.chat, txt, sun, text, img, img, redes, fkontak, true, [m.sender])}
 
 handler.tags = ['main']
