@@ -5,8 +5,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
   const txt = 'Tes'
   const sun = 'Tes2'
   let usertag = '@' + m.sender.split('@')[0]
-  //const img = 'https://files.catbox.moe/xzy0tf.jpg'
-const img = await (await fetch('https://files.catbox.moe/xzy0tf.jpg')).buffer()
+  const img = await (await fetch('https://files.catbox.moe/xzy0tf.jpg')).buffer()
 
   let tags = {
     "xsearch": "「 *Search* 」🔎",
@@ -59,27 +58,8 @@ const img = await (await fetch('https://files.catbox.moe/xzy0tf.jpg')).buffer()
     defaultMenu.after
   ].join('\n')
 
-  await m.react('🔥')
- /* await conn.sendMessage(m.chat, {
-    image: { url: img },
-    caption: text,
-    mentions: [m.sender],
-    gifPlayback: false
-  }, { quoted: fkontak })*/
- await conn.sendShadow(
-m.chat,
-txt,
-sun,
-text,
-img,
-img,
-redes,
-fkontak,
-true,
-[m.sender]
-)
-
-}
+await m.react('🔥')
+await conn.sendShadow(m.chat, txt, sun, text, img, img, redes, fkontak, true, [m.sender])}
 
 handler.tags = ['main']
 handler.help = ['menu18']
