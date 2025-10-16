@@ -1,7 +1,7 @@
 const handler = async (m, { conn, command, text }) => {
     // Validación de entrada
     if (!text) {
-        return conn.reply(m.chat, `*${emojis} Menciona el nombre de la persona con quien deseas calcular el porcentaje de amor.*`, m, rcanal);
+        return conn.reply(m.chat, `*${emojis} Menciona el nombre de la persona con quien deseas calcular el porcentaje de amor.*`, m);
     }
 
     // Generación del porcentaje aleatorio
