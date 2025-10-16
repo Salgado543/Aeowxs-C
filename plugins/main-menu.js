@@ -142,7 +142,7 @@ ${readMore}
         renderLargerThumbnail: true
       }
     }
-  }, { quoted: fkontak });*/
+  }, { quoted: fkontak });*/ /*
 
 
 await conn.sendMessage(m.chat, {
