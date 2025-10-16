@@ -1,9 +1,12 @@
+import fetch from 'node-fetch'
+
 let handler = async (m, { conn, usedPrefix: _p }) => {
 
   const txt = 'Tes'
   const sun = 'Tes2'
   let usertag = '@' + m.sender.split('@')[0]
-  const img = 'https://files.catbox.moe/xzy0tf.jpg'
+  //const img = 'https://files.catbox.moe/xzy0tf.jpg'
+const img = await (await fetch('https://files.catbox.moe/xzy0tf.jpg')).buffer()
 
   let tags = {
     "xsearch": "「 *Search* 」🔎",
