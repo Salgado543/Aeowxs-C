@@ -131,7 +131,7 @@ ${readMore}
 await conn.sendMessage(m.chat, {
   text: menuText,
   contextInfo: {
-    mentionedJid: [m.sender, creadorM],
+    mentionedJid: [m.sender],
     isForwarded: true,
     forwardingScore: 999,
     externalAdReply: {
