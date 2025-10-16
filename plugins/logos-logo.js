@@ -43,7 +43,7 @@ const logos = {
 
 const handler = async (m, { conn, args, command }) => {
   const texto = args.join(' ').trim();
-  if (!texto) return conn.reply(m.chat, `*${emojis} Ingresa un texto para elaborar su logo.*`, m, rcanal );
+  if (!texto) return conn.reply(m.chat, `*${emojis} Ingresa un texto para elaborar su logo.*`, m);
 
   if (texto.length > 50) throw '*⚠️ El texto es muy largo, máximo 50 carácteres*';
 
