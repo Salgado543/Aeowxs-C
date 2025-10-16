@@ -7,7 +7,7 @@ const handler = async (m, { conn, command, args }) => {
     : m.quoted?.sender;
 
   if (!user)
-    return conn.reply(m.chat, `*${xfun} Por favor, menciona algún usuario.*`, m);
+    return conn.reply(m.chat, `*${emojis} Menciona algún usuario.*`, m);
 
   const taguser = '@' + user.split('@')[0];
   const percentage = Math.floor(Math.random() * 501);
