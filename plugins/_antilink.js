@@ -30,7 +30,7 @@ if (!isBotAdmin) return conn.reply(m.chat, `*${emojis} No soy admin, no puedo el
 if (isBotAdmin) {
 await conn.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: bang, participant: delet }})
 await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
-} else if (!bot.restrict) return conn.reply(m.chat, `*${emojis} Esta característica esta desactivada*`, m, rcanal, )
+} else if (!bot.restrict) return conn.reply(m.chat, `*${emojis} Esta característica esta desactivada*`, m)
 }
 return !0
 
