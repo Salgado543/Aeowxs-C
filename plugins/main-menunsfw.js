@@ -2,8 +2,8 @@ import fetch from 'node-fetch'
 
 let handler = async (m, { conn, usedPrefix: _p }) => {
 
-  const txt = 'Menu Nsfw'
-  const sun = 'ShadowzClub'
+  const txt = `𐒢𐒢  ㅤׄㅤ${emoji2}ㅤִ      Menuㅤ✿    Nsfw       েᗜ̵`
+  const sun = '稜   𝖲𝗁⍺𝖽𝗈𝗐𝗓𝖢𝗅𝗎𝖻   ֪ ᗝ̵  🥢'
   let usertag = '@' + m.sender.split('@')[0]
   const img = await (await fetch('https://files.catbox.moe/xzy0tf.jpg')).buffer()
 
