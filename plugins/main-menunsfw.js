@@ -63,7 +63,7 @@ await conn.sendShadow(m.chat, txt, sun, text, img, img, redes, fkontak, true, [m
 
 handler.tags = ['main']
 handler.help = ['menu18']
-handler.command = /^(menunsfw|comandosnsfw|menuhorny|hornymenu|labiblia|menu18|menu\+18|menucaliente|menuporno|pornomenu|menuxxx|xtes)$/i;
+handler.command = /^(menunsfw|comandosnsfw|menuhorny|hornymenu|labiblia|menu18|menu\+18|menucaliente|menuporno|pornomenu|menuxxx)$/i;
 handler.fail = null;
 
 export default handler
