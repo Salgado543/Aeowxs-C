@@ -79,8 +79,7 @@ for (let key in emojis) {
     let defaultMenu = {
 
 
-    before: `
-ᗝ   *Hola*   ׄ     ׅ     🌑᪲    ׄ    ׅ    രര
+    before: `ᗝ   *Hola*   ׄ     ׅ     🌑᪲    ׄ    ׅ    രര
    い    ׄ   🕸️ᩖ    ׅ  *Bienvenido*  ׄ    ׅ    ✿   
        ꒰͡ ${taguser}   ׅ 
    ׄ   ୡ    ׅ  *${saludo}*    ׄ    🕷️ᩬ   ׅ
