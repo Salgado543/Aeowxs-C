@@ -1,7 +1,11 @@
+import fetch from 'node-fetch'
+
 let handler = async (m, { conn, usedPrefix: _p }) => {
 
+  const txt = `𐒢𐒢ㅤׄㅤ${emoji2}ㅤִ    Menuㅤ✿    Free Fire       েᗜ̵`
+  const sun = '稜   @𝖲𝗁⍺𝖽𝗈𝗐𝗓𝖢𝗅𝗎𝖻   ֪  ᗝ̵    (🥢)'
   let usertag = '@' + m.sender.split('@')[0]
-  const vid = 'https://files.catbox.moe/6ftr4u.mp4'
+  const img = await (await fetch('https://files.catbox.moe/xzy0tf.jpg')).buffer()
 
   let tags = {
     "list": "「 *Listas* 」📑",
@@ -26,10 +30,9 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     header: category => `╭──• ${category}`,
     body: (cmd, emoji) => `│${emoji}° ${cmd}`,
     footer: '╰──•',
-    after: `> ${dev}`
+    after: `> ${wm}`
   }
 
-// ---[ AGRUPACIÓN CMDS X TAGS ]---
   let help = Object.values(global.plugins)
     .filter(plugin => !plugin.disabled)
     .map(plugin => ({
@@ -41,8 +44,6 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
   for (let tag in emojis) {
     groups[tag] = help.filter(plugin => plugin.tags.includes(tag))
   }
-
-// ---[ CONTRUCCIÓN DEL TXT ]---
   let text = [
     defaultMenu.before,
     ...Object.keys(tags).map(tag =>
@@ -55,14 +56,8 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     defaultMenu.after
   ].join('\n')
 
-  await m.react('🎮')
-  await conn.sendMessage(m.chat, {
-    video: { url: vid },
-    caption: text,
-    mentions: [m.sender],
-    gifPlayback: true
-  }, { quoted: fkontak })
-}
+await m.react('🎮')
+await conn.sendShadow(m.chat, txt, sun, text, img, img, redes, fkontak, true, [m.sender])}
 
 handler.tags = ['main']
 handler.help = ['menulogos']
