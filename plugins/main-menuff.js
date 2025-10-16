@@ -9,14 +9,12 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
 
   let tags = {
     "list": "「 *Listas* 」📑",
-    "reglas": "「 *Reglas* 」📜",
     "select": "「 *Select* 」🎮"
 
   }
 
   let emojis = {
     "list": "📑",
-    "reglas" : "📜",
     "select": "🎮"
   }
 
