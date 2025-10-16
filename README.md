@@ -1,47 +1,155 @@
-<div align="center" style="background: linear-gradient(180deg, #000000 0%, #0a0a0a 100%); color: #fff; font-family: 'Poppins', sans-serif; border-radius: 15px; padding: 30px; box-shadow: 0 0 25px rgba(255,0,150,0.3);">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHADOWZCLUB - Dev Criss</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #000;
+    color: #fff;
+    text-align: center;
+    overflow-x: hidden;
+  }
 
-  <h1 style="font-size: 2.8em; letter-spacing: 2px; background: linear-gradient(90deg, #ff0077, #9400ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: glow 3s ease-in-out infinite alternate;">
-    💀 SHADOWZCLUB 💀
-  </h1>
+  /* Línea animada superior */
+  .top-line {
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #ff0077, #9400ff, #00ffee, #ff0077);
+    background-size: 300% 100%;
+    animation: lineMove 6s linear infinite;
+  }
 
-  <hr style="border: none; height: 2px; width: 60%; background: linear-gradient(90deg, #ff0077, #9400ff, #00ffee); border-radius: 5px; margin: 15px 0;">
+  @keyframes lineMove {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 300% 50%; }
+  }
 
-  <p style="font-size: 1.1em; max-width: 700px; line-height: 1.6;">
-    <b>SHADOWZCLUB</b> presenta un <b>bot personalizado para WhatsApp</b> con múltiples funciones avanzadas, velocidad extrema y un diseño de primer nivel.  
-    Creado por <b>Dev Criss 🇦🇱</b>, este proyecto combina <b>tecnología, estilo y poder</b> en una sola herramienta.
-  </p>
+  h1 {
+    margin-top: 30px;
+    font-size: 3em;
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, #ff0077, #00ffee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: glow 2.5s ease-in-out infinite alternate;
+  }
 
-  <p style="color: #ff66cc; font-weight: bold; margin-top: 10px;">
-    ⚡ Automatización • 💬 IA inteligente • 🎵 Multimedia • 🛠️ Totalmente Personalizable
-  </p>
+  @keyframes glow {
+    from { text-shadow: 0 0 10px #ff0077; }
+    to { text-shadow: 0 0 25px #00ffee; }
+  }
 
-  <hr style="border: none; height: 2px; width: 80%; background: linear-gradient(90deg, #00ffee, #ff0077, #9400ff); border-radius: 5px; margin: 25px 0;">
+  p {
+    max-width: 700px;
+    margin: 15px auto;
+    font-size: 1.1em;
+    line-height: 1.6;
+  }
 
-  <h2 style="color: #ff66cc;">💰 Métodos de Pago</h2>
-  <div style="display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; margin: 10px 0;">
-    <div style="background: #1a1a1a; padding: 10px 25px; border-radius: 10px; border: 1px solid #ff0077;">💸 PayPal</div>
-    <div style="background: #1a1a1a; padding: 10px 25px; border-radius: 10px; border: 1px solid #9400ff;">📱 Yape</div>
-    <div style="background: #1a1a1a; padding: 10px 25px; border-radius: 10px; border: 1px solid #00ffee;">💬 WhatsApp</div>
+  .divider {
+    width: 80%;
+    height: 3px;
+    background: linear-gradient(90deg, #ff0077, #00ffee, #9400ff);
+    border-radius: 5px;
+    margin: 25px auto;
+    box-shadow: 0 0 15px #ff0077;
+  }
+
+  .features {
+    color: #ff66cc;
+    font-weight: bold;
+    margin-top: 15px;
+  }
+
+  .cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .card {
+    background: #0a0a0a;
+    border: 2px solid transparent;
+    border-image: linear-gradient(90deg, #ff0077, #00ffee) 1;
+    padding: 15px 30px;
+    border-radius: 15px;
+    font-size: 1.1em;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .card:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 25px #ff0077;
+  }
+
+  a {
+    color: #00ffee;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+  }
+
+  a:hover {
+    color: #ff0077;
+  }
+
+  footer {
+    margin-top: 40px;
+    font-style: italic;
+    color: #bbb;
+    font-size: 0.95em;
+  }
+
+  /* Línea inferior animada */
+  .bottom-line {
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #00ffee, #9400ff, #ff0077, #00ffee);
+    background-size: 300% 100%;
+    animation: lineMove 6s linear infinite;
+  }
+</style>
+</head>
+
+<body>
+  <div class="top-line"></div>
+
+  <h1>💀 SHADOWZCLUB 💀</h1>
+
+  <p><b>SHADOWZCLUB</b> presenta un poderoso <b>bot personalizado para WhatsApp</b>, con múltiples funciones, gran rendimiento y un diseño oscuro con estilo.  
+  Creado por <b>Dev Criss 🇦🇱</b>, combina tecnología, velocidad y personalización para dominar tus grupos y automatizaciones.</p>
+
+  <p class="features">⚡ Automatización • 💬 IA Inteligente • 🎵 Multimedia • 🛠️ Totalmente Personalizable</p>
+
+  <div class="divider"></div>
+
+  <h2>💰 Métodos de Pago</h2>
+  <div class="cards">
+    <div class="card">💸 PayPal</div>
+    <div class="card">📱 Yape</div>
+    <div class="card">💬 WhatsApp</div>
   </div>
 
-  <h2 style="color: #00ffee; margin-top: 20px;">🌐 Redes Sociales</h2>
+  <div class="divider"></div>
+
+  <h2>🌐 Redes Sociales</h2>
   <p>
-    <a href="https://wa.me/51900000000" target="_blank" style="color: #25D366; text-decoration: none; font-weight: bold;">WhatsApp</a> |
-    <a href="https://instagram.com/devcriss" target="_blank" style="color: #E4405F; text-decoration: none; font-weight: bold;">Instagram</a> |
-    <a href="https://paypal.me/devcriss" target="_blank" style="color: #0070ba; text-decoration: none; font-weight: bold;">PayPal</a> |
-    <a href="https://t.me/devcriss" target="_blank" style="color: #0088cc; text-decoration: none; font-weight: bold;">Telegram</a>
+    <a href="https://wa.me/51900000000" target="_blank">WhatsApp</a> |
+    <a href="https://instagram.com/devcriss" target="_blank">Instagram</a> |
+    <a href="https://paypal.me/devcriss" target="_blank">PayPal</a> |
+    <a href="https://t.me/devcriss" target="_blank">Telegram</a>
   </p>
 
-  <hr style="border: none; height: 2px; width: 70%; background: linear-gradient(90deg, #ff0077, #00ffee, #9400ff); border-radius: 5px; margin: 25px 0;">
+  <div class="divider"></div>
 
-  <p style="font-style: italic; font-size: 1em; color: #bbb;">
-    “Donde la oscuridad se convierte en poder... Bienvenido a <b>SHADOWZCLUB</b>.”
-  </p>
+  <footer>“Donde la oscuridad se convierte en poder... Bienvenido a <b>SHADOWZCLUB</b>.”</footer>
 
-  <style>
-    @keyframes glow {
-      from { text-shadow: 0 0 5px #ff0077, 0 0 10px #9400ff, 0 0 15px #00ffee; }
-      to { text-shadow: 0 0 15px #ff0077, 0 0 25px #9400ff, 0 0 35px #00ffee; }
-    }
-  </style>
-</div>
+  <div class="bottom-line"></div>
+</body>
+</html>
