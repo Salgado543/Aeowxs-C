@@ -5,8 +5,8 @@ let handler = async (m, { conn }) => {
 
   let list = [
     {
-      displayName: "Florencia",
-      vcard: `BEGIN:VCARD\nVERSION:3.0\nFN:Floree\nitem1.TEL;waid=${own}:${own}\nitem1.X-ABLabel:Número\nitem2.EMAIL;type=INTERNET:team.sunflare@gmail.com\nitem2.X-ABLabel:Email\nitem3.URL:https://www.instagram.com/shadowzclub\nitem3.X-ABLabel:Instagram\nitem4.ADR:;;Argentina 🇦🇷;;;;\nitem4.X-ABLabel:País\nEND:VCARD`
+      displayName: ownname,
+      vcard: `BEGIN:VCARD\nVERSION:3.0\nFN:${ownname}\nitem1.TEL;waid=${own}:${own}\nitem1.X-ABLabel:Número\nitem2.EMAIL;type=INTERNET:team.sunflare@gmail.com\nitem2.X-ABLabel:Email\nitem3.URL:https://www.instagram.com/shadowzclub\nitem3.X-ABLabel:Instagram\nitem4.ADR:;;${ownp};;;;\nitem4.X-ABLabel:País\nEND:VCARD`
     },
     {
       displayName: "Cristian Escobar",
