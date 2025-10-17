@@ -11,10 +11,10 @@ global.botNumber = '' //Ejemplo: 51927238856
 
 global.owner = [
    ['5492984129198', 'Floree', true],
-   ['51927238856', 'Dev Criss 🇦🇱', true],
-   ['51990841568', 'Soporte', true],
+   ['51927238856', 'Dev Criss 🇦🇱', true]
 ]
 
+global.own = ['5492984129198']
 global.mods = ['']
 global.prems = ['']
 
