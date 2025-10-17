@@ -10,13 +10,13 @@ import moment from 'moment-timezone'
 global.botNumber = '' //Ejemplo: 51927238856
 
 global.owner = [
-   ['5492984129198', 'Floree', true],
+   ['527341011505', 'Gio', true],
    ['51927238856', 'Dev Criss 🇦🇱', true]
 ]
 
-global.own = ['5492984129198']
-global.ownname = 'Florencia'
-global.ownp = 'Argentina 🇦🇷'
+global.own = ['527341011505']
+global.ownname = 'Gio'
+global.ownp = 'Mexico 🇲🇽'
 
 global.mods = ['']
 global.prems = ['']
