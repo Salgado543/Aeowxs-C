@@ -15,6 +15,9 @@ global.owner = [
 ]
 
 global.own = ['5492984129198']
+global.ownname = 'Florencia'
+global.ownp = 'Argentina 🇦🇷'
+
 global.mods = ['']
 global.prems = ['']
 
