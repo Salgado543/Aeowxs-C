@@ -5,7 +5,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
   const txt = `𐒢𐒢ㅤׄㅤ${emoji2}ㅤִ    Menuㅤ✿    Nsfw       েᗜ̵`
   const sun = '稜   @𝖲𝗁⍺𝖽𝗈𝗐𝗓𝖢𝗅𝗎𝖻   ֪  ᗝ̵    (🥢)'
   let usertag = '@' + m.sender.split('@')[0]
-  const img = await (await fetch('https://files.catbox.moe/xzy0tf.jpg')).buffer()
+  const img = await (await fetch('https://cdn-sunflareteam.vercel.app/images/f6720a015e.jpg')).buffer()
 
   let tags = {
     "xsearch": "「 *Search* 」🔎",
