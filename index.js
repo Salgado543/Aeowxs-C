@@ -40,7 +40,7 @@ let { say } = cfonts
 
 console.log(chalk.bold.redBright(`\n☁️ Iniciando sistema..\n`))
 
-say('Kleinsito\nBot\nMD', {
+say('Gio\nBot\nMD', {
   font: 'chrome',
   align: 'center',
   gradient: ['red', 'magenta']
