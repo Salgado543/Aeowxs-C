@@ -1,4 +1,3 @@
-/*
 import fetch from 'node-fetch'
 
 let handler = async (m, { conn }) => {
@@ -27,4 +26,4 @@ handler.help = ['creador', 'dueño'];
 handler.tags = ['info'];
 handler.command = /^(owner|creador|creator|dueño|desarrollador)$/i;
 
-export default handler;*/
+export default handler;
