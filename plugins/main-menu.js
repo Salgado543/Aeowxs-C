@@ -79,11 +79,11 @@ for (let key in emojis) {
     let defaultMenu = {
 
 
-    before: ` ׄㅤ ֵㅤ *Hola*  ۫ㅤ *Bienvenido* ㅤ ۪ㅤ𐋉𐋉ㅤ ׄ
-  ര  ׄ  ${taguser}   ׅ     ׄ  
+    before: ` ׄㅤ ֵㅤ *Hola*  ۫ㅤ *Bienvenido*  ۪ㅤ𐋉𐋉 ׄ
+  ര  ׄ  ${taguser}  ׅ    ׄ 
 ㅤ⪨   ׅ    *Gio* ׄ𖹭 *Bot* ㅤ ׅ  ۫ㅤ☕ 
 
-> ﹙🍥 ﹚ ੭੭ ─ `іnʂƚαgrαm`
+> ﹙🍥 ﹚ ੭੭ ─ \`іnʂƚαgrαm\`
 > ${ig}
 
 *𓈒𓏸🍮 \`𝖡𝗈𝗍𝖭𝖺𝗆𝖾:\`* ${botname}
