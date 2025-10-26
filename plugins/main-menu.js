@@ -83,8 +83,8 @@ for (let key in emojis) {
   ര  ׄ  ${taguser}   ׅ     ׄ  
 ㅤ⪨   ׅ    *Gio* ׄ𖹭 *Bot* ㅤ ׅ  ۫ㅤ☕ 
 
-> ꒰꛱𝐂𝐚𝐧𝐚𝐥 𝐎𝐟𝐢𝐜𝐢𝐚𝐥
-> ${channel}
+> ﹙🍥 ﹚ ੭੭ ─ `іnʂƚαgrαm`
+> ${ig}
 
 *𓈒𓏸🍮 \`𝖡𝗈𝗍𝖭𝖺𝗆𝖾:\`* ${botname}
 *𓈒𓏸🥡 \`𝖴𝗉𝗍𝗂𝗆𝖾:\`* ${uptime}
