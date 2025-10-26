@@ -134,7 +134,7 @@ await conn.sendMessage(m.chat, {
     isForwarded: true,
     forwardingScore: 999,
     externalAdReply: {
-      title: `${usname}, Thank you for using Floree Bot, you can follow me on Instagram by clicking here`,
+      title: `${usname}, Thank you for using ${namebot}, you can follow me on Instagram by clicking here`,
       body: '𝖣𝖾𝗏𝖾𝗅𝗈𝗉𝖾𝖽 𝖻𝗒 𝖲𝗁⍺𝖽𝗈𝗐𝗓𝖢𝗅𝗎𝖻 ☕',
       thumbnail: await (await fetch(img)).buffer(),
       sourceUrl: ig,
