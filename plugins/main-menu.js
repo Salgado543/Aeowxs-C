@@ -23,27 +23,27 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 
 let tags = {};
 let emojis = {
-  main: "🖤",
+  main: "🍸",
   info: "☁️",
   config: "⚙️",
-  dl: "🦇",
-  search: "🕷️",
+  dl: "🧃",
+  search: "🧋",
   ia: "💭",
-  ff: "🕸️",
+  ff: "🧋",
   frases: "💞",
-  converter: "🐈‍⬛",
+  converter: "🫗",
   tools: "🛠️",
-  gc: "🍁",
+  gc: "⚜️",
   efectos: "🪻",
-  fun: "🦦",
-  game: "🪶",
-  anime: "🦥",
-  logos: "🦅",
+  fun: "😹",
+  game: "🫘",
+  anime: "🍭",
+  logos: "🧈",
   emox: "🪼",
   nsfw: "🍒",
-  sticker: "🐜",
+  sticker: "🍷",
   rpg: "💸",
-  rg: "🌒",
+  rg: "✒️",
   owner: "☕"
 };
 
@@ -79,18 +79,17 @@ for (let key in emojis) {
     let defaultMenu = {
 
 
-    before: `ᗝ   *Hola*   ׄ     ׅ     🌑᪲    ׄ    ׅ    രര
-   い    ׄ   🕸️ᩖ    ׅ  *Bienvenido*  ׄ    ׅ    ✿   
-       ꒰͡ ${taguser}   ׅ 
-   ׄ   ୡ    ׅ  *${saludo}*    ׄ    🕷️ᩬ   ׅ
+    before: ` ׄㅤ ֵㅤ *Hola*  ۫ㅤ *Bienvenido* ㅤ ۪ㅤ𐋉𐋉ㅤ ׄ
+  ര  ׄ  ${taguser}   ׅ     ׄ  
+ㅤ⪨   ׅ    *Gio* ׄ𖹭 *Bot* ㅤ ׅ  ۫ㅤ☕ 
 
 > ꒰꛱𝐂𝐚𝐧𝐚𝐥 𝐎𝐟𝐢𝐜𝐢𝐚𝐥
 > ${channel}
 
-*𓈒𓏸🕷️ \`𝖡𝗈𝗍𝖭𝖺𝗆𝖾:\`* ${botname}
-*𓈒𓏸🖤 \`𝖴𝗉𝗍𝗂𝗆𝖾:\`* ${uptime}
-*𓈒𓏸🦇 \`𝖴𝗌𝖾𝗋𝗌:\`* ${totalreg}
-*𓈒𓏸🕸️ \`𝖵𝖾𝗋𝗌𝗂𝗈𝗇:\`* ${vs}
+*𓈒𓏸🍮 \`𝖡𝗈𝗍𝖭𝖺𝗆𝖾:\`* ${botname}
+*𓈒𓏸🥡 \`𝖴𝗉𝗍𝗂𝗆𝖾:\`* ${uptime}
+*𓈒𓏸🍚 \`𝖴𝗌𝖾𝗋𝗌:\`* ${totalreg}
+*𓈒𓏸🥛 \`𝖵𝖾𝗋𝗌𝗂𝗈𝗇:\`* ${vs}
 
 > 🥟 𝖲𝗂 𝖾𝗇𝖼𝗎𝖾𝗇𝗍𝗋𝖺 𝗎𝗇 𝖼𝗈𝗆𝖺𝗇𝖽𝗈 𝖼𝗈𝗇 𝖾𝗋𝗋𝗈𝗋𝖾𝗌 𝗇𝗈 𝖽𝗎𝖽𝖾𝗌 𝖾𝗇 𝗋𝖾𝗉𝗈𝗋𝗍𝖺𝗋𝗅𝗈 𝖼𝗈𝗇 𝖾𝗅 𝖢𝗋𝖾𝖺𝖽𝗈𝗋
 ${readMore}
@@ -134,7 +133,7 @@ await conn.sendMessage(m.chat, {
     isForwarded: true,
     forwardingScore: 999,
     externalAdReply: {
-      title: `${usname}, Thank you for using ${namebot}, you can follow me on Instagram by clicking here`,
+      title: `${usname}, Thank you for using ${packname}, you can follow me on Instagram by clicking here`,
       body: '𝖣𝖾𝗏𝖾𝗅𝗈𝗉𝖾𝖽 𝖻𝗒 𝖲𝗁⍺𝖽𝗈𝗐𝗓𝖢𝗅𝗎𝖻 ☕',
       thumbnail: await (await fetch(img)).buffer(),
       sourceUrl: ig,
