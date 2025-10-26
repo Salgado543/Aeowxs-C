@@ -1,4 +1,4 @@
-/*import fs from 'fs'
+import fs from 'fs'
 import { xpRange } from '../lib/levelling.js'
 
 let handler = async (m, { conn, usedPrefix, command }) => {
@@ -17,7 +17,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
     let rtotalreg = Object.values(global.db.data.users).filter(user => user.registered).length
     const readMore = '\u200b'.repeat(850)
 
-    await m.react('🕷️')
+    await m.react('🫗')
 
     const img = 'https://files.catbox.moe/4853na.jpg'
 
@@ -97,7 +97,7 @@ ${readMore}
 `,
 
       header: category => `${category}`,
-      body: (cmd, emoji) => ` ࣪ ${emoji}୭˚ ${cmd}`,
+      body: (cmd, emoji) => ` ࣪ ${emoji}˚ ${cmd}`,
       footer: '',
       after: `> ${wm}`
   }
@@ -159,4 +159,4 @@ function clockString(ms) {
   let m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60
   let s = isNaN(ms) ? '--' : Math.floor(ms / 1000) % 60
   return [h, m, s].map(v => v.toString().padStart(2, 0)).join(':')
-}*/
+}
