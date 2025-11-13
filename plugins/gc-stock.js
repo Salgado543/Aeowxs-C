@@ -1,83 +1,80 @@
-import fs from 'fs';
+import fs from 'fs'
+const shadow = './stock.json'
 
-// Handler para el comando de stock
-const handler = async (m, { conn, text }) => {
-  const datas = global;
-  const idioma = datas.db.data.users[m.sender].language || global.defaultLenguaje;
-  const chatId = m.chat;
+function loadStocks() {
+if (!fs.existsSync(shadow)) return {}
+return JSON.parse(fs.readFileSync(shadow))
+}
 
-  // Inicializar base de datos
-  if (!global.db.data.stock) global.db.data.stock = {};
-  if (!global.db.data.stock[chatId]) global.db.data.stock[chatId] = {};
+function saveStocks(data) {
+fs.writeFileSync(shadow, JSON.stringify(data, null, 2))
+}
 
-  const groupStock = global.db.data.stock[chatId];
+const handler = async (m, { text, command }) => {
+const user = m.sender
+const db = loadStocks()
+if (!db[user]) db[user] = {}
 
-  // 📦 Ver stock
-  if (m.text.startsWith('.stock')) {
-    if (Object.keys(groupStock).length === 0) {
-      m.reply("✨ *𝐈𝐧𝐯𝐞𝐧𝐭𝐚𝐫𝐢𝐨 𝐯𝐚𝐜𝐢𝐨*");
-      return;
-    }
+if (command === 'liststock' || command === 'stocklist') {
+const stocks = db[user]
+const keys = Object.keys(stocks)
+if (keys.length === 0) return m.reply('🤍 *No tienes ningún stock creado.*')
 
-    let stockMessage = "📦 *𝐒𝐓𝐎𝐂𝐊 𝐀𝐂𝐓𝐔𝐀𝐋:*\n\n";
-    for (const product in groupStock) {
-      stockMessage += `🔹 ${product}\n`;
-    }
+let msg = '📋 *TUS STOCKS CREADOS:*\n\n'
+for (const num of keys.sort((a, b) => a - b)) {
+msg += `🔹 Stock ${num}: ${stocks[num]}\n`
+}
+return m.reply(msg.trim())
+}
 
-    m.reply(stockMessage.trim());
-    return;
-  }
+if (command === 'stock') {
+const content = text.trim()
+const userStocks = db[user]
+const keys = Object.keys(userStocks).map(n => Number(n))
+if (!content) return m.reply('🤍 *Ingresa un texto para crear el stock.*')
+if (keys.length >= 15) return m.reply('⚠️ *Solo puedes tener hasta 15 stocks.*')
 
-  // ➕ Agregar productos al stock
-  if (m.text.startsWith('.setstock')) {
-    if (!text) {
-      m.reply("📋 Escribe los productos que deseas agregar separados por coma.\n\nEjemplo:\n`.setstock Pizza, Hamburguesa, Gaseosa`");
-      return;
-    }
+let newNumber = 1
+while (userStocks[newNumber]) newNumber++
+db[user][newNumber] = content
+saveStocks(db)
+return m.reply(`✅ *Stock ${newNumber} creado correctamente.*`)
+}
 
-    // Dividir por coma, eliminar espacios y guardar
-    const productos = text.split(',').map(p => p.trim()).filter(p => p);
+if (command === 'setstock') {
+const args = text.trim().split(/\s+/)
+const listNumber = args.shift()
+const newContent = args.join(' ').trim()
+if (!listNumber || isNaN(listNumber) || Number(listNumber) < 1 || Number(listNumber) > 15)
+return m.reply('⚠️ *Usa un número válido entre 1 y 15.*\nEjemplo: *.setstock 2 Nuevo texto*')
+if (!newContent) return m.reply('📝 *Ingresa un texto para actualizar el stock.*')
 
-    for (const producto of productos) {
-      groupStock[producto] = true; // Añade o actualiza
-    }
+const num = Number(listNumber)
+if (!db[user][num]) return m.reply(`⚠️ *El stock ${num} no existe.*`)
+db[user][num] = newContent
+saveStocks(db)
+return m.reply(`✏️ *Stock ${num} actualizado correctamente.*`)
+}
 
-    fs.writeFileSync('./database.json', JSON.stringify(global.db));
-    m.reply(`✅ *${productos.length} producto(s) agregado(s) al stock.*`);
-    return;
-  }
+if (command === 'delstock') {
+const num = Number(text.trim())
+if (!text || isNaN(num) || num < 1 || num > 15)
+return m.reply('⚠️ *Ingresa un número válido entre 1 y 15.*\nEjemplo: *.delstock 3*')
+if (!db[user][num]) return m.reply(`⚠️ *El stock ${num} no existe.*`)
+delete db[user][num]
+saveStocks(db)
+return m.reply(`🗑️ *Stock ${num} eliminado correctamente.*`)
+}
 
-  // ❌ Eliminar producto específico
-  if (m.text.startsWith('.delstock')) {
-    if (!text) {
-      m.reply("❌ Escribe el nombre del producto que deseas eliminar.\n\nEjemplo:\n`.delstock Pizza`");
-      return;
-    }
+if (command === 'removestock') {
+delete db[user]
+saveStocks(db)
+return m.reply('🧹 *Todos tus stocks fueron eliminados completamente.*')
+}
+}
 
-    const producto = text.trim();
-    if (!groupStock[producto]) {
-      m.reply(`⚠️ El producto *${producto}* no está en el stock.`);
-      return;
-    }
+handler.help = ['stock', 'setstock', 'delstock', 'liststock', 'removestock']
+handler.tags = ['tools']
+handler.command = ['stock', 'setstock', 'delstock', 'liststock', 'stocklist', 'removestock']
 
-    delete groupStock[producto];
-    fs.writeFileSync('./database.json', JSON.stringify(global.db));
-    m.reply(`🗑️ *${producto}* eliminado del stock.`);
-    return;
-  }
-
-  // 🔄 Reiniciar todo el stock
-  if (m.text.startsWith('.resetstock')) {
-    global.db.data.stock[chatId] = {};
-    fs.writeFileSync('./database.json', JSON.stringify(global.db));
-    m.reply("📦✨ *Stock reiniciado completamente.* ✨");
-  }
-};
-
-handler.help = ['stock', 'setstock', 'delstock', 'resetstock'];
-handler.tags = ['gc'];
-handler.command = ['stock', 'setstock', 'delstock', 'resetstock'];
-handler.alias = ['stocks', 'setstocks', 'delstocks'];
-handler.admin = true;
-
-export default handler;
+export default handler
