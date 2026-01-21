@@ -1,7 +1,28 @@
-import fs from 'fs'
 import { xpRange } from '../lib/levelling.js'
+import fetch from 'node-fetch'
 
 let handler = async (m, { conn, usedPrefix, command }) => {
+  // ==========================================
+  // 🛡️ ZONA DE PROTECCIÓN ANTI-BAN (MENU) 🛡️
+  // ==========================================
+  
+  // 1. Simular "Escribiendo..."
+  // Es vital para el menú porque es un mensaje largo.
+  await conn.sendPresenceUpdate('composing', m.chat)
+
+  // 2. Calcular tiempo de espera (3 a 6 segundos)
+  // Un menú tarda en generarse y leerse, un delay largo es natural.
+  const min = 3000
+  const max = 6000
+  const delay = Math.floor(Math.random() * (max - min + 1)) + min
+
+  // 3. Esperar el tiempo calculado
+  await new Promise(resolve => setTimeout(resolve, delay))
+  
+  // ==========================================
+  // 🏁 FIN DE PROTECCIÓN
+  // ==========================================
+
   try {
     let { exp, coins, level, role } = global.db.data.users[m.sender]
     let { min, xp, max } = xpRange(level, global.multiplier)
@@ -17,90 +38,85 @@ let handler = async (m, { conn, usedPrefix, command }) => {
     let rtotalreg = Object.values(global.db.data.users).filter(user => user.registered).length
     const readMore = '\u200b'.repeat(850)
 
-    await m.react('🫗')
+    // Movemos la reacción para después del delay, así confirma que "ya terminó de pensar"
+    await m.react('🎆')
 
-    const img = 'https://files.catbox.moe/91np43.jpg'
+    // --- CONFIGURACIÓN DE IMÁGENES ---
+    const imgMain = 'https://github.com/Salgado543/Gioqz-Bot-V2-WPP/blob/main/mm.jpeg?raw=true' 
+    const imgThumb = 'https://github.com/Salgado543/Gioqz-Bot-V2-WPP/blob/main/8cdf161bc542600cea6399615b54b7c0.jpg?raw=true' 
 
-let tags = {};
-let emojis = {
-  main: "🍸",
-  info: "☁️",
-  config: "⚙️",
-  dl: "🧃",
-  search: "🧋",
-  ia: "💭",
-  ff: "🧋",
-  frases: "💞",
-  converter: "🫗",
-  tools: "🛠️",
-  gc: "⚜️",
-  efectos: "🪻",
-  fun: "😹",
-  game: "🫘",
-  anime: "🍭",
-  logos: "🧈",
-  emox: "🪼",
-  nsfw: "🍒",
-  sticker: "🍷",
-  rpg: "💸",
-  rg: "✒️",
-  owner: "☕"
-};
+    // --- CATEGORÍAS ---
+    let emojis = {
+      main: "🔖",
+      info: "🥥",
+      config: "🦠",
+      dl: "⛄",
+      search: "🍫",
+      ia: "🪢",
+      ff: "🧋",
+      frases: "🎭",
+      converter: "🫗",
+      tools: "🦭",
+      gc: "🪨",
+      efectos: "🪻",
+      fun: "🐚",
+      game: "🫘",
+      reaction: "🥡",
+      anime: "🍭",
+      logos: "🧈",
+      emox: "🪼",
+      sticker: "🍷",
+      rpg: "🎩",
+      rg: "✒️",
+      owner: "☕"
+    };
 
-const tagTitles = {
-  main: "Menus",
-  info: "Info",
-  config: "Ajustes",
-  dl: "Download",
-  search: "Search",
-  ia: "Inteligencias",
-  ff: "Free Fire",
-  frases: "Frases",
-  converter: "Converters",
-  tools: "Herramientas",
-  gc: "Grupos",
-  efectos: "Efectos",
-  fun: "Diversión",
-  game: "Juegos",
-  anime: "Random",
-  logos: "Logos",
-  emox: "Gifs-Nsfw",
-  nsfw: "Nsfw",
-  sticker: "Sticker",
-  rpg: "Rpg",
-  rg: "Registro",
-  owner: "Owner"
-};
+    const tagTitles = {
+      main: "Menus",
+      info: "Info",
+      config: "Ajustes",
+      dl: "Download",
+      search: "Search",
+      ia: "Inteligencias",
+      ff: "Free Fire",
+      frases: "Frases",
+      converter: "Converters",
+      tools: "Herramientas",
+      gc: "Grupos",
+      efectos: "Efectos",
+      fun: "Diversión",
+      game: "Juegos",
+      reaction: "Reacciones",
+      anime: "Random",
+      logos: "Logos",
+      emox: "Gifs-Nsfw",
+      sticker: "Sticker",
+      rpg: "Rpg",
+      rg: "Registro",
+      owner: "Owner"
+    };
 
-for (let key in emojis) {
-  tags[key] = `ᡴꪫ ° ‎◠ *${tagTitles[key]}*  ׄ   ${emojis[key]}ㅤ ‎ ‎⊹`;
-}
+    let tags = {};
+    for (let key in emojis) {
+      tags[key] = `೯.    ᪲    ׄ *${tagTitles[key]}* ׄ    ${emojis[key]}ㅤ ‎ ‎⊹`;
+    }
+
+    // --- DISEÑO DE ESTRUCTURA (ACTUALIZADO) ---
+    // Usamos global.botname si existe, sino un fallback
+    const botNameStr = global.botname || 'Gio Bot';
 
     let defaultMenu = {
+      before: `೯🥥᪲    ׄ ㅤׅ 𝗠𝗲𝗻𝘂 𝗽𝗿𝗶𝗻𝗰𝗶𝗽𝗮𝗹  𓈒    ׄ    ᦡᦡ
+೯👒᪲    ׄ ㅤׅ𝗕𝗼𝘁𝗡𝗮𝗺𝗲: ${botNameStr}
+೯🌺᪲    ׄ ㅤׅ𝗨𝘀𝗲𝗿𝘀: ${totalreg}
 
-
-    before: ` ׄㅤ ֵㅤ *Hola*  ۫ㅤ *Bienvenido*  ۪ㅤ𐋉𐋉 ׄ
-  ര  ׄ  ${taguser}  ׅ    ׄ 
-ㅤ⪨   ׅ    *Gio* ׄ𖹭 *Bot* ㅤ ׅ  ۫ㅤ☕ 
-
-> ﹙🍥 ﹚ ੭੭ ─ \`іnʂƚαgrαm\`
-> ${ig}
-
-*𓈒𓏸🍮 \`𝖡𝗈𝗍𝖭𝖺𝗆𝖾:\`* ${botname}
-*𓈒𓏸🥡 \`𝖴𝗉𝗍𝗂𝗆𝖾:\`* ${uptime}
-*𓈒𓏸🍚 \`𝖴𝗌𝖾𝗋𝗌:\`* ${totalreg}
-*𓈒𓏸🥛 \`𝖵𝖾𝗋𝗌𝗂𝗈𝗇:\`* ${vs}
-
-> 🥟 𝖲𝗂 𝖾𝗇𝖼𝗎𝖾𝗇𝗍𝗋𝖺 𝗎𝗇 𝖼𝗈𝗆𝖺𝗇𝖽𝗈 𝖼𝗈𝗇 𝖾𝗋𝗋𝗈𝗋𝖾𝗌 𝗇𝗈 𝖽𝗎𝖽𝖾𝗌 𝖾𝗇 𝗋𝖾𝗉𝗈𝗋𝗍𝖺𝗋𝗅𝗈 𝖼𝗈𝗇 𝖾𝗅 𝖢𝗋𝖾𝖺𝖽𝗈𝗋
-${readMore}
-ㅤㅤ *乂 ʟɪsᴛᴀ ᴅᴇ ᴄᴏᴍᴀɴᴅᴏs 乂*
+ㅤㅤ *乂̴    𝐋𝐢𝐬𝐭𝐚 𝐝𝐞 𝐜𝐨𝐦𝐚𝐧𝐝𝐨𝐬    乂̴*
 `,
-
-      header: category => `${category}`,
-      body: (cmd, emoji) => ` ࣪ ${emoji}˚ ${cmd}`,
-      footer: '',
-      after: `> ${wm}`
-  }
+      header: category => `╭──• ${category}`,
+      body: (cmd, emoji) => `│${emoji}° ${cmd}`,
+      footer: '╰──•',
+      after: `\n> ${global.wm || 'Bot WhatsApp'}`
+    }
 
     let help = Object.values(global.plugins)
       .filter(plugin => !plugin.disabled)
@@ -114,35 +130,41 @@ ${readMore}
       groupsByTag[tag] = help.filter(plugin => plugin.tags.includes(tag))
     }
 
+    // Generación del texto del menú
     let menuText = [
       defaultMenu.before,
-      ...Object.keys(tags).map(tag =>
-        [
+      ...Object.keys(tags).map(tag => {
+        const filteredHelp = groupsByTag[tag]
+        if (filteredHelp.length === 0) return null // No mostrar categorías vacías
+        
+        return [
           defaultMenu.header(tags[tag]),
-          groupsByTag[tag].flatMap(plugin => plugin.help.map(cmd => defaultMenu.body(usedPrefix + cmd, emojis[tag]))).join('\n'),
+          filteredHelp.flatMap(plugin => 
+            plugin.help.map(cmd => defaultMenu.body(usedPrefix + cmd, emojis[tag]))
+          ).join('\n'),
           defaultMenu.footer
         ].join('\n')
-      ),
+      }).filter(v => v !== null),
       defaultMenu.after
     ].join('\n')
 
-await conn.sendMessage(m.chat, {
-  text: menuText,
-  contextInfo: {
-    mentionedJid: [m.sender],
-    isForwarded: true,
-    forwardingScore: 999,
-    externalAdReply: {
-      title: `${usname}, Thank you for using ${packname}, you can follow me on Instagram by clicking here`,
-      body: '𝖣𝖾𝗏𝖾𝗅𝗈𝗉𝖾𝖽 𝖻𝗒 𝖲𝗁⍺𝖽𝗈𝗐𝗓𝖢𝗅𝗎𝖻 ☕',
-      thumbnail: await (await fetch(img)).buffer(),
-      sourceUrl: ig,
-      mediaType: 1,
-      renderLargerThumbnail: true
-    }
-  }
-}, { quoted: fkontak });
-
+    await conn.sendMessage(m.chat, {
+      image: { url: imgMain },
+      caption: menuText,
+      contextInfo: {
+        mentionedJid: [m.sender],
+        isForwarded: false,
+        forwardingScore: 0,
+        externalAdReply: {
+          title: `${global.usname || 'User'}, Have a great day!!`,
+          body: `𝖻𝗒 ${global.ownname || 'Creator'}`,
+          thumbnail: await (await fetch(imgThumb)).buffer(),
+          sourceUrl: global.channel || 'https://whatsapp.com',
+          mediaType: 1,
+          renderLargerThumbnail: false
+        }
+      }
+    }, { quoted: m }); 
 
   } catch (e) {
     console.error(e)
@@ -150,8 +172,7 @@ await conn.sendMessage(m.chat, {
   }
 }
 
-
-handler.command = /^(menu|menú|memu|memú|help|info|comandos|2help|menu1.2|ayuda|commands|commandos|cmd)$/i;
+handler.command = /^(menu|menú|memu|memú|help|info|comandos|ayuda|cmd)$/i;
 export default handler
 
 function clockString(ms) {

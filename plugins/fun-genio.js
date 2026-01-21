@@ -57,6 +57,6 @@ let handler = async (m, { conn, text }) => {
 
 handler.tags = ['fun']
 handler.help = ['genio']
-handler.command = ['akinator', 'genio']
+handler.command = ['genio']
 
 export default handler

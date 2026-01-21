@@ -7,48 +7,50 @@ import fetch from 'node-fetch'
 import axios from 'axios'
 import moment from 'moment-timezone' 
 
-global.botNumber = '' //Ejemplo: 51927238856
+global.botNumber = ''
 
 global.owner = [
-   ['527341011505', 'Gio', true],
-   ['51927238856', 'Dev Criss 🇦🇱', true],
-   ['15796761978', '@Gio', true]
+   ['5217341011505', 'Gio', true], // Tu número principal
+   ['15796761978', '@Gio', true],
+   ['16292869829', 'Santi', true]
 ]
 
-global.own = ['527341011505']
+global.own = ['5217341011505'] // Formato México 521
 global.ownname = 'Gio'
 global.ownp = 'Mexico 🇲🇽'
 
 global.mods = ['']
 global.prems = ['']
 
-global.packname = 'Gio Bot MD'
-global.botname = 'Gio Bot - MD'
-global.wm = 'I′m Gio Bot - MD'
-global.wm2 = '@I′m Gio ステカー'
-global.author = '𝖲𝗁⍺𝖽ᦅ𝗐′𝗌 𝖢𝗅𝗎𝖻'
-global.dev = '𝖯𑄜𝗐𝖾𝗋𝖾𝖽 𝖻𝗒 𝖲𝗁⍺𝖽ᦅ𝗐′𝗌 𝖢𝗅𝗎𝖻'
-global.namebot = 'Gio'
-global.nameai = 'Gio Ai'
-global.textbot = 'GIO BOT MD'
+// DATOS DE AEOWXS CLUB
+global.packname = 'Aeowxs Club'
+global.botname = 'Aeowxs - Bot'
+global.wm = 'Aeowxs Club'
+global.wm2 = '@Aeoɯxs Club'
+global.author = 'Aeoɯxs Club'
+global.dev = 'Aeoɯxs - G'
+global.namebot = 'Aeowxs'
+global.nameai = 'Aeowxs AI'
+global.textbot = 'AEOWXS CLUB'
 global.vs = '1.0.0'
 global.emotg = '⚜️'
-global.msgtagall = '𝐆𝐈𝐎 𝐁𝐎𝐓 𝐓𝐄 𝐈𝐍𝐕𝐎𝐂𝐀 👻'
+global.msgtagall = '⚠️ ATENCIÓN GRUPO ⚠️'
 global.sessions = 'Session'
 global.jadi = 'JadiBots'
-global.moneda = 'ShadowCoins 🪙'
+global.moneda = 'AeowxCoins 🪙'
 
 
 global.catalogo = fs.readFileSync('./media/catalogo.jpg')
 
+// TUS ENLACES ACTUALIZADOS
+global.grupo = 'https://chat.whatsapp.com/C4vXg9OadhNDVHFm1Q0fhv'
+global.comu = 'https://chat.whatsapp.com'
+global.channel = 'https://whatsapp.com/channel/0029Vb6Ys0q6xCSV5iyFfw1T'
+global.ig = 'https://www.instagram.com/co.dxgio'
 
-global.grupo = 'https://chat.whatsapp.com/IJyN3cklID5HVKU3nAi0XL?mode=ac_t'
-global.comu = 'https://chat.whatsapp.com/Er5zgBnAW9A8rfGaXGIvhI?mode=ac_t'
-global.channel = 'https://whatsapp.com/channel/0029VauTE8AHltY1muYir31n'
-global.ig = 'https://www.instagram.com/shadowz.club'
 
-
-global.estilo = { key: {  fromMe: false, participant: `0@s.whatsapp.net`, ...(false ? { remoteJid: "543876577197-120363317332020195@g.us" } : {}) }, message: { orderMessage: { itemCount : -999999, status: 1, surface : 1, message: '𝖲𝗁⍺𝖽ᦅ𝗐′𝗌  乂  𝖢𝗅𝗎𝖻', orderTitle: 'Bang', thumbnail: catalogo, sellerJid: '0@s.whatsapp.net'}}}
+// Estilo visual del mensaje falso
+global.estilo = { key: {  fromMe: false, participant: `0@s.whatsapp.net`, ...(false ? { remoteJid: "5217341011505-120363317332020195@g.us" } : {}) }, message: { orderMessage: { itemCount : -999999, status: 1, surface : 1, message: 'Aeowxs ⚜️ Club', orderTitle: 'Bang', thumbnail: catalogo, sellerJid: '0@s.whatsapp.net'}}}
 
 
 global.cheerio = cheerio

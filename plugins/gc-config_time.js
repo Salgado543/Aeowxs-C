@@ -20,7 +20,9 @@ const handler = async (m, {conn, isAdmin, isOwner, args, usedPrefix, command}) =
 > ${usedPrefix + command} *open 1*
 > ${usedPrefix + command} *close 1*
 
-Para que el grupo estee *abierto/cerrado* por una hora.`;
+Para que el grupo estee *abierto/cerrado* por una hora.
+
+`;
     m.reply(caption);
           throw false;
   }

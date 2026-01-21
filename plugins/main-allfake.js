@@ -61,7 +61,7 @@ global.hotw = '*🔥 Los comandos nsfw están desactivados para este chat.*';
 //ENLACES
 var grupo = 'https://chat.whatsapp.com/IJyN3cklID5HVKU3nAi0XL?mode=ac_t'
 var tiktok = 'https://www.tiktok.com/shxdow.xz'
-let instagram = 'https://www.instagram.com/shadowz.club'
+let instagram = 'https://www.instagram.com/co.dxgio'
 
 global.redes = [grupo, tiktok, instagram].getRandom()
 
@@ -118,7 +118,7 @@ global.fechaHora = `${diaSemana}, ${dia} de ${mes} del ${año} │ Hora: ${hora}
   const more = String.fromCharCode(8206)
   global.readMore = more.repeat(850)
 
-  global.packN = `ᗝ̵    ִ   𝖲𝗁⍺𝖽𝗈𝗐𝗓𝖢𝗅𝗎𝖻    🥢    𐙚 `
+  global.packN = `ִ  𑂅 ׄAєᴏωx'ѕ CƖᴜʙ`
   global.authN = wm2
 
 //FAKES
@@ -126,9 +126,9 @@ global.fkontak = { key: { participants:"0@s.whatsapp.net", "remoteJid": "status@
 
 
 //ID CANALES
-global.idchannel = '120363357231409846@newsletter'
-global.canalIdM = ["120363357231409846@newsletter", "120363377595441592@newsletter", "120363318267632676@newsletter"]
-global.canalNombreM = [" ˚₊·͟͟͟͟͟͟͞͞͞͞͞͞➳❥ 𝑺𝒉𝒙𝒅𝒐𝒘𝒛𝑪𝒍𝒖𝒃 ೃ࿔₊•", "𝑺𝒊𝒈𝒖𝒆 𝒆𝒍 𝒄𝒂𝒏𝒂𝒍 ✑ 𝑫𝒗 𝑪𝒓𝒊𝒔𝒔 𝑿𝒚𝒛 🇦🇱", "⏤ 𝑭𝒓𝒂𝒔𝒆𝒔, 𝑽𝒊𝒅𝒆𝒐𝒔 𝒚 𝑴𝒂𝒔 🪷"]
+global.idchannel = '120363402999816366@newsletter'
+global.canalIdM = ["120363402999816366@newsletter", "120363402999816366@newsletter", "120363402999816366@newsletter"]
+global.canalNombreM = ["Ⳋׅᰍ ׁ Aєᴏωx'ѕ CƖᴜʙ", "Ⳋׅᰍ ׁ Aєᴏωx'ѕ CƖᴜʙ", "Ⳋׅᰍ  Aєᴏωx'ѕ CƖᴜʙ" ]
 global.channelRD = await getRandomChannel()
 
 global.rcanal = { contextInfo: { isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: channelRD.id, serverMessageId: 100, newsletterName: channelRD.name, }, }, }}

@@ -6,8 +6,9 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
 
   let type = (args[0] || '').toLowerCase()
   let isAll = false, isUser = false
+  
   switch (type) {
-  case 'welcome':
+    case 'welcome':
     case 'bv':
     case 'bienvenida':
       if (!m.isGroup) {
@@ -22,7 +23,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
       chat.welcome = isEnable
       break
 
-     case 'autoread':
+    case 'autoread':
     case 'autoleer':
       isAll = true
       if (!isROwner) {
@@ -34,9 +35,9 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
 
     case 'document':
     case 'documento':
-    isUser = true
-    user.useDocument = isEnable
-    break
+      isUser = true
+      user.useDocument = isEnable
+      break
 
     case 'antilink':
       if (m.isGroup) {
@@ -48,47 +49,49 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
       chat.antiLink = isEnable
       break
 
-  case 'restrict':
+    case 'restrict':
     case 'restringir':
-     isAll = true
-        if (!isOwner) {
-          global.dfail('rowner', m, conn)
-          throw false
+      isAll = true
+      if (!isOwner) {
+        global.dfail('rowner', m, conn)
+        throw false
       }
       bot.restrict = isEnable
       break
 
-   case 'antidelete': 
-     case 'antieliminar': 
-     case 'delete':
+    case 'antidelete': 
+    case 'antieliminar': 
+    case 'delete':
       if (m.isGroup) {
         if (!(isAdmin || isOwner)) {
-       global.dfail('admin', m, conn)
-       throw false
-     }}
-     chat.delete = isEnable
-     break
+          global.dfail('admin', m, conn)
+          throw false
+        }
+      }
+      chat.delete = isEnable
+      break
 
-      case 'antiprivado':
+    case 'antiprivado':
       isAll = true
       if (!isROwner) {
-      global.dfail('rowner', m, conn)
-      throw false
+        global.dfail('rowner', m, conn)
+        throw false
       }
       bot.antiPrivate = isEnable
       break
 
- case 'nsfw':
-      case 'modohorny':
-       if (m.isGroup) {
-         if (!(isAdmin || isOwner)) {
-           global.dfail('admin', m, conn)
-            throw false
-           }}
-    chat.nsfw = isEnable          
-    break
+    case 'nsfw':
+    case 'modohorny':
+      if (m.isGroup) {
+        if (!(isAdmin || isOwner)) {
+          global.dfail('admin', m, conn)
+          throw false
+        }
+      }
+      chat.nsfw = isEnable           
+      break
 
-  case 'audios':
+    case 'audios':
     case 'audiosbot':
     case 'botaudios':
       if (!m.isGroup) {
@@ -103,7 +106,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
       chat.audios = isEnable
       break
 
- case 'modoadmin':
+    case 'modoadmin':
     case 'soloadmin':
       if (m.isGroup) {
         if (!(isAdmin || isOwner)) {
@@ -114,7 +117,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
       chat.modoadmin = isEnable
       break
 
-case 'antiver':
+    case 'antiver':
     case 'antiocultar':
     case 'antiviewonce':
       if (!m.isGroup) {
@@ -129,7 +132,7 @@ case 'antiver':
       chat.antiver = isEnable
       break
 
-  case 'reaction':
+    case 'reaction':
     case 'reacciones':
     case 'emojis':
       if (!m.isGroup) {
@@ -144,7 +147,7 @@ case 'antiver':
       chat.reaction = isEnable
       break
 
-  case 'detect':
+    case 'detect':
     case 'configuraciones':
     case 'avisodegp':
       if (!m.isGroup) {
@@ -159,65 +162,50 @@ case 'antiver':
       chat.detect = isEnable
       break
 
+    case 'autoaceptar': 
+    case 'aceptarnuevos':
+      if (!m.isGroup) {
+        if (!isOwner) {
+          global.dfail('group', m, conn)
+          throw false
+        }
+      } else if (!isAdmin) {
+        global.dfail('admin', m, conn)
+        throw false
+      }
+      chat.autoAceptar = isEnable
+      break
 
-case 'autoaceptar': case 'aceptarnuevos':
-if (!m.isGroup) {
-if (!isOwner) {
-global.dfail('group', m, conn)
-throw false
-}
-} else if (!isAdmin) {
-global.dfail('admin', m, conn)
-throw false
-}
-chat.autoAceptar = isEnable
-break
+    case 'antiarabes':
+    case 'arabes':
+    case 'fakes':
+      if (m.isGroup) {
+        if (!(isAdmin || isOwner)) {
+          global.dfail('admin', m, conn)
+          throw false
+        }
+      }
+      chat.antiArabes = isEnable  
+      break
 
-
-     case 'antiarabes':
-     case 'antinegros':
-       if (m.isGroup) {
-         if (!(isAdmin || isOwner)) {
-           global.dfail('admin', m, conn)
-           throw false
-         }}
-       chat.onlyLatinos = isEnable  
-       break
     default:
       if (!/[01]/.test(command)) return m.reply(`
-*• Ingresa una opción para habilitar o deshabilitar*
+*≡ LISTA DE OPCIONES*
 
-*≡ Lista de opciones*
-*Tipo :* welcome
-*Descripción :* Des/Activa la *Bienvenida* y *Despedida* para Grupos.
+> welcome
+> nsfw
+> antiarabes
+> antilink
+> autoread
+> modoadmin
+> detect
+> document
 
-*Tipo :* nsfw 
-*Descripción :* Des/Activa los comandos *+18* para Grupos.
-
-*Tipo :* antiarabes 
-*Descripción :* Des/Activa el *AntiArabes* para eliminar números fake en el grupo.
-
-*Tipo :* antilink 
-*Descripción :* Des/Activa el *AntiLink* para eliminar a la persona que manda un link de WhatsApp.
-
-*Tipo :* autoread 
-*Descripción :* Des/Activa el *AutoRead* para que el bot lea los mensajes.
-
-*Tipo :* modoadmin
-*Descripción :* Des/Activa el *Modoadmin* para el que el bot solo sea usado por los admins.
-
-*Tipo :* detect
-*Descripción :* Des/Activa el *detect* para el que el bot de avisos sobre actualizaciones de grupos.
-
-*Tipo :* document 
-*Descripción :* Des/Activa la *Descarga En Documentos* para el Usuario
-
-*💫 Ejemplo:*
-*${usedPrefix + command}* detect
-`.trim())
+*💡 Ejemplo:* ${usedPrefix + command} welcome`.trim())
       throw false
   }
-   m.reply(`*🫧 La opción* \`\`\`${type}\`\`\` *fue* \`\`\`${isEnable ? 'activada' : 'desactivada'}\`\`\` *exitosamente para* ${isAll ? '*este* \`\`\`Bot\`\`\`' : isUser ? '' : '*este* \`\`\`chat\`\`\`'}`)
+  
+  m.reply(`*🫧 La opción* \`\`\`${type}\`\`\` *fue* \`\`\`${isEnable ? 'activada' : 'desactivada'}\`\`\` *exitosamente para* ${isAll ? '*este* \`\`\`Bot\`\`\`' : isUser ? '' : '*este* \`\`\`chat\`\`\`'}`)
 }
 
 handler.help = ['enable', 'disable', 'on', 'off']

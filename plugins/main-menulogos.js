@@ -2,13 +2,13 @@ import fetch from 'node-fetch'
 
 let handler = async (m, { conn, usedPrefix: _p }) => {
 
-  const txt = `𐒢𐒢ㅤׄㅤ${emoji2}ㅤִ    Menuㅤ✿    Logos       েᗜ̵`
-  const sun = '稜   @𝖲𝗁⍺𝖽𝗈𝗐𝗓𝖢𝗅𝗎𝖻   ֪  ᗝ̵    (🥢)'
+  const txt = `${emoji2}ㅤִ    Menu Logos    `
+  const sun = '𝐀𝐞𝐨𝐰𝐱𝐬 𝐂𝐥𝐮𝐛'
   let usertag = '@' + m.sender.split('@')[0]
-  const img = await (await fetch('https://files.catbox.moe/txg6ps.jpg')).buffer()
+  const img = await (await fetch('https://files.catbox.moe/3fypzn.jpg')).buffer()
 
   let tags = {
-    "logos": "「 *Logos* 」🏕️"
+    "logos": "「 Logos 」🏕️"
   }
 
   let emojis = {
@@ -16,10 +16,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
   }
 
   let defaultMenu = {
-    before: `*👋🏻 ¡Hola!* *${usertag}*
-*Bienvenido al Menú Logos 🫟*
-
-> \`\`\`${fechaHora}\`\`\`
+    before: `*Bienvenido al Menú Logos 🫟*
 `,
 
     header: category => `╭──• ${category}`,

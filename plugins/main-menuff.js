@@ -2,10 +2,10 @@ import fetch from 'node-fetch'
 
 let handler = async (m, { conn, usedPrefix: _p }) => {
 
-  const txt = `𐒢𐒢ㅤׄㅤ${emoji2}ㅤִ    Menuㅤ✿    Free Fire       েᗜ̵`
-  const sun = '稜   @𝖲𝗁⍺𝖽𝗈𝗐𝗓𝖢𝗅𝗎𝖻   ֪  ᗝ̵    (🥢)'
+  const txt = `${emoji2} Menu Free Fire   `
+  const sun = '𝐀𝐞𝐨𝐰𝐱𝐬 𝐂𝐥𝐮𝐛'
   let usertag = '@' + m.sender.split('@')[0]
-  const img = await (await fetch('https://files.catbox.moe/txg6ps.jpg')).buffer()
+  const img = await (await fetch('https://files.catbox.moe/oepgan.jpg')).buffer()
 
   let tags = {
     "list": "「 *Listas* 」📑",
@@ -19,10 +19,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
   }
 
   let defaultMenu = {
-    before: `*👋🏻 ¡Hola!* *${usertag}*
-*Bienvenido al Menú Free Fire 🔥*
-
-> \`\`\`${fechaHora}\`\`\`
+    before: `*Bienvenido al Menú Free Fire 🔥*
 `,
 
     header: category => `╭──• ${category}`,
@@ -58,7 +55,7 @@ await m.react('🎮')
 await conn.sendShadow(m.chat, txt, sun, text, img, img, redes, fkontak, true, [m.sender])}
 
 handler.tags = ['main']
-handler.help = ['menulogos']
+handler.help = ['menuff']
 handler.command = /^(menuff|comandosff|ffmenu)$/i;
 handler.fail = null;
 

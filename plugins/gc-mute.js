@@ -12,27 +12,41 @@ try {
 let handler = async (m, { conn, command }) => {
   if (!m.quoted) {
     const msgError = command === 'mute'
-      ? `*${emojis} Responde al mensaje del usuario que deseas mutear.*`
-      : `*${emojis} Responde al mensaje del usuario que deseas desmutear.*`
+      ? `*${global.emojis || '🔇'} Responde al mensaje del usuario que deseas mutear.*`
+      : `*${global.emojis || '🔊'} Responde al mensaje del usuario que deseas desmutear.*`
     return conn.reply(m.chat, msgError, m)
   }
 
   let user = m.quoted.sender
+  
+  // --- AQUI DEFINES LOS NÚMEROS INTOCABLES ---
+  // Ahora es una lista []. Puedes agregar más separados por comas.
+  const numerosInmunes = [
+      '5217444704557@s.whatsapp.net', // Tu número actual
+      '573023620822@s.whatsapp.net'  // <--- PON AQUÍ EL SEGUNDO NÚMERO
+  ]
+
+  // Verificación de Propietarios (Owners)
   const ownerBot = global.owner.flatMap(o => {
     let id = o[0]
-    // si ya trae @, lo dejamos tal cual
     if (id.includes('@')) return [id]
-    // si es un número, lo convertimos a ambos formatos posibles
     return [id + '@s.whatsapp.net', id + '@lid']
   })
 
   if (ownerBot.includes(user)) {
-    return conn.reply(m.chat, `*☁️ No puedo mutear a mi propietario.*`, m)
+    return conn.reply(m.chat, `*☁️ No puedo mutear a mi propietario*`, m)
   }
 
   if (user === conn.user.jid) {
     return conn.reply(m.chat, `*🤖 No puedo mutearme a mí mismo.*`, m)
   }
+
+  // --- PROTECCIÓN DE USUARIOS ESPECÍFICOS ---
+  // Verificamos si el usuario está en la lista de intocables
+  if (numerosInmunes.includes(user)) {
+    return conn.reply(m.chat, `*🛡️ No tengo permitido mutear a este usuario específico.*`, m)
+  }
+  // ------------------------
 
   if (command === "mute") {
     if (mutedUsers.has(user)) {
@@ -40,16 +54,23 @@ let handler = async (m, { conn, command }) => {
     }
     mutedUsers.add(user)
     guardarMuteos()
-    conn.reply(m.chat, `*🔇 El usuario @${user.split('@')[0]} fue muteado.*\n> *Sus mensajes serán eliminados.*`, fkontak, { mentions: [user] })
+    conn.reply(m.chat, `*🔇 El usuario @${user.split('@')[0]} fue muteado.*\n> *Sus mensajes serán eliminados.*`, m, { mentions: [user] }) 
   } 
 
   if (command === "unmute") {
+    // --- ANTI AUTO-DESMUTE ---
+    // Si el que envía el comando es el mismo usuario al que intenta desmutear
+    if (user === m.sender) {
+      return conn.reply(m.chat, `*❌ No puedes desmutearte a ti mismo, pide a otro administrador que lo haga.*`, m)
+    }
+    // -------------------------
+
     if (!mutedUsers.has(user)) {
       return conn.reply(m.chat, `*🔊 El usuario @${user.split('@')[0]} no está muteado.*`, m, { mentions: [user] })
     }
     mutedUsers.delete(user)
     guardarMuteos()
-    conn.reply(m.chat, `*🔊 El usuario @${user.split('@')[0]} fue desmuteado.*\n> *Sus mensajes ya no serán eliminados.*`, fkontak, { mentions: [user] })
+    conn.reply(m.chat, `*🔊 El usuario @${user.split('@')[0]} fue desmuteado.*\n> *Sus mensajes ya no serán eliminados.*`, m, { mentions: [user] })
   }
 }
 
@@ -60,7 +81,7 @@ function guardarMuteos() {
 handler.before = async (m, { conn }) => {
   if (mutedUsers.has(m.sender)) {
     try {
-      await conn.sendMessage(m.chat, { delete: m.key })
+        await conn.sendMessage(m.chat, { delete: m.key })
     } catch (e) {
       console.error('Error eliminando mensaje de usuario muteado:', e)
     }

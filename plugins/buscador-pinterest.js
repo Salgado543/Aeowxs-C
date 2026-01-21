@@ -1,5 +1,5 @@
-
 // Créditos Del Código A FzTeis
+// Modificado con Anti-Ban para Gio
 
 import axios from 'axios';
 import baileys from '@whiskeysockets/baileys';
@@ -118,10 +118,39 @@ const pins = async (judul) => {
 };
 
 let handler = async (m, { conn, text }) => {
+  // Aseguramos variables globales por si no están definidas en tu bot
+  // Puedes borrar estas líneas si ya las tienes en config.js o main.js
+  const emojis = global.emojis || '🔎';
+  const emoji2 = global.emoji2 || '📌';
+  const rwait = global.rwait || '⏳';
+  const done = global.done || '✅';
+  const dev = global.dev || '';
+
   if (!text) return m.reply(`*${emojis} Por favor, ingresa un texto para buscar en Pinterest.*\n> *Ejemplo:* .pinterest Gatos Hermosos`);
 
+  // ==========================================
+  // 🛡️ ZONA DE PROTECCIÓN ANTI-BAN 🛡️
+  // ==========================================
+  
+  // 1. Simular "Escribiendo..."
+  await conn.sendPresenceUpdate('composing', m.chat);
+
+  // 2. Calcular tiempo de espera (3 a 5 segundos, ya que busca muchas imágenes)
+  const min = 3000;
+  const max = 5000;
+  const delay = Math.floor(Math.random() * (max - min + 1)) + min;
+
+  // 3. Esperar el tiempo calculado
+  await new Promise(resolve => setTimeout(resolve, delay));
+  
+  // ==========================================
+  // 🏁 FIN DE PROTECCIÓN
+  // ==========================================
+
   try {
+    // Reacción visual después del tiempo de espera
     await m.react(rwait);
+    
     const results = await pins(text);
     if (!results || results.length === 0) return conn.reply(m.chat, `*⚠️ No se encontraron resultados para esa búsqueda.*`, m);
 
@@ -143,6 +172,7 @@ let handler = async (m, { conn, text }) => {
     await m.react(done)
 
   } catch (error) {
+    console.error(error);
     conn.reply(m.chat, '*⚠️ Error al obtener imágenes de Pinterest.*', m);
   }
 };
