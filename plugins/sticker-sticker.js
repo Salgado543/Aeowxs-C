@@ -3,6 +3,25 @@ import uploadFile from '../lib/uploadFile.js'
 import uploadImage from '../lib/uploadImage.js'
 
 const handler = async (m, { conn, args }) => {
+  // Aseguramos emojis globales
+  const emojis = global.emojis || '🖼️';
+
+  // ==========================================
+  // 🛡️ ZONA DE PROTECCIÓN ANTI-BAN 🛡️
+  // ==========================================
+  // 1. Simular "Escribiendo..."
+  // Da la sensación de que el bot está procesando y convirtiendo la imagen
+  await conn.sendPresenceUpdate('composing', m.chat);
+
+  // 2. Calcular tiempo de espera (2 a 4 segundos)
+  const min = 2000;
+  const max = 4000;
+  const delay = Math.floor(Math.random() * (max - min + 1)) + min;
+
+  // 3. Esperar el tiempo calculado
+  await new Promise(resolve => setTimeout(resolve, delay));
+  // ==========================================
+
   let q = m.quoted || m
   let mime = ((q.msg || q).mimetype || q.mediaType || '').toLowerCase()
   let stiker

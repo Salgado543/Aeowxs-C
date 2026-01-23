@@ -40,7 +40,7 @@ global.jadi = 'JadiBots'
 global.moneda = 'AeowxCoins 🪙'
 
 
-global.catalogo = fs.readFileSync('./media/catalogo.jpg')
+global.catalogo = fs.readFileSync('./media/catalogo.jpeg')
 
 // TUS ENLACES ACTUALIZADOS
 global.grupo = 'https://chat.whatsapp.com/C4vXg9OadhNDVHFm1Q0fhv'

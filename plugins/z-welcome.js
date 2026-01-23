@@ -15,20 +15,28 @@ export async function before(m, { conn, participants, groupMetadata }) {
   const ppUrl = await conn.profilePictureUrl(userId, 'image').catch(_ => 'https://files.catbox.moe/xr2m6u.jpg')
   
   // Descargamos el buffer de la imagen
-  const img = await (await fetch(ppUrl)).buffer()
+  let img
+  try {
+      img = await (await fetch(ppUrl)).buffer()
+  } catch (e) {
+      img = await (await fetch('https://files.catbox.moe/xr2m6u.jpg')).buffer()
+  }
   
-  const chat = global.db.data.chats[m.chat]
+  const chat = global.db.data.chats[m.chat] || {}
   
   // Títulos simples para concatenar
   let tituloBienvenida = `¡Bienvenid@! ${await conn.getName(userId) || "Usuario"}`
   let tituloAdios = `¡Adiós! ${await conn.getName(userId) || "Usuario"}`
   let tituloSalida = `Se salió ${await conn.getName(userId) || "Usuario"}`
+  
+  // Variables de reemplazo comunes
+  const groupName = groupMetadata.subject
+  const groupDesc = groupMetadata.desc || 'sin descripción'
 
-  // --- WELCOME (TIPO 27) ---
+  // ==========================================
+  // 🟢 WELCOME (TIPO 27) - Usa 'chat.welcome'
+  // ==========================================
   if (chat.welcome && m.messageStubType == 27) {
-    const groupName = groupMetadata.subject
-    const groupDesc = groupMetadata.desc || 'sin descripción'
-
     let bienvenida = chat.sWelcome
       ? chat.sWelcome
           .replace(/@user/g, username)
@@ -44,11 +52,12 @@ export async function before(m, { conn, participants, groupMetadata }) {
     }, { quoted: null }) // Puedes poner 'quoted: m' si quieres citar el mensaje de sistema
   }
 
+  // ==========================================
+  // 🔴 BYE / DESPEDIDAS - Usa 'chat.bye'
+  // ==========================================
+  
   // --- KICK / EXPULSIÓN (TIPO 28) ---
-  if (chat.welcome && m.messageStubType == 28) {
-    const groupName = groupMetadata.subject
-    const groupDesc = groupMetadata.desc || 'sin descripción'
-
+  if (chat.bye && m.messageStubType == 28) {
     let ban = chat.sKick
       ? chat.sKick
           .replace(/@user/g, username)
@@ -64,10 +73,7 @@ export async function before(m, { conn, participants, groupMetadata }) {
   }
 
   // --- LEAVE / SALIDA VOLUNTARIA (TIPO 32) ---
-  if (chat.welcome && m.messageStubType == 32) {
-    const groupName = groupMetadata.subject
-    const groupDesc = groupMetadata.desc || 'sin descripción'
-
+  if (chat.bye && m.messageStubType == 32) {
     let bye = chat.sBye
       ? chat.sBye
           .replace(/@user/g, username)
